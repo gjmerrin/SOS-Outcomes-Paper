@@ -1,0 +1,913 @@
+Mplus VERSION 8.4
+MUTHEN & MUTHEN
+09/28/2021   2:14 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: Contact Perpetration - Scale Scores - LGM
+
+  DATA: FILE = mpluswide.csv;
+
+  VARIABLE:
+  NAMES = ID School Tx srvy_1 srvy_2 srvy_3 srvy_4
+  Grade TransG Gender Race SexOr
+  Female Male OtherG
+  White Latinx Black Asian MultiR Indigen POC
+  Straight Bisexual GL Quest OtherSO LGBQ
+  FGxTx MGxTx OGxTx
+  WRxTx LRxTx BRxTx ARxTx MRxTx IRxTx POCxTx
+  SSxTx BSxTx GLxTx QSxTx OSxTx LGBQxTx
+  AGE_1 AGE_2 AGE_3 AGE_4
+  SVP1_1 SVP1_2 SVP1_3 SVP1_4
+  SVP10_1 SVP10_2 SVP10_3 SVP10_4
+  SVP11_1 SVP11_2 SVP11_3 SVP11_4
+  SVP12_1 SVP12_2 SVP12_3 SVP12_4
+  SVP13_1 SVP13_2 SVP13_3 SVP13_4
+  SVP2_1 SVP2_2 SVP2_3 SVP2_4
+  SVP3_1 SVP3_2 SVP3_3 SVP3_4
+  SVP4_1 SVP4_2 SVP4_3 SVP4_4
+  SVP5_1 SVP5_2 SVP5_3 SVP5_4
+  SVP6_1 SVP6_2 SVP6_3 SVP6_4
+  SVP7_1 SVP7_2 SVP7_3 SVP7_4
+  SVP8_1 SVP8_2 SVP8_3 SVP8_4
+  SVP9_1 SVP9_2 SVP9_3 SVP9_4
+  SVV1_1 SVV1_2 SVV1_3 SVV1_4
+  SVV10_1 SVV10_2 SVV10_3 SVV10_4
+  SVV11_1 SVV11_2 SVV11_3 SVV11_4
+  SVV12_1 SVV12_2 SVV12_3 SVV12_4
+  SVV13_1 SVV13_2 SVV13_3 SVV13_4
+  SVV2_1 SVV2_2 SVV2_3 SVV2_4
+  SVV3_1 SVV3_2 SVV3_3 SVV3_4
+  SVV4_1 SVV4_2 SVV4_3 SVV4_4
+  SVV5_1 SVV5_2 SVV5_3 SVV5_4
+  SVV6_1 SVV6_2 SVV6_3 SVV6_4
+  SVV7_1 SVV7_2 SVV7_3 SVV7_4
+  SVV8_1 SVV8_2 SVV8_3 SVV8_4
+  SVV9_1 SVV9_2 SVV9_3 SVV9_4
+  CYP1_1 CYP1_2 CYP1_3 CYP1_4
+  CYP2_1 CYP2_2 CYP2_3 CYP2_4
+  CYP3_1 CYP3_2 CYP3_3 CYP3_4
+  DSV1_1 DSV1_2 DSV1_3 DSV1_4
+  DSV2_1 DSV2_2 DSV2_3 DSV2_4
+  DSV3_1 DSV3_2 DSV3_3 DSV3_4
+  DSV4_1 DSV4_2 DSV4_3 DSV4_4
+  DSV5_1 DSV5_2 DSV5_3 DSV5_4
+  DSV6_1 DSV6_2 DSV6_3 DSV6_4
+  HOP1_1 HOP1_2 HOP1_3 HOP1_4
+  HOP2_1 HOP2_2 HOP2_3 HOP2_4
+  HOP3_1 HOP3_2 HOP3_3 HOP3_4
+  HOP4_1 HOP4_2 HOP4_3 HOP4_4
+  HOP5_1 HOP5_2 HOP5_3 HOP5_4
+  HOV1_1 HOV1_2 HOV1_3 HOV1_4
+  HOV2_1 HOV2_2 HOV2_3 HOV2_4
+  HOV3_1 HOV3_2 HOV3_3 HOV3_4
+  HOV4_1 HOV4_2 HOV4_3 HOV4_4
+  HOV5_1 HOV5_2 HOV5_3 HOV5_4
+  GWB1_1 GWB1_2 GWB1_3 GWB1_4
+  GWB2_1 GWB2_2 GWB2_3 GWB2_4
+  GWB3_1 GWB3_2 GWB3_3 GWB3_4
+  GWB4_1 GWB4_2 GWB4_3 GWB4_4
+  GWB5_1 GWB5_2 GWB5_3 GWB5_4
+  GWB6_1 GWB6_2 GWB6_3 GWB6_4
+  GWB7_1 GWB7_2 GWB7_3 GWB7_4
+  GWB8_1 GWB8_2 GWB8_3 GWB8_4
+  SHA1_1 SHA1_2 SHA1_3 SHA1_4
+  SHA2_1 SHA2_2 SHA2_3 SHA2_4
+  SHA3_1 SHA3_2 SHA3_3 SHA3_4
+  SHA4_1 SHA4_2 SHA4_3 SHA4_4
+  SHI1_1 SHI1_2 SHI1_3 SHI1_4
+  SHI2_1 SHI2_2 SHI2_3 SHI2_4
+  SHI3_1 SHI3_2 SHI3_3 SHI3_4
+  SHI4_1 SHI4_2 SHI4_3 SHI4_4
+  AEXS_1 AEXS_2 AEXS_3 AEXS_4
+  PEXS_1 PEXS_2 PEXS_3 PEXS_4
+  NCPS_1 NCPS_2 NCPS_3 NCPS_4
+  NCVS_1 NCVS_2 NCVS_3 NCVS_4
+  CPS_1 CPS_2 CPS_3 CPS_4
+  CVS_1 CVS_2 CVS_3 CVS_4
+  HOPS_1 HOPS_2 HOPS_3 HOPS_4
+  HOVS_1 HOVS_2 HOVS_3 HOVS_4
+  CYPS_1 CYPS_2 CYPS_3 CYPS_4
+  DSVS_1 DSVS_2 DSVS_3 DSVS_4
+  GWBS_1 GWBS_2 GWBS_3 GWBS_4
+  SHAS_1 SHAS_2 SHAS_3 SHAS_4
+  SHIS_1 SHIS_2 SHIS_3 SHIS_4
+  NCPerp1 NCPerp2 NCPerp3 NCPerp4
+  NCVict1 NCVict2 NCVict3 NCVict4
+  ConPerp1 ConPerp2 ConPerp3 ConPerp4
+  ConVict1 ConVict2 ConVict3 ConVict4
+  HNCPerp1 HNCPerp2 HNCPerp3 HNCPerp4
+  CSPerp1 CSPerp2 CSPerp3 CSPerp4
+  Dismiss1 Dismiss2 Dismiss3 Dismiss4
+  GenWB1 GenWB2 GenWB3 GenWB4
+  SHHAtt1 SHHAtt2 SHHAtt3 SHHAtt4
+  SHHSeek1 SHHSeek2 SHHSeek3 SHHSeek4
+  Active2 Active3 Active4
+  Passive2 Passive3 Passive4
+  Funding Rural Teas_Per MHT_Per;
+
+  USEVARIABLES = CPS_1-CPS_4;
+
+  IDVARIABLE = ID;
+  CLUSTER = School;
+
+  MISSING = ALL(-999);
+
+  ANALYSIS:
+  TYPE = COMPLEX;
+
+  MODEL:
+  i s | CPS_1@0 CPS_2@1 CPS_3@2 CPS_4@3;
+
+  OUTPUT:
+  STANDARDIZED CINTERVAL RESIDUAL TECH1 TECH4;
+
+
+
+*** WARNING
+  Data set contains cases with missing on all variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on all variables:  113
+   1 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+Contact Perpetration - Scale Scores - LGM
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        6352
+
+Number of dependent variables                                    4
+Number of independent variables                                  0
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Continuous
+   CPS_1       CPS_2       CPS_3       CPS_4
+
+Continuous latent variables
+   I           S
+
+Variables with special functions
+
+  Cluster variable      SCHOOL
+  ID variable           ID
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  mpluswide.csv
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns            15
+     Number of clusters                         20
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              CPS_1         CPS_2         CPS_3         CPS_4
+              ________      ________      ________      ________
+ CPS_1          0.733
+ CPS_2          0.544         0.673
+ CPS_3          0.468         0.469         0.640
+ CPS_4          0.381         0.384         0.412         0.525
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     CPS_1                 0.035      11.359       0.000   93.75%       0.000      0.000      0.000
+            4658.000       0.062     149.799       4.000    0.15%       0.000      0.000
+     CPS_2                 0.056       8.610       0.000   93.12%       0.000      0.000      0.000
+            4272.000       0.118      82.844       4.000    0.35%       0.000      0.000
+     CPS_3                 0.059       8.433       0.000   94.42%       0.000      0.000      0.000
+            4066.000       0.153      75.447       4.000    0.66%       0.000      0.000
+     CPS_4                 0.090       6.703       0.000   92.38%       0.000      0.000      0.000
+            3332.000       0.233      47.225       4.000    1.02%       0.000      0.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                        9
+
+Loglikelihood
+
+          H0 Value                       -5520.357
+          H0 Scaling Correction Factor     47.1888
+            for MLR
+          H1 Value                       -5513.501
+          H1 Scaling Correction Factor     32.8079
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   11058.714
+          Bayesian (BIC)                 11119.523
+          Sample-Size Adjusted BIC       11090.923
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                              1.981*
+          Degrees of Freedom                     5
+          P-Value                           0.8518
+          Scaling Correction Factor         6.9221
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.000
+          90 Percent C.I.                    0.000  0.010
+          Probability RMSEA <= .05           1.000
+
+CFI/TLI
+
+          CFI                                1.000
+          TLI                                1.000
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                             65.982
+          Degrees of Freedom                     6
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.015
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    CPS_1              1.000      0.000    999.000    999.000
+    CPS_2              1.000      0.000    999.000    999.000
+    CPS_3              1.000      0.000    999.000    999.000
+    CPS_4              1.000      0.000    999.000    999.000
+
+ S        |
+    CPS_1              0.000      0.000    999.000    999.000
+    CPS_2              1.000      0.000    999.000    999.000
+    CPS_3              2.000      0.000    999.000    999.000
+    CPS_4              3.000      0.000    999.000    999.000
+
+ S        WITH
+    I                 -0.006      0.007     -0.923      0.356
+
+ Means
+    I                  0.035      0.007      5.230      0.000
+    S                  0.017      0.005      3.522      0.000
+
+ Intercepts
+    CPS_1              0.000      0.000    999.000    999.000
+    CPS_2              0.000      0.000    999.000    999.000
+    CPS_3              0.000      0.000    999.000    999.000
+    CPS_4              0.000      0.000    999.000    999.000
+
+ Variances
+    I                  0.032      0.017      1.854      0.064
+    S                  0.009      0.004      2.275      0.023
+
+ Residual Variances
+    CPS_1              0.030      0.009      3.477      0.001
+    CPS_2              0.090      0.019      4.755      0.000
+    CPS_3              0.114      0.023      4.856      0.000
+    CPS_4              0.160      0.033      4.834      0.000
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    CPS_1              0.721      0.119      6.087      0.000
+    CPS_2              0.521      0.124      4.194      0.000
+    CPS_3              0.455      0.114      3.999      0.000
+    CPS_4              0.371      0.105      3.523      0.000
+
+ S        |
+    CPS_1              0.000      0.000    999.000    999.000
+    CPS_2              0.273      0.043      6.320      0.000
+    CPS_3              0.477      0.072      6.641      0.000
+    CPS_4              0.584      0.124      4.710      0.000
+
+ S        WITH
+    I                 -0.378      0.263     -1.437      0.151
+
+ Means
+    I                  0.193      0.031      6.206      0.000
+    S                  0.184      0.048      3.824      0.000
+
+ Intercepts
+    CPS_1              0.000      0.000    999.000    999.000
+    CPS_2              0.000      0.000    999.000    999.000
+    CPS_3              0.000      0.000    999.000    999.000
+    CPS_4              0.000      0.000    999.000    999.000
+
+ Variances
+    I                  1.000      0.000    999.000    999.000
+    S                  1.000      0.000    999.000    999.000
+
+ Residual Variances
+    CPS_1              0.479      0.171      2.803      0.005
+    CPS_2              0.762      0.048     16.010      0.000
+    CPS_3              0.729      0.044     16.694      0.000
+    CPS_4              0.685      0.093      7.344      0.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    CPS_1              0.721      0.119      6.087      0.000
+    CPS_2              0.521      0.124      4.194      0.000
+    CPS_3              0.455      0.114      3.999      0.000
+    CPS_4              0.371      0.105      3.523      0.000
+
+ S        |
+    CPS_1              0.000      0.000    999.000    999.000
+    CPS_2              0.273      0.043      6.320      0.000
+    CPS_3              0.477      0.072      6.641      0.000
+    CPS_4              0.584      0.124      4.710      0.000
+
+ S        WITH
+    I                 -0.378      0.263     -1.437      0.151
+
+ Means
+    I                  0.193      0.031      6.206      0.000
+    S                  0.184      0.048      3.824      0.000
+
+ Intercepts
+    CPS_1              0.000      0.000    999.000    999.000
+    CPS_2              0.000      0.000    999.000    999.000
+    CPS_3              0.000      0.000    999.000    999.000
+    CPS_4              0.000      0.000    999.000    999.000
+
+ Variances
+    I                  1.000      0.000    999.000    999.000
+    S                  1.000      0.000    999.000    999.000
+
+ Residual Variances
+    CPS_1              0.479      0.171      2.803      0.005
+    CPS_2              0.762      0.048     16.010      0.000
+    CPS_3              0.729      0.044     16.694      0.000
+    CPS_4              0.685      0.093      7.344      0.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    CPS_1              0.179      0.048      3.708      0.000
+    CPS_2              0.179      0.048      3.708      0.000
+    CPS_3              0.179      0.048      3.708      0.000
+    CPS_4              0.179      0.048      3.708      0.000
+
+ S        |
+    CPS_1              0.000      0.000    999.000    999.000
+    CPS_2              0.094      0.021      4.550      0.000
+    CPS_3              0.188      0.041      4.550      0.000
+    CPS_4              0.283      0.062      4.550      0.000
+
+ S        WITH
+    I                 -0.378      0.263     -1.437      0.151
+
+ Means
+    I                  0.193      0.031      6.206      0.000
+    S                  0.184      0.048      3.824      0.000
+
+ Intercepts
+    CPS_1              0.000      0.000    999.000    999.000
+    CPS_2              0.000      0.000    999.000    999.000
+    CPS_3              0.000      0.000    999.000    999.000
+    CPS_4              0.000      0.000    999.000    999.000
+
+ Variances
+    I                  1.000      0.000    999.000    999.000
+    S                  1.000      0.000    999.000    999.000
+
+ Residual Variances
+    CPS_1              0.030      0.009      3.477      0.001
+    CPS_2              0.090      0.019      4.755      0.000
+    CPS_3              0.114      0.023      4.856      0.000
+    CPS_4              0.160      0.033      4.834      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    CPS_1              0.521      0.171      3.043      0.002
+    CPS_2              0.238      0.048      5.006      0.000
+    CPS_3              0.271      0.044      6.192      0.000
+    CPS_4              0.315      0.093      3.381      0.001
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.288E-02
+       (ratio of smallest to largest eigenvalue)
+
+
+CONFIDENCE INTERVALS OF MODEL RESULTS
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    CPS_1            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    CPS_2            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    CPS_3            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    CPS_4            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ S        |
+    CPS_1            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    CPS_2            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    CPS_3            2.000       2.000       2.000       2.000       2.000       2.000       2.000
+    CPS_4            3.000       3.000       3.000       3.000       3.000       3.000       3.000
+
+ S        WITH
+    I               -0.024      -0.020      -0.018      -0.006       0.005       0.007       0.011
+
+ Means
+    I                0.018       0.022       0.024       0.035       0.046       0.048       0.052
+    S                0.005       0.008       0.009       0.017       0.025       0.027       0.030
+
+ Intercepts
+    CPS_1            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    CPS_2            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    CPS_3            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    CPS_4            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ Variances
+    I               -0.013      -0.002       0.004       0.032       0.061       0.066       0.077
+    S               -0.001       0.001       0.002       0.009       0.015       0.017       0.019
+
+ Residual Variances
+    CPS_1            0.008       0.013       0.016       0.030       0.044       0.046       0.052
+    CPS_2            0.041       0.053       0.059       0.090       0.122       0.128       0.140
+    CPS_3            0.053       0.068       0.075       0.114       0.152       0.160       0.174
+    CPS_4            0.075       0.095       0.106       0.160       0.215       0.225       0.246
+
+
+CONFIDENCE INTERVALS OF STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    CPS_1            0.416       0.489       0.526       0.721       0.916       0.954       1.027
+    CPS_2            0.201       0.277       0.316       0.521       0.725       0.764       0.840
+    CPS_3            0.162       0.232       0.268       0.455       0.642       0.677       0.747
+    CPS_4            0.100       0.165       0.198       0.371       0.544       0.577       0.642
+
+ S        |
+    CPS_1            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    CPS_2            0.162       0.189       0.202       0.273       0.344       0.358       0.385
+    CPS_3            0.292       0.336       0.359       0.477       0.595       0.618       0.662
+    CPS_4            0.265       0.341       0.380       0.584       0.788       0.827       0.904
+
+ S        WITH
+    I               -1.054      -0.892      -0.810      -0.378       0.055       0.137       0.299
+
+ Means
+    I                0.113       0.132       0.142       0.193       0.245       0.255       0.274
+    S                0.060       0.090       0.105       0.184       0.264       0.279       0.309
+
+ Intercepts
+    CPS_1            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    CPS_2            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    CPS_3            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    CPS_4            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ Variances
+    I                1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    S                1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ Residual Variances
+    CPS_1            0.039       0.144       0.198       0.479       0.761       0.815       0.920
+    CPS_2            0.639       0.669       0.684       0.762       0.840       0.855       0.884
+    CPS_3            0.617       0.644       0.658       0.729       0.801       0.815       0.842
+    CPS_4            0.445       0.502       0.531       0.685       0.838       0.868       0.925
+
+
+STDY Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    CPS_1            0.416       0.489       0.526       0.721       0.916       0.954       1.027
+    CPS_2            0.201       0.277       0.316       0.521       0.725       0.764       0.840
+    CPS_3            0.162       0.232       0.268       0.455       0.642       0.677       0.747
+    CPS_4            0.100       0.165       0.198       0.371       0.544       0.577       0.642
+
+ S        |
+    CPS_1            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    CPS_2            0.162       0.189       0.202       0.273       0.344       0.358       0.385
+    CPS_3            0.292       0.336       0.359       0.477       0.595       0.618       0.662
+    CPS_4            0.265       0.341       0.380       0.584       0.788       0.827       0.904
+
+ S        WITH
+    I               -1.054      -0.892      -0.810      -0.378       0.055       0.137       0.299
+
+ Means
+    I                0.113       0.132       0.142       0.193       0.245       0.255       0.274
+    S                0.060       0.090       0.105       0.184       0.264       0.279       0.309
+
+ Intercepts
+    CPS_1            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    CPS_2            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    CPS_3            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    CPS_4            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ Variances
+    I                1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    S                1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ Residual Variances
+    CPS_1            0.039       0.144       0.198       0.479       0.761       0.815       0.920
+    CPS_2            0.639       0.669       0.684       0.762       0.840       0.855       0.884
+    CPS_3            0.617       0.644       0.658       0.729       0.801       0.815       0.842
+    CPS_4            0.445       0.502       0.531       0.685       0.838       0.868       0.925
+
+
+STD Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    CPS_1            0.055       0.085       0.100       0.179       0.259       0.274       0.304
+    CPS_2            0.055       0.085       0.100       0.179       0.259       0.274       0.304
+    CPS_3            0.055       0.085       0.100       0.179       0.259       0.274       0.304
+    CPS_4            0.055       0.085       0.100       0.179       0.259       0.274       0.304
+
+ S        |
+    CPS_1            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    CPS_2            0.041       0.054       0.060       0.094       0.128       0.135       0.148
+    CPS_3            0.082       0.107       0.120       0.188       0.256       0.270       0.295
+    CPS_4            0.123       0.161       0.180       0.283       0.385       0.404       0.443
+
+ S        WITH
+    I               -1.054      -0.892      -0.810      -0.378       0.055       0.137       0.299
+
+ Means
+    I                0.113       0.132       0.142       0.193       0.245       0.255       0.274
+    S                0.060       0.090       0.105       0.184       0.264       0.279       0.309
+
+ Intercepts
+    CPS_1            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    CPS_2            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    CPS_3            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    CPS_4            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ Variances
+    I                1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    S                1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ Residual Variances
+    CPS_1            0.008       0.013       0.016       0.030       0.044       0.046       0.052
+    CPS_2            0.041       0.053       0.059       0.090       0.122       0.128       0.140
+    CPS_3            0.053       0.068       0.075       0.114       0.152       0.160       0.174
+    CPS_4            0.075       0.095       0.106       0.160       0.215       0.225       0.246
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means
+              CPS_1         CPS_2         CPS_3         CPS_4
+              ________      ________      ________      ________
+                0.035         0.052         0.069         0.087
+
+
+           Residuals for Means
+              CPS_1         CPS_2         CPS_3         CPS_4
+              ________      ________      ________      ________
+                0.000         0.004        -0.008         0.006
+
+
+           Standardized Residuals (z-scores) for Means
+              CPS_1         CPS_2         CPS_3         CPS_4
+              ________      ________      ________      ________
+              999.000         0.688        -1.824       999.000
+
+
+           Normalized Residuals for Means
+              CPS_1         CPS_2         CPS_3         CPS_4
+              ________      ________      ________      ________
+               -0.031         0.475        -0.760         0.481
+
+
+           Model Estimated Covariances
+              CPS_1         CPS_2         CPS_3         CPS_4
+              ________      ________      ________      ________
+ CPS_1          0.062
+ CPS_2          0.026         0.119
+ CPS_3          0.019         0.031         0.156
+ CPS_4          0.013         0.033         0.054         0.234
+
+
+           Model Estimated Correlations
+              CPS_1         CPS_2         CPS_3         CPS_4
+              ________      ________      ________      ________
+ CPS_1          1.000
+ CPS_2          0.301         1.000
+ CPS_3          0.198         0.226         1.000
+ CPS_4          0.108         0.200         0.280         1.000
+
+
+           Residuals for Covariances
+              CPS_1         CPS_2         CPS_3         CPS_4
+              ________      ________      ________      ________
+ CPS_1          0.000
+ CPS_2          0.000        -0.001
+ CPS_3          0.002        -0.004        -0.001
+ CPS_4         -0.001         0.005         0.001         0.002
+
+
+           Residuals for Correlations
+              CPS_1         CPS_2         CPS_3         CPS_4
+              ________      ________      ________      ________
+ CPS_1          0.000
+ CPS_2         -0.005         0.000
+ CPS_3          0.023        -0.029         0.000
+ CPS_4         -0.005         0.030         0.003         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              CPS_1         CPS_2         CPS_3         CPS_4
+              ________      ________      ________      ________
+ CPS_1          0.398
+ CPS_2         -0.123        -0.076
+ CPS_3          0.585       999.000       999.000
+ CPS_4        999.000         0.283       999.000         0.235
+
+
+           Normalized Residuals for Covariances
+              CPS_1         CPS_2         CPS_3         CPS_4
+              ________      ________      ________      ________
+ CPS_1          0.009
+ CPS_2         -0.039        -0.025
+ CPS_3          0.349        -0.808        -0.018
+ CPS_4         -0.153         0.254         0.053         0.052
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              CPS_1         CPS_2         CPS_3         CPS_4
+              ________      ________      ________      ________
+                  0             0             0             0
+
+
+           LAMBDA
+              I             S
+              ________      ________
+ CPS_1              0             0
+ CPS_2              0             0
+ CPS_3              0             0
+ CPS_4              0             0
+
+
+           THETA
+              CPS_1         CPS_2         CPS_3         CPS_4
+              ________      ________      ________      ________
+ CPS_1              1
+ CPS_2              0             2
+ CPS_3              0             0             3
+ CPS_4              0             0             0             4
+
+
+           ALPHA
+              I             S
+              ________      ________
+                  5             6
+
+
+           BETA
+              I             S
+              ________      ________
+ I                  0             0
+ S                  0             0
+
+
+           PSI
+              I             S
+              ________      ________
+ I                  7
+ S                  8             9
+
+
+     STARTING VALUES
+
+
+           NU
+              CPS_1         CPS_2         CPS_3         CPS_4
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              I             S
+              ________      ________
+ CPS_1          1.000         0.000
+ CPS_2          1.000         1.000
+ CPS_3          1.000         2.000
+ CPS_4          1.000         3.000
+
+
+           THETA
+              CPS_1         CPS_2         CPS_3         CPS_4
+              ________      ________      ________      ________
+ CPS_1          0.031
+ CPS_2          0.000         0.059
+ CPS_3          0.000         0.000         0.077
+ CPS_4          0.000         0.000         0.000         0.117
+
+
+           ALPHA
+              I             S
+              ________      ________
+                0.035         0.021
+
+
+           BETA
+              I             S
+              ________      ________
+ I              0.000         0.000
+ S              0.000         0.000
+
+
+           PSI
+              I             S
+              ________      ________
+ I              0.076
+ S              0.000         0.068
+
+
+TECHNICAL 4 OUTPUT
+
+
+     ESTIMATES DERIVED FROM THE MODEL
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+                0.035         0.017
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+                0.007         0.005
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+                5.230         3.522
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+                0.000         0.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+ I              0.032
+ S             -0.006         0.009
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+ I              0.017
+ S              0.007         0.004
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+ I              1.854
+ S             -0.923         2.275
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+ I              0.064
+ S              0.356         0.023
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+ I              1.000
+ S             -0.378         1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+ I              0.000
+ S              0.263         0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+ I            999.000
+ S             -1.437       999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+ I              0.000
+ S              0.151         0.000
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    c:\users\kylenick\onedrive - university of north carolina at chapel hill\dorothy\00 sources of strength data w1-w4 -
+
+     Beginning Time:  14:14:36
+        Ending Time:  14:14:37
+       Elapsed Time:  00:00:01
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen

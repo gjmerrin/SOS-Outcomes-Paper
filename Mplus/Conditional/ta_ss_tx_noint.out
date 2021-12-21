@@ -1,0 +1,2044 @@
+Mplus VERSION 8.4
+MUTHEN & MUTHEN
+10/18/2021   3:49 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: Nominated a Trusted Adult - Tx no interactions
+
+  DATA: FILE = mpluswide_wTANoms.csv;
+
+  VARIABLE:
+  NAMES = ID School Tx srvy_1 srvy_2 srvy_3 srvy_4
+  Grade TransG Gender Race SexOr
+  Female Male OtherG
+  White Latinx Black Asian MultiR Indigen POC
+  Straight Bisexual GL Quest OtherSO LGBQ
+  FGxTx MGxTx OGxTx
+  WRxTx LRxTx BRxTx ARxTx MRxTx IRxTx POCxTx
+  SSxTx BSxTx GLxTx QSxTx OSxTx LGBQxTx
+  AGE_1 AGE_2 AGE_3 AGE_4
+  SVP1_1 SVP1_2 SVP1_3 SVP1_4
+  SVP10_1 SVP10_2 SVP10_3 SVP10_4
+  SVP11_1 SVP11_2 SVP11_3 SVP11_4
+  SVP12_1 SVP12_2 SVP12_3 SVP12_4
+  SVP13_1 SVP13_2 SVP13_3 SVP13_4
+  SVP2_1 SVP2_2 SVP2_3 SVP2_4
+  SVP3_1 SVP3_2 SVP3_3 SVP3_4
+  SVP4_1 SVP4_2 SVP4_3 SVP4_4
+  SVP5_1 SVP5_2 SVP5_3 SVP5_4
+  SVP6_1 SVP6_2 SVP6_3 SVP6_4
+  SVP7_1 SVP7_2 SVP7_3 SVP7_4
+  SVP8_1 SVP8_2 SVP8_3 SVP8_4
+  SVP9_1 SVP9_2 SVP9_3 SVP9_4
+  SVV1_1 SVV1_2 SVV1_3 SVV1_4
+  SVV10_1 SVV10_2 SVV10_3 SVV10_4
+  SVV11_1 SVV11_2 SVV11_3 SVV11_4
+  SVV12_1 SVV12_2 SVV12_3 SVV12_4
+  SVV13_1 SVV13_2 SVV13_3 SVV13_4
+  SVV2_1 SVV2_2 SVV2_3 SVV2_4
+  SVV3_1 SVV3_2 SVV3_3 SVV3_4
+  SVV4_1 SVV4_2 SVV4_3 SVV4_4
+  SVV5_1 SVV5_2 SVV5_3 SVV5_4
+  SVV6_1 SVV6_2 SVV6_3 SVV6_4
+  SVV7_1 SVV7_2 SVV7_3 SVV7_4
+  SVV8_1 SVV8_2 SVV8_3 SVV8_4
+  SVV9_1 SVV9_2 SVV9_3 SVV9_4
+  CYP1_1 CYP1_2 CYP1_3 CYP1_4
+  CYP2_1 CYP2_2 CYP2_3 CYP2_4
+  CYP3_1 CYP3_2 CYP3_3 CYP3_4
+  DSV1_1 DSV1_2 DSV1_3 DSV1_4
+  DSV2_1 DSV2_2 DSV2_3 DSV2_4
+  DSV3_1 DSV3_2 DSV3_3 DSV3_4
+  DSV4_1 DSV4_2 DSV4_3 DSV4_4
+  DSV5_1 DSV5_2 DSV5_3 DSV5_4
+  DSV6_1 DSV6_2 DSV6_3 DSV6_4
+  HOP1_1 HOP1_2 HOP1_3 HOP1_4
+  HOP2_1 HOP2_2 HOP2_3 HOP2_4
+  HOP3_1 HOP3_2 HOP3_3 HOP3_4
+  HOP4_1 HOP4_2 HOP4_3 HOP4_4
+  HOP5_1 HOP5_2 HOP5_3 HOP5_4
+  HOV1_1 HOV1_2 HOV1_3 HOV1_4
+  HOV2_1 HOV2_2 HOV2_3 HOV2_4
+  HOV3_1 HOV3_2 HOV3_3 HOV3_4
+  HOV4_1 HOV4_2 HOV4_3 HOV4_4
+  HOV5_1 HOV5_2 HOV5_3 HOV5_4
+  GWB1_1 GWB1_2 GWB1_3 GWB1_4
+  GWB2_1 GWB2_2 GWB2_3 GWB2_4
+  GWB3_1 GWB3_2 GWB3_3 GWB3_4
+  GWB4_1 GWB4_2 GWB4_3 GWB4_4
+  GWB5_1 GWB5_2 GWB5_3 GWB5_4
+  GWB6_1 GWB6_2 GWB6_3 GWB6_4
+  GWB7_1 GWB7_2 GWB7_3 GWB7_4
+  GWB8_1 GWB8_2 GWB8_3 GWB8_4
+  SHA1_1 SHA1_2 SHA1_3 SHA1_4
+  SHA2_1 SHA2_2 SHA2_3 SHA2_4
+  SHA3_1 SHA3_2 SHA3_3 SHA3_4
+  SHA4_1 SHA4_2 SHA4_3 SHA4_4
+  SHI1_1 SHI1_2 SHI1_3 SHI1_4
+  SHI2_1 SHI2_2 SHI2_3 SHI2_4
+  SHI3_1 SHI3_2 SHI3_3 SHI3_4
+  SHI4_1 SHI4_2 SHI4_3 SHI4_4
+  TotAN_1 TotAN_2	TotAN_3	TotAN_4
+  TA_1 TA_2 TA_3 TA_4	
+  AEXS_1 AEXS_2 AEXS_3 AEXS_4
+  PEXS_1 PEXS_2 PEXS_3 PEXS_4
+  NCPS_1 NCPS_2 NCPS_3 NCPS_4
+  NCVS_1 NCVS_2 NCVS_3 NCVS_4
+  CPS_1 CPS_2 CPS_3 CPS_4
+  CVS_1 CVS_2 CVS_3 CVS_4
+  HOPS_1 HOPS_2 HOPS_3 HOPS_4
+  HOVS_1 HOVS_2 HOVS_3 HOVS_4
+  CYPS_1 CYPS_2 CYPS_3 CYPS_4
+  DSVS_1 DSVS_2 DSVS_3 DSVS_4
+  GWBS_1 GWBS_2 GWBS_3 GWBS_4
+  SHAS_1 SHAS_2 SHAS_3 SHAS_4
+  SHIS_1 SHIS_2 SHIS_3 SHIS_4
+  NCPerp1 NCPerp2 NCPerp3 NCPerp4
+  NCVict1 NCVict2 NCVict3 NCVict4
+  ConPerp1 ConPerp2 ConPerp3 ConPerp4
+  ConVict1 ConVict2 ConVict3 ConVict4
+  HNCPerp1 HNCPerp2 HNCPerp3 HNCPerp4
+  CSPerp1 CSPerp2 CSPerp3 CSPerp4
+  Dismiss1 Dismiss2 Dismiss3 Dismiss4
+  GenWB1 GenWB2 GenWB3 GenWB4
+  SHHAtt1 SHHAtt2 SHHAtt3 SHHAtt4
+  SHHSeek1 SHHSeek2 SHHSeek3 SHHSeek4
+  Active2 Active3 Active4
+  Passive2 Passive3 Passive4
+  Funding Rural Teas_Per MHT_Per;
+
+  USEVARIABLES = TA_1-TA_4
+  Tx Female OtherG Latinx POC LGBQ;
+  !FGxTx OGxTx LRxTx POCxTx LGBQxTx
+  !Rural Teas_Per MHT_Per;
+
+  CATEGORICAL = TA_1-TA_4;
+
+  IDVARIABLE = ID;
+  CLUSTER = School;
+
+  MISSING = ALL(-999);
+
+  ANALYSIS:
+  TYPE = COMPLEX;
+  ESTIMATOR = MLR;
+  LINK = LOGIT;
+  !PARAMETERIZATION = THETA; ! only available for probit
+
+
+  MODEL:
+  i s | TA_1@0 TA_2@1 TA_3@2 TA_4@3;
+  i s ON Tx Female OtherG Latinx POC LGBQ;
+  [Tx Female OtherG Latinx POC LGBQ];
+
+  ! must constrian threshold or intercept mean to 0 for identification (Lee et. al, 2018)
+  [TA_1$1-TA_4$1@0]; ! constrain threshold at each time to 0
+  [I]; ! estimate intercept mean
+
+  OUTPUT:
+  STANDARDIZED CINTERVAL RESIDUAL TECH1 TECH4 TECH10;
+
+  PLOT:
+  TYPE = plot2 plot3;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+Nominated a Trusted Adult - Tx no interactions
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        6465
+
+Number of dependent variables                                    4
+Number of independent variables                                  6
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Binary and ordered categorical (ordinal)
+   TA_1        TA_2        TA_3        TA_4
+
+Observed independent variables
+   TX          FEMALE      OTHERG      LATINX      POC         LGBQ
+
+Continuous latent variables
+   I           S
+
+Variables with special functions
+
+  Cluster variable      SCHOOL
+  ID variable           ID
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-02
+    Relative loglikelihood change                        0.100D-05
+    Derivative                                           0.100D-02
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Integration Specifications
+  Type                                                    STANDARD
+  Number of integration points                                  15
+  Dimensions of numerical integration                            2
+  Adaptive quadrature                                           ON
+Link                                                         LOGIT
+Cholesky                                                       OFF
+
+Input data file(s)
+  mpluswide_wTANoms.csv
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns            50
+     Number of y missing data patterns           7
+     Number of u missing data patterns          15
+     Number of clusters                         20
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              TA_1          TA_2          TA_3          TA_4          TX
+              ________      ________      ________      ________      ________
+ TA_1           0.748
+ TA_2           0.569         0.687
+ TA_3           0.496         0.495         0.662
+ TA_4           0.405         0.404         0.440         0.541
+ TX             0.748         0.687         0.662         0.541         1.000
+ FEMALE         0.745         0.685         0.659         0.538         0.994
+ OTHERG         0.745         0.685         0.659         0.538         0.994
+ LATINX         0.746         0.686         0.660         0.540         0.996
+ POC            0.746         0.686         0.660         0.540         0.996
+ LGBQ           0.744         0.684         0.658         0.538         0.991
+
+
+           Covariance Coverage
+              FEMALE        OTHERG        LATINX        POC           LGBQ
+              ________      ________      ________      ________      ________
+ FEMALE         0.994
+ OTHERG         0.994         0.994
+ LATINX         0.991         0.991         0.996
+ POC            0.991         0.991         0.996         0.996
+ LGBQ           0.986         0.986         0.989         0.989         0.991
+
+
+     PROPORTION OF DATA PRESENT FOR U
+
+
+           Covariance Coverage
+              TA_1          TA_2          TA_3          TA_4
+              ________      ________      ________      ________
+ TA_1           0.748
+ TA_2           0.569         0.687
+ TA_3           0.496         0.495         0.662
+ TA_4           0.405         0.404         0.440         0.541
+
+
+     PROPORTION OF DATA PRESENT FOR Y
+
+
+           Covariance Coverage
+              TX            FEMALE        OTHERG        LATINX        POC
+              ________      ________      ________      ________      ________
+ TX             1.000
+ FEMALE         0.994         0.994
+ OTHERG         0.994         0.994         0.994
+ LATINX         0.996         0.991         0.991         0.996
+ POC            0.996         0.991         0.991         0.996         0.996
+ LGBQ           0.991         0.986         0.986         0.989         0.989
+
+
+           Covariance Coverage
+              LGBQ
+              ________
+ LGBQ           0.991
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    TA_1
+      Category 1    0.564         2729.000
+      Category 2    0.436         2107.000
+    TA_2
+      Category 1    0.496         2202.000
+      Category 2    0.504         2239.000
+    TA_3
+      Category 1    0.545         2329.000
+      Category 2    0.455         1948.000
+    TA_4
+      Category 1    0.522         1825.000
+      Category 2    0.478         1673.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     TX                    0.530      -0.122       0.000   46.96%       0.000      0.000      1.000
+            6465.000       0.249      -1.985       1.000   53.04%       1.000      1.000
+     FEMALE                0.471       0.117       0.000   52.91%       0.000      0.000      0.000
+            6424.000       0.249      -1.986       1.000   47.09%       1.000      1.000
+     OTHERG                0.023       6.335       0.000   97.68%       0.000      0.000      0.000
+            6424.000       0.023      38.138       1.000    2.32%       0.000      0.000
+     LATINX                0.447       0.212       0.000   55.26%       0.000      0.000      0.000
+            6442.000       0.247      -1.955       1.000   44.74%       1.000      1.000
+     POC                   0.175       1.711       0.000   82.51%       0.000      0.000      0.000
+            6442.000       0.144       0.928       1.000   17.49%       0.000      0.000
+     LGBQ                  0.210       1.424       0.000   79.00%       0.000      0.000      0.000
+            6409.000       0.166       0.027       1.000   21.00%       0.000      1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       44
+
+Loglikelihood
+
+          H0 Value                      -26866.930
+          H0 Scaling Correction Factor     22.6104
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   53821.861
+          Bayesian (BIC)                 54119.924
+          Sample-Size Adjusted BIC       53980.103
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit for the Binary and Ordered Categorical
+(Ordinal) Outcomes
+
+          Pearson Chi-Square
+
+          Value                             12.051
+          Degrees of Freedom                    10
+          P-Value                           0.2816
+
+          Likelihood Ratio Chi-Square
+
+          Value                             12.034
+          Degrees of Freedom                    10
+          P-Value                           0.2828
+
+Chi-Square Test for MCAR under the Unrestricted Latent Class Indicator Model
+
+          Pearson Chi-Square
+
+          Value                             33.104
+          Degrees of Freedom                    50
+          P-Value                           0.9686
+
+          Likelihood Ratio Chi-Square
+
+          Value                             33.009
+          Degrees of Freedom                    50
+          P-Value                           0.9695
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    TA_1               1.000      0.000    999.000    999.000
+    TA_2               1.000      0.000    999.000    999.000
+    TA_3               1.000      0.000    999.000    999.000
+    TA_4               1.000      0.000    999.000    999.000
+
+ S        |
+    TA_1               0.000      0.000    999.000    999.000
+    TA_2               1.000      0.000    999.000    999.000
+    TA_3               2.000      0.000    999.000    999.000
+    TA_4               3.000      0.000    999.000    999.000
+
+ I          ON
+    TX                 0.281      0.218      1.289      0.197
+    FEMALE             0.534      0.090      5.936      0.000
+    OTHERG            -0.279      0.276     -1.012      0.311
+    LATINX            -0.446      0.200     -2.231      0.026
+    POC               -0.312      0.125     -2.490      0.013
+    LGBQ               0.041      0.070      0.587      0.557
+
+ S          ON
+    TX                 0.032      0.067      0.478      0.633
+    FEMALE             0.291      0.060      4.876      0.000
+    OTHERG             0.172      0.118      1.458      0.145
+    LATINX            -0.064      0.058     -1.105      0.269
+    POC                0.091      0.080      1.144      0.252
+    LGBQ              -0.023      0.061     -0.381      0.703
+
+ S        WITH
+    I                  0.030      0.132      0.225      0.822
+
+ FEMALE   WITH
+    TX                 0.001      0.004      0.348      0.728
+
+ OTHERG   WITH
+    TX                 0.000      0.001      0.384      0.701
+    FEMALE            -0.011      0.001    -10.484      0.000
+
+ LATINX   WITH
+    TX                -0.004      0.028     -0.133      0.894
+    FEMALE             0.005      0.004      1.259      0.208
+    OTHERG            -0.004      0.001     -4.479      0.000
+
+ POC      WITH
+    TX                 0.009      0.008      1.107      0.268
+    FEMALE            -0.006      0.002     -2.434      0.015
+    OTHERG             0.001      0.001      1.136      0.256
+    LATINX            -0.078      0.013     -5.831      0.000
+
+ LGBQ     WITH
+    TX                 0.003      0.007      0.503      0.615
+    FEMALE             0.029      0.005      6.226      0.000
+    OTHERG             0.011      0.001      8.584      0.000
+    LATINX            -0.020      0.004     -4.457      0.000
+    POC                0.012      0.002      5.605      0.000
+
+ Means
+    TX                 0.530      0.148      3.582      0.000
+    FEMALE             0.471      0.008     56.896      0.000
+    OTHERG             0.023      0.002     10.512      0.000
+    LATINX             0.447      0.058      7.754      0.000
+    POC                0.175      0.018      9.992      0.000
+    LGBQ               0.210      0.014     15.072      0.000
+
+ Intercepts
+    I                 -0.466      0.122     -3.808      0.000
+    S                 -0.112      0.065     -1.734      0.083
+
+ Thresholds
+    TA_1$1             0.000      0.000    999.000    999.000
+    TA_2$1             0.000      0.000    999.000    999.000
+    TA_3$1             0.000      0.000    999.000    999.000
+    TA_4$1             0.000      0.000    999.000    999.000
+
+ Variances
+    TX                 0.249      0.009     27.674      0.000
+    FEMALE             0.249      0.000    526.605      0.000
+    OTHERG             0.023      0.002     10.794      0.000
+    LATINX             0.247      0.006     40.700      0.000
+    POC                0.144      0.011     12.672      0.000
+    LGBQ               0.166      0.008     20.507      0.000
+
+ Residual Variances
+    I                  3.080      0.528      5.834      0.000
+    S                  0.387      0.049      7.832      0.000
+
+
+RESULTS IN PROBABILITY SCALE
+
+                    Estimate
+
+ TA_1
+    Category 1         0.551
+    Category 2         0.449
+ TA_2
+    Category 1         0.545
+    Category 2         0.455
+ TA_3
+    Category 1         0.537
+    Category 2         0.463
+ TA_4
+    Category 1         0.529
+    Category 2         0.471
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    TA_1               0.703      0.030     23.227      0.000
+    TA_2               0.675      0.043     15.587      0.000
+    TA_3               0.617      0.052     11.844      0.000
+    TA_4               0.550      0.055     10.054      0.000
+
+ S        |
+    TA_1               0.000      0.000    999.000    999.000
+    TA_2               0.241      0.015     15.593      0.000
+    TA_3               0.441      0.023     19.300      0.000
+    TA_4               0.589      0.026     22.925      0.000
+
+ I          ON
+    TX                 0.078      0.063      1.232      0.218
+    FEMALE             0.149      0.021      7.045      0.000
+    OTHERG            -0.023      0.024     -0.995      0.320
+    LATINX            -0.124      0.051     -2.449      0.014
+    POC               -0.066      0.025     -2.631      0.009
+    LGBQ               0.009      0.016      0.583      0.560
+
+ S          ON
+    TX                 0.025      0.052      0.482      0.630
+    FEMALE             0.226      0.048      4.725      0.000
+    OTHERG             0.040      0.028      1.462      0.144
+    LATINX            -0.050      0.045     -1.108      0.268
+    POC                0.054      0.046      1.173      0.241
+    LGBQ              -0.015      0.039     -0.380      0.704
+
+ S        WITH
+    I                  0.027      0.123      0.222      0.825
+
+ FEMALE   WITH
+    TX                 0.006      0.017      0.348      0.728
+
+ OTHERG   WITH
+    TX                 0.006      0.014      0.386      0.699
+    FEMALE            -0.145      0.007    -19.844      0.000
+
+ LATINX   WITH
+    TX                -0.015      0.114     -0.133      0.894
+    FEMALE             0.019      0.015      1.269      0.204
+    OTHERG            -0.053      0.010     -5.180      0.000
+
+ POC      WITH
+    TX                 0.049      0.045      1.096      0.273
+    FEMALE            -0.030      0.013     -2.264      0.024
+    OTHERG             0.016      0.014      1.132      0.258
+    LATINX            -0.414      0.057     -7.291      0.000
+
+ LGBQ     WITH
+    TX                 0.017      0.034      0.503      0.615
+    FEMALE             0.145      0.021      6.884      0.000
+    OTHERG             0.177      0.017     10.209      0.000
+    LATINX            -0.096      0.021     -4.578      0.000
+    POC                0.077      0.014      5.546      0.000
+
+ Means
+    TX                 1.063      0.316      3.365      0.001
+    FEMALE             0.944      0.016     60.143      0.000
+    OTHERG             0.155      0.008     20.482      0.000
+    LATINX             0.900      0.105      8.570      0.000
+    POC                0.460      0.028     16.495      0.000
+    LGBQ               0.516      0.022     23.828      0.000
+
+ Intercepts
+    I                 -0.260      0.075     -3.448      0.001
+    S                 -0.175      0.098     -1.783      0.075
+
+ Thresholds
+    TA_1$1             0.000      0.000    999.000    999.000
+    TA_2$1             0.000      0.000    999.000    999.000
+    TA_3$1             0.000      0.000    999.000    999.000
+    TA_4$1             0.000      0.000    999.000    999.000
+
+ Variances
+    TX                 1.000      0.000    999.000    999.000
+    FEMALE             1.000      0.000    999.000    999.000
+    OTHERG             1.000      0.000    999.000    999.000
+    LATINX             1.000      0.000    999.000    999.000
+    POC                1.000      0.000    999.000    999.000
+    LGBQ               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    I                  0.957      0.008    112.992      0.000
+    S                  0.943      0.024     38.544      0.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    TA_1               0.703      0.030     23.227      0.000
+    TA_2               0.675      0.043     15.587      0.000
+    TA_3               0.617      0.052     11.844      0.000
+    TA_4               0.550      0.055     10.054      0.000
+
+ S        |
+    TA_1               0.000      0.000    999.000    999.000
+    TA_2               0.241      0.015     15.593      0.000
+    TA_3               0.441      0.023     19.300      0.000
+    TA_4               0.589      0.026     22.925      0.000
+
+ I          ON
+    TX                 0.078      0.063      1.232      0.218
+    FEMALE             0.149      0.021      7.045      0.000
+    OTHERG            -0.023      0.024     -0.995      0.320
+    LATINX            -0.124      0.051     -2.449      0.014
+    POC               -0.066      0.025     -2.631      0.009
+    LGBQ               0.009      0.016      0.583      0.560
+
+ S          ON
+    TX                 0.025      0.052      0.482      0.630
+    FEMALE             0.226      0.048      4.725      0.000
+    OTHERG             0.040      0.028      1.462      0.144
+    LATINX            -0.050      0.045     -1.108      0.268
+    POC                0.054      0.046      1.173      0.241
+    LGBQ              -0.015      0.039     -0.380      0.704
+
+ S        WITH
+    I                  0.027      0.123      0.222      0.825
+
+ FEMALE   WITH
+    TX                 0.006      0.017      0.348      0.728
+
+ OTHERG   WITH
+    TX                 0.006      0.014      0.386      0.699
+    FEMALE            -0.145      0.007    -19.844      0.000
+
+ LATINX   WITH
+    TX                -0.015      0.114     -0.133      0.894
+    FEMALE             0.019      0.015      1.269      0.204
+    OTHERG            -0.053      0.010     -5.180      0.000
+
+ POC      WITH
+    TX                 0.049      0.045      1.096      0.273
+    FEMALE            -0.030      0.013     -2.264      0.024
+    OTHERG             0.016      0.014      1.132      0.258
+    LATINX            -0.414      0.057     -7.291      0.000
+
+ LGBQ     WITH
+    TX                 0.017      0.034      0.503      0.615
+    FEMALE             0.145      0.021      6.884      0.000
+    OTHERG             0.177      0.017     10.209      0.000
+    LATINX            -0.096      0.021     -4.578      0.000
+    POC                0.077      0.014      5.546      0.000
+
+ Means
+    TX                 1.063      0.316      3.365      0.001
+    FEMALE             0.944      0.016     60.143      0.000
+    OTHERG             0.155      0.008     20.482      0.000
+    LATINX             0.900      0.105      8.570      0.000
+    POC                0.460      0.028     16.495      0.000
+    LGBQ               0.516      0.022     23.828      0.000
+
+ Intercepts
+    I                 -0.260      0.075     -3.448      0.001
+    S                 -0.175      0.098     -1.783      0.075
+
+ Thresholds
+    TA_1$1             0.000      0.000    999.000    999.000
+    TA_2$1             0.000      0.000    999.000    999.000
+    TA_3$1             0.000      0.000    999.000    999.000
+    TA_4$1             0.000      0.000    999.000    999.000
+
+ Variances
+    TX                 1.000      0.000    999.000    999.000
+    FEMALE             1.000      0.000    999.000    999.000
+    OTHERG             1.000      0.000    999.000    999.000
+    LATINX             1.000      0.000    999.000    999.000
+    POC                1.000      0.000    999.000    999.000
+    LGBQ               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    I                  0.957      0.008    112.992      0.000
+    S                  0.943      0.024     38.544      0.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    TA_1               1.794      0.153     11.744      0.000
+    TA_2               1.794      0.153     11.744      0.000
+    TA_3               1.794      0.153     11.744      0.000
+    TA_4               1.794      0.153     11.744      0.000
+
+ S        |
+    TA_1               0.000      0.000    999.000    999.000
+    TA_2               0.641      0.039     16.510      0.000
+    TA_3               1.281      0.078     16.510      0.000
+    TA_4               1.922      0.116     16.510      0.000
+
+ I          ON
+    TX                 0.156      0.126      1.245      0.213
+    FEMALE             0.298      0.042      7.036      0.000
+    OTHERG            -0.156      0.156     -0.997      0.319
+    LATINX            -0.249      0.101     -2.460      0.014
+    POC               -0.174      0.069     -2.514      0.012
+    LGBQ               0.023      0.039      0.584      0.559
+
+ S          ON
+    TX                 0.050      0.104      0.483      0.629
+    FEMALE             0.454      0.096      4.725      0.000
+    OTHERG             0.269      0.188      1.431      0.152
+    LATINX            -0.100      0.091     -1.106      0.269
+    POC                0.143      0.123      1.158      0.247
+    LGBQ              -0.036      0.095     -0.382      0.702
+
+ S        WITH
+    I                  0.027      0.123      0.222      0.825
+
+ FEMALE   WITH
+    TX                 0.001      0.004      0.348      0.728
+
+ OTHERG   WITH
+    TX                 0.000      0.001      0.384      0.701
+    FEMALE            -0.011      0.001    -10.484      0.000
+
+ LATINX   WITH
+    TX                -0.004      0.028     -0.133      0.894
+    FEMALE             0.005      0.004      1.259      0.208
+    OTHERG            -0.004      0.001     -4.479      0.000
+
+ POC      WITH
+    TX                 0.009      0.008      1.107      0.268
+    FEMALE            -0.006      0.002     -2.434      0.015
+    OTHERG             0.001      0.001      1.136      0.256
+    LATINX            -0.078      0.013     -5.831      0.000
+
+ LGBQ     WITH
+    TX                 0.003      0.007      0.503      0.615
+    FEMALE             0.029      0.005      6.226      0.000
+    OTHERG             0.011      0.001      8.584      0.000
+    LATINX            -0.020      0.004     -4.457      0.000
+    POC                0.012      0.002      5.605      0.000
+
+ Means
+    TX                 0.530      0.148      3.582      0.000
+    FEMALE             0.471      0.008     56.896      0.000
+    OTHERG             0.023      0.002     10.512      0.000
+    LATINX             0.447      0.058      7.754      0.000
+    POC                0.175      0.018      9.992      0.000
+    LGBQ               0.210      0.014     15.072      0.000
+
+ Intercepts
+    I                 -0.260      0.075     -3.448      0.001
+    S                 -0.175      0.098     -1.783      0.075
+
+ Thresholds
+    TA_1$1             0.000      0.000    999.000    999.000
+    TA_2$1             0.000      0.000    999.000    999.000
+    TA_3$1             0.000      0.000    999.000    999.000
+    TA_4$1             0.000      0.000    999.000    999.000
+
+ Variances
+    TX                 0.249      0.009     27.674      0.000
+    FEMALE             0.249      0.000    526.605      0.000
+    OTHERG             0.023      0.002     10.794      0.000
+    LATINX             0.247      0.006     40.700      0.000
+    POC                0.144      0.011     12.672      0.000
+    LGBQ               0.166      0.008     20.507      0.000
+
+ Residual Variances
+    I                  0.957      0.008    112.992      0.000
+    S                  0.943      0.024     38.544      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    TA_1               0.494      0.043     11.614      0.000
+    TA_2               0.534      0.023     22.856      0.000
+    TA_3               0.610      0.018     34.052      0.000
+    TA_4               0.691      0.020     34.051      0.000
+
+     Latent                                         Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    I                  0.043      0.008      5.045      0.000
+    S                  0.057      0.024      2.315      0.021
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.159E-05
+       (ratio of smallest to largest eigenvalue)
+
+
+CONFIDENCE INTERVALS OF MODEL RESULTS
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    TA_1             1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    TA_2             1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    TA_3             1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    TA_4             1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ S        |
+    TA_1             0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    TA_2             1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    TA_3             2.000       2.000       2.000       2.000       2.000       2.000       2.000
+    TA_4             3.000       3.000       3.000       3.000       3.000       3.000       3.000
+
+ I        ON
+    TX              -0.280      -0.146      -0.077       0.281       0.639       0.707       0.841
+    FEMALE           0.302       0.358       0.386       0.534       0.682       0.711       0.766
+    OTHERG          -0.989      -0.820      -0.733      -0.279       0.174       0.261       0.431
+    LATINX          -0.962      -0.838      -0.775      -0.446      -0.117      -0.054       0.069
+    POC             -0.635      -0.558      -0.518      -0.312      -0.106      -0.066       0.011
+    LGBQ            -0.138      -0.096      -0.074       0.041       0.155       0.177       0.220
+
+ S        ON
+    TX              -0.140      -0.099      -0.078       0.032       0.142       0.163       0.205
+    FEMALE           0.137       0.174       0.193       0.291       0.389       0.407       0.444
+    OTHERG          -0.132      -0.059      -0.022       0.172       0.367       0.404       0.477
+    LATINX          -0.214      -0.178      -0.160      -0.064       0.031       0.050       0.086
+    POC             -0.114      -0.065      -0.040       0.091       0.223       0.248       0.297
+    LGBQ            -0.180      -0.142      -0.123      -0.023       0.077       0.096       0.134
+
+ S        WITH
+    I               -0.311      -0.230      -0.188       0.030       0.248       0.289       0.371
+
+ FEMALE   WITH
+    TX              -0.009      -0.007      -0.005       0.001       0.008       0.010       0.012
+
+ OTHERG   WITH
+    TX              -0.002      -0.002      -0.001       0.000       0.002       0.003       0.003
+    FEMALE          -0.014      -0.013      -0.013      -0.011      -0.009      -0.009      -0.008
+
+ LATINX   WITH
+    TX              -0.076      -0.059      -0.050      -0.004       0.043       0.052       0.069
+    FEMALE          -0.005      -0.003      -0.001       0.005       0.011       0.012       0.014
+    OTHERG          -0.006      -0.006      -0.005      -0.004      -0.003      -0.002      -0.002
+
+ POC      WITH
+    TX              -0.012      -0.007      -0.005       0.009       0.023       0.026       0.031
+    FEMALE          -0.012      -0.010      -0.010      -0.006      -0.002      -0.001       0.000
+    OTHERG          -0.001      -0.001       0.000       0.001       0.002       0.002       0.003
+    LATINX          -0.113      -0.105      -0.100      -0.078      -0.056      -0.052      -0.044
+
+ LGBQ     WITH
+    TX              -0.014      -0.010      -0.008       0.003       0.015       0.017       0.021
+    FEMALE           0.017       0.020       0.022       0.029       0.037       0.039       0.042
+    OTHERG           0.008       0.008       0.009       0.011       0.013       0.013       0.014
+    LATINX          -0.031      -0.028      -0.027      -0.020      -0.012      -0.011      -0.008
+    POC              0.006       0.008       0.008       0.012       0.015       0.016       0.017
+
+ Means
+    TX               0.149       0.240       0.287       0.530       0.774       0.821       0.912
+    FEMALE           0.450       0.455       0.458       0.471       0.485       0.487       0.493
+    OTHERG           0.018       0.019       0.020       0.023       0.027       0.028       0.029
+    LATINX           0.299       0.334       0.352       0.447       0.542       0.560       0.596
+    POC              0.130       0.141       0.146       0.175       0.204       0.209       0.220
+    LGBQ             0.174       0.183       0.187       0.210       0.233       0.237       0.246
+
+ Intercepts
+    I               -0.782      -0.706      -0.668      -0.466      -0.265      -0.226      -0.151
+    S               -0.279      -0.239      -0.218      -0.112      -0.006       0.015       0.054
+
+ Thresholds
+    TA_1$1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    TA_2$1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    TA_3$1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    TA_4$1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ Variances
+    TX               0.226       0.231       0.234       0.249       0.264       0.267       0.272
+    FEMALE           0.248       0.248       0.248       0.249       0.250       0.250       0.250
+    OTHERG           0.017       0.019       0.019       0.023       0.026       0.027       0.028
+    LATINX           0.232       0.235       0.237       0.247       0.257       0.259       0.263
+    POC              0.115       0.122       0.126       0.144       0.163       0.167       0.174
+    LGBQ             0.145       0.150       0.153       0.166       0.179       0.182       0.187
+
+ Residual Variances
+    I                1.720       2.045       2.211       3.080       3.948       4.114       4.439
+    S                0.260       0.290       0.306       0.387       0.469       0.484       0.515
+
+
+CONFIDENCE INTERVALS OF STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    TA_1             0.625       0.644       0.653       0.703       0.753       0.762       0.781
+    TA_2             0.563       0.590       0.604       0.675       0.746       0.760       0.786
+    TA_3             0.483       0.515       0.531       0.617       0.703       0.719       0.751
+    TA_4             0.409       0.443       0.460       0.550       0.640       0.657       0.691
+
+ S        |
+    TA_1             0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    TA_2             0.201       0.211       0.216       0.241       0.266       0.271       0.281
+    TA_3             0.382       0.396       0.403       0.441       0.478       0.486       0.500
+    TA_4             0.523       0.539       0.547       0.589       0.631       0.639       0.655
+
+ I        ON
+    TX              -0.085      -0.046      -0.026       0.078       0.182       0.202       0.241
+    FEMALE           0.094       0.107       0.114       0.149       0.183       0.190       0.203
+    OTHERG          -0.084      -0.070      -0.062      -0.023       0.015       0.023       0.037
+    LATINX          -0.254      -0.223      -0.207      -0.124      -0.041      -0.025       0.006
+    POC             -0.131      -0.115      -0.107      -0.066      -0.025      -0.017      -0.001
+    LGBQ            -0.032      -0.022      -0.017       0.009       0.035       0.040       0.050
+
+ S        ON
+    TX              -0.108      -0.076      -0.060       0.025       0.110       0.126       0.158
+    FEMALE           0.103       0.132       0.148       0.226       0.305       0.320       0.350
+    OTHERG          -0.031      -0.014      -0.005       0.040       0.086       0.095       0.112
+    LATINX          -0.166      -0.138      -0.124      -0.050       0.024       0.038       0.066
+    POC             -0.065      -0.036      -0.022       0.054       0.130       0.145       0.173
+    LGBQ            -0.115      -0.091      -0.079      -0.015       0.049       0.061       0.085
+
+ S        WITH
+    I               -0.290      -0.214      -0.175       0.027       0.230       0.269       0.345
+
+ FEMALE   WITH
+    TX              -0.037      -0.027      -0.022       0.006       0.033       0.039       0.049
+
+ OTHERG   WITH
+    TX              -0.032      -0.023      -0.018       0.006       0.029       0.034       0.043
+    FEMALE          -0.164      -0.160      -0.157      -0.145      -0.133      -0.131      -0.126
+
+ LATINX   WITH
+    TX              -0.308      -0.238      -0.202      -0.015       0.172       0.208       0.278
+    FEMALE          -0.020      -0.010      -0.006       0.019       0.044       0.049       0.058
+    OTHERG          -0.080      -0.074      -0.070      -0.053      -0.036      -0.033      -0.027
+
+ POC      WITH
+    TX              -0.066      -0.039      -0.025       0.049       0.122       0.136       0.164
+    FEMALE          -0.064      -0.056      -0.052      -0.030      -0.008      -0.004       0.004
+    OTHERG          -0.020      -0.012      -0.007       0.016       0.039       0.044       0.052
+    LATINX          -0.561      -0.526      -0.508      -0.414      -0.321      -0.303      -0.268
+
+ LGBQ     WITH
+    TX              -0.071      -0.050      -0.039       0.017       0.073       0.084       0.105
+    FEMALE           0.091       0.104       0.110       0.145       0.179       0.186       0.199
+    OTHERG           0.133       0.143       0.149       0.177       0.206       0.211       0.222
+    LATINX          -0.151      -0.138      -0.131      -0.096      -0.062      -0.055      -0.042
+    POC              0.041       0.050       0.054       0.077       0.100       0.105       0.113
+
+ Means
+    TX               0.249       0.444       0.543       1.063       1.582       1.682       1.876
+    FEMALE           0.903       0.913       0.918       0.944       0.970       0.975       0.984
+    OTHERG           0.136       0.141       0.143       0.155       0.168       0.170       0.175
+    LATINX           0.629       0.694       0.727       0.900       1.073       1.106       1.170
+    POC              0.389       0.406       0.415       0.460       0.506       0.515       0.532
+    LGBQ             0.460       0.473       0.480       0.516       0.551       0.558       0.571
+
+ Intercepts
+    I               -0.454      -0.408      -0.384      -0.260      -0.136      -0.112      -0.066
+    S               -0.428      -0.367      -0.336      -0.175      -0.014       0.017       0.078
+
+ Thresholds
+    TA_1$1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    TA_2$1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    TA_3$1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    TA_4$1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ Variances
+    TX               1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    FEMALE           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    OTHERG           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    LATINX           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    POC              1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    LGBQ             1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ Residual Variances
+    I                0.935       0.941       0.943       0.957       0.971       0.974       0.979
+    S                0.880       0.895       0.903       0.943       0.984       0.991       1.006
+
+
+STDY Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    TA_1             0.625       0.644       0.653       0.703       0.753       0.762       0.781
+    TA_2             0.563       0.590       0.604       0.675       0.746       0.760       0.786
+    TA_3             0.483       0.515       0.531       0.617       0.703       0.719       0.751
+    TA_4             0.409       0.443       0.460       0.550       0.640       0.657       0.691
+
+ S        |
+    TA_1             0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    TA_2             0.201       0.211       0.216       0.241       0.266       0.271       0.281
+    TA_3             0.382       0.396       0.403       0.441       0.478       0.486       0.500
+    TA_4             0.523       0.539       0.547       0.589       0.631       0.639       0.655
+
+ I        ON
+    TX              -0.085      -0.046      -0.026       0.078       0.182       0.202       0.241
+    FEMALE           0.094       0.107       0.114       0.149       0.183       0.190       0.203
+    OTHERG          -0.084      -0.070      -0.062      -0.023       0.015       0.023       0.037
+    LATINX          -0.254      -0.223      -0.207      -0.124      -0.041      -0.025       0.006
+    POC             -0.131      -0.115      -0.107      -0.066      -0.025      -0.017      -0.001
+    LGBQ            -0.032      -0.022      -0.017       0.009       0.035       0.040       0.050
+
+ S        ON
+    TX              -0.108      -0.076      -0.060       0.025       0.110       0.126       0.158
+    FEMALE           0.103       0.132       0.148       0.226       0.305       0.320       0.350
+    OTHERG          -0.031      -0.014      -0.005       0.040       0.086       0.095       0.112
+    LATINX          -0.166      -0.138      -0.124      -0.050       0.024       0.038       0.066
+    POC             -0.065      -0.036      -0.022       0.054       0.130       0.145       0.173
+    LGBQ            -0.115      -0.091      -0.079      -0.015       0.049       0.061       0.085
+
+ S        WITH
+    I               -0.290      -0.214      -0.175       0.027       0.230       0.269       0.345
+
+ FEMALE   WITH
+    TX              -0.037      -0.027      -0.022       0.006       0.033       0.039       0.049
+
+ OTHERG   WITH
+    TX              -0.032      -0.023      -0.018       0.006       0.029       0.034       0.043
+    FEMALE          -0.164      -0.160      -0.157      -0.145      -0.133      -0.131      -0.126
+
+ LATINX   WITH
+    TX              -0.308      -0.238      -0.202      -0.015       0.172       0.208       0.278
+    FEMALE          -0.020      -0.010      -0.006       0.019       0.044       0.049       0.058
+    OTHERG          -0.080      -0.074      -0.070      -0.053      -0.036      -0.033      -0.027
+
+ POC      WITH
+    TX              -0.066      -0.039      -0.025       0.049       0.122       0.136       0.164
+    FEMALE          -0.064      -0.056      -0.052      -0.030      -0.008      -0.004       0.004
+    OTHERG          -0.020      -0.012      -0.007       0.016       0.039       0.044       0.052
+    LATINX          -0.561      -0.526      -0.508      -0.414      -0.321      -0.303      -0.268
+
+ LGBQ     WITH
+    TX              -0.071      -0.050      -0.039       0.017       0.073       0.084       0.105
+    FEMALE           0.091       0.104       0.110       0.145       0.179       0.186       0.199
+    OTHERG           0.133       0.143       0.149       0.177       0.206       0.211       0.222
+    LATINX          -0.151      -0.138      -0.131      -0.096      -0.062      -0.055      -0.042
+    POC              0.041       0.050       0.054       0.077       0.100       0.105       0.113
+
+ Means
+    TX               0.249       0.444       0.543       1.063       1.582       1.682       1.876
+    FEMALE           0.903       0.913       0.918       0.944       0.970       0.975       0.984
+    OTHERG           0.136       0.141       0.143       0.155       0.168       0.170       0.175
+    LATINX           0.629       0.694       0.727       0.900       1.073       1.106       1.170
+    POC              0.389       0.406       0.415       0.460       0.506       0.515       0.532
+    LGBQ             0.460       0.473       0.480       0.516       0.551       0.558       0.571
+
+ Intercepts
+    I               -0.454      -0.408      -0.384      -0.260      -0.136      -0.112      -0.066
+    S               -0.428      -0.367      -0.336      -0.175      -0.014       0.017       0.078
+
+ Thresholds
+    TA_1$1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    TA_2$1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    TA_3$1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    TA_4$1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ Variances
+    TX               1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    FEMALE           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    OTHERG           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    LATINX           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    POC              1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    LGBQ             1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ Residual Variances
+    I                0.935       0.941       0.943       0.957       0.971       0.974       0.979
+    S                0.880       0.895       0.903       0.943       0.984       0.991       1.006
+
+
+STD Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    TA_1             1.400       1.494       1.542       1.794       2.045       2.093       2.187
+    TA_2             1.400       1.494       1.542       1.794       2.045       2.093       2.187
+    TA_3             1.400       1.494       1.542       1.794       2.045       2.093       2.187
+    TA_4             1.400       1.494       1.542       1.794       2.045       2.093       2.187
+
+ S        |
+    TA_1             0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    TA_2             0.541       0.565       0.577       0.641       0.704       0.717       0.741
+    TA_3             1.081       1.129       1.154       1.281       1.409       1.433       1.481
+    TA_4             1.622       1.694       1.730       1.922       2.113       2.150       2.222
+
+ I        ON
+    TX              -0.167      -0.090      -0.050       0.156       0.363       0.403       0.480
+    FEMALE           0.189       0.215       0.228       0.298       0.367       0.381       0.407
+    OTHERG          -0.558      -0.462      -0.412      -0.156       0.101       0.150       0.247
+    LATINX          -0.509      -0.447      -0.415      -0.249      -0.082      -0.051       0.012
+    POC             -0.352      -0.310      -0.288      -0.174      -0.060      -0.038       0.004
+    LGBQ            -0.078      -0.054      -0.041       0.023       0.087       0.099       0.123
+
+ S        ON
+    TX              -0.217      -0.153      -0.120       0.050       0.220       0.253       0.317
+    FEMALE           0.206       0.265       0.296       0.454       0.611       0.642       0.701
+    OTHERG          -0.215      -0.099      -0.040       0.269       0.578       0.637       0.753
+    LATINX          -0.334      -0.278      -0.250      -0.100       0.049       0.078       0.133
+    POC             -0.174      -0.099      -0.060       0.143       0.345       0.384       0.460
+    LGBQ            -0.280      -0.222      -0.192      -0.036       0.120       0.149       0.208
+
+ S        WITH
+    I               -0.290      -0.214      -0.175       0.027       0.230       0.269       0.345
+
+ FEMALE   WITH
+    TX              -0.009      -0.007      -0.005       0.001       0.008       0.010       0.012
+
+ OTHERG   WITH
+    TX              -0.002      -0.002      -0.001       0.000       0.002       0.003       0.003
+    FEMALE          -0.014      -0.013      -0.013      -0.011      -0.009      -0.009      -0.008
+
+ LATINX   WITH
+    TX              -0.076      -0.059      -0.050      -0.004       0.043       0.052       0.069
+    FEMALE          -0.005      -0.003      -0.001       0.005       0.011       0.012       0.014
+    OTHERG          -0.006      -0.006      -0.005      -0.004      -0.003      -0.002      -0.002
+
+ POC      WITH
+    TX              -0.012      -0.007      -0.005       0.009       0.023       0.026       0.031
+    FEMALE          -0.012      -0.010      -0.010      -0.006      -0.002      -0.001       0.000
+    OTHERG          -0.001      -0.001       0.000       0.001       0.002       0.002       0.003
+    LATINX          -0.113      -0.105      -0.100      -0.078      -0.056      -0.052      -0.044
+
+ LGBQ     WITH
+    TX              -0.014      -0.010      -0.008       0.003       0.015       0.017       0.021
+    FEMALE           0.017       0.020       0.022       0.029       0.037       0.039       0.042
+    OTHERG           0.008       0.008       0.009       0.011       0.013       0.013       0.014
+    LATINX          -0.031      -0.028      -0.027      -0.020      -0.012      -0.011      -0.008
+    POC              0.006       0.008       0.008       0.012       0.015       0.016       0.017
+
+ Means
+    TX               0.149       0.240       0.287       0.530       0.774       0.821       0.912
+    FEMALE           0.450       0.455       0.458       0.471       0.485       0.487       0.493
+    OTHERG           0.018       0.019       0.020       0.023       0.027       0.028       0.029
+    LATINX           0.299       0.334       0.352       0.447       0.542       0.560       0.596
+    POC              0.130       0.141       0.146       0.175       0.204       0.209       0.220
+    LGBQ             0.174       0.183       0.187       0.210       0.233       0.237       0.246
+
+ Intercepts
+    I               -0.454      -0.408      -0.384      -0.260      -0.136      -0.112      -0.066
+    S               -0.428      -0.367      -0.336      -0.175      -0.014       0.017       0.078
+
+ Thresholds
+    TA_1$1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    TA_2$1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    TA_3$1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    TA_4$1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ Variances
+    TX               0.226       0.231       0.234       0.249       0.264       0.267       0.272
+    FEMALE           0.248       0.248       0.248       0.249       0.250       0.250       0.250
+    OTHERG           0.017       0.019       0.019       0.023       0.026       0.027       0.028
+    LATINX           0.232       0.235       0.237       0.247       0.257       0.259       0.263
+    POC              0.115       0.122       0.126       0.144       0.163       0.167       0.174
+    LGBQ             0.145       0.150       0.153       0.166       0.179       0.182       0.187
+
+ Residual Variances
+    I                0.935       0.941       0.943       0.957       0.971       0.974       0.979
+    S                0.880       0.895       0.903       0.943       0.984       0.991       1.006
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means
+              TX            FEMALE        OTHERG        LATINX        POC
+              ________      ________      ________      ________      ________
+                0.530         0.471         0.023         0.447         0.175
+
+
+           Model Estimated Means
+              LGBQ
+              ________
+                0.210
+
+
+           Residuals for Means
+              TX            FEMALE        OTHERG        LATINX        POC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              LGBQ
+              ________
+                0.000
+
+
+           Model Estimated Covariances
+              TX            FEMALE        OTHERG        LATINX        POC
+              ________      ________      ________      ________      ________
+ TX             0.249
+ FEMALE         0.001         0.249
+ OTHERG         0.000        -0.011         0.023
+ LATINX        -0.004         0.005        -0.004         0.247
+ POC            0.009        -0.006         0.001        -0.078         0.144
+ LGBQ           0.003         0.029         0.011        -0.020         0.012
+
+
+           Model Estimated Covariances
+              LGBQ
+              ________
+ LGBQ           0.166
+
+
+           Residuals for Covariances
+              TX            FEMALE        OTHERG        LATINX        POC
+              ________      ________      ________      ________      ________
+ TX             0.000
+ FEMALE         0.000         0.000
+ OTHERG         0.000         0.000         0.000
+ LATINX         0.000         0.001         0.000         0.000
+ POC            0.000        -0.001         0.000         0.000         0.000
+ LGBQ           0.000        -0.002         0.000         0.000         0.000
+
+
+           Residuals for Covariances
+              LGBQ
+              ________
+ LGBQ           0.000
+
+
+     UNIVARIATE DISTRIBUTION FIT
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     TA_1
+       Category 1        0.564          0.551                  0.013                2.131
+       Category 2        0.436          0.449                 -0.013               -2.131
+     TA_2
+       Category 1        0.496          0.545                 -0.049               -7.865
+       Category 2        0.504          0.455                  0.049                7.865
+     TA_3
+       Category 1        0.545          0.537                  0.008                1.290
+       Category 2        0.455          0.463                 -0.008               -1.290
+     TA_4
+       Category 1        0.522          0.529                 -0.007               -1.151
+       Category 2        0.478          0.471                  0.007                1.151
+
+
+     BIVARIATE DISTRIBUTIONS FIT
+
+     Variable       Variable          Observed     Estimated    Residual (Obs.-Est.)  Stand. Residual
+     TA_1           TA_2
+       Category 1     Category 1        0.355       0.385            -0.030           -4.982
+       Category 1     Category 2        0.191       0.166             0.025            5.482
+       Category 2     Category 1        0.132       0.159            -0.027           -5.882
+       Category 2     Category 2        0.321       0.290             0.032            5.594
+     TA_1           TA_3
+       Category 1     Category 1        0.362       0.374            -0.013           -2.095
+       Category 1     Category 2        0.177       0.177             0.001            0.129
+       Category 2     Category 1        0.167       0.162             0.004            0.934
+       Category 2     Category 2        0.294       0.287             0.008            1.371
+     TA_1           TA_4
+       Category 1     Category 1        0.353       0.362            -0.009           -1.525
+       Category 1     Category 2        0.191       0.189             0.002            0.321
+       Category 2     Category 1        0.160       0.167            -0.007           -1.458
+       Category 2     Category 2        0.296       0.282             0.014            2.557
+     TA_2           TA_3
+       Category 1     Category 1        0.354       0.390            -0.036           -5.992
+       Category 1     Category 2        0.126       0.155            -0.029           -6.447
+       Category 2     Category 1        0.170       0.147             0.024            5.391
+       Category 2     Category 2        0.350       0.309             0.042            7.244
+     TA_2           TA_4
+       Category 1     Category 1        0.340       0.384            -0.044           -7.203
+       Category 1     Category 2        0.133       0.161            -0.028           -6.081
+       Category 2     Category 1        0.165       0.145             0.020            4.670
+       Category 2     Category 2        0.362       0.311             0.051            8.843
+     TA_3           TA_4
+       Category 1     Category 1        0.388       0.398            -0.010           -1.706
+       Category 1     Category 2        0.139       0.138             0.001            0.176
+       Category 2     Category 1        0.130       0.131             0.000           -0.088
+       Category 2     Category 2        0.343       0.333             0.010            1.706
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           TAU
+              TA_1$1        TA_2$1        TA_3$1        TA_4$1
+              ________      ________      ________      ________
+                    0             0             0             0
+
+
+           NU
+              TA_1          TA_2          TA_3          TA_4          TX
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           NU
+              FEMALE        OTHERG        LATINX        POC           LGBQ
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           LAMBDA
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ TA_1               0             0             0             0             0
+ TA_2               0             0             0             0             0
+ TA_3               0             0             0             0             0
+ TA_4               0             0             0             0             0
+ TX                 0             0             0             0             0
+ FEMALE             0             0             0             0             0
+ OTHERG             0             0             0             0             0
+ LATINX             0             0             0             0             0
+ POC                0             0             0             0             0
+ LGBQ               0             0             0             0             0
+
+
+           LAMBDA
+              LATINX        POC           LGBQ
+              ________      ________      ________
+ TA_1               0             0             0
+ TA_2               0             0             0
+ TA_3               0             0             0
+ TA_4               0             0             0
+ TX                 0             0             0
+ FEMALE             0             0             0
+ OTHERG             0             0             0
+ LATINX             0             0             0
+ POC                0             0             0
+ LGBQ               0             0             0
+
+
+           THETA
+              TA_1          TA_2          TA_3          TA_4          TX
+              ________      ________      ________      ________      ________
+ TA_1               0
+ TA_2               0             0
+ TA_3               0             0             0
+ TA_4               0             0             0             0
+ TX                 0             0             0             0             0
+ FEMALE             0             0             0             0             0
+ OTHERG             0             0             0             0             0
+ LATINX             0             0             0             0             0
+ POC                0             0             0             0             0
+ LGBQ               0             0             0             0             0
+
+
+           THETA
+              FEMALE        OTHERG        LATINX        POC           LGBQ
+              ________      ________      ________      ________      ________
+ FEMALE             0
+ OTHERG             0             0
+ LATINX             0             0             0
+ POC                0             0             0             0
+ LGBQ               0             0             0             0             0
+
+
+           ALPHA
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+                    1             2             3             4             5
+
+
+           ALPHA
+              LATINX        POC           LGBQ
+              ________      ________      ________
+                    6             7             8
+
+
+           BETA
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I                  0             0             9            10            11
+ S                  0             0            15            16            17
+ TX                 0             0             0             0             0
+ FEMALE             0             0             0             0             0
+ OTHERG             0             0             0             0             0
+ LATINX             0             0             0             0             0
+ POC                0             0             0             0             0
+ LGBQ               0             0             0             0             0
+
+
+           BETA
+              LATINX        POC           LGBQ
+              ________      ________      ________
+ I                 12            13            14
+ S                 18            19            20
+ TX                 0             0             0
+ FEMALE             0             0             0
+ OTHERG             0             0             0
+ LATINX             0             0             0
+ POC                0             0             0
+ LGBQ               0             0             0
+
+
+           PSI
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I                 21
+ S                 22            23
+ TX                 0             0            24
+ FEMALE             0             0            25            26
+ OTHERG             0             0            27            28            29
+ LATINX             0             0            30            31            32
+ POC                0             0            34            35            36
+ LGBQ               0             0            39            40            41
+
+
+           PSI
+              LATINX        POC           LGBQ
+              ________      ________      ________
+ LATINX            33
+ POC               37            38
+ LGBQ              42            43            44
+
+
+     STARTING VALUES
+
+
+           TAU
+              TA_1$1        TA_2$1        TA_3$1        TA_4$1
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           NU
+              TA_1          TA_2          TA_3          TA_4          TX
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              FEMALE        OTHERG        LATINX        POC           LGBQ
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ TA_1           1.000         0.000         0.000         0.000         0.000
+ TA_2           1.000         1.000         0.000         0.000         0.000
+ TA_3           1.000         2.000         0.000         0.000         0.000
+ TA_4           1.000         3.000         0.000         0.000         0.000
+ TX             0.000         0.000         1.000         0.000         0.000
+ FEMALE         0.000         0.000         0.000         1.000         0.000
+ OTHERG         0.000         0.000         0.000         0.000         1.000
+ LATINX         0.000         0.000         0.000         0.000         0.000
+ POC            0.000         0.000         0.000         0.000         0.000
+ LGBQ           0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              LATINX        POC           LGBQ
+              ________      ________      ________
+ TA_1           0.000         0.000         0.000
+ TA_2           0.000         0.000         0.000
+ TA_3           0.000         0.000         0.000
+ TA_4           0.000         0.000         0.000
+ TX             0.000         0.000         0.000
+ FEMALE         0.000         0.000         0.000
+ OTHERG         0.000         0.000         0.000
+ LATINX         1.000         0.000         0.000
+ POC            0.000         1.000         0.000
+ LGBQ           0.000         0.000         1.000
+
+
+           THETA
+              TA_1          TA_2          TA_3          TA_4          TX
+              ________      ________      ________      ________      ________
+ TA_1           1.000
+ TA_2           0.000         1.000
+ TA_3           0.000         0.000         1.000
+ TA_4           0.000         0.000         0.000         1.000
+ TX             0.000         0.000         0.000         0.000         0.000
+ FEMALE         0.000         0.000         0.000         0.000         0.000
+ OTHERG         0.000         0.000         0.000         0.000         0.000
+ LATINX         0.000         0.000         0.000         0.000         0.000
+ POC            0.000         0.000         0.000         0.000         0.000
+ LGBQ           0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              FEMALE        OTHERG        LATINX        POC           LGBQ
+              ________      ________      ________      ________      ________
+ FEMALE         0.000
+ OTHERG         0.000         0.000
+ LATINX         0.000         0.000         0.000
+ POC            0.000         0.000         0.000         0.000
+ LGBQ           0.000         0.000         0.000         0.000         0.000
+
+
+           ALPHA
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.530         0.471         0.023
+
+
+           ALPHA
+              LATINX        POC           LGBQ
+              ________      ________      ________
+                0.447         0.175         0.210
+
+
+           BETA
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I              0.000         0.000         0.000         0.000         0.000
+ S              0.000         0.000         0.000         0.000         0.000
+ TX             0.000         0.000         0.000         0.000         0.000
+ FEMALE         0.000         0.000         0.000         0.000         0.000
+ OTHERG         0.000         0.000         0.000         0.000         0.000
+ LATINX         0.000         0.000         0.000         0.000         0.000
+ POC            0.000         0.000         0.000         0.000         0.000
+ LGBQ           0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              LATINX        POC           LGBQ
+              ________      ________      ________
+ I              0.000         0.000         0.000
+ S              0.000         0.000         0.000
+ TX             0.000         0.000         0.000
+ FEMALE         0.000         0.000         0.000
+ OTHERG         0.000         0.000         0.000
+ LATINX         0.000         0.000         0.000
+ POC            0.000         0.000         0.000
+ LGBQ           0.000         0.000         0.000
+
+
+           PSI
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I              0.050
+ S              0.000         0.050
+ TX             0.000         0.000         0.125
+ FEMALE         0.000         0.000         0.000         0.125
+ OTHERG         0.000         0.000         0.000         0.000         0.011
+ LATINX         0.000         0.000         0.000         0.000         0.000
+ POC            0.000         0.000         0.000         0.000         0.000
+ LGBQ           0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              LATINX        POC           LGBQ
+              ________      ________      ________
+ LATINX         0.124
+ POC            0.000         0.072
+ LGBQ           0.000         0.000         0.083
+
+
+TECHNICAL 4 OUTPUT
+
+
+     ESTIMATES DERIVED FROM THE MODEL
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+               -0.318         0.028         0.530         0.471         0.023
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              LATINX        POC           LGBQ
+              ________      ________      ________
+                0.447         0.175         0.210
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+                0.123         0.035         0.148         0.008         0.002
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              LATINX        POC           LGBQ
+              ________      ________      ________
+                0.058         0.018         0.014
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+               -2.583         0.811         3.582        56.896        10.512
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              LATINX        POC           LGBQ
+              ________      ________      ________
+                7.754         9.992        15.072
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+                0.010         0.418         0.000         0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              LATINX        POC           LGBQ
+              ________      ________      ________
+                0.000         0.000         0.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I              3.217
+ S              0.074         0.410
+ TX             0.069         0.009         0.249
+ FEMALE         0.137         0.069         0.001         0.249
+ OTHERG        -0.010         0.001         0.000        -0.011         0.023
+ LATINX        -0.084        -0.022        -0.004         0.005        -0.004
+ POC           -0.010         0.017         0.009        -0.006         0.001
+ LGBQ           0.025         0.009         0.003         0.029         0.011
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              LATINX        POC           LGBQ
+              ________      ________      ________
+ LATINX         0.247
+ POC           -0.078         0.144
+ LGBQ          -0.020         0.012         0.166
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I              0.548
+ S              0.139         0.050
+ TX             0.060         0.019         0.009
+ FEMALE         0.020         0.015         0.004         0.000
+ OTHERG         0.006         0.003         0.001         0.001         0.002
+ LATINX         0.044         0.013         0.028         0.004         0.001
+ POC            0.019         0.010         0.008         0.002         0.001
+ LGBQ           0.011         0.009         0.007         0.005         0.001
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              LATINX        POC           LGBQ
+              ________      ________      ________
+ LATINX         0.006
+ POC            0.013         0.011
+ LGBQ           0.004         0.002         0.008
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I              5.872
+ S              0.534         8.255
+ TX             1.162         0.510        27.674
+ FEMALE         7.037         4.733         0.348       526.605
+ OTHERG        -1.737         0.275         0.384       -10.484        10.794
+ LATINX        -1.896        -1.716        -0.133         1.259        -4.479
+ POC           -0.541         1.652         1.107        -2.434         1.136
+ LGBQ           2.287         0.969         0.503         6.226         8.584
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              LATINX        POC           LGBQ
+              ________      ________      ________
+ LATINX        40.700
+ POC           -5.831        12.672
+ LGBQ          -4.457         5.605        20.507
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I              0.000
+ S              0.594         0.000
+ TX             0.245         0.610         0.000
+ FEMALE         0.000         0.000         0.728         0.000
+ OTHERG         0.082         0.783         0.701         0.000         0.000
+ LATINX         0.058         0.086         0.894         0.208         0.000
+ POC            0.588         0.098         0.268         0.015         0.256
+ LGBQ           0.022         0.333         0.615         0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              LATINX        POC           LGBQ
+              ________      ________      ________
+ LATINX         0.000
+ POC            0.000         0.000
+ LGBQ           0.000         0.000         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I              1.000
+ S              0.065         1.000
+ TX             0.078         0.030         1.000
+ FEMALE         0.153         0.216         0.006         1.000
+ OTHERG        -0.037         0.009         0.006        -0.145         1.000
+ LATINX        -0.094        -0.069        -0.015         0.019        -0.053
+ POC           -0.015         0.069         0.049        -0.030         0.016
+ LGBQ           0.035         0.035         0.017         0.145         0.177
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              LATINX        POC           LGBQ
+              ________      ________      ________
+ LATINX         1.000
+ POC           -0.414         1.000
+ LGBQ          -0.096         0.077         1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I              0.000
+ S              0.125         0.000
+ TX             0.068         0.057         0.000
+ FEMALE         0.019         0.047         0.017         0.000
+ OTHERG         0.022         0.032         0.014         0.007         0.000
+ LATINX         0.046         0.040         0.114         0.015         0.010
+ POC            0.029         0.041         0.045         0.013         0.014
+ LGBQ           0.014         0.037         0.034         0.021         0.017
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              LATINX        POC           LGBQ
+              ________      ________      ________
+ LATINX         0.000
+ POC            0.057         0.000
+ LGBQ           0.021         0.014         0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I            999.000
+ S              0.516       999.000
+ TX             1.137         0.516       999.000
+ FEMALE         8.212         4.589         0.348       999.000
+ OTHERG        -1.698         0.273         0.386       -19.844       999.000
+ LATINX        -2.054        -1.726        -0.133         1.269        -5.180
+ POC           -0.525         1.675         1.096        -2.264         1.132
+ LGBQ           2.446         0.948         0.503         6.884        10.209
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              LATINX        POC           LGBQ
+              ________      ________      ________
+ LATINX       999.000
+ POC           -7.291       999.000
+ LGBQ          -4.578         5.546       999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I              0.000
+ S              0.606         0.000
+ TX             0.256         0.606         0.000
+ FEMALE         0.000         0.000         0.728         0.000
+ OTHERG         0.089         0.785         0.699         0.000         0.000
+ LATINX         0.040         0.084         0.894         0.204         0.000
+ POC            0.599         0.094         0.273         0.024         0.258
+ LGBQ           0.014         0.343         0.615         0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              LATINX        POC           LGBQ
+              ________      ________      ________
+ LATINX         0.000
+ POC            0.000         0.000
+ LGBQ           0.000         0.000         0.000
+
+
+TECHNICAL 10 OUTPUT
+
+
+     MODEL FIT INFORMATION FOR THE CATEGORICAL VARIABLES
+
+
+     RESPONSE PATTERNS
+
+     No.  Pattern    No.  Pattern    No.  Pattern    No.  Pattern
+       1  ***0         2  ***1         3  *000         4  *001
+       5  *010         6  *011         7  *100         8  *101
+       9  *110        10  *111        11  **0*        12  **1*
+      13  *0**        14  *1**        15  **00        16  **01
+      17  **10        18  **11        19  00**        20  01**
+      21  10**        22  11**        23  0***        24  1***
+      25  000*        26  001*        27  010*        28  011*
+      29  100*        30  101*        31  110*        32  111*
+      33  0000        34  0001        35  0010        36  0011
+      37  0100        38  0101        39  0110        40  0111
+      41  1000        42  1001        43  1010        44  1011
+      45  1100        46  1101        47  1110        48  1111
+      49  *0*0        50  *0*1        51  *1*0        52  *1*1
+      53  *00*        54  *01*        55  *10*        56  *11*
+      57  0*00        58  0*01        59  0*10        60  0*11
+      61  1*00        62  1*01        63  1*10        64  1*11
+      65  0*0*        66  0*1*        67  1*0*        68  1*1*
+      69  00*0        70  00*1        71  01*0        72  01*1
+      73  10*0        74  10*1        75  11*0        76  11*1
+      77  0**0        78  0**1        79  1**0        80  1**1
+
+
+
+     RESPONSE PATTERN FREQUENCIES AND CHI-SQUARE CONTRIBUTIONS
+
+    Response          Frequency     Standardized  Chi-square Contribution
+     Pattern    Observed  Estimated   Residual    Pearson   Loglikelihood  Deleted
+                                     (z-score)
+         1       138.00     125.87       0.69       0.30         3.52
+         2       100.00     112.13      -0.69       0.31        -2.90
+         3        77.00      84.56      -0.44       0.34        -4.22
+         4        26.00      19.93       0.62       0.08         0.30
+         5        16.00      18.36      -0.25       0.27        -2.98
+         6        20.00      23.09      -0.30      -0.19       -12.71
+         7        32.00      22.20       0.95       3.46        12.89
+         8        16.00      17.10      -0.12      -0.34         3.02
+         9        11.00      16.62      -0.62      -0.46         1.02
+        10        70.00      66.14       0.24       0.20         5.52
+        11       209.00     168.47       2.01       2.58        12.80
+        12       105.00     145.53      -2.01       2.41        -7.70
+        13       158.00     142.67       0.83      -3.13       -22.63
+        14       104.00     119.33      -0.83      -2.94        16.51
+        15       136.00     126.28       0.49       0.41         6.71
+        16        51.00      43.80       0.51       0.62         4.85
+        17        45.00      41.37       0.27      -0.21        -2.20
+        18        85.00     105.54      -1.08       1.39        -7.05
+        19       260.00     245.17       0.53      -0.90       -12.64
+        20       127.00     105.34       1.01       4.30        38.72
+        21        88.00     101.16      -0.63       1.42       -34.58
+        22       161.00     184.32      -0.90      -1.74        11.31
+        23       409.00     349.97       2.07       3.69        26.31
+        24       226.00     285.03      -2.07       3.95       -18.51
+        25       210.00     226.79      -0.58      -0.09         1.10
+        26        54.00      65.41      -0.65       1.74       -13.37
+        27        66.00      56.94       0.55       1.40        22.62
+        28        68.00      68.61      -0.03      -1.43        18.55
+        29        66.00      68.75      -0.15      -0.15       -13.62
+        30        41.00      51.82      -0.68       1.84       -27.51
+        31        86.00      54.22       1.97       9.67        24.07
+        32       167.00     165.46       0.06      -0.01        -0.58
+        33       455.00     498.62      -0.99      -0.69         7.26
+        34        82.00     100.38      -0.83       0.76        -4.00
+        35        83.00      84.71      -0.08      -0.22         5.87
+        36        61.00      88.06      -1.29       8.08       -37.24
+        37        98.00      92.79       0.24      -1.05        33.62
+        38        63.00      57.60       0.32       0.09        21.56
+        39        57.00      48.49       0.54       0.96         7.40
+        40       169.00     132.72       1.43       8.82        54.52
+        41       108.00     133.08      -0.99       4.58       -37.25
+        42        49.00      48.49       0.03      -0.14         6.41
+        43        35.00      52.45      -1.07       5.67       -24.02
+        44        62.00      84.41      -1.09       5.92       -41.01
+        45        84.00      73.02       0.57       0.84        40.00
+        46        70.00      70.18      -0.01      -0.06         3.70
+        47        91.00      75.64       0.79       1.04         6.18
+        48       435.00     361.37       1.88      -1.56        -8.16
+        49        16.00      22.66      -0.78       0.42        -1.24
+        50         6.00       9.47      -0.54       0.72        -1.86
+        51        12.00       8.54       0.56       0.91         3.31
+        52        25.00      18.33       0.82       0.74         2.55
+        53        58.00      66.67      -0.60       0.31        -2.44
+        54        30.00      26.45       0.33      -2.98       -12.71
+        55        30.00      25.08       0.47       0.95         9.37
+        56        53.00      52.80       0.01      -0.07         4.32
+        57        88.00      75.62       0.74       0.84         6.24
+        58        24.00      20.20       0.39       0.36         2.47
+        59        14.00      17.03      -0.33      -0.29         1.29
+        60        24.00      28.23      -0.37       0.00         0.01
+        61        25.00      26.35      -0.12       0.02        -0.35
+        62        14.00      15.18      -0.14      -0.12         1.19
+        63        18.00      16.38       0.18      -0.55        -3.74
+        64        49.00      57.00      -0.53       0.74        -6.16
+        65        74.00      71.49       0.16       0.09         5.75
+        66        39.00      33.77       0.44       0.19         1.39
+        67        32.00      30.99       0.09       0.02         0.73
+        68        46.00      54.75      -0.61       0.92        -6.61
+        69        78.00      83.04      -0.29      -0.13         1.87
+        70        25.00      26.82      -0.16      -0.02        -7.30
+        71        22.00      20.11       0.19       0.13         5.99
+        72        33.00      27.09       0.52       1.25        10.84
+        73        22.00      26.41      -0.40       0.71        -9.58
+        74        16.00      18.92      -0.31       0.45        -5.36
+        75        25.00      21.16       0.38       0.68         6.97
+        76        64.00      61.43       0.16      -0.02        -0.44
+        77        28.00      26.42       0.17       0.08         2.10
+        78        18.00      13.81       0.55       0.20         0.79
+        79        11.00      12.19      -0.16       0.08        -0.95
+        80        16.00      20.58      -0.52       0.30        -1.27
+
+     THE TOTAL PEARSON CHI-SQUARE CONTRIBUTION FROM EMPTY CELLS IS         0.00
+
+
+     UNIVARIATE MODEL FIT INFORMATION
+
+                               Estimated Probabilities
+                                                  Standardized
+     Variable              H1            H0         Residual
+                                                   (z-score)
+     TA_1
+       Category 1        0.569        0.551           1.279
+       Category 2        0.431        0.449          -1.279
+       Univariate Pearson Chi-Square                  8.480
+       Univariate Log-Likelihood Chi-Square           8.503
+     TA_2
+       Category 1        0.507        0.545          -2.668
+       Category 2        0.493        0.455           2.668
+       Univariate Pearson Chi-Square                 36.922
+       Univariate Log-Likelihood Chi-Square          36.791
+     TA_3
+       Category 1        0.553        0.537           1.181
+       Category 2        0.447        0.463          -1.181
+       Univariate Pearson Chi-Square                  7.233
+       Univariate Log-Likelihood Chi-Square           7.246
+     TA_4
+       Category 1        0.536        0.529           0.480
+       Category 2        0.464        0.471          -0.480
+       Univariate Pearson Chi-Square                  1.196
+       Univariate Log-Likelihood Chi-Square           1.196
+
+       Overall Univariate Pearson Chi-Square                        53.830
+       Overall Univariate Log-Likelihood Chi-Square                 53.736
+
+
+     BIVARIATE MODEL FIT INFORMATION
+
+                                              Estimated Probabilities
+                                                                 Standardized
+     Variable       Variable              H1           H0          Residual
+                                                                  (z-score)
+     TA_1           TA_2
+       Category 1     Category 1        0.376        0.385          -0.672
+       Category 1     Category 2        0.193        0.166           2.590
+       Category 2     Category 1        0.131        0.159          -2.739
+       Category 2     Category 2        0.300        0.290           0.806
+       Bivariate Pearson Chi-Square                                 65.592
+       Bivariate Log-Likelihood Chi-Square                          66.243
+     TA_1           TA_3
+       Category 1     Category 1        0.389        0.374           1.082
+       Category 1     Category 2        0.180        0.177           0.295
+       Category 2     Category 1        0.164        0.162           0.177
+       Category 2     Category 2        0.267        0.287          -1.551
+       Bivariate Pearson Chi-Square                                 13.204
+       Bivariate Log-Likelihood Chi-Square                          13.365
+     TA_1           TA_4
+       Category 1     Category 1        0.376        0.362           1.015
+       Category 1     Category 2        0.193        0.189           0.378
+       Category 2     Category 1        0.160        0.167          -0.666
+       Category 2     Category 2        0.271        0.282          -0.862
+       Bivariate Pearson Chi-Square                                  8.692
+       Bivariate Log-Likelihood Chi-Square                           8.709
+     TA_2           TA_3
+       Category 1     Category 1        0.382        0.390          -0.587
+       Category 1     Category 2        0.125        0.155          -2.884
+       Category 2     Category 1        0.171        0.147           2.474
+       Category 2     Category 2        0.322        0.309           0.982
+       Bivariate Pearson Chi-Square                                 68.080
+       Bivariate Log-Likelihood Chi-Square                          69.203
+     TA_2           TA_4
+       Category 1     Category 1        0.369        0.384          -1.061
+       Category 1     Category 2        0.137        0.161          -2.214
+       Category 2     Category 1        0.166        0.145           2.148
+       Category 2     Category 2        0.327        0.311           1.238
+       Bivariate Pearson Chi-Square                                 50.873
+       Bivariate Log-Likelihood Chi-Square                          50.987
+     TA_3           TA_4
+       Category 1     Category 1        0.408        0.398           0.717
+       Category 1     Category 2        0.145        0.138           0.689
+       Category 2     Category 1        0.127        0.131          -0.331
+       Category 2     Category 2        0.319        0.333          -1.013
+       Bivariate Pearson Chi-Square                                  7.772
+       Bivariate Log-Likelihood Chi-Square                           7.778
+
+       Overall Bivariate Pearson Chi-Square                        214.212
+       Overall Bivariate Log-Likelihood Chi-Square                 216.284
+
+
+SAMPLE STATISTICS FOR ESTIMATED FACTOR SCORES
+
+
+     SAMPLE STATISTICS
+
+
+           Means
+              I             I_SE          S             S_SE
+              ________      ________      ________      ________
+               -0.318         1.293         0.028         0.559
+
+
+           Covariances
+              I             I_SE          S             S_SE
+              ________      ________      ________      ________
+ I              1.526
+ I_SE          -0.033         0.020
+ S              0.237        -0.005         0.096
+ S_SE          -0.005         0.003        -0.001         0.002
+
+
+           Correlations
+              I             I_SE          S             S_SE
+              ________      ________      ________      ________
+ I              1.000
+ I_SE          -0.191         1.000
+ S              0.619        -0.122         1.000
+ S_SE          -0.109         0.587        -0.047         1.000
+
+
+PLOT INFORMATION
+
+The following plots are available:
+
+  Histograms (sample values, estimated factor scores, estimated values, residuals)
+  Scatterplots (sample values, estimated factor scores, estimated values, residuals)
+  Sample proportions and estimated probabilities
+  Item characteristic curves
+  Information curves
+  Latent variable distribution plots
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    c:\users\kylenick\onedrive - university of north carolina at chapel hill\dorothy\00 sources of strength data w1-w4 -
+
+     Beginning Time:  15:49:24
+        Ending Time:  15:53:03
+       Elapsed Time:  00:03:39
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen
