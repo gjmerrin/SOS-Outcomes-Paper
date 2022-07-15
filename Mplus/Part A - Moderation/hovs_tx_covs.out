@@ -1,0 +1,3339 @@
+Mplus VERSION 8.4
+MUTHEN & MUTHEN
+07/05/2022   2:30 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  HNC Victimization - Tx with covariates;
+  DATA:
+  FILE = "Mplus/Automatr/TX COVS/HOVS_TX_COVS_7eb426099a8211f91d3715efd482393b.dat";
+
+  VARIABLE:
+  NAMES = ID School Tx Female OtherG White POC LGBQ FGxTx OGxTx WRxTx POCxTx LGBQxTx
+       SchN Rural HOVS_1 HOVS_2 HOVS_3 HOVS_4;
+   MISSING=.;
+   IDVARIABLE = ID;
+                            CLUSTER = School;
+  ANALYSIS:
+  TYPE = COMPLEX;
+  MODEL:
+  i s | HOVS_1@0 HOVS_2@1 HOVS_3@2 HOVS_4@3;
+  i s ON Tx Female OtherG White POC LGBQ
+  FGxTx OGxTx WRxTx POCxTx LGBQxTx SchN Rural;
+  [Tx Female OtherG White POC LGBQ
+  FGxTx OGxTx WRxTx POCxTx LGBQxTx SchN Rural];
+  OUTPUT:
+  STANDARDIZED CINTERVAL RESIDUAL TECH1 TECH4;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+
+HNC Victimization - Tx with covariates;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        6461
+
+Number of dependent variables                                    4
+Number of independent variables                                 13
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Continuous
+   HOVS_1      HOVS_2      HOVS_3      HOVS_4
+
+Observed independent variables
+   TX          FEMALE      OTHERG      WHITE       POC         LGBQ
+   FGXTX       OGXTX       WRXTX       POCXTX      LGBQXTX     SCHN
+   RURAL
+
+Continuous latent variables
+   I           S
+
+Variables with special functions
+
+  Cluster variable      SCHOOL
+  ID variable           ID
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  Mplus/Automatr/TX COVS/HOVS_TX_COVS_7eb426099a8211f91d3715efd482393b.dat
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns            51
+     Number of clusters                         20
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+ HOVS_1         0.716
+ HOVS_2         0.528         0.656
+ HOVS_3         0.458         0.459         0.629
+ HOVS_4         0.372         0.376         0.405         0.516
+ TX             0.716         0.656         0.629         0.516         1.000
+ FEMALE         0.714         0.654         0.627         0.514         0.994
+ OTHERG         0.714         0.654         0.627         0.514         0.994
+ WHITE          0.715         0.655         0.628         0.516         0.996
+ POC            0.715         0.655         0.628         0.516         0.996
+ LGBQ           0.713         0.653         0.626         0.514         0.991
+ FGXTX          0.714         0.654         0.627         0.514         0.994
+ OGXTX          0.714         0.654         0.627         0.514         0.994
+ WRXTX          0.715         0.655         0.628         0.516         0.996
+ POCXTX         0.715         0.655         0.628         0.516         0.996
+ LGBQXTX        0.713         0.653         0.626         0.514         0.991
+ SCHN           0.716         0.656         0.629         0.516         1.000
+ RURAL          0.716         0.656         0.629         0.516         1.000
+
+
+           Covariance Coverage
+              FEMALE        OTHERG        WHITE         POC           LGBQ
+              ________      ________      ________      ________      ________
+ FEMALE         0.994
+ OTHERG         0.994         0.994
+ WHITE          0.991         0.991         0.996
+ POC            0.991         0.991         0.996         0.996
+ LGBQ           0.986         0.986         0.989         0.989         0.991
+ FGXTX          0.994         0.994         0.991         0.991         0.986
+ OGXTX          0.994         0.994         0.991         0.991         0.986
+ WRXTX          0.991         0.991         0.996         0.996         0.989
+ POCXTX         0.991         0.991         0.996         0.996         0.989
+ LGBQXTX        0.986         0.986         0.989         0.989         0.991
+ SCHN           0.994         0.994         0.996         0.996         0.991
+ RURAL          0.994         0.994         0.996         0.996         0.991
+
+
+           Covariance Coverage
+              FGXTX         OGXTX         WRXTX         POCXTX        LGBQXTX
+              ________      ________      ________      ________      ________
+ FGXTX          0.994
+ OGXTX          0.994         0.994
+ WRXTX          0.991         0.991         0.996
+ POCXTX         0.991         0.991         0.996         0.996
+ LGBQXTX        0.986         0.986         0.989         0.989         0.991
+ SCHN           0.994         0.994         0.996         0.996         0.991
+ RURAL          0.994         0.994         0.996         0.996         0.991
+
+
+           Covariance Coverage
+              SCHN          RURAL
+              ________      ________
+ SCHN           1.000
+ RURAL          1.000         1.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     HOVS_1                0.383       2.932       0.000   50.69%       0.000      0.000      0.000
+            4628.000       0.456      10.343       4.000    1.08%       0.200      0.800
+     HOVS_2                0.422       2.876       0.000   50.20%       0.000      0.000      0.000
+            4237.000       0.536       9.667       4.000    1.70%       0.200      0.800
+     HOVS_3                0.393       2.961       0.000   54.42%       0.000      0.000      0.000
+            4063.000       0.522      10.172       4.000    1.65%       0.200      0.800
+     HOVS_4                0.440       2.767       0.000   52.29%       0.000      0.000      0.000
+            3337.000       0.616       8.435       4.000    2.13%       0.200      0.800
+     TX                    0.530      -0.122       0.000   46.96%       0.000      0.000      1.000
+            6461.000       0.249      -1.985       1.000   53.04%       1.000      1.000
+     FEMALE                0.471       0.118       0.000   52.94%       0.000      0.000      0.000
+            6420.000       0.249      -1.986       1.000   47.06%       1.000      1.000
+     OTHERG                0.023       6.333       0.000   97.68%       0.000      0.000      0.000
+            6420.000       0.023      38.111       1.000    2.32%       0.000      0.000
+     WHITE                 0.378       0.505       0.000   62.24%       0.000      0.000      0.000
+            6438.000       0.235      -1.745       1.000   37.76%       0.000      1.000
+     POC                   0.175       1.710       0.000   82.49%       0.000      0.000      0.000
+            6438.000       0.144       0.925       1.000   17.51%       0.000      0.000
+     LGBQ                  0.210       1.423       0.000   78.99%       0.000      0.000      0.000
+            6405.000       0.166       0.025       1.000   21.01%       0.000      1.000
+     FGXTX                 0.252       1.145       0.000   74.84%       0.000      0.000      0.000
+            6420.000       0.188      -0.689       1.000   25.16%       0.000      1.000
+     OGXTX                 0.013       8.678       0.000   98.72%       0.000      0.000      0.000
+            6420.000       0.013      73.306       1.000    1.28%       0.000      0.000
+     WRXTX                 0.195       1.539       0.000   80.49%       0.000      0.000      0.000
+            6438.000       0.157       0.368       1.000   19.51%       0.000      0.000
+     POCXTX                0.102       2.626       0.000   89.78%       0.000      0.000      0.000
+            6438.000       0.092       4.898       1.000   10.22%       0.000      0.000
+     LGBQXTX               0.115       2.413       0.000   88.49%       0.000      0.000      0.000
+            6405.000       0.102       3.821       1.000   11.51%       0.000      0.000
+     SCHN                  3.618       1.082      -4.043    1.11%      -0.743      0.927      1.657
+            6461.000      38.468      -0.096      15.677   18.42%       2.477      4.657
+     RURAL                 0.331       0.720       0.000   66.94%       0.000      0.000      0.000
+            6461.000       0.221      -1.481       1.000   33.06%       0.000      1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES MAY NOT BE
+     TRUSTWORTHY FOR SOME PARAMETERS DUE TO A NON-POSITIVE DEFINITE
+     FIRST-ORDER DERIVATIVE PRODUCT MATRIX.  THIS MAY BE DUE TO THE STARTING
+     VALUES BUT MAY ALSO BE AN INDICATION OF MODEL NONIDENTIFICATION.  THE
+     CONDITION NUMBER IS      -0.172D-16.  PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 20, I ON TX
+
+     THIS IS MOST LIKELY DUE TO HAVING MORE PARAMETERS THAN THE NUMBER
+     OF CLUSTERS MINUS THE NUMBER OF STRATA WITH MORE THAN ONE CLUSTER.
+
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                      139
+
+Loglikelihood
+
+          H0 Value                      -44847.899
+          H0 Scaling Correction Factor     56.3218
+            for MLR
+          H1 Value                      -44829.953
+          H1 Scaling Correction Factor     46.2898
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   89973.799
+          Bayesian (BIC)                 90915.321
+          Sample-Size Adjusted BIC       90473.614
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                             27.454*
+          Degrees of Freedom                    31
+          P-Value                           0.6492
+          Scaling Correction Factor         1.3074
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.000
+          90 Percent C.I.                    0.000  0.008
+          Probability RMSEA <= .05           1.000
+
+CFI/TLI
+
+          CFI                                1.000
+          TLI                                1.000
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           2021.981
+          Degrees of Freedom                    58
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.005
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    HOVS_1             1.000      0.000    999.000    999.000
+    HOVS_2             1.000      0.000    999.000    999.000
+    HOVS_3             1.000      0.000    999.000    999.000
+    HOVS_4             1.000      0.000    999.000    999.000
+
+ S        |
+    HOVS_1             0.000      0.000    999.000    999.000
+    HOVS_2             1.000      0.000    999.000    999.000
+    HOVS_3             2.000      0.000    999.000    999.000
+    HOVS_4             3.000      0.000    999.000    999.000
+
+ I        ON
+    TX                -0.074      0.043     -1.693      0.090
+    FEMALE            -0.310      0.046     -6.795      0.000
+    OTHERG            -0.056      0.103     -0.540      0.589
+    WHITE              0.063      0.018      3.447      0.001
+    POC                0.116      0.032      3.611      0.000
+    LGBQ               0.292      0.051      5.688      0.000
+    FGXTX              0.039      0.056      0.705      0.481
+    OGXTX             -0.076      0.152     -0.502      0.616
+    WRXTX             -0.035      0.039     -0.914      0.361
+    POCXTX            -0.053      0.040     -1.309      0.191
+    LGBQXTX            0.007      0.060      0.120      0.904
+    SCHN               0.007      0.002      4.118      0.000
+    RURAL              0.056      0.036      1.536      0.125
+
+ S        ON
+    TX                 0.025      0.014      1.739      0.082
+    FEMALE            -0.047      0.018     -2.625      0.009
+    OTHERG             0.079      0.055      1.448      0.148
+    WHITE              0.003      0.016      0.223      0.824
+    POC                0.015      0.026      0.588      0.557
+    LGBQ              -0.008      0.028     -0.282      0.778
+    FGXTX             -0.010      0.023     -0.448      0.654
+    OGXTX             -0.018      0.074     -0.249      0.803
+    WRXTX              0.030      0.022      1.376      0.169
+    POCXTX             0.008      0.028      0.287      0.774
+    LGBQXTX            0.000      0.031      0.006      0.995
+    SCHN              -0.003      0.001     -4.021      0.000
+    RURAL              0.022      0.018      1.185      0.236
+
+ S        WITH
+    I                 -0.020      0.008     -2.340      0.019
+
+ FEMALE   WITH
+    TX                 0.002      0.004      0.396      0.692
+
+ OTHERG   WITH
+    TX                 0.000      0.001      0.380      0.704
+    FEMALE            -0.011      0.001    -10.405      0.000
+
+ WHITE    WITH
+    TX                -0.005      0.030     -0.183      0.855
+    FEMALE             0.001      0.004      0.289      0.772
+    OTHERG             0.003      0.001      3.324      0.001
+
+ POC      WITH
+    TX                 0.009      0.008      1.106      0.269
+    FEMALE            -0.006      0.002     -2.536      0.011
+    OTHERG             0.001      0.001      1.158      0.247
+    WHITE             -0.066      0.010     -6.387      0.000
+
+ LGBQ     WITH
+    TX                 0.003      0.007      0.498      0.618
+    FEMALE             0.029      0.005      6.141      0.000
+    OTHERG             0.011      0.001      8.579      0.000
+    WHITE              0.008      0.005      1.690      0.091
+    POC                0.012      0.002      5.573      0.000
+
+ FGXTX    WITH
+    TX                 0.118      0.006     20.021      0.000
+    FEMALE             0.133      0.037      3.618      0.000
+    OTHERG            -0.006      0.002     -3.419      0.001
+    WHITE             -0.003      0.016     -0.198      0.843
+    POC                0.002      0.005      0.394      0.694
+    LGBQ               0.020      0.007      2.756      0.006
+
+ OGXTX    WITH
+    TX                 0.006      0.001      6.500      0.000
+    FEMALE            -0.006      0.002     -3.454      0.001
+    OTHERG             0.012      0.004      3.426      0.001
+    WHITE              0.002      0.001      1.374      0.169
+    POC                0.001      0.001      1.641      0.101
+    LGBQ               0.006      0.002      2.895      0.004
+    FGXTX             -0.003      0.002     -1.816      0.069
+
+ WRXTX    WITH
+    TX                 0.091      0.026      3.499      0.000
+    FEMALE             0.000      0.004     -0.026      0.979
+    OTHERG             0.002      0.001      1.642      0.100
+    WHITE              0.121      0.035      3.432      0.001
+    POC               -0.034      0.012     -2.893      0.004
+    LGBQ               0.007      0.004      1.834      0.067
+    FGXTX              0.043      0.015      2.822      0.005
+    OGXTX              0.004      0.001      2.890      0.004
+
+ POCXTX   WITH
+    TX                 0.048      0.005      9.277      0.000
+    FEMALE            -0.002      0.002     -1.338      0.181
+    OTHERG             0.001      0.001      1.629      0.103
+    WHITE             -0.039      0.012     -3.351      0.001
+    POC                0.084      0.025      3.337      0.001
+    LGBQ               0.006      0.003      2.108      0.035
+    FGXTX              0.020      0.004      5.641      0.000
+    OGXTX              0.002      0.001      3.448      0.001
+    WRXTX             -0.020      0.011     -1.817      0.069
+
+ LGBQXTX  WITH
+    TX                 0.054      0.005     10.849      0.000
+    FEMALE             0.019      0.006      3.220      0.001
+    OTHERG             0.006      0.002      2.910      0.004
+    WHITE              0.005      0.006      0.809      0.419
+    POC                0.007      0.003      2.833      0.005
+    LGBQ               0.091      0.026      3.496      0.000
+    FGXTX              0.044      0.006      7.534      0.000
+    OGXTX              0.007      0.002      3.505      0.000
+    WRXTX              0.026      0.005      4.791      0.000
+    POCXTX             0.016      0.002      7.772      0.000
+
+ SCHN     WITH
+    TX                 1.141      0.935      1.220      0.222
+    FEMALE            -0.017      0.055     -0.319      0.750
+    OTHERG            -0.012      0.010     -1.201      0.230
+    WHITE             -0.610      0.299     -2.039      0.041
+    POC                0.101      0.044      2.320      0.020
+    LGBQ               0.010      0.060      0.172      0.863
+    FGXTX              0.489      0.405      1.209      0.226
+    OGXTX              0.016      0.020      0.763      0.446
+    WRXTX             -0.134      0.243     -0.549      0.583
+    POCXTX             0.264      0.170      1.551      0.121
+    LGBQXTX            0.242      0.240      1.008      0.313
+
+ RURAL    WITH
+    TX                -0.110      0.053     -2.086      0.037
+    FEMALE            -0.001      0.004     -0.268      0.789
+    OTHERG             0.000      0.001     -0.002      0.999
+    WHITE              0.025      0.022      1.153      0.249
+    POC               -0.015      0.006     -2.518      0.012
+    LGBQ              -0.003      0.006     -0.427      0.669
+    FGXTX             -0.054      0.025     -2.159      0.031
+    OGXTX             -0.002      0.002     -1.370      0.171
+    WRXTX             -0.033      0.026     -1.268      0.205
+    POCXTX            -0.023      0.011     -2.179      0.029
+    LGBQXTX           -0.022      0.012     -1.758      0.079
+    SCHN              -1.117      0.681     -1.640      0.101
+
+ Means
+    TX                 0.530      0.148      3.581      0.000
+    FEMALE             0.470      0.008     56.998      0.000
+    OTHERG             0.023      0.002     10.438      0.000
+    WHITE              0.378      0.062      6.086      0.000
+    POC                0.175      0.018      9.984      0.000
+    LGBQ               0.210      0.014     15.048      0.000
+    FGXTX              0.251      0.069      3.635      0.000
+    OGXTX              0.013      0.004      3.410      0.001
+    WRXTX              0.195      0.064      3.043      0.002
+    POCXTX             0.102      0.032      3.225      0.001
+    LGBQXTX            0.115      0.034      3.427      0.001
+    SCHN               3.618      2.370      1.527      0.127
+    RURAL              0.331      0.128      2.579      0.010
+
+ Intercepts
+    HOVS_1             0.000      0.000    999.000    999.000
+    HOVS_2             0.000      0.000    999.000    999.000
+    HOVS_3             0.000      0.000    999.000    999.000
+    HOVS_4             0.000      0.000    999.000    999.000
+    I                  0.428      0.024     18.044      0.000
+    S                  0.022      0.010      2.237      0.025
+
+ Variances
+    TX                 0.249      0.009     27.645      0.000
+    FEMALE             0.249      0.001    453.679      0.000
+    OTHERG             0.023      0.002     10.777      0.000
+    WHITE              0.235      0.015     15.473      0.000
+    POC                0.144      0.011     12.683      0.000
+    LGBQ               0.166      0.008     20.479      0.000
+    FGXTX              0.189      0.034      5.483      0.000
+    OGXTX              0.013      0.004      3.460      0.001
+    WRXTX              0.157      0.039      4.017      0.000
+    POCXTX             0.092      0.025      3.642      0.000
+    LGBQXTX            0.102      0.026      3.944      0.000
+    SCHN              38.468     21.595      1.781      0.075
+    RURAL              0.221      0.043      5.095      0.000
+
+ Residual Variances
+    HOVS_1             0.219      0.029      7.627      0.000
+    HOVS_2             0.301      0.029     10.384      0.000
+    HOVS_3             0.266      0.030      8.853      0.000
+    HOVS_4             0.278      0.035      8.025      0.000
+    I                  0.205      0.023      8.985      0.000
+    S                  0.022      0.007      3.171      0.002
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    HOVS_1             0.723      0.024     30.294      0.000
+    HOVS_2             0.672      0.028     24.065      0.000
+    HOVS_3             0.671      0.032     21.003      0.000
+    HOVS_4             0.617      0.036     17.370      0.000
+
+ S        |
+    HOVS_1             0.000      0.000    999.000    999.000
+    HOVS_2             0.210      0.030      6.953      0.000
+    HOVS_3             0.420      0.054      7.792      0.000
+    HOVS_4             0.580      0.078      7.414      0.000
+
+ I        ON
+    TX                -0.075      0.045     -1.687      0.092
+    FEMALE            -0.317      0.048     -6.580      0.000
+    OTHERG            -0.017      0.032     -0.543      0.587
+    WHITE              0.062      0.017      3.634      0.000
+    POC                0.090      0.024      3.790      0.000
+    LGBQ               0.243      0.037      6.617      0.000
+    FGXTX              0.035      0.050      0.700      0.484
+    OGXTX             -0.018      0.035     -0.502      0.616
+    WRXTX             -0.029      0.032     -0.892      0.372
+    POCXTX            -0.033      0.025     -1.287      0.198
+    LGBQXTX            0.005      0.039      0.119      0.905
+    SCHN               0.095      0.031      3.011      0.003
+    RURAL              0.053      0.036      1.467      0.142
+
+ S        ON
+    TX                 0.080      0.039      2.035      0.042
+    FEMALE            -0.152      0.058     -2.615      0.009
+    OTHERG             0.078      0.059      1.320      0.187
+    WHITE              0.011      0.049      0.225      0.822
+    POC                0.038      0.063      0.606      0.545
+    LGBQ              -0.021      0.076     -0.278      0.781
+    FGXTX             -0.029      0.063     -0.458      0.647
+    OGXTX             -0.014      0.055     -0.244      0.807
+    WRXTX              0.079      0.057      1.371      0.170
+    POCXTX             0.016      0.056      0.286      0.775
+    LGBQXTX            0.000      0.065      0.006      0.995
+    SCHN              -0.109      0.033     -3.352      0.001
+    RURAL              0.067      0.057      1.187      0.235
+
+ S        WITH
+    I                 -0.293      0.078     -3.766      0.000
+
+ FEMALE   WITH
+    TX                 0.007      0.017      0.396      0.692
+
+ OTHERG   WITH
+    TX                 0.006      0.015      0.382      0.702
+    FEMALE            -0.146      0.007    -19.620      0.000
+
+ WHITE    WITH
+    TX                -0.022      0.123     -0.182      0.856
+    FEMALE             0.005      0.017      0.291      0.771
+    OTHERG             0.042      0.012      3.553      0.000
+
+ POC      WITH
+    TX                 0.049      0.045      1.095      0.274
+    FEMALE            -0.032      0.013     -2.350      0.019
+    OTHERG             0.016      0.014      1.154      0.248
+    WHITE             -0.359      0.044     -8.158      0.000
+
+ LGBQ     WITH
+    TX                 0.017      0.034      0.498      0.619
+    FEMALE             0.142      0.021      6.763      0.000
+    OTHERG             0.178      0.017     10.262      0.000
+    WHITE              0.039      0.024      1.628      0.103
+    POC                0.077      0.014      5.521      0.000
+
+ FGXTX    WITH
+    TX                 0.545      0.063      8.627      0.000
+    FEMALE             0.615      0.114      5.384      0.000
+    OTHERG            -0.090      0.017     -5.255      0.000
+    WHITE             -0.015      0.076     -0.198      0.843
+    POC                0.011      0.028      0.393      0.695
+    LGBQ               0.114      0.034      3.346      0.001
+
+ OGXTX    WITH
+    TX                 0.107      0.020      5.503      0.000
+    FEMALE            -0.107      0.016     -6.863      0.000
+    OTHERG             0.738      0.099      7.446      0.000
+    WHITE              0.029      0.019      1.550      0.121
+    POC                0.023      0.013      1.706      0.088
+    LGBQ               0.133      0.029      4.550      0.000
+    FGXTX             -0.066      0.021     -3.093      0.002
+
+ WRXTX    WITH
+    TX                 0.463      0.110      4.209      0.000
+    FEMALE            -0.001      0.020     -0.026      0.979
+    OTHERG             0.031      0.017      1.847      0.065
+    WHITE              0.632      0.113      5.593      0.000
+    POC               -0.227      0.049     -4.667      0.000
+    LGBQ               0.044      0.024      1.880      0.060
+    FGXTX              0.248      0.094      2.638      0.008
+    OGXTX              0.088      0.024      3.615      0.000
+
+ POCXTX   WITH
+    TX                 0.317      0.047      6.799      0.000
+    FEMALE            -0.014      0.011     -1.349      0.177
+    OTHERG             0.018      0.010      1.739      0.082
+    WHITE             -0.263      0.047     -5.589      0.000
+    POC                0.732      0.111      6.609      0.000
+    LGBQ               0.049      0.021      2.305      0.021
+    FGXTX              0.154      0.047      3.279      0.001
+    OGXTX              0.056      0.018      3.105      0.002
+    WRXTX             -0.166      0.054     -3.079      0.002
+
+ LGBQXTX  WITH
+    TX                 0.339      0.050      6.788      0.000
+    FEMALE             0.118      0.023      5.192      0.000
+    OTHERG             0.127      0.029      4.437      0.000
+    WHITE              0.031      0.037      0.817      0.414
+    POC                0.060      0.017      3.493      0.000
+    LGBQ               0.699      0.109      6.418      0.000
+    FGXTX              0.319      0.040      7.922      0.000
+    OGXTX              0.203      0.019     10.794      0.000
+    WRXTX              0.204      0.048      4.219      0.000
+    POCXTX             0.163      0.029      5.605      0.000
+
+ SCHN     WITH
+    TX                 0.369      0.212      1.737      0.082
+    FEMALE            -0.006      0.017     -0.340      0.734
+    OTHERG            -0.012      0.009     -1.335      0.182
+    WHITE             -0.203      0.060     -3.401      0.001
+    POC                0.043      0.016      2.642      0.008
+    LGBQ               0.004      0.023      0.178      0.858
+    FGXTX              0.182      0.104      1.749      0.080
+    OGXTX              0.022      0.025      0.881      0.378
+    WRXTX             -0.054      0.101     -0.538      0.591
+    POCXTX             0.140      0.052      2.677      0.007
+    LGBQXTX            0.122      0.086      1.415      0.157
+
+ RURAL    WITH
+    TX                -0.469      0.209     -2.248      0.025
+    FEMALE            -0.004      0.016     -0.267      0.789
+    OTHERG             0.000      0.014     -0.002      0.999
+    WHITE              0.109      0.096      1.136      0.256
+    POC               -0.085      0.030     -2.866      0.004
+    LGBQ              -0.013      0.031     -0.431      0.666
+    FGXTX             -0.262      0.106     -2.468      0.014
+    OGXTX             -0.039      0.026     -1.470      0.142
+    WRXTX             -0.174      0.122     -1.430      0.153
+    POCXTX            -0.164      0.064     -2.585      0.010
+    LGBQXTX           -0.146      0.075     -1.931      0.053
+    SCHN              -0.383      0.148     -2.585      0.010
+
+ Means
+    TX                 1.063      0.316      3.363      0.001
+    FEMALE             0.941      0.015     60.738      0.000
+    OTHERG             0.156      0.008     20.230      0.000
+    WHITE              0.779      0.103      7.576      0.000
+    POC                0.461      0.028     16.464      0.000
+    LGBQ               0.516      0.022     23.787      0.000
+    FGXTX              0.578      0.106      5.438      0.000
+    OGXTX              0.114      0.017      6.723      0.000
+    WRXTX              0.492      0.100      4.898      0.000
+    POCXTX             0.337      0.058      5.788      0.000
+    LGBQXTX            0.360      0.059      6.060      0.000
+    SCHN               0.583      0.237      2.465      0.014
+    RURAL              0.703      0.204      3.452      0.001
+
+ Intercepts
+    HOVS_1             0.000      0.000    999.000    999.000
+    HOVS_2             0.000      0.000    999.000    999.000
+    HOVS_3             0.000      0.000    999.000    999.000
+    HOVS_4             0.000      0.000    999.000    999.000
+    I                  0.875      0.062     14.008      0.000
+    S                  0.143      0.069      2.068      0.039
+
+ Variances
+    TX                 1.000      0.000    999.000    999.000
+    FEMALE             1.000      0.000    999.000    999.000
+    OTHERG             1.000      0.000    999.000    999.000
+    WHITE              1.000      0.000    999.000    999.000
+    POC                1.000      0.000    999.000    999.000
+    LGBQ               1.000      0.000    999.000    999.000
+    FGXTX              1.000      0.000    999.000    999.000
+    OGXTX              1.000      0.000    999.000    999.000
+    WRXTX              1.000      0.000    999.000    999.000
+    POCXTX             1.000      0.000    999.000    999.000
+    LGBQXTX            1.000      0.000    999.000    999.000
+    SCHN               1.000      0.000    999.000    999.000
+    RURAL              1.000      0.000    999.000    999.000
+
+ Residual Variances
+    HOVS_1             0.477      0.035     13.815      0.000
+    HOVS_2             0.567      0.025     22.666      0.000
+    HOVS_3             0.499      0.026     19.267      0.000
+    HOVS_4             0.443      0.047      9.486      0.000
+    I                  0.856      0.021     41.011      0.000
+    S                  0.933      0.022     42.597      0.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    HOVS_1             0.723      0.024     30.294      0.000
+    HOVS_2             0.672      0.028     24.065      0.000
+    HOVS_3             0.671      0.032     21.003      0.000
+    HOVS_4             0.617      0.036     17.370      0.000
+
+ S        |
+    HOVS_1             0.000      0.000    999.000    999.000
+    HOVS_2             0.210      0.030      6.953      0.000
+    HOVS_3             0.420      0.054      7.792      0.000
+    HOVS_4             0.580      0.078      7.414      0.000
+
+ I        ON
+    TX                -0.075      0.045     -1.687      0.092
+    FEMALE            -0.317      0.048     -6.580      0.000
+    OTHERG            -0.017      0.032     -0.543      0.587
+    WHITE              0.062      0.017      3.634      0.000
+    POC                0.090      0.024      3.790      0.000
+    LGBQ               0.243      0.037      6.617      0.000
+    FGXTX              0.035      0.050      0.700      0.484
+    OGXTX             -0.018      0.035     -0.502      0.616
+    WRXTX             -0.029      0.032     -0.892      0.372
+    POCXTX            -0.033      0.025     -1.287      0.198
+    LGBQXTX            0.005      0.039      0.119      0.905
+    SCHN               0.095      0.031      3.011      0.003
+    RURAL              0.053      0.036      1.467      0.142
+
+ S        ON
+    TX                 0.080      0.039      2.035      0.042
+    FEMALE            -0.152      0.058     -2.615      0.009
+    OTHERG             0.078      0.059      1.320      0.187
+    WHITE              0.011      0.049      0.225      0.822
+    POC                0.038      0.063      0.606      0.545
+    LGBQ              -0.021      0.076     -0.278      0.781
+    FGXTX             -0.029      0.063     -0.458      0.647
+    OGXTX             -0.014      0.055     -0.244      0.807
+    WRXTX              0.079      0.057      1.371      0.170
+    POCXTX             0.016      0.056      0.286      0.775
+    LGBQXTX            0.000      0.065      0.006      0.995
+    SCHN              -0.109      0.033     -3.352      0.001
+    RURAL              0.067      0.057      1.187      0.235
+
+ S        WITH
+    I                 -0.293      0.078     -3.766      0.000
+
+ FEMALE   WITH
+    TX                 0.007      0.017      0.396      0.692
+
+ OTHERG   WITH
+    TX                 0.006      0.015      0.382      0.702
+    FEMALE            -0.146      0.007    -19.620      0.000
+
+ WHITE    WITH
+    TX                -0.022      0.123     -0.182      0.856
+    FEMALE             0.005      0.017      0.291      0.771
+    OTHERG             0.042      0.012      3.553      0.000
+
+ POC      WITH
+    TX                 0.049      0.045      1.095      0.274
+    FEMALE            -0.032      0.013     -2.350      0.019
+    OTHERG             0.016      0.014      1.154      0.248
+    WHITE             -0.359      0.044     -8.158      0.000
+
+ LGBQ     WITH
+    TX                 0.017      0.034      0.498      0.619
+    FEMALE             0.142      0.021      6.763      0.000
+    OTHERG             0.178      0.017     10.262      0.000
+    WHITE              0.039      0.024      1.628      0.103
+    POC                0.077      0.014      5.521      0.000
+
+ FGXTX    WITH
+    TX                 0.545      0.063      8.627      0.000
+    FEMALE             0.615      0.114      5.384      0.000
+    OTHERG            -0.090      0.017     -5.255      0.000
+    WHITE             -0.015      0.076     -0.198      0.843
+    POC                0.011      0.028      0.393      0.695
+    LGBQ               0.114      0.034      3.346      0.001
+
+ OGXTX    WITH
+    TX                 0.107      0.020      5.503      0.000
+    FEMALE            -0.107      0.016     -6.863      0.000
+    OTHERG             0.738      0.099      7.446      0.000
+    WHITE              0.029      0.019      1.550      0.121
+    POC                0.023      0.013      1.706      0.088
+    LGBQ               0.133      0.029      4.550      0.000
+    FGXTX             -0.066      0.021     -3.093      0.002
+
+ WRXTX    WITH
+    TX                 0.463      0.110      4.209      0.000
+    FEMALE            -0.001      0.020     -0.026      0.979
+    OTHERG             0.031      0.017      1.847      0.065
+    WHITE              0.632      0.113      5.593      0.000
+    POC               -0.227      0.049     -4.667      0.000
+    LGBQ               0.044      0.024      1.880      0.060
+    FGXTX              0.248      0.094      2.638      0.008
+    OGXTX              0.088      0.024      3.615      0.000
+
+ POCXTX   WITH
+    TX                 0.317      0.047      6.799      0.000
+    FEMALE            -0.014      0.011     -1.349      0.177
+    OTHERG             0.018      0.010      1.739      0.082
+    WHITE             -0.263      0.047     -5.589      0.000
+    POC                0.732      0.111      6.609      0.000
+    LGBQ               0.049      0.021      2.305      0.021
+    FGXTX              0.154      0.047      3.279      0.001
+    OGXTX              0.056      0.018      3.105      0.002
+    WRXTX             -0.166      0.054     -3.079      0.002
+
+ LGBQXTX  WITH
+    TX                 0.339      0.050      6.788      0.000
+    FEMALE             0.118      0.023      5.192      0.000
+    OTHERG             0.127      0.029      4.437      0.000
+    WHITE              0.031      0.037      0.817      0.414
+    POC                0.060      0.017      3.493      0.000
+    LGBQ               0.699      0.109      6.418      0.000
+    FGXTX              0.319      0.040      7.922      0.000
+    OGXTX              0.203      0.019     10.794      0.000
+    WRXTX              0.204      0.048      4.219      0.000
+    POCXTX             0.163      0.029      5.605      0.000
+
+ SCHN     WITH
+    TX                 0.369      0.212      1.737      0.082
+    FEMALE            -0.006      0.017     -0.340      0.734
+    OTHERG            -0.012      0.009     -1.335      0.182
+    WHITE             -0.203      0.060     -3.401      0.001
+    POC                0.043      0.016      2.642      0.008
+    LGBQ               0.004      0.023      0.178      0.858
+    FGXTX              0.182      0.104      1.749      0.080
+    OGXTX              0.022      0.025      0.881      0.378
+    WRXTX             -0.054      0.101     -0.538      0.591
+    POCXTX             0.140      0.052      2.677      0.007
+    LGBQXTX            0.122      0.086      1.415      0.157
+
+ RURAL    WITH
+    TX                -0.469      0.209     -2.248      0.025
+    FEMALE            -0.004      0.016     -0.267      0.789
+    OTHERG             0.000      0.014     -0.002      0.999
+    WHITE              0.109      0.096      1.136      0.256
+    POC               -0.085      0.030     -2.866      0.004
+    LGBQ              -0.013      0.031     -0.431      0.666
+    FGXTX             -0.262      0.106     -2.468      0.014
+    OGXTX             -0.039      0.026     -1.470      0.142
+    WRXTX             -0.174      0.122     -1.430      0.153
+    POCXTX            -0.164      0.064     -2.585      0.010
+    LGBQXTX           -0.146      0.075     -1.931      0.053
+    SCHN              -0.383      0.148     -2.585      0.010
+
+ Means
+    TX                 1.063      0.316      3.363      0.001
+    FEMALE             0.941      0.015     60.738      0.000
+    OTHERG             0.156      0.008     20.230      0.000
+    WHITE              0.779      0.103      7.576      0.000
+    POC                0.461      0.028     16.464      0.000
+    LGBQ               0.516      0.022     23.787      0.000
+    FGXTX              0.578      0.106      5.438      0.000
+    OGXTX              0.114      0.017      6.723      0.000
+    WRXTX              0.492      0.100      4.898      0.000
+    POCXTX             0.337      0.058      5.788      0.000
+    LGBQXTX            0.360      0.059      6.060      0.000
+    SCHN               0.583      0.237      2.465      0.014
+    RURAL              0.703      0.204      3.452      0.001
+
+ Intercepts
+    HOVS_1             0.000      0.000    999.000    999.000
+    HOVS_2             0.000      0.000    999.000    999.000
+    HOVS_3             0.000      0.000    999.000    999.000
+    HOVS_4             0.000      0.000    999.000    999.000
+    I                  0.875      0.062     14.008      0.000
+    S                  0.143      0.069      2.068      0.039
+
+ Variances
+    TX                 1.000      0.000    999.000    999.000
+    FEMALE             1.000      0.000    999.000    999.000
+    OTHERG             1.000      0.000    999.000    999.000
+    WHITE              1.000      0.000    999.000    999.000
+    POC                1.000      0.000    999.000    999.000
+    LGBQ               1.000      0.000    999.000    999.000
+    FGXTX              1.000      0.000    999.000    999.000
+    OGXTX              1.000      0.000    999.000    999.000
+    WRXTX              1.000      0.000    999.000    999.000
+    POCXTX             1.000      0.000    999.000    999.000
+    LGBQXTX            1.000      0.000    999.000    999.000
+    SCHN               1.000      0.000    999.000    999.000
+    RURAL              1.000      0.000    999.000    999.000
+
+ Residual Variances
+    HOVS_1             0.477      0.035     13.815      0.000
+    HOVS_2             0.567      0.025     22.666      0.000
+    HOVS_3             0.499      0.026     19.267      0.000
+    HOVS_4             0.443      0.047      9.486      0.000
+    I                  0.856      0.021     41.011      0.000
+    S                  0.933      0.022     42.597      0.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    HOVS_1             0.490      0.025     19.862      0.000
+    HOVS_2             0.490      0.025     19.862      0.000
+    HOVS_3             0.490      0.025     19.862      0.000
+    HOVS_4             0.490      0.025     19.862      0.000
+
+ S        |
+    HOVS_1             0.000      0.000    999.000    999.000
+    HOVS_2             0.153      0.024      6.497      0.000
+    HOVS_3             0.306      0.047      6.497      0.000
+    HOVS_4             0.460      0.071      6.497      0.000
+
+ I        ON
+    TX                -0.150      0.089     -1.691      0.091
+    FEMALE            -0.634      0.096     -6.589      0.000
+    OTHERG            -0.114      0.211     -0.541      0.589
+    WHITE              0.129      0.037      3.507      0.000
+    POC                0.237      0.064      3.700      0.000
+    LGBQ               0.596      0.091      6.552      0.000
+    FGXTX              0.080      0.114      0.706      0.480
+    OGXTX             -0.156      0.311     -0.502      0.615
+    WRXTX             -0.073      0.080     -0.908      0.364
+    POCXTX            -0.108      0.082     -1.318      0.187
+    LGBQXTX            0.015      0.123      0.120      0.905
+    SCHN               0.015      0.004      3.894      0.000
+    RURAL              0.113      0.074      1.530      0.126
+
+ S        ON
+    TX                 0.160      0.078      2.043      0.041
+    FEMALE            -0.304      0.116     -2.615      0.009
+    OTHERG             0.516      0.386      1.339      0.181
+    WHITE              0.023      0.100      0.225      0.822
+    POC                0.100      0.167      0.600      0.548
+    LGBQ              -0.052      0.187     -0.279      0.781
+    FGXTX             -0.066      0.146     -0.456      0.648
+    OGXTX             -0.120      0.488     -0.246      0.805
+    WRXTX              0.199      0.144      1.376      0.169
+    POCXTX             0.053      0.188      0.284      0.776
+    LGBQXTX            0.001      0.204      0.006      0.995
+    SCHN              -0.018      0.004     -4.173      0.000
+    RURAL              0.143      0.123      1.160      0.246
+
+ S        WITH
+    I                 -0.293      0.078     -3.766      0.000
+
+ FEMALE   WITH
+    TX                 0.002      0.004      0.396      0.692
+
+ OTHERG   WITH
+    TX                 0.000      0.001      0.380      0.704
+    FEMALE            -0.011      0.001    -10.405      0.000
+
+ WHITE    WITH
+    TX                -0.005      0.030     -0.183      0.855
+    FEMALE             0.001      0.004      0.289      0.772
+    OTHERG             0.003      0.001      3.324      0.001
+
+ POC      WITH
+    TX                 0.009      0.008      1.106      0.269
+    FEMALE            -0.006      0.002     -2.536      0.011
+    OTHERG             0.001      0.001      1.158      0.247
+    WHITE             -0.066      0.010     -6.387      0.000
+
+ LGBQ     WITH
+    TX                 0.003      0.007      0.498      0.618
+    FEMALE             0.029      0.005      6.141      0.000
+    OTHERG             0.011      0.001      8.579      0.000
+    WHITE              0.008      0.005      1.690      0.091
+    POC                0.012      0.002      5.573      0.000
+
+ FGXTX    WITH
+    TX                 0.118      0.006     20.021      0.000
+    FEMALE             0.133      0.037      3.618      0.000
+    OTHERG            -0.006      0.002     -3.419      0.001
+    WHITE             -0.003      0.016     -0.198      0.843
+    POC                0.002      0.005      0.394      0.694
+    LGBQ               0.020      0.007      2.756      0.006
+
+ OGXTX    WITH
+    TX                 0.006      0.001      6.500      0.000
+    FEMALE            -0.006      0.002     -3.454      0.001
+    OTHERG             0.012      0.004      3.426      0.001
+    WHITE              0.002      0.001      1.374      0.169
+    POC                0.001      0.001      1.641      0.101
+    LGBQ               0.006      0.002      2.895      0.004
+    FGXTX             -0.003      0.002     -1.816      0.069
+
+ WRXTX    WITH
+    TX                 0.091      0.026      3.499      0.000
+    FEMALE             0.000      0.004     -0.026      0.979
+    OTHERG             0.002      0.001      1.642      0.100
+    WHITE              0.121      0.035      3.432      0.001
+    POC               -0.034      0.012     -2.893      0.004
+    LGBQ               0.007      0.004      1.834      0.067
+    FGXTX              0.043      0.015      2.822      0.005
+    OGXTX              0.004      0.001      2.890      0.004
+
+ POCXTX   WITH
+    TX                 0.048      0.005      9.277      0.000
+    FEMALE            -0.002      0.002     -1.338      0.181
+    OTHERG             0.001      0.001      1.629      0.103
+    WHITE             -0.039      0.012     -3.351      0.001
+    POC                0.084      0.025      3.337      0.001
+    LGBQ               0.006      0.003      2.108      0.035
+    FGXTX              0.020      0.004      5.641      0.000
+    OGXTX              0.002      0.001      3.448      0.001
+    WRXTX             -0.020      0.011     -1.817      0.069
+
+ LGBQXTX  WITH
+    TX                 0.054      0.005     10.849      0.000
+    FEMALE             0.019      0.006      3.220      0.001
+    OTHERG             0.006      0.002      2.910      0.004
+    WHITE              0.005      0.006      0.809      0.419
+    POC                0.007      0.003      2.833      0.005
+    LGBQ               0.091      0.026      3.496      0.000
+    FGXTX              0.044      0.006      7.534      0.000
+    OGXTX              0.007      0.002      3.505      0.000
+    WRXTX              0.026      0.005      4.791      0.000
+    POCXTX             0.016      0.002      7.772      0.000
+
+ SCHN     WITH
+    TX                 1.141      0.935      1.220      0.222
+    FEMALE            -0.017      0.055     -0.319      0.750
+    OTHERG            -0.012      0.010     -1.201      0.230
+    WHITE             -0.610      0.299     -2.039      0.041
+    POC                0.101      0.044      2.320      0.020
+    LGBQ               0.010      0.060      0.172      0.863
+    FGXTX              0.489      0.405      1.209      0.226
+    OGXTX              0.016      0.020      0.763      0.446
+    WRXTX             -0.134      0.243     -0.549      0.583
+    POCXTX             0.264      0.170      1.551      0.121
+    LGBQXTX            0.242      0.240      1.008      0.313
+
+ RURAL    WITH
+    TX                -0.110      0.053     -2.086      0.037
+    FEMALE            -0.001      0.004     -0.268      0.789
+    OTHERG             0.000      0.001     -0.002      0.999
+    WHITE              0.025      0.022      1.153      0.249
+    POC               -0.015      0.006     -2.518      0.012
+    LGBQ              -0.003      0.006     -0.427      0.669
+    FGXTX             -0.054      0.025     -2.159      0.031
+    OGXTX             -0.002      0.002     -1.370      0.171
+    WRXTX             -0.033      0.026     -1.268      0.205
+    POCXTX            -0.023      0.011     -2.179      0.029
+    LGBQXTX           -0.022      0.012     -1.758      0.079
+    SCHN              -1.117      0.681     -1.640      0.101
+
+ Means
+    TX                 0.530      0.148      3.581      0.000
+    FEMALE             0.470      0.008     56.998      0.000
+    OTHERG             0.023      0.002     10.438      0.000
+    WHITE              0.378      0.062      6.086      0.000
+    POC                0.175      0.018      9.984      0.000
+    LGBQ               0.210      0.014     15.048      0.000
+    FGXTX              0.251      0.069      3.635      0.000
+    OGXTX              0.013      0.004      3.410      0.001
+    WRXTX              0.195      0.064      3.043      0.002
+    POCXTX             0.102      0.032      3.225      0.001
+    LGBQXTX            0.115      0.034      3.427      0.001
+    SCHN               3.618      2.370      1.527      0.127
+    RURAL              0.331      0.128      2.579      0.010
+
+ Intercepts
+    HOVS_1             0.000      0.000    999.000    999.000
+    HOVS_2             0.000      0.000    999.000    999.000
+    HOVS_3             0.000      0.000    999.000    999.000
+    HOVS_4             0.000      0.000    999.000    999.000
+    I                  0.875      0.062     14.008      0.000
+    S                  0.143      0.069      2.068      0.039
+
+ Variances
+    TX                 0.249      0.009     27.645      0.000
+    FEMALE             0.249      0.001    453.679      0.000
+    OTHERG             0.023      0.002     10.777      0.000
+    WHITE              0.235      0.015     15.473      0.000
+    POC                0.144      0.011     12.683      0.000
+    LGBQ               0.166      0.008     20.479      0.000
+    FGXTX              0.189      0.034      5.483      0.000
+    OGXTX              0.013      0.004      3.460      0.001
+    WRXTX              0.157      0.039      4.017      0.000
+    POCXTX             0.092      0.025      3.642      0.000
+    LGBQXTX            0.102      0.026      3.944      0.000
+    SCHN              38.468     21.595      1.781      0.075
+    RURAL              0.221      0.043      5.095      0.000
+
+ Residual Variances
+    HOVS_1             0.219      0.029      7.627      0.000
+    HOVS_2             0.301      0.029     10.384      0.000
+    HOVS_3             0.266      0.030      8.853      0.000
+    HOVS_4             0.278      0.035      8.025      0.000
+    I                  0.856      0.021     41.011      0.000
+    S                  0.933      0.022     42.597      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    HOVS_1             0.523      0.035     15.147      0.000
+    HOVS_2             0.433      0.025     17.307      0.000
+    HOVS_3             0.501      0.026     19.331      0.000
+    HOVS_4             0.557      0.047     11.938      0.000
+
+     Latent                                         Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    I                  0.144      0.021      6.910      0.000
+    S                  0.067      0.022      3.051      0.002
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.134E-06
+       (ratio of smallest to largest eigenvalue)
+
+
+CONFIDENCE INTERVALS OF MODEL RESULTS
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    HOVS_1           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    HOVS_2           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    HOVS_3           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    HOVS_4           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ S        |
+    HOVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_2           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    HOVS_3           2.000       2.000       2.000       2.000       2.000       2.000       2.000
+    HOVS_4           3.000       3.000       3.000       3.000       3.000       3.000       3.000
+
+ I        ON
+    TX              -0.186      -0.159      -0.145      -0.074      -0.002       0.012       0.038
+    FEMALE          -0.428      -0.400      -0.385      -0.310      -0.235      -0.221      -0.193
+    OTHERG          -0.322      -0.258      -0.226      -0.056       0.114       0.147       0.210
+    WHITE            0.016       0.027       0.033       0.063       0.093       0.099       0.110
+    POC              0.033       0.053       0.063       0.116       0.169       0.179       0.198
+    LGBQ             0.160       0.191       0.207       0.292       0.376       0.392       0.424
+    FGXTX           -0.104      -0.070      -0.052       0.039       0.131       0.149       0.183
+    OGXTX           -0.469      -0.375      -0.327      -0.076       0.174       0.222       0.316
+    WRXTX           -0.136      -0.112      -0.099      -0.035       0.028       0.041       0.065
+    POCXTX          -0.156      -0.132      -0.119      -0.053       0.014       0.026       0.051
+    LGBQXTX         -0.148      -0.111      -0.092       0.007       0.106       0.125       0.162
+    SCHN             0.003       0.004       0.004       0.007       0.010       0.011       0.012
+    RURAL           -0.038      -0.015      -0.004       0.056       0.115       0.126       0.149
+
+ S        ON
+    TX              -0.012      -0.003       0.001       0.025       0.048       0.052       0.061
+    FEMALE          -0.092      -0.081      -0.076      -0.047      -0.017      -0.012      -0.001
+    OTHERG          -0.062      -0.028      -0.011       0.079       0.169       0.186       0.220
+    WHITE           -0.037      -0.027      -0.022       0.003       0.029       0.034       0.043
+    POC             -0.052      -0.036      -0.028       0.015       0.058       0.067       0.083
+    LGBQ            -0.081      -0.064      -0.055      -0.008       0.039       0.048       0.065
+    FGXTX           -0.069      -0.055      -0.048      -0.010       0.027       0.034       0.048
+    OGXTX           -0.209      -0.163      -0.140      -0.018       0.103       0.127       0.172
+    WRXTX           -0.027      -0.013      -0.006       0.030       0.067       0.074       0.087
+    POCXTX          -0.065      -0.048      -0.039       0.008       0.055       0.064       0.081
+    LGBQXTX         -0.080      -0.061      -0.051       0.000       0.051       0.061       0.080
+    SCHN            -0.004      -0.004      -0.004      -0.003      -0.002      -0.001      -0.001
+    RURAL           -0.026      -0.014      -0.008       0.022       0.052       0.058       0.069
+
+ S        WITH
+    I               -0.041      -0.036      -0.033      -0.020      -0.006      -0.003       0.002
+
+ FEMALE   WITH
+    TX              -0.009      -0.007      -0.005       0.002       0.009       0.010       0.012
+
+ OTHERG   WITH
+    TX              -0.002      -0.002      -0.001       0.000       0.002       0.003       0.003
+    FEMALE          -0.014      -0.013      -0.013      -0.011      -0.009      -0.009      -0.008
+
+ WHITE    WITH
+    TX              -0.082      -0.064      -0.054      -0.005       0.043       0.053       0.071
+    FEMALE          -0.009      -0.007      -0.006       0.001       0.008       0.009       0.012
+    OTHERG           0.001       0.001       0.002       0.003       0.005       0.005       0.005
+
+ POC      WITH
+    TX              -0.012      -0.007      -0.005       0.009       0.023       0.026       0.031
+    FEMALE          -0.012      -0.011      -0.010      -0.006      -0.002      -0.001       0.000
+    OTHERG          -0.001      -0.001       0.000       0.001       0.002       0.003       0.003
+    WHITE           -0.093      -0.086      -0.083      -0.066      -0.049      -0.046      -0.039
+
+ LGBQ     WITH
+    TX              -0.014      -0.010      -0.008       0.003       0.015       0.017       0.021
+    FEMALE           0.017       0.020       0.021       0.029       0.037       0.038       0.041
+    OTHERG           0.008       0.008       0.009       0.011       0.013       0.013       0.014
+    WHITE           -0.004      -0.001       0.000       0.008       0.015       0.016       0.019
+    POC              0.006       0.008       0.008       0.012       0.015       0.016       0.017
+
+ FGXTX    WITH
+    TX               0.103       0.107       0.108       0.118       0.128       0.130       0.133
+    FEMALE           0.038       0.061       0.073       0.133       0.194       0.206       0.228
+    OTHERG          -0.010      -0.009      -0.009      -0.006      -0.003      -0.003      -0.001
+    WHITE           -0.045      -0.035      -0.030      -0.003       0.023       0.028       0.038
+    POC             -0.010      -0.007      -0.006       0.002       0.009       0.011       0.014
+    LGBQ             0.001       0.006       0.008       0.020       0.032       0.034       0.039
+
+ OGXTX    WITH
+    TX               0.004       0.004       0.004       0.006       0.008       0.008       0.008
+    FEMALE          -0.011      -0.009      -0.009      -0.006      -0.003      -0.003      -0.002
+    OTHERG           0.003       0.005       0.006       0.012       0.018       0.020       0.022
+    WHITE           -0.001      -0.001       0.000       0.002       0.003       0.004       0.005
+    POC             -0.001       0.000       0.000       0.001       0.002       0.002       0.002
+    LGBQ             0.001       0.002       0.003       0.006       0.010       0.010       0.011
+    FGXTX           -0.008      -0.007      -0.006      -0.003       0.000       0.000       0.001
+
+ WRXTX    WITH
+    TX               0.024       0.040       0.048       0.091       0.134       0.143       0.159
+    FEMALE          -0.010      -0.008      -0.007       0.000       0.006       0.008       0.010
+    OTHERG          -0.001       0.000       0.000       0.002       0.004       0.004       0.005
+    WHITE            0.030       0.052       0.063       0.121       0.180       0.191       0.213
+    POC             -0.065      -0.057      -0.054      -0.034      -0.015      -0.011      -0.004
+    LGBQ            -0.003       0.000       0.001       0.007       0.014       0.015       0.017
+    FGXTX            0.004       0.013       0.018       0.043       0.068       0.072       0.082
+    OGXTX            0.000       0.001       0.002       0.004       0.006       0.007       0.007
+
+ POCXTX   WITH
+    TX               0.035       0.038       0.039       0.048       0.056       0.058       0.061
+    FEMALE          -0.006      -0.005      -0.005      -0.002       0.000       0.001       0.002
+    OTHERG           0.000       0.000       0.000       0.001       0.002       0.002       0.002
+    WHITE           -0.068      -0.061      -0.058      -0.039      -0.020      -0.016      -0.009
+    POC              0.019       0.035       0.043       0.084       0.126       0.134       0.149
+    LGBQ            -0.001       0.000       0.001       0.006       0.011       0.012       0.013
+    FGXTX            0.011       0.013       0.014       0.020       0.026       0.027       0.030
+    OGXTX            0.000       0.001       0.001       0.002       0.003       0.003       0.003
+    WRXTX           -0.048      -0.041      -0.038      -0.020      -0.002       0.002       0.008
+
+ LGBQXTX  WITH
+    TX               0.041       0.044       0.046       0.054       0.062       0.064       0.067
+    FEMALE           0.004       0.007       0.009       0.019       0.029       0.030       0.034
+    OTHERG           0.001       0.002       0.003       0.006       0.010       0.010       0.011
+    WHITE           -0.010      -0.007      -0.005       0.005       0.014       0.016       0.020
+    POC              0.001       0.002       0.003       0.007       0.012       0.012       0.014
+    LGBQ             0.024       0.040       0.048       0.091       0.134       0.142       0.158
+    FGXTX            0.029       0.033       0.035       0.044       0.054       0.056       0.059
+    OGXTX            0.002       0.003       0.004       0.007       0.011       0.011       0.013
+    WRXTX            0.012       0.015       0.017       0.026       0.035       0.036       0.040
+    POCXTX           0.011       0.012       0.012       0.016       0.019       0.020       0.021
+
+ SCHN     WITH
+    TX              -1.268      -0.692      -0.397       1.141       2.679       2.974       3.550
+    FEMALE          -0.158      -0.124      -0.107      -0.017       0.072       0.090       0.123
+    OTHERG          -0.036      -0.031      -0.027      -0.012       0.004       0.007       0.013
+    WHITE           -1.381      -1.197      -1.102      -0.610      -0.118      -0.024       0.161
+    POC             -0.011       0.016       0.029       0.101       0.173       0.186       0.213
+    LGBQ            -0.144      -0.107      -0.088       0.010       0.109       0.128       0.165
+    FGXTX           -0.553      -0.304      -0.176       0.489       1.155       1.283       1.532
+    OGXTX           -0.037      -0.025      -0.018       0.016       0.049       0.056       0.068
+    WRXTX           -0.761      -0.611      -0.534      -0.134       0.267       0.343       0.493
+    POCXTX          -0.174      -0.069      -0.016       0.264       0.543       0.597       0.702
+    LGBQXTX         -0.377      -0.229      -0.153       0.242       0.637       0.713       0.861
+
+ RURAL    WITH
+    TX              -0.246      -0.214      -0.197      -0.110      -0.023      -0.007       0.026
+    FEMALE          -0.011      -0.009      -0.007      -0.001       0.005       0.006       0.009
+    OTHERG          -0.002      -0.002      -0.002       0.000       0.002       0.002       0.002
+    WHITE           -0.031      -0.017      -0.011       0.025       0.060       0.067       0.080
+    POC             -0.031      -0.027      -0.025      -0.015      -0.005      -0.003       0.000
+    LGBQ            -0.018      -0.014      -0.012      -0.003       0.007       0.009       0.013
+    FGXTX           -0.117      -0.102      -0.094      -0.054      -0.013      -0.005       0.010
+    OGXTX           -0.006      -0.005      -0.005      -0.002       0.000       0.001       0.002
+    WRXTX           -0.099      -0.083      -0.075      -0.033       0.010       0.018       0.034
+    POCXTX          -0.051      -0.044      -0.041      -0.023      -0.006      -0.002       0.004
+    LGBQXTX         -0.054      -0.046      -0.042      -0.022      -0.001       0.003       0.010
+    SCHN            -2.873      -2.453      -2.238      -1.117       0.004       0.218       0.638
+
+ Means
+    TX               0.149       0.240       0.287       0.530       0.774       0.821       0.912
+    FEMALE           0.449       0.454       0.456       0.470       0.484       0.486       0.491
+    OTHERG           0.018       0.019       0.020       0.023       0.027       0.028       0.029
+    WHITE            0.218       0.256       0.276       0.378       0.480       0.499       0.537
+    POC              0.130       0.141       0.146       0.175       0.204       0.209       0.220
+    LGBQ             0.174       0.183       0.187       0.210       0.233       0.238       0.246
+    FGXTX            0.073       0.116       0.137       0.251       0.364       0.386       0.429
+    OGXTX            0.003       0.005       0.007       0.013       0.019       0.020       0.023
+    WRXTX            0.030       0.069       0.090       0.195       0.300       0.321       0.360
+    POCXTX           0.021       0.040       0.050       0.102       0.154       0.164       0.184
+    LGBQXTX          0.029       0.049       0.060       0.115       0.170       0.181       0.201
+    SCHN            -2.485      -1.026      -0.280       3.618       7.516       8.263       9.722
+    RURAL            0.000       0.079       0.120       0.331       0.542       0.582       0.661
+
+ Intercepts
+    HOVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_2           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_3           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_4           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    I                0.367       0.382       0.389       0.428       0.467       0.475       0.489
+    S               -0.003       0.003       0.006       0.022       0.038       0.041       0.047
+
+ Variances
+    TX               0.226       0.231       0.234       0.249       0.264       0.267       0.272
+    FEMALE           0.248       0.248       0.249       0.249       0.250       0.251       0.251
+    OTHERG           0.017       0.019       0.019       0.023       0.026       0.027       0.028
+    WHITE            0.196       0.205       0.210       0.235       0.260       0.265       0.274
+    POC              0.115       0.122       0.126       0.144       0.163       0.167       0.174
+    LGBQ             0.145       0.150       0.153       0.166       0.179       0.182       0.187
+    FGXTX            0.100       0.121       0.132       0.189       0.245       0.256       0.277
+    OGXTX            0.003       0.005       0.007       0.013       0.019       0.020       0.022
+    WRXTX            0.056       0.080       0.093       0.157       0.221       0.234       0.258
+    POCXTX           0.027       0.042       0.050       0.092       0.133       0.141       0.157
+    LGBQXTX          0.035       0.051       0.059       0.102       0.144       0.152       0.168
+    SCHN           -17.157      -3.858       2.944      38.468      73.992      80.795      94.093
+    RURAL            0.109       0.136       0.150       0.221       0.293       0.306       0.333
+
+ Residual Variances
+    HOVS_1           0.145       0.162       0.171       0.219       0.266       0.275       0.292
+    HOVS_2           0.226       0.244       0.253       0.301       0.348       0.358       0.375
+    HOVS_3           0.188       0.207       0.216       0.266       0.315       0.324       0.343
+    HOVS_4           0.189       0.210       0.221       0.278       0.335       0.346       0.368
+    I                0.146       0.160       0.168       0.205       0.243       0.250       0.264
+    S                0.004       0.008       0.011       0.022       0.033       0.035       0.040
+
+
+CONFIDENCE INTERVALS OF STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    HOVS_1           0.662       0.676       0.684       0.723       0.762       0.770       0.785
+    HOVS_2           0.600       0.617       0.626       0.672       0.718       0.727       0.744
+    HOVS_3           0.589       0.608       0.618       0.671       0.724       0.734       0.753
+    HOVS_4           0.526       0.548       0.559       0.617       0.676       0.687       0.709
+
+ S        |
+    HOVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_2           0.132       0.151       0.161       0.210       0.260       0.270       0.288
+    HOVS_3           0.281       0.314       0.331       0.420       0.509       0.526       0.559
+    HOVS_4           0.378       0.426       0.451       0.580       0.708       0.733       0.781
+
+ I        ON
+    TX              -0.190      -0.162      -0.148      -0.075      -0.002       0.012       0.040
+    FEMALE          -0.440      -0.411      -0.396      -0.317      -0.237      -0.222      -0.193
+    OTHERG          -0.099      -0.079      -0.069      -0.017       0.035       0.045       0.064
+    WHITE            0.018       0.029       0.034       0.062       0.091       0.096       0.107
+    POC              0.029       0.043       0.051       0.090       0.129       0.136       0.151
+    LGBQ             0.148       0.171       0.182       0.243       0.303       0.315       0.337
+    FGXTX           -0.094      -0.063      -0.047       0.035       0.117       0.133       0.163
+    OGXTX           -0.107      -0.086      -0.075      -0.018       0.040       0.051       0.072
+    WRXTX           -0.112      -0.092      -0.082      -0.029       0.024       0.034       0.054
+    POCXTX          -0.098      -0.082      -0.074      -0.033       0.009       0.017       0.033
+    LGBQXTX         -0.097      -0.073      -0.060       0.005       0.070       0.082       0.106
+    SCHN             0.014       0.033       0.043       0.095       0.146       0.156       0.175
+    RURAL           -0.040      -0.018      -0.006       0.053       0.113       0.125       0.147
+
+ S        ON
+    TX              -0.021       0.003       0.015       0.080       0.145       0.157       0.181
+    FEMALE          -0.301      -0.266      -0.247      -0.152      -0.056      -0.038      -0.002
+    OTHERG          -0.074      -0.038      -0.019       0.078       0.175       0.193       0.230
+    WHITE           -0.114      -0.084      -0.069       0.011       0.091       0.106       0.136
+    POC             -0.124      -0.085      -0.065       0.038       0.142       0.162       0.200
+    LGBQ            -0.218      -0.171      -0.147      -0.021       0.104       0.129       0.176
+    FGXTX           -0.191      -0.152      -0.132      -0.029       0.075       0.094       0.133
+    OGXTX           -0.156      -0.122      -0.105      -0.014       0.078       0.095       0.129
+    WRXTX           -0.069      -0.034      -0.016       0.079       0.173       0.191       0.226
+    POCXTX          -0.129      -0.095      -0.077       0.016       0.109       0.127       0.162
+    LGBQXTX         -0.167      -0.127      -0.106       0.000       0.107       0.128       0.168
+    SCHN            -0.193      -0.173      -0.163      -0.109      -0.056      -0.045      -0.025
+    RURAL           -0.079      -0.044      -0.026       0.067       0.160       0.178       0.213
+
+ S        WITH
+    I               -0.493      -0.445      -0.420      -0.293      -0.165      -0.140      -0.092
+
+ FEMALE   WITH
+    TX              -0.037      -0.026      -0.021       0.007       0.034       0.040       0.050
+
+ OTHERG   WITH
+    TX              -0.032      -0.023      -0.018       0.006       0.029       0.034       0.043
+    FEMALE          -0.165      -0.160      -0.158      -0.146      -0.134      -0.131      -0.127
+
+ WHITE    WITH
+    TX              -0.339      -0.263      -0.225      -0.022       0.180       0.219       0.294
+    FEMALE          -0.038      -0.028      -0.023       0.005       0.033       0.038       0.048
+    OTHERG           0.012       0.019       0.022       0.042       0.061       0.065       0.072
+
+ POC      WITH
+    TX              -0.066      -0.039      -0.025       0.049       0.122       0.136       0.164
+    FEMALE          -0.066      -0.058      -0.054      -0.032      -0.009      -0.005       0.003
+    OTHERG          -0.020      -0.011      -0.007       0.016       0.040       0.044       0.053
+    WHITE           -0.472      -0.445      -0.431      -0.359      -0.286      -0.273      -0.246
+
+ LGBQ     WITH
+    TX              -0.071      -0.050      -0.039       0.017       0.073       0.084       0.105
+    FEMALE           0.088       0.101       0.108       0.142       0.177       0.183       0.196
+    OTHERG           0.133       0.144       0.149       0.178       0.206       0.212       0.222
+    WHITE           -0.022      -0.008       0.000       0.039       0.077       0.085       0.099
+    POC              0.041       0.050       0.054       0.077       0.100       0.105       0.113
+
+ FGXTX    WITH
+    TX               0.382       0.421       0.441       0.545       0.649       0.669       0.708
+    FEMALE           0.321       0.391       0.427       0.615       0.803       0.839       0.909
+    OTHERG          -0.134      -0.123      -0.118      -0.090      -0.062      -0.056      -0.046
+    WHITE           -0.212      -0.165      -0.141      -0.015       0.110       0.135       0.182
+    POC             -0.062      -0.044      -0.035       0.011       0.058       0.067       0.084
+    LGBQ             0.026       0.047       0.058       0.114       0.170       0.181       0.201
+
+ OGXTX    WITH
+    TX               0.057       0.069       0.075       0.107       0.140       0.146       0.158
+    FEMALE          -0.148      -0.138      -0.133      -0.107      -0.082      -0.077      -0.067
+    OTHERG           0.483       0.544       0.575       0.738       0.901       0.932       0.993
+    WHITE           -0.019      -0.008      -0.002       0.029       0.060       0.066       0.077
+    POC             -0.012      -0.003       0.001       0.023       0.045       0.049       0.057
+    LGBQ             0.058       0.076       0.085       0.133       0.181       0.190       0.208
+    FGXTX           -0.120      -0.107      -0.100      -0.066      -0.031      -0.024      -0.011
+
+ WRXTX    WITH
+    TX               0.180       0.247       0.282       0.463       0.643       0.678       0.746
+    FEMALE          -0.051      -0.039      -0.033      -0.001       0.032       0.038       0.050
+    OTHERG          -0.012      -0.002       0.003       0.031       0.059       0.065       0.075
+    WHITE            0.341       0.411       0.446       0.632       0.818       0.854       0.923
+    POC             -0.352      -0.322      -0.307      -0.227      -0.147      -0.132      -0.102
+    LGBQ            -0.016      -0.002       0.006       0.044       0.083       0.091       0.105
+    FGXTX            0.006       0.064       0.093       0.248       0.403       0.432       0.490
+    OGXTX            0.025       0.040       0.048       0.088       0.129       0.136       0.151
+
+ POCXTX   WITH
+    TX               0.197       0.226       0.240       0.317       0.394       0.409       0.437
+    FEMALE          -0.042      -0.035      -0.032      -0.014       0.003       0.006       0.013
+    OTHERG          -0.009      -0.002       0.001       0.018       0.035       0.038       0.045
+    WHITE           -0.384      -0.355      -0.340      -0.263      -0.185      -0.171      -0.142
+    POC              0.447       0.515       0.550       0.732       0.915       0.950       1.018
+    LGBQ            -0.006       0.007       0.014       0.049       0.083       0.090       0.103
+    FGXTX            0.033       0.062       0.077       0.154       0.232       0.247       0.276
+    OGXTX            0.009       0.021       0.026       0.056       0.085       0.091       0.102
+    WRXTX           -0.305      -0.272      -0.255      -0.166      -0.077      -0.060      -0.027
+
+ LGBQXTX  WITH
+    TX               0.210       0.241       0.257       0.339       0.421       0.437       0.468
+    FEMALE           0.060       0.074       0.081       0.118       0.156       0.163       0.177
+    OTHERG           0.053       0.071       0.080       0.127       0.173       0.182       0.200
+    WHITE           -0.066      -0.043      -0.031       0.031       0.092       0.104       0.127
+    POC              0.016       0.027       0.032       0.060       0.089       0.094       0.105
+    LGBQ             0.418       0.485       0.520       0.699       0.878       0.912       0.979
+    FGXTX            0.216       0.240       0.253       0.319       0.386       0.399       0.423
+    OGXTX            0.155       0.166       0.172       0.203       0.234       0.240       0.252
+    WRXTX            0.079       0.109       0.124       0.204       0.283       0.298       0.328
+    POCXTX           0.088       0.106       0.115       0.163       0.210       0.219       0.237
+
+ SCHN     WITH
+    TX              -0.178      -0.047       0.020       0.369       0.718       0.785       0.915
+    FEMALE          -0.048      -0.038      -0.033      -0.006       0.022       0.027       0.037
+    OTHERG          -0.036      -0.031      -0.028      -0.012       0.003       0.006       0.012
+    WHITE           -0.357      -0.320      -0.301      -0.203      -0.105      -0.086      -0.049
+    POC              0.001       0.011       0.016       0.043       0.070       0.075       0.085
+    LGBQ            -0.055      -0.041      -0.034       0.004       0.042       0.049       0.063
+    FGXTX           -0.086      -0.022       0.011       0.182       0.353       0.385       0.449
+    OGXTX           -0.043      -0.027      -0.019       0.022       0.064       0.072       0.088
+    WRXTX           -0.315      -0.253      -0.221      -0.054       0.112       0.144       0.206
+    POCXTX           0.005       0.038       0.054       0.140       0.227       0.243       0.275
+    LGBQXTX         -0.100      -0.047      -0.020       0.122       0.265       0.292       0.345
+
+ RURAL    WITH
+    TX              -1.007      -0.879      -0.813      -0.469      -0.126      -0.060       0.068
+    FEMALE          -0.046      -0.036      -0.031      -0.004       0.022       0.028       0.038
+    OTHERG          -0.035      -0.026      -0.022       0.000       0.022       0.026       0.035
+    WHITE           -0.138      -0.079      -0.049       0.109       0.267       0.297       0.356
+    POC             -0.161      -0.143      -0.134      -0.085      -0.036      -0.027      -0.009
+    LGBQ            -0.093      -0.074      -0.064      -0.013       0.037       0.047       0.066
+    FGXTX           -0.536      -0.471      -0.437      -0.262      -0.087      -0.054       0.011
+    OGXTX           -0.107      -0.091      -0.082      -0.039       0.005       0.013       0.029
+    WRXTX           -0.489      -0.414      -0.375      -0.174       0.026       0.065       0.140
+    POCXTX          -0.328      -0.289      -0.269      -0.164      -0.060      -0.040      -0.001
+    LGBQXTX         -0.340      -0.293      -0.270      -0.146      -0.022       0.002       0.049
+    SCHN            -0.765      -0.673      -0.627      -0.383      -0.139      -0.093      -0.001
+
+ Means
+    TX               0.249       0.443       0.543       1.063       1.583       1.682       1.877
+    FEMALE           0.901       0.911       0.916       0.941       0.967       0.971       0.981
+    OTHERG           0.136       0.141       0.143       0.156       0.168       0.171       0.176
+    WHITE            0.514       0.577       0.610       0.779       0.948       0.981       1.044
+    POC              0.389       0.406       0.415       0.461       0.507       0.516       0.533
+    LGBQ             0.460       0.474       0.480       0.516       0.552       0.559       0.572
+    FGXTX            0.304       0.370       0.403       0.578       0.753       0.786       0.852
+    OGXTX            0.071       0.081       0.086       0.114       0.142       0.148       0.158
+    WRXTX            0.233       0.295       0.327       0.492       0.657       0.689       0.751
+    POCXTX           0.187       0.223       0.241       0.337       0.433       0.451       0.487
+    LGBQXTX          0.207       0.244       0.263       0.360       0.458       0.477       0.514
+    SCHN            -0.026       0.120       0.194       0.583       0.973       1.047       1.193
+    RURAL            0.178       0.304       0.368       0.703       1.038       1.102       1.227
+
+ Intercepts
+    HOVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_2           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_3           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_4           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    I                0.714       0.752       0.772       0.875       0.977       0.997       1.035
+    S               -0.035       0.007       0.029       0.143       0.257       0.279       0.322
+
+ Variances
+    TX               1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    FEMALE           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    OTHERG           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    WHITE            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    POC              1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    LGBQ             1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    FGXTX            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    OGXTX            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    WRXTX            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    POCXTX           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    LGBQXTX          1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    SCHN             1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    RURAL            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ Residual Variances
+    HOVS_1           0.388       0.409       0.420       0.477       0.534       0.545       0.566
+    HOVS_2           0.503       0.518       0.526       0.567       0.608       0.616       0.631
+    HOVS_3           0.432       0.448       0.457       0.499       0.542       0.550       0.566
+    HOVS_4           0.323       0.351       0.366       0.443       0.520       0.534       0.563
+    I                0.802       0.815       0.821       0.856       0.890       0.897       0.910
+    S                0.877       0.890       0.897       0.933       0.969       0.976       0.990
+
+
+STDY Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    HOVS_1           0.662       0.676       0.684       0.723       0.762       0.770       0.785
+    HOVS_2           0.600       0.617       0.626       0.672       0.718       0.727       0.744
+    HOVS_3           0.589       0.608       0.618       0.671       0.724       0.734       0.753
+    HOVS_4           0.526       0.548       0.559       0.617       0.676       0.687       0.709
+
+ S        |
+    HOVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_2           0.132       0.151       0.161       0.210       0.260       0.270       0.288
+    HOVS_3           0.281       0.314       0.331       0.420       0.509       0.526       0.559
+    HOVS_4           0.378       0.426       0.451       0.580       0.708       0.733       0.781
+
+ I        ON
+    TX              -0.190      -0.162      -0.148      -0.075      -0.002       0.012       0.040
+    FEMALE          -0.440      -0.411      -0.396      -0.317      -0.237      -0.222      -0.193
+    OTHERG          -0.099      -0.079      -0.069      -0.017       0.035       0.045       0.064
+    WHITE            0.018       0.029       0.034       0.062       0.091       0.096       0.107
+    POC              0.029       0.043       0.051       0.090       0.129       0.136       0.151
+    LGBQ             0.148       0.171       0.182       0.243       0.303       0.315       0.337
+    FGXTX           -0.094      -0.063      -0.047       0.035       0.117       0.133       0.163
+    OGXTX           -0.107      -0.086      -0.075      -0.018       0.040       0.051       0.072
+    WRXTX           -0.112      -0.092      -0.082      -0.029       0.024       0.034       0.054
+    POCXTX          -0.098      -0.082      -0.074      -0.033       0.009       0.017       0.033
+    LGBQXTX         -0.097      -0.073      -0.060       0.005       0.070       0.082       0.106
+    SCHN             0.014       0.033       0.043       0.095       0.146       0.156       0.175
+    RURAL           -0.040      -0.018      -0.006       0.053       0.113       0.125       0.147
+
+ S        ON
+    TX              -0.021       0.003       0.015       0.080       0.145       0.157       0.181
+    FEMALE          -0.301      -0.266      -0.247      -0.152      -0.056      -0.038      -0.002
+    OTHERG          -0.074      -0.038      -0.019       0.078       0.175       0.193       0.230
+    WHITE           -0.114      -0.084      -0.069       0.011       0.091       0.106       0.136
+    POC             -0.124      -0.085      -0.065       0.038       0.142       0.162       0.200
+    LGBQ            -0.218      -0.171      -0.147      -0.021       0.104       0.129       0.176
+    FGXTX           -0.191      -0.152      -0.132      -0.029       0.075       0.094       0.133
+    OGXTX           -0.156      -0.122      -0.105      -0.014       0.078       0.095       0.129
+    WRXTX           -0.069      -0.034      -0.016       0.079       0.173       0.191       0.226
+    POCXTX          -0.129      -0.095      -0.077       0.016       0.109       0.127       0.162
+    LGBQXTX         -0.167      -0.127      -0.106       0.000       0.107       0.128       0.168
+    SCHN            -0.193      -0.173      -0.163      -0.109      -0.056      -0.045      -0.025
+    RURAL           -0.079      -0.044      -0.026       0.067       0.160       0.178       0.213
+
+ S        WITH
+    I               -0.493      -0.445      -0.420      -0.293      -0.165      -0.140      -0.092
+
+ FEMALE   WITH
+    TX              -0.037      -0.026      -0.021       0.007       0.034       0.040       0.050
+
+ OTHERG   WITH
+    TX              -0.032      -0.023      -0.018       0.006       0.029       0.034       0.043
+    FEMALE          -0.165      -0.160      -0.158      -0.146      -0.134      -0.131      -0.127
+
+ WHITE    WITH
+    TX              -0.339      -0.263      -0.225      -0.022       0.180       0.219       0.294
+    FEMALE          -0.038      -0.028      -0.023       0.005       0.033       0.038       0.048
+    OTHERG           0.012       0.019       0.022       0.042       0.061       0.065       0.072
+
+ POC      WITH
+    TX              -0.066      -0.039      -0.025       0.049       0.122       0.136       0.164
+    FEMALE          -0.066      -0.058      -0.054      -0.032      -0.009      -0.005       0.003
+    OTHERG          -0.020      -0.011      -0.007       0.016       0.040       0.044       0.053
+    WHITE           -0.472      -0.445      -0.431      -0.359      -0.286      -0.273      -0.246
+
+ LGBQ     WITH
+    TX              -0.071      -0.050      -0.039       0.017       0.073       0.084       0.105
+    FEMALE           0.088       0.101       0.108       0.142       0.177       0.183       0.196
+    OTHERG           0.133       0.144       0.149       0.178       0.206       0.212       0.222
+    WHITE           -0.022      -0.008       0.000       0.039       0.077       0.085       0.099
+    POC              0.041       0.050       0.054       0.077       0.100       0.105       0.113
+
+ FGXTX    WITH
+    TX               0.382       0.421       0.441       0.545       0.649       0.669       0.708
+    FEMALE           0.321       0.391       0.427       0.615       0.803       0.839       0.909
+    OTHERG          -0.134      -0.123      -0.118      -0.090      -0.062      -0.056      -0.046
+    WHITE           -0.212      -0.165      -0.141      -0.015       0.110       0.135       0.182
+    POC             -0.062      -0.044      -0.035       0.011       0.058       0.067       0.084
+    LGBQ             0.026       0.047       0.058       0.114       0.170       0.181       0.201
+
+ OGXTX    WITH
+    TX               0.057       0.069       0.075       0.107       0.140       0.146       0.158
+    FEMALE          -0.148      -0.138      -0.133      -0.107      -0.082      -0.077      -0.067
+    OTHERG           0.483       0.544       0.575       0.738       0.901       0.932       0.993
+    WHITE           -0.019      -0.008      -0.002       0.029       0.060       0.066       0.077
+    POC             -0.012      -0.003       0.001       0.023       0.045       0.049       0.057
+    LGBQ             0.058       0.076       0.085       0.133       0.181       0.190       0.208
+    FGXTX           -0.120      -0.107      -0.100      -0.066      -0.031      -0.024      -0.011
+
+ WRXTX    WITH
+    TX               0.180       0.247       0.282       0.463       0.643       0.678       0.746
+    FEMALE          -0.051      -0.039      -0.033      -0.001       0.032       0.038       0.050
+    OTHERG          -0.012      -0.002       0.003       0.031       0.059       0.065       0.075
+    WHITE            0.341       0.411       0.446       0.632       0.818       0.854       0.923
+    POC             -0.352      -0.322      -0.307      -0.227      -0.147      -0.132      -0.102
+    LGBQ            -0.016      -0.002       0.006       0.044       0.083       0.091       0.105
+    FGXTX            0.006       0.064       0.093       0.248       0.403       0.432       0.490
+    OGXTX            0.025       0.040       0.048       0.088       0.129       0.136       0.151
+
+ POCXTX   WITH
+    TX               0.197       0.226       0.240       0.317       0.394       0.409       0.437
+    FEMALE          -0.042      -0.035      -0.032      -0.014       0.003       0.006       0.013
+    OTHERG          -0.009      -0.002       0.001       0.018       0.035       0.038       0.045
+    WHITE           -0.384      -0.355      -0.340      -0.263      -0.185      -0.171      -0.142
+    POC              0.447       0.515       0.550       0.732       0.915       0.950       1.018
+    LGBQ            -0.006       0.007       0.014       0.049       0.083       0.090       0.103
+    FGXTX            0.033       0.062       0.077       0.154       0.232       0.247       0.276
+    OGXTX            0.009       0.021       0.026       0.056       0.085       0.091       0.102
+    WRXTX           -0.305      -0.272      -0.255      -0.166      -0.077      -0.060      -0.027
+
+ LGBQXTX  WITH
+    TX               0.210       0.241       0.257       0.339       0.421       0.437       0.468
+    FEMALE           0.060       0.074       0.081       0.118       0.156       0.163       0.177
+    OTHERG           0.053       0.071       0.080       0.127       0.173       0.182       0.200
+    WHITE           -0.066      -0.043      -0.031       0.031       0.092       0.104       0.127
+    POC              0.016       0.027       0.032       0.060       0.089       0.094       0.105
+    LGBQ             0.418       0.485       0.520       0.699       0.878       0.912       0.979
+    FGXTX            0.216       0.240       0.253       0.319       0.386       0.399       0.423
+    OGXTX            0.155       0.166       0.172       0.203       0.234       0.240       0.252
+    WRXTX            0.079       0.109       0.124       0.204       0.283       0.298       0.328
+    POCXTX           0.088       0.106       0.115       0.163       0.210       0.219       0.237
+
+ SCHN     WITH
+    TX              -0.178      -0.047       0.020       0.369       0.718       0.785       0.915
+    FEMALE          -0.048      -0.038      -0.033      -0.006       0.022       0.027       0.037
+    OTHERG          -0.036      -0.031      -0.028      -0.012       0.003       0.006       0.012
+    WHITE           -0.357      -0.320      -0.301      -0.203      -0.105      -0.086      -0.049
+    POC              0.001       0.011       0.016       0.043       0.070       0.075       0.085
+    LGBQ            -0.055      -0.041      -0.034       0.004       0.042       0.049       0.063
+    FGXTX           -0.086      -0.022       0.011       0.182       0.353       0.385       0.449
+    OGXTX           -0.043      -0.027      -0.019       0.022       0.064       0.072       0.088
+    WRXTX           -0.315      -0.253      -0.221      -0.054       0.112       0.144       0.206
+    POCXTX           0.005       0.038       0.054       0.140       0.227       0.243       0.275
+    LGBQXTX         -0.100      -0.047      -0.020       0.122       0.265       0.292       0.345
+
+ RURAL    WITH
+    TX              -1.007      -0.879      -0.813      -0.469      -0.126      -0.060       0.068
+    FEMALE          -0.046      -0.036      -0.031      -0.004       0.022       0.028       0.038
+    OTHERG          -0.035      -0.026      -0.022       0.000       0.022       0.026       0.035
+    WHITE           -0.138      -0.079      -0.049       0.109       0.267       0.297       0.356
+    POC             -0.161      -0.143      -0.134      -0.085      -0.036      -0.027      -0.009
+    LGBQ            -0.093      -0.074      -0.064      -0.013       0.037       0.047       0.066
+    FGXTX           -0.536      -0.471      -0.437      -0.262      -0.087      -0.054       0.011
+    OGXTX           -0.107      -0.091      -0.082      -0.039       0.005       0.013       0.029
+    WRXTX           -0.489      -0.414      -0.375      -0.174       0.026       0.065       0.140
+    POCXTX          -0.328      -0.289      -0.269      -0.164      -0.060      -0.040      -0.001
+    LGBQXTX         -0.340      -0.293      -0.270      -0.146      -0.022       0.002       0.049
+    SCHN            -0.765      -0.673      -0.627      -0.383      -0.139      -0.093      -0.001
+
+ Means
+    TX               0.249       0.443       0.543       1.063       1.583       1.682       1.877
+    FEMALE           0.901       0.911       0.916       0.941       0.967       0.971       0.981
+    OTHERG           0.136       0.141       0.143       0.156       0.168       0.171       0.176
+    WHITE            0.514       0.577       0.610       0.779       0.948       0.981       1.044
+    POC              0.389       0.406       0.415       0.461       0.507       0.516       0.533
+    LGBQ             0.460       0.474       0.480       0.516       0.552       0.559       0.572
+    FGXTX            0.304       0.370       0.403       0.578       0.753       0.786       0.852
+    OGXTX            0.071       0.081       0.086       0.114       0.142       0.148       0.158
+    WRXTX            0.233       0.295       0.327       0.492       0.657       0.689       0.751
+    POCXTX           0.187       0.223       0.241       0.337       0.433       0.451       0.487
+    LGBQXTX          0.207       0.244       0.263       0.360       0.458       0.477       0.514
+    SCHN            -0.026       0.120       0.194       0.583       0.973       1.047       1.193
+    RURAL            0.178       0.304       0.368       0.703       1.038       1.102       1.227
+
+ Intercepts
+    HOVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_2           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_3           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_4           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    I                0.714       0.752       0.772       0.875       0.977       0.997       1.035
+    S               -0.035       0.007       0.029       0.143       0.257       0.279       0.322
+
+ Variances
+    TX               1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    FEMALE           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    OTHERG           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    WHITE            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    POC              1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    LGBQ             1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    FGXTX            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    OGXTX            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    WRXTX            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    POCXTX           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    LGBQXTX          1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    SCHN             1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    RURAL            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ Residual Variances
+    HOVS_1           0.388       0.409       0.420       0.477       0.534       0.545       0.566
+    HOVS_2           0.503       0.518       0.526       0.567       0.608       0.616       0.631
+    HOVS_3           0.432       0.448       0.457       0.499       0.542       0.550       0.566
+    HOVS_4           0.323       0.351       0.366       0.443       0.520       0.534       0.563
+    I                0.802       0.815       0.821       0.856       0.890       0.897       0.910
+    S                0.877       0.890       0.897       0.933       0.969       0.976       0.990
+
+
+STD Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    HOVS_1           0.426       0.441       0.449       0.490       0.530       0.538       0.553
+    HOVS_2           0.426       0.441       0.449       0.490       0.530       0.538       0.553
+    HOVS_3           0.426       0.441       0.449       0.490       0.530       0.538       0.553
+    HOVS_4           0.426       0.441       0.449       0.490       0.530       0.538       0.553
+
+ S        |
+    HOVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_2           0.092       0.107       0.114       0.153       0.192       0.199       0.214
+    HOVS_3           0.185       0.214       0.229       0.306       0.384       0.399       0.428
+    HOVS_4           0.277       0.321       0.343       0.460       0.576       0.598       0.642
+
+ I        ON
+    TX              -0.379      -0.325      -0.297      -0.150      -0.004       0.024       0.079
+    FEMALE          -0.881      -0.822      -0.792      -0.634      -0.476      -0.445      -0.386
+    OTHERG          -0.657      -0.527      -0.461      -0.114       0.233       0.299       0.429
+    WHITE            0.034       0.057       0.068       0.129       0.189       0.200       0.223
+    POC              0.072       0.111       0.131       0.237       0.342       0.362       0.401
+    LGBQ             0.362       0.418       0.446       0.596       0.746       0.774       0.830
+    FGXTX           -0.213      -0.143      -0.107       0.080       0.268       0.304       0.374
+    OGXTX           -0.956      -0.765      -0.667      -0.156       0.355       0.453       0.644
+    WRXTX           -0.278      -0.229      -0.204      -0.073       0.059       0.084       0.133
+    POCXTX          -0.318      -0.268      -0.242      -0.108       0.027       0.052       0.103
+    LGBQXTX         -0.303      -0.227      -0.188       0.015       0.217       0.256       0.332
+    SCHN             0.005       0.008       0.009       0.015       0.022       0.023       0.025
+    RURAL           -0.077      -0.032      -0.008       0.113       0.235       0.259       0.304
+
+ S        ON
+    TX              -0.042       0.006       0.031       0.160       0.289       0.314       0.362
+    FEMALE          -0.603      -0.532      -0.495      -0.304      -0.113      -0.076      -0.005
+    OTHERG          -0.477      -0.240      -0.118       0.516       1.151       1.273       1.510
+    WHITE           -0.236      -0.174      -0.142       0.023       0.188       0.219       0.281
+    POC             -0.330      -0.227      -0.175       0.100       0.375       0.428       0.531
+    LGBQ            -0.534      -0.419      -0.360      -0.052       0.256       0.315       0.430
+    FGXTX           -0.441      -0.352      -0.306      -0.066       0.173       0.219       0.308
+    OGXTX           -1.379      -1.078      -0.924      -0.120       0.683       0.837       1.138
+    WRXTX           -0.173      -0.084      -0.039       0.199       0.436       0.481       0.570
+    POCXTX          -0.431      -0.315      -0.256       0.053       0.362       0.422       0.537
+    LGBQXTX         -0.523      -0.398      -0.334       0.001       0.336       0.400       0.525
+    SCHN            -0.028      -0.026      -0.025      -0.018      -0.011      -0.009      -0.007
+    RURAL           -0.174      -0.098      -0.060       0.143       0.345       0.384       0.460
+
+ S        WITH
+    I               -0.493      -0.445      -0.420      -0.293      -0.165      -0.140      -0.092
+
+ FEMALE   WITH
+    TX              -0.009      -0.007      -0.005       0.002       0.009       0.010       0.012
+
+ OTHERG   WITH
+    TX              -0.002      -0.002      -0.001       0.000       0.002       0.003       0.003
+    FEMALE          -0.014      -0.013      -0.013      -0.011      -0.009      -0.009      -0.008
+
+ WHITE    WITH
+    TX              -0.082      -0.064      -0.054      -0.005       0.043       0.053       0.071
+    FEMALE          -0.009      -0.007      -0.006       0.001       0.008       0.009       0.012
+    OTHERG           0.001       0.001       0.002       0.003       0.005       0.005       0.005
+
+ POC      WITH
+    TX              -0.012      -0.007      -0.005       0.009       0.023       0.026       0.031
+    FEMALE          -0.012      -0.011      -0.010      -0.006      -0.002      -0.001       0.000
+    OTHERG          -0.001      -0.001       0.000       0.001       0.002       0.003       0.003
+    WHITE           -0.093      -0.086      -0.083      -0.066      -0.049      -0.046      -0.039
+
+ LGBQ     WITH
+    TX              -0.014      -0.010      -0.008       0.003       0.015       0.017       0.021
+    FEMALE           0.017       0.020       0.021       0.029       0.037       0.038       0.041
+    OTHERG           0.008       0.008       0.009       0.011       0.013       0.013       0.014
+    WHITE           -0.004      -0.001       0.000       0.008       0.015       0.016       0.019
+    POC              0.006       0.008       0.008       0.012       0.015       0.016       0.017
+
+ FGXTX    WITH
+    TX               0.103       0.107       0.108       0.118       0.128       0.130       0.133
+    FEMALE           0.038       0.061       0.073       0.133       0.194       0.206       0.228
+    OTHERG          -0.010      -0.009      -0.009      -0.006      -0.003      -0.003      -0.001
+    WHITE           -0.045      -0.035      -0.030      -0.003       0.023       0.028       0.038
+    POC             -0.010      -0.007      -0.006       0.002       0.009       0.011       0.014
+    LGBQ             0.001       0.006       0.008       0.020       0.032       0.034       0.039
+
+ OGXTX    WITH
+    TX               0.004       0.004       0.004       0.006       0.008       0.008       0.008
+    FEMALE          -0.011      -0.009      -0.009      -0.006      -0.003      -0.003      -0.002
+    OTHERG           0.003       0.005       0.006       0.012       0.018       0.020       0.022
+    WHITE           -0.001      -0.001       0.000       0.002       0.003       0.004       0.005
+    POC             -0.001       0.000       0.000       0.001       0.002       0.002       0.002
+    LGBQ             0.001       0.002       0.003       0.006       0.010       0.010       0.011
+    FGXTX           -0.008      -0.007      -0.006      -0.003       0.000       0.000       0.001
+
+ WRXTX    WITH
+    TX               0.024       0.040       0.048       0.091       0.134       0.143       0.159
+    FEMALE          -0.010      -0.008      -0.007       0.000       0.006       0.008       0.010
+    OTHERG          -0.001       0.000       0.000       0.002       0.004       0.004       0.005
+    WHITE            0.030       0.052       0.063       0.121       0.180       0.191       0.213
+    POC             -0.065      -0.057      -0.054      -0.034      -0.015      -0.011      -0.004
+    LGBQ            -0.003       0.000       0.001       0.007       0.014       0.015       0.017
+    FGXTX            0.004       0.013       0.018       0.043       0.068       0.072       0.082
+    OGXTX            0.000       0.001       0.002       0.004       0.006       0.007       0.007
+
+ POCXTX   WITH
+    TX               0.035       0.038       0.039       0.048       0.056       0.058       0.061
+    FEMALE          -0.006      -0.005      -0.005      -0.002       0.000       0.001       0.002
+    OTHERG           0.000       0.000       0.000       0.001       0.002       0.002       0.002
+    WHITE           -0.068      -0.061      -0.058      -0.039      -0.020      -0.016      -0.009
+    POC              0.019       0.035       0.043       0.084       0.126       0.134       0.149
+    LGBQ            -0.001       0.000       0.001       0.006       0.011       0.012       0.013
+    FGXTX            0.011       0.013       0.014       0.020       0.026       0.027       0.030
+    OGXTX            0.000       0.001       0.001       0.002       0.003       0.003       0.003
+    WRXTX           -0.048      -0.041      -0.038      -0.020      -0.002       0.002       0.008
+
+ LGBQXTX  WITH
+    TX               0.041       0.044       0.046       0.054       0.062       0.064       0.067
+    FEMALE           0.004       0.007       0.009       0.019       0.029       0.030       0.034
+    OTHERG           0.001       0.002       0.003       0.006       0.010       0.010       0.011
+    WHITE           -0.010      -0.007      -0.005       0.005       0.014       0.016       0.020
+    POC              0.001       0.002       0.003       0.007       0.012       0.012       0.014
+    LGBQ             0.024       0.040       0.048       0.091       0.134       0.142       0.158
+    FGXTX            0.029       0.033       0.035       0.044       0.054       0.056       0.059
+    OGXTX            0.002       0.003       0.004       0.007       0.011       0.011       0.013
+    WRXTX            0.012       0.015       0.017       0.026       0.035       0.036       0.040
+    POCXTX           0.011       0.012       0.012       0.016       0.019       0.020       0.021
+
+ SCHN     WITH
+    TX              -1.268      -0.692      -0.397       1.141       2.679       2.974       3.550
+    FEMALE          -0.158      -0.124      -0.107      -0.017       0.072       0.090       0.123
+    OTHERG          -0.036      -0.031      -0.027      -0.012       0.004       0.007       0.013
+    WHITE           -1.381      -1.197      -1.102      -0.610      -0.118      -0.024       0.161
+    POC             -0.011       0.016       0.029       0.101       0.173       0.186       0.213
+    LGBQ            -0.144      -0.107      -0.088       0.010       0.109       0.128       0.165
+    FGXTX           -0.553      -0.304      -0.176       0.489       1.155       1.283       1.532
+    OGXTX           -0.037      -0.025      -0.018       0.016       0.049       0.056       0.068
+    WRXTX           -0.761      -0.611      -0.534      -0.134       0.267       0.343       0.493
+    POCXTX          -0.174      -0.069      -0.016       0.264       0.543       0.597       0.702
+    LGBQXTX         -0.377      -0.229      -0.153       0.242       0.637       0.713       0.861
+
+ RURAL    WITH
+    TX              -0.246      -0.214      -0.197      -0.110      -0.023      -0.007       0.026
+    FEMALE          -0.011      -0.009      -0.007      -0.001       0.005       0.006       0.009
+    OTHERG          -0.002      -0.002      -0.002       0.000       0.002       0.002       0.002
+    WHITE           -0.031      -0.017      -0.011       0.025       0.060       0.067       0.080
+    POC             -0.031      -0.027      -0.025      -0.015      -0.005      -0.003       0.000
+    LGBQ            -0.018      -0.014      -0.012      -0.003       0.007       0.009       0.013
+    FGXTX           -0.117      -0.102      -0.094      -0.054      -0.013      -0.005       0.010
+    OGXTX           -0.006      -0.005      -0.005      -0.002       0.000       0.001       0.002
+    WRXTX           -0.099      -0.083      -0.075      -0.033       0.010       0.018       0.034
+    POCXTX          -0.051      -0.044      -0.041      -0.023      -0.006      -0.002       0.004
+    LGBQXTX         -0.054      -0.046      -0.042      -0.022      -0.001       0.003       0.010
+    SCHN            -2.873      -2.453      -2.238      -1.117       0.004       0.218       0.638
+
+ Means
+    TX               0.149       0.240       0.287       0.530       0.774       0.821       0.912
+    FEMALE           0.449       0.454       0.456       0.470       0.484       0.486       0.491
+    OTHERG           0.018       0.019       0.020       0.023       0.027       0.028       0.029
+    WHITE            0.218       0.256       0.276       0.378       0.480       0.499       0.537
+    POC              0.130       0.141       0.146       0.175       0.204       0.209       0.220
+    LGBQ             0.174       0.183       0.187       0.210       0.233       0.238       0.246
+    FGXTX            0.073       0.116       0.137       0.251       0.364       0.386       0.429
+    OGXTX            0.003       0.005       0.007       0.013       0.019       0.020       0.023
+    WRXTX            0.030       0.069       0.090       0.195       0.300       0.321       0.360
+    POCXTX           0.021       0.040       0.050       0.102       0.154       0.164       0.184
+    LGBQXTX          0.029       0.049       0.060       0.115       0.170       0.181       0.201
+    SCHN            -2.485      -1.026      -0.280       3.618       7.516       8.263       9.722
+    RURAL            0.000       0.079       0.120       0.331       0.542       0.582       0.661
+
+ Intercepts
+    HOVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_2           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_3           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_4           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    I                0.714       0.752       0.772       0.875       0.977       0.997       1.035
+    S               -0.035       0.007       0.029       0.143       0.257       0.279       0.322
+
+ Variances
+    TX               0.226       0.231       0.234       0.249       0.264       0.267       0.272
+    FEMALE           0.248       0.248       0.249       0.249       0.250       0.251       0.251
+    OTHERG           0.017       0.019       0.019       0.023       0.026       0.027       0.028
+    WHITE            0.196       0.205       0.210       0.235       0.260       0.265       0.274
+    POC              0.115       0.122       0.126       0.144       0.163       0.167       0.174
+    LGBQ             0.145       0.150       0.153       0.166       0.179       0.182       0.187
+    FGXTX            0.100       0.121       0.132       0.189       0.245       0.256       0.277
+    OGXTX            0.003       0.005       0.007       0.013       0.019       0.020       0.022
+    WRXTX            0.056       0.080       0.093       0.157       0.221       0.234       0.258
+    POCXTX           0.027       0.042       0.050       0.092       0.133       0.141       0.157
+    LGBQXTX          0.035       0.051       0.059       0.102       0.144       0.152       0.168
+    SCHN           -17.157      -3.858       2.944      38.468      73.992      80.795      94.093
+    RURAL            0.109       0.136       0.150       0.221       0.293       0.306       0.333
+
+ Residual Variances
+    HOVS_1           0.145       0.162       0.171       0.219       0.266       0.275       0.292
+    HOVS_2           0.226       0.244       0.253       0.301       0.348       0.358       0.375
+    HOVS_3           0.188       0.207       0.216       0.266       0.315       0.324       0.343
+    HOVS_4           0.189       0.210       0.221       0.278       0.335       0.346       0.368
+    I                0.802       0.815       0.821       0.856       0.890       0.897       0.910
+    S                0.877       0.890       0.897       0.933       0.969       0.976       0.990
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+                0.390         0.409         0.428         0.446         0.530
+
+
+           Model Estimated Means
+              FEMALE        OTHERG        WHITE         POC           LGBQ
+              ________      ________      ________      ________      ________
+                0.470         0.023         0.378         0.175         0.210
+
+
+           Model Estimated Means
+              FGXTX         OGXTX         WRXTX         POCXTX        LGBQXTX
+              ________      ________      ________      ________      ________
+                0.251         0.013         0.195         0.102         0.115
+
+
+           Model Estimated Means
+              SCHN          RURAL
+              ________      ________
+                3.618         0.331
+
+
+           Residuals for Means
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+               -0.004         0.018        -0.017         0.007         0.000
+
+
+           Residuals for Means
+              FEMALE        OTHERG        WHITE         POC           LGBQ
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              FGXTX         OGXTX         WRXTX         POCXTX        LGBQXTX
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              SCHN          RURAL
+              ________      ________
+                0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+               -0.392       999.000        -1.478       999.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              FEMALE        OTHERG        WHITE         POC           LGBQ
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              FGXTX         OGXTX         WRXTX         POCXTX        LGBQXTX
+              ________      ________      ________      ________      ________
+                0.031         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              SCHN          RURAL
+              ________      ________
+                0.000         0.000
+
+
+           Normalized Residuals for Means
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+               -0.161         1.060        -0.754         0.309         0.000
+
+
+           Normalized Residuals for Means
+              FEMALE        OTHERG        WHITE         POC           LGBQ
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              FGXTX         OGXTX         WRXTX         POCXTX        LGBQXTX
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              SCHN          RURAL
+              ________      ________
+                0.000         0.000
+
+
+           Model Estimated Covariances
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+ HOVS_1         0.458
+ HOVS_2         0.223         0.530
+ HOVS_3         0.206         0.236         0.532
+ HOVS_4         0.189         0.243         0.297         0.629
+ TX            -0.016        -0.013        -0.011        -0.008         0.249
+ FEMALE        -0.063        -0.077        -0.091        -0.105         0.002
+ OTHERG         0.004         0.006         0.009         0.011         0.000
+ WHITE          0.004         0.009         0.014         0.020        -0.005
+ POC            0.014         0.015         0.017         0.018         0.009
+ LGBQ           0.041         0.039         0.038         0.036         0.003
+ FGXTX         -0.038        -0.045        -0.051        -0.058         0.118
+ OGXTX          0.001         0.003         0.004         0.005         0.006
+ WRXTX         -0.007        -0.001         0.005         0.011         0.091
+ POCXTX         0.003         0.005         0.006         0.007         0.048
+ LGBQXTX        0.018         0.018         0.017         0.017         0.054
+ SCHN           0.134         0.026        -0.082        -0.190         1.141
+ RURAL          0.012         0.016         0.021         0.025        -0.110
+
+
+           Model Estimated Covariances
+              FEMALE        OTHERG        WHITE         POC           LGBQ
+              ________      ________      ________      ________      ________
+ FEMALE         0.249
+ OTHERG        -0.011         0.023
+ WHITE          0.001         0.003         0.235
+ POC           -0.006         0.001        -0.066         0.144
+ LGBQ           0.029         0.011         0.008         0.012         0.166
+ FGXTX          0.133        -0.006        -0.003         0.002         0.020
+ OGXTX         -0.006         0.012         0.002         0.001         0.006
+ WRXTX          0.000         0.002         0.121        -0.034         0.007
+ POCXTX        -0.002         0.001        -0.039         0.084         0.006
+ LGBQXTX        0.019         0.006         0.005         0.007         0.091
+ SCHN          -0.017        -0.012        -0.610         0.101         0.010
+ RURAL         -0.001         0.000         0.025        -0.015        -0.003
+
+
+           Model Estimated Covariances
+              FGXTX         OGXTX         WRXTX         POCXTX        LGBQXTX
+              ________      ________      ________      ________      ________
+ FGXTX          0.189
+ OGXTX         -0.003         0.013
+ WRXTX          0.043         0.004         0.157
+ POCXTX         0.020         0.002        -0.020         0.092
+ LGBQXTX        0.044         0.007         0.026         0.016         0.102
+ SCHN           0.489         0.016        -0.134         0.264         0.242
+ RURAL         -0.054        -0.002        -0.033        -0.023        -0.022
+
+
+           Model Estimated Covariances
+              SCHN          RURAL
+              ________      ________
+ SCHN          38.468
+ RURAL         -1.117         0.221
+
+
+           Model Estimated Correlations
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+ HOVS_1         1.000
+ HOVS_2         0.452         1.000
+ HOVS_3         0.417         0.445         1.000
+ HOVS_4         0.353         0.421         0.513         1.000
+ TX            -0.047        -0.037        -0.030        -0.021         1.000
+ FEMALE        -0.187        -0.212        -0.251        -0.266         0.007
+ OTHERG         0.042         0.059         0.078         0.090         0.006
+ WHITE          0.011         0.025         0.040         0.051        -0.022
+ POC            0.054         0.056         0.061         0.061         0.049
+ LGBQ           0.148         0.132         0.126         0.111         0.017
+ FGXTX         -0.129        -0.141        -0.162        -0.169         0.545
+ OGXTX          0.019         0.033         0.048         0.058         0.107
+ WRXTX         -0.025        -0.003         0.018         0.036         0.463
+ POCXTX         0.017         0.021         0.026         0.029         0.317
+ LGBQXTX        0.085         0.077         0.075         0.067         0.339
+ SCHN           0.032         0.006        -0.018        -0.039         0.369
+ RURAL          0.037         0.047         0.060         0.067        -0.469
+
+
+           Model Estimated Correlations
+              FEMALE        OTHERG        WHITE         POC           LGBQ
+              ________      ________      ________      ________      ________
+ FEMALE         1.000
+ OTHERG        -0.146         1.000
+ WHITE          0.005         0.042         1.000
+ POC           -0.032         0.016        -0.359         1.000
+ LGBQ           0.142         0.178         0.039         0.077         1.000
+ FGXTX          0.615        -0.090        -0.015         0.011         0.114
+ OGXTX         -0.107         0.738         0.029         0.023         0.133
+ WRXTX         -0.001         0.031         0.632        -0.227         0.044
+ POCXTX        -0.014         0.018        -0.263         0.732         0.049
+ LGBQXTX        0.118         0.127         0.031         0.060         0.699
+ SCHN          -0.006        -0.012        -0.203         0.043         0.004
+ RURAL         -0.004         0.000         0.109        -0.085        -0.013
+
+
+           Model Estimated Correlations
+              FGXTX         OGXTX         WRXTX         POCXTX        LGBQXTX
+              ________      ________      ________      ________      ________
+ FGXTX          1.000
+ OGXTX         -0.066         1.000
+ WRXTX          0.248         0.088         1.000
+ POCXTX         0.154         0.056        -0.166         1.000
+ LGBQXTX        0.319         0.203         0.204         0.163         1.000
+ SCHN           0.182         0.022        -0.054         0.140         0.122
+ RURAL         -0.262        -0.039        -0.174        -0.164        -0.146
+
+
+           Model Estimated Correlations
+              SCHN          RURAL
+              ________      ________
+ SCHN           1.000
+ RURAL         -0.383         1.000
+
+
+           Residuals for Covariances
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+ HOVS_1        -0.001
+ HOVS_2        -0.001         0.003
+ HOVS_3         0.001         0.004        -0.001
+ HOVS_4        -0.006         0.007        -0.003        -0.002
+ TX            -0.003         0.006         0.001        -0.004         0.000
+ FEMALE         0.002        -0.005         0.002         0.001         0.000
+ OTHERG         0.000         0.000         0.002        -0.001         0.000
+ WHITE         -0.001         0.001         0.001        -0.002         0.000
+ POC            0.002        -0.005         0.002         0.001         0.000
+ LGBQ           0.001        -0.002         0.000         0.001         0.000
+ FGXTX          0.001        -0.001         0.000         0.001         0.000
+ OGXTX          0.000         0.000         0.000         0.000         0.000
+ WRXTX         -0.003         0.004         0.003        -0.005         0.000
+ POCXTX         0.001        -0.001        -0.001         0.002         0.000
+ LGBQXTX        0.001         0.000        -0.002         0.002         0.000
+ SCHN           0.003         0.001        -0.004         0.013         0.000
+ RURAL          0.001         0.001        -0.005         0.004         0.000
+
+
+           Residuals for Covariances
+              FEMALE        OTHERG        WHITE         POC           LGBQ
+              ________      ________      ________      ________      ________
+ FEMALE         0.000
+ OTHERG         0.000         0.000
+ WHITE          0.000         0.000         0.000
+ POC            0.000         0.000         0.000         0.000
+ LGBQ           0.000         0.000         0.000         0.000         0.000
+ FGXTX          0.000         0.000         0.000         0.000         0.000
+ OGXTX          0.000         0.000         0.000         0.000         0.000
+ WRXTX          0.000         0.000         0.000         0.000         0.000
+ POCXTX         0.000         0.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Covariances
+              FGXTX         OGXTX         WRXTX         POCXTX        LGBQXTX
+              ________      ________      ________      ________      ________
+ FGXTX          0.000
+ OGXTX          0.000         0.000
+ WRXTX          0.000         0.000         0.000
+ POCXTX         0.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Covariances
+              SCHN          RURAL
+              ________      ________
+ SCHN           0.000
+ RURAL          0.000         0.000
+
+
+           Residuals for Correlations
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+ HOVS_1         0.000
+ HOVS_2        -0.003         0.000
+ HOVS_3         0.003         0.006         0.000
+ HOVS_4        -0.010         0.012        -0.004         0.000
+ TX            -0.009         0.017         0.002        -0.009         0.000
+ FEMALE         0.006        -0.013         0.004         0.002         0.000
+ OTHERG        -0.002        -0.003         0.015        -0.009         0.000
+ WHITE         -0.003         0.004         0.003        -0.005         0.000
+ POC            0.006        -0.017         0.007         0.002         0.000
+ LGBQ           0.002        -0.006         0.000         0.003         0.000
+ FGXTX          0.002        -0.003        -0.001         0.002         0.000
+ OGXTX          0.000         0.001        -0.001         0.001         0.000
+ WRXTX         -0.010         0.013         0.010        -0.015         0.000
+ POCXTX         0.005        -0.007        -0.007         0.008         0.000
+ LGBQXTX        0.002        -0.002        -0.008         0.008         0.000
+ SCHN           0.001         0.000        -0.001         0.003         0.000
+ RURAL          0.003         0.002        -0.013         0.010         0.000
+
+
+           Residuals for Correlations
+              FEMALE        OTHERG        WHITE         POC           LGBQ
+              ________      ________      ________      ________      ________
+ FEMALE         0.000
+ OTHERG         0.000         0.000
+ WHITE          0.000         0.000         0.000
+ POC            0.000         0.000         0.000         0.000
+ LGBQ           0.000         0.000         0.000         0.000         0.000
+ FGXTX          0.000         0.000         0.000         0.000         0.000
+ OGXTX          0.000         0.000         0.000         0.000         0.000
+ WRXTX          0.000         0.000         0.000         0.000         0.000
+ POCXTX         0.000         0.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Correlations
+              FGXTX         OGXTX         WRXTX         POCXTX        LGBQXTX
+              ________      ________      ________      ________      ________
+ FGXTX          0.000
+ OGXTX          0.000         0.000
+ WRXTX          0.000         0.000         0.000
+ POCXTX         0.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Correlations
+              SCHN          RURAL
+              ________      ________
+ SCHN           0.000
+ RURAL          0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+ HOVS_1        -0.077
+ HOVS_2        -0.104         0.310
+ HOVS_3         0.064         0.201       999.000
+ HOVS_4        -0.491         0.376       999.000        -0.162
+ TX            -0.665         4.573         0.112       999.000         0.000
+ FEMALE         5.692        -1.277         0.468       999.000         0.000
+ OTHERG       999.000        -0.428         1.054        -1.740         0.000
+ WHITE         -0.359         0.365         0.711       999.000         0.000
+ POC          999.000        -1.170         0.698         0.339         0.000
+ LGBQ           0.275        -0.580         0.008         0.326         0.000
+ FGXTX        999.000        -0.194        -0.104       999.000         0.000
+ OGXTX          0.000         0.216       999.000         0.050         0.000
+ WRXTX         -0.798       999.000         0.856       999.000         0.000
+ POCXTX         0.427        -0.760        -0.513         1.558         0.000
+ LGBQXTX        0.331       999.000        -0.688         0.542         0.000
+ SCHN           0.122         0.017        -0.118       999.000         0.000
+ RURAL          0.201         0.346        -1.083       999.000         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              FEMALE        OTHERG        WHITE         POC           LGBQ
+              ________      ________      ________      ________      ________
+ FEMALE         0.000
+ OTHERG         0.000         0.000
+ WHITE          0.000         0.000         0.000
+ POC            0.000         0.000         0.000         0.000
+ LGBQ           0.000         0.000         0.000         0.000         0.000
+ FGXTX          0.000         0.000         0.000         0.000         0.000
+ OGXTX          0.000         0.000         0.000         0.000         0.000
+ WRXTX          0.000         0.000         0.000         0.000         0.000
+ POCXTX         0.000         0.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         0.000         0.000         0.000
+ SCHN         999.000       999.000         0.000         0.000         0.023
+ RURAL          0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              FGXTX         OGXTX         WRXTX         POCXTX        LGBQXTX
+              ________      ________      ________      ________      ________
+ FGXTX          0.000
+ OGXTX          0.000         0.000
+ WRXTX          0.000         0.000         0.000
+ POCXTX         0.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         0.000         0.000         0.000
+ SCHN           0.006         0.000         0.000         0.000         0.072
+ RURAL          0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              SCHN          RURAL
+              ________      ________
+ SCHN           0.000
+ RURAL          0.000         0.000
+
+
+           Normalized Residuals for Covariances
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+ HOVS_1        -0.018
+ HOVS_2        -0.050         0.083
+ HOVS_3         0.052         0.162        -0.017
+ HOVS_4        -0.325         0.301        -0.112        -0.042
+ TX            -0.284         0.791         0.061        -0.348         0.000
+ FEMALE         0.262        -0.590         0.176         0.098         0.000
+ OTHERG        -0.117        -0.133         0.541        -0.339         0.000
+ WHITE         -0.127         0.180         0.145        -0.264         0.000
+ POC            0.611        -0.962         0.391         0.120         0.000
+ LGBQ           0.127        -0.428         0.006         0.145         0.000
+ FGXTX          0.079        -0.095        -0.020         0.047         0.000
+ OGXTX          0.000         0.086        -0.029         0.021         0.000
+ WRXTX         -0.299         0.538         0.349        -0.554         0.000
+ POCXTX         0.243        -0.398        -0.314         0.412         0.000
+ LGBQXTX        0.065        -0.046        -0.280         0.279         0.000
+ SCHN           0.036         0.007        -0.048         0.121         0.000
+ RURAL          0.087         0.116        -0.497         0.383         0.000
+
+
+           Normalized Residuals for Covariances
+              FEMALE        OTHERG        WHITE         POC           LGBQ
+              ________      ________      ________      ________      ________
+ FEMALE         0.000
+ OTHERG         0.000         0.000
+ WHITE          0.000         0.000         0.000
+ POC            0.000         0.000         0.000         0.000
+ LGBQ           0.000         0.000         0.000         0.000         0.000
+ FGXTX          0.000         0.000         0.000         0.000         0.000
+ OGXTX          0.000         0.000         0.000         0.000         0.000
+ WRXTX          0.000         0.000         0.000         0.000         0.000
+ POCXTX         0.000         0.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         0.000         0.000         0.000
+ SCHN           0.002         0.005         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Covariances
+              FGXTX         OGXTX         WRXTX         POCXTX        LGBQXTX
+              ________      ________      ________      ________      ________
+ FGXTX          0.000
+ OGXTX          0.000         0.000
+ WRXTX          0.000         0.000         0.000
+ POCXTX         0.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Covariances
+              SCHN          RURAL
+              ________      ________
+ SCHN           0.000
+ RURAL          0.000         0.000
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           NU
+              FEMALE        OTHERG        WHITE         POC           LGBQ
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           NU
+              FGXTX         OGXTX         WRXTX         POCXTX        LGBQXTX
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           NU
+              SCHN          RURAL
+              ________      ________
+                  0             0
+
+
+           LAMBDA
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ HOVS_1             0             0             0             0             0
+ HOVS_2             0             0             0             0             0
+ HOVS_3             0             0             0             0             0
+ HOVS_4             0             0             0             0             0
+ TX                 0             0             0             0             0
+ FEMALE             0             0             0             0             0
+ OTHERG             0             0             0             0             0
+ WHITE              0             0             0             0             0
+ POC                0             0             0             0             0
+ LGBQ               0             0             0             0             0
+ FGXTX              0             0             0             0             0
+ OGXTX              0             0             0             0             0
+ WRXTX              0             0             0             0             0
+ POCXTX             0             0             0             0             0
+ LGBQXTX            0             0             0             0             0
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+
+
+           LAMBDA
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+ HOVS_1             0             0             0             0             0
+ HOVS_2             0             0             0             0             0
+ HOVS_3             0             0             0             0             0
+ HOVS_4             0             0             0             0             0
+ TX                 0             0             0             0             0
+ FEMALE             0             0             0             0             0
+ OTHERG             0             0             0             0             0
+ WHITE              0             0             0             0             0
+ POC                0             0             0             0             0
+ LGBQ               0             0             0             0             0
+ FGXTX              0             0             0             0             0
+ OGXTX              0             0             0             0             0
+ WRXTX              0             0             0             0             0
+ POCXTX             0             0             0             0             0
+ LGBQXTX            0             0             0             0             0
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+
+
+           LAMBDA
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+ HOVS_1             0             0             0             0             0
+ HOVS_2             0             0             0             0             0
+ HOVS_3             0             0             0             0             0
+ HOVS_4             0             0             0             0             0
+ TX                 0             0             0             0             0
+ FEMALE             0             0             0             0             0
+ OTHERG             0             0             0             0             0
+ WHITE              0             0             0             0             0
+ POC                0             0             0             0             0
+ LGBQ               0             0             0             0             0
+ FGXTX              0             0             0             0             0
+ OGXTX              0             0             0             0             0
+ WRXTX              0             0             0             0             0
+ POCXTX             0             0             0             0             0
+ LGBQXTX            0             0             0             0             0
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+
+
+           THETA
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+ HOVS_1             1
+ HOVS_2             0             2
+ HOVS_3             0             0             3
+ HOVS_4             0             0             0             4
+ TX                 0             0             0             0             0
+ FEMALE             0             0             0             0             0
+ OTHERG             0             0             0             0             0
+ WHITE              0             0             0             0             0
+ POC                0             0             0             0             0
+ LGBQ               0             0             0             0             0
+ FGXTX              0             0             0             0             0
+ OGXTX              0             0             0             0             0
+ WRXTX              0             0             0             0             0
+ POCXTX             0             0             0             0             0
+ LGBQXTX            0             0             0             0             0
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+
+
+           THETA
+              FEMALE        OTHERG        WHITE         POC           LGBQ
+              ________      ________      ________      ________      ________
+ FEMALE             0
+ OTHERG             0             0
+ WHITE              0             0             0
+ POC                0             0             0             0
+ LGBQ               0             0             0             0             0
+ FGXTX              0             0             0             0             0
+ OGXTX              0             0             0             0             0
+ WRXTX              0             0             0             0             0
+ POCXTX             0             0             0             0             0
+ LGBQXTX            0             0             0             0             0
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+
+
+           THETA
+              FGXTX         OGXTX         WRXTX         POCXTX        LGBQXTX
+              ________      ________      ________      ________      ________
+ FGXTX              0
+ OGXTX              0             0
+ WRXTX              0             0             0
+ POCXTX             0             0             0             0
+ LGBQXTX            0             0             0             0             0
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+
+
+           THETA
+              SCHN          RURAL
+              ________      ________
+ SCHN               0
+ RURAL              0             0
+
+
+           ALPHA
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+                  5             6             7             8             9
+
+
+           ALPHA
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+                 10            11            12            13            14
+
+
+           ALPHA
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+                 15            16            17            18            19
+
+
+           BETA
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I                  0             0            20            21            22
+ S                  0             0            33            34            35
+ TX                 0             0             0             0             0
+ FEMALE             0             0             0             0             0
+ OTHERG             0             0             0             0             0
+ WHITE              0             0             0             0             0
+ POC                0             0             0             0             0
+ LGBQ               0             0             0             0             0
+ FGXTX              0             0             0             0             0
+ OGXTX              0             0             0             0             0
+ WRXTX              0             0             0             0             0
+ POCXTX             0             0             0             0             0
+ LGBQXTX            0             0             0             0             0
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+
+
+           BETA
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+ I                 23            24            25            26            27
+ S                 36            37            38            39            40
+ TX                 0             0             0             0             0
+ FEMALE             0             0             0             0             0
+ OTHERG             0             0             0             0             0
+ WHITE              0             0             0             0             0
+ POC                0             0             0             0             0
+ LGBQ               0             0             0             0             0
+ FGXTX              0             0             0             0             0
+ OGXTX              0             0             0             0             0
+ WRXTX              0             0             0             0             0
+ POCXTX             0             0             0             0             0
+ LGBQXTX            0             0             0             0             0
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+
+
+           BETA
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+ I                 28            29            30            31            32
+ S                 41            42            43            44            45
+ TX                 0             0             0             0             0
+ FEMALE             0             0             0             0             0
+ OTHERG             0             0             0             0             0
+ WHITE              0             0             0             0             0
+ POC                0             0             0             0             0
+ LGBQ               0             0             0             0             0
+ FGXTX              0             0             0             0             0
+ OGXTX              0             0             0             0             0
+ WRXTX              0             0             0             0             0
+ POCXTX             0             0             0             0             0
+ LGBQXTX            0             0             0             0             0
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+
+
+           PSI
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I                 46
+ S                 47            48
+ TX                 0             0            49
+ FEMALE             0             0            50            51
+ OTHERG             0             0            52            53            54
+ WHITE              0             0            55            56            57
+ POC                0             0            59            60            61
+ LGBQ               0             0            64            65            66
+ FGXTX              0             0            70            71            72
+ OGXTX              0             0            77            78            79
+ WRXTX              0             0            85            86            87
+ POCXTX             0             0            94            95            96
+ LGBQXTX            0             0           104           105           106
+ SCHN               0             0           115           116           117
+ RURAL              0             0           127           128           129
+
+
+           PSI
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+ WHITE             58
+ POC               62            63
+ LGBQ              67            68            69
+ FGXTX             73            74            75            76
+ OGXTX             80            81            82            83            84
+ WRXTX             88            89            90            91            92
+ POCXTX            97            98            99           100           101
+ LGBQXTX          107           108           109           110           111
+ SCHN             118           119           120           121           122
+ RURAL            130           131           132           133           134
+
+
+           PSI
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+ WRXTX             93
+ POCXTX           102           103
+ LGBQXTX          112           113           114
+ SCHN             123           124           125           126
+ RURAL            135           136           137           138           139
+
+
+     STARTING VALUES
+
+
+           NU
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              FEMALE        OTHERG        WHITE         POC           LGBQ
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              FGXTX         OGXTX         WRXTX         POCXTX        LGBQXTX
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              SCHN          RURAL
+              ________      ________
+                0.000         0.000
+
+
+           LAMBDA
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ HOVS_1         1.000         0.000         0.000         0.000         0.000
+ HOVS_2         1.000         1.000         0.000         0.000         0.000
+ HOVS_3         1.000         2.000         0.000         0.000         0.000
+ HOVS_4         1.000         3.000         0.000         0.000         0.000
+ TX             0.000         0.000         1.000         0.000         0.000
+ FEMALE         0.000         0.000         0.000         1.000         0.000
+ OTHERG         0.000         0.000         0.000         0.000         1.000
+ WHITE          0.000         0.000         0.000         0.000         0.000
+ POC            0.000         0.000         0.000         0.000         0.000
+ LGBQ           0.000         0.000         0.000         0.000         0.000
+ FGXTX          0.000         0.000         0.000         0.000         0.000
+ OGXTX          0.000         0.000         0.000         0.000         0.000
+ WRXTX          0.000         0.000         0.000         0.000         0.000
+ POCXTX         0.000         0.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+ HOVS_1         0.000         0.000         0.000         0.000         0.000
+ HOVS_2         0.000         0.000         0.000         0.000         0.000
+ HOVS_3         0.000         0.000         0.000         0.000         0.000
+ HOVS_4         0.000         0.000         0.000         0.000         0.000
+ TX             0.000         0.000         0.000         0.000         0.000
+ FEMALE         0.000         0.000         0.000         0.000         0.000
+ OTHERG         0.000         0.000         0.000         0.000         0.000
+ WHITE          1.000         0.000         0.000         0.000         0.000
+ POC            0.000         1.000         0.000         0.000         0.000
+ LGBQ           0.000         0.000         1.000         0.000         0.000
+ FGXTX          0.000         0.000         0.000         1.000         0.000
+ OGXTX          0.000         0.000         0.000         0.000         1.000
+ WRXTX          0.000         0.000         0.000         0.000         0.000
+ POCXTX         0.000         0.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+ HOVS_1         0.000         0.000         0.000         0.000         0.000
+ HOVS_2         0.000         0.000         0.000         0.000         0.000
+ HOVS_3         0.000         0.000         0.000         0.000         0.000
+ HOVS_4         0.000         0.000         0.000         0.000         0.000
+ TX             0.000         0.000         0.000         0.000         0.000
+ FEMALE         0.000         0.000         0.000         0.000         0.000
+ OTHERG         0.000         0.000         0.000         0.000         0.000
+ WHITE          0.000         0.000         0.000         0.000         0.000
+ POC            0.000         0.000         0.000         0.000         0.000
+ LGBQ           0.000         0.000         0.000         0.000         0.000
+ FGXTX          0.000         0.000         0.000         0.000         0.000
+ OGXTX          0.000         0.000         0.000         0.000         0.000
+ WRXTX          1.000         0.000         0.000         0.000         0.000
+ POCXTX         0.000         1.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         1.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         1.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         1.000
+
+
+           THETA
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+ HOVS_1         0.228
+ HOVS_2         0.000         0.268
+ HOVS_3         0.000         0.000         0.261
+ HOVS_4         0.000         0.000         0.000         0.308
+ TX             0.000         0.000         0.000         0.000         0.000
+ FEMALE         0.000         0.000         0.000         0.000         0.000
+ OTHERG         0.000         0.000         0.000         0.000         0.000
+ WHITE          0.000         0.000         0.000         0.000         0.000
+ POC            0.000         0.000         0.000         0.000         0.000
+ LGBQ           0.000         0.000         0.000         0.000         0.000
+ FGXTX          0.000         0.000         0.000         0.000         0.000
+ OGXTX          0.000         0.000         0.000         0.000         0.000
+ WRXTX          0.000         0.000         0.000         0.000         0.000
+ POCXTX         0.000         0.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              FEMALE        OTHERG        WHITE         POC           LGBQ
+              ________      ________      ________      ________      ________
+ FEMALE         0.000
+ OTHERG         0.000         0.000
+ WHITE          0.000         0.000         0.000
+ POC            0.000         0.000         0.000         0.000
+ LGBQ           0.000         0.000         0.000         0.000         0.000
+ FGXTX          0.000         0.000         0.000         0.000         0.000
+ OGXTX          0.000         0.000         0.000         0.000         0.000
+ WRXTX          0.000         0.000         0.000         0.000         0.000
+ POCXTX         0.000         0.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              FGXTX         OGXTX         WRXTX         POCXTX        LGBQXTX
+              ________      ________      ________      ________      ________
+ FGXTX          0.000
+ OGXTX          0.000         0.000
+ WRXTX          0.000         0.000         0.000
+ POCXTX         0.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              SCHN          RURAL
+              ________      ________
+ SCHN           0.000
+ RURAL          0.000         0.000
+
+
+           ALPHA
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+                0.386         0.016         0.000         0.000         0.000
+
+
+           ALPHA
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           ALPHA
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I              0.000         0.000         0.000         0.000         0.000
+ S              0.000         0.000         0.000         0.000         0.000
+ TX             0.000         0.000         0.000         0.000         0.000
+ FEMALE         0.000         0.000         0.000         0.000         0.000
+ OTHERG         0.000         0.000         0.000         0.000         0.000
+ WHITE          0.000         0.000         0.000         0.000         0.000
+ POC            0.000         0.000         0.000         0.000         0.000
+ LGBQ           0.000         0.000         0.000         0.000         0.000
+ FGXTX          0.000         0.000         0.000         0.000         0.000
+ OGXTX          0.000         0.000         0.000         0.000         0.000
+ WRXTX          0.000         0.000         0.000         0.000         0.000
+ POCXTX         0.000         0.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+ I              0.000         0.000         0.000         0.000         0.000
+ S              0.000         0.000         0.000         0.000         0.000
+ TX             0.000         0.000         0.000         0.000         0.000
+ FEMALE         0.000         0.000         0.000         0.000         0.000
+ OTHERG         0.000         0.000         0.000         0.000         0.000
+ WHITE          0.000         0.000         0.000         0.000         0.000
+ POC            0.000         0.000         0.000         0.000         0.000
+ LGBQ           0.000         0.000         0.000         0.000         0.000
+ FGXTX          0.000         0.000         0.000         0.000         0.000
+ OGXTX          0.000         0.000         0.000         0.000         0.000
+ WRXTX          0.000         0.000         0.000         0.000         0.000
+ POCXTX         0.000         0.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+ I              0.000         0.000         0.000         0.000         0.000
+ S              0.000         0.000         0.000         0.000         0.000
+ TX             0.000         0.000         0.000         0.000         0.000
+ FEMALE         0.000         0.000         0.000         0.000         0.000
+ OTHERG         0.000         0.000         0.000         0.000         0.000
+ WHITE          0.000         0.000         0.000         0.000         0.000
+ POC            0.000         0.000         0.000         0.000         0.000
+ LGBQ           0.000         0.000         0.000         0.000         0.000
+ FGXTX          0.000         0.000         0.000         0.000         0.000
+ OGXTX          0.000         0.000         0.000         0.000         0.000
+ WRXTX          0.000         0.000         0.000         0.000         0.000
+ POCXTX         0.000         0.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I              0.471
+ S              0.000         0.232
+ TX             0.000         0.000         0.125
+ FEMALE         0.000         0.000         0.000         0.125
+ OTHERG         0.000         0.000         0.000         0.000         0.011
+ WHITE          0.000         0.000         0.000         0.000         0.000
+ POC            0.000         0.000         0.000         0.000         0.000
+ LGBQ           0.000         0.000         0.000         0.000         0.000
+ FGXTX          0.000         0.000         0.000         0.000         0.000
+ OGXTX          0.000         0.000         0.000         0.000         0.000
+ WRXTX          0.000         0.000         0.000         0.000         0.000
+ POCXTX         0.000         0.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+ WHITE          0.118
+ POC            0.000         0.072
+ LGBQ           0.000         0.000         0.083
+ FGXTX          0.000         0.000         0.000         0.094
+ OGXTX          0.000         0.000         0.000         0.000         0.006
+ WRXTX          0.000         0.000         0.000         0.000         0.000
+ POCXTX         0.000         0.000         0.000         0.000         0.000
+ LGBQXTX        0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+ WRXTX          0.079
+ POCXTX         0.000         0.046
+ LGBQXTX        0.000         0.000         0.051
+ SCHN           0.000         0.000         0.000        19.234
+ RURAL          0.000         0.000         0.000         0.000         0.111
+
+
+TECHNICAL 4 OUTPUT
+
+
+     ESTIMATES DERIVED FROM THE MODEL
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+                0.390         0.019         0.530         0.470         0.023
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+                0.378         0.175         0.210         0.251         0.013
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+                0.195         0.102         0.115         3.618         0.331
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+                0.021         0.010         0.148         0.008         0.002
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+                0.062         0.018         0.014         0.069         0.004
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+                0.064         0.032         0.034         2.370         0.128
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+               18.869         1.856         3.581        56.998        10.438
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+                6.086         9.984        15.048         3.635         3.410
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+                3.043         3.225         3.427         1.527         2.579
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+                0.000         0.063         0.000         0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.001
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+                0.002         0.001         0.001         0.127         0.010
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I              0.240
+ S             -0.017         0.023
+ TX            -0.016         0.003         0.249
+ FEMALE        -0.063        -0.014         0.002         0.249
+ OTHERG         0.004         0.002         0.000        -0.011         0.023
+ WHITE          0.004         0.005        -0.005         0.001         0.003
+ POC            0.014         0.001         0.009        -0.006         0.001
+ LGBQ           0.041        -0.002         0.003         0.029         0.011
+ FGXTX         -0.038        -0.007         0.118         0.133        -0.006
+ OGXTX          0.001         0.001         0.006        -0.006         0.012
+ WRXTX         -0.007         0.006         0.091         0.000         0.002
+ POCXTX         0.003         0.001         0.048        -0.002         0.001
+ LGBQXTX        0.018         0.000         0.054         0.019         0.006
+ SCHN           0.134        -0.108         1.141        -0.017        -0.012
+ RURAL          0.012         0.004        -0.110        -0.001         0.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+ WHITE          0.235
+ POC           -0.066         0.144
+ LGBQ           0.008         0.012         0.166
+ FGXTX         -0.003         0.002         0.020         0.189
+ OGXTX          0.002         0.001         0.006        -0.003         0.013
+ WRXTX          0.121        -0.034         0.007         0.043         0.004
+ POCXTX        -0.039         0.084         0.006         0.020         0.002
+ LGBQXTX        0.005         0.007         0.091         0.044         0.007
+ SCHN          -0.610         0.101         0.010         0.489         0.016
+ RURAL          0.025        -0.015        -0.003        -0.054        -0.002
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+ WRXTX          0.157
+ POCXTX        -0.020         0.092
+ LGBQXTX        0.026         0.016         0.102
+ SCHN          -0.134         0.264         0.242        38.468
+ RURAL         -0.033        -0.023        -0.022        -1.117         0.221
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I              0.024
+ S              0.009         0.007
+ TX             0.010         0.005         0.009
+ FEMALE         0.008         0.003         0.004         0.001
+ OTHERG         0.002         0.001         0.001         0.001         0.002
+ WHITE          0.007         0.003         0.030         0.004         0.001
+ POC            0.003         0.002         0.008         0.002         0.001
+ LGBQ           0.004         0.003         0.007         0.005         0.001
+ FGXTX          0.008         0.004         0.006         0.037         0.002
+ OGXTX          0.001         0.001         0.001         0.002         0.004
+ WRXTX          0.008         0.003         0.026         0.004         0.001
+ POCXTX         0.003         0.001         0.005         0.002         0.001
+ LGBQXTX        0.008         0.002         0.005         0.006         0.002
+ SCHN           0.088         0.047         0.935         0.055         0.010
+ RURAL          0.009         0.004         0.053         0.004         0.001
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+ WHITE          0.015
+ POC            0.010         0.011
+ LGBQ           0.005         0.002         0.008
+ FGXTX          0.016         0.005         0.007         0.034
+ OGXTX          0.001         0.001         0.002         0.002         0.004
+ WRXTX          0.035         0.012         0.004         0.015         0.001
+ POCXTX         0.012         0.025         0.003         0.004         0.001
+ LGBQXTX        0.006         0.003         0.026         0.006         0.002
+ SCHN           0.299         0.044         0.060         0.405         0.020
+ RURAL          0.022         0.006         0.006         0.025         0.002
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+ WRXTX          0.039
+ POCXTX         0.011         0.025
+ LGBQXTX        0.005         0.002         0.026
+ SCHN           0.243         0.170         0.240        21.595
+ RURAL          0.026         0.011         0.012         0.681         0.043
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I              9.931
+ S             -1.968         3.248
+ TX            -1.671         0.518        27.645
+ FEMALE        -8.429        -5.049         0.396       453.679
+ OTHERG         2.437         2.493         0.380       -10.405        10.777
+ WHITE          0.485         2.030        -0.183         0.289         3.324
+ POC            5.025         0.834         1.106        -2.536         1.158
+ LGBQ           9.635        -0.597         0.498         6.141         8.579
+ FGXTX         -4.782        -1.936        20.021         3.618        -3.419
+ OGXTX          1.189         2.037         6.500        -3.454         3.426
+ WRXTX         -0.847         1.823         3.499        -0.026         1.642
+ POCXTX         1.116         0.912         9.277        -1.338         1.629
+ LGBQXTX        2.339        -0.290        10.849         3.220         2.910
+ SCHN           1.532        -2.298         1.220        -0.319        -1.201
+ RURAL          1.324         1.054        -2.086        -0.268        -0.002
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+ WHITE         15.473
+ POC           -6.387        12.683
+ LGBQ           1.690         5.573        20.479
+ FGXTX         -0.198         0.394         2.756         5.483
+ OGXTX          1.374         1.641         2.895        -1.816         3.460
+ WRXTX          3.432        -2.893         1.834         2.822         2.890
+ POCXTX        -3.351         3.337         2.108         5.641         3.448
+ LGBQXTX        0.809         2.833         3.496         7.534         3.505
+ SCHN          -2.039         2.320         0.172         1.209         0.763
+ RURAL          1.153        -2.518        -0.427        -2.159        -1.370
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+ WRXTX          4.017
+ POCXTX        -1.817         3.642
+ LGBQXTX        4.791         7.772         3.944
+ SCHN          -0.549         1.551         1.008         1.781
+ RURAL         -1.268        -2.179        -1.758        -1.640         5.095
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I              0.000
+ S              0.049         0.001
+ TX             0.095         0.605         0.000
+ FEMALE         0.000         0.000         0.692         0.000
+ OTHERG         0.015         0.013         0.704         0.000         0.000
+ WHITE          0.627         0.042         0.855         0.772         0.001
+ POC            0.000         0.404         0.269         0.011         0.247
+ LGBQ           0.000         0.551         0.618         0.000         0.000
+ FGXTX          0.000         0.053         0.000         0.000         0.001
+ OGXTX          0.234         0.042         0.000         0.001         0.001
+ WRXTX          0.397         0.068         0.000         0.979         0.100
+ POCXTX         0.264         0.362         0.000         0.181         0.103
+ LGBQXTX        0.019         0.772         0.000         0.001         0.004
+ SCHN           0.125         0.022         0.222         0.750         0.230
+ RURAL          0.186         0.292         0.037         0.789         0.999
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+ WHITE          0.000
+ POC            0.000         0.000
+ LGBQ           0.091         0.000         0.000
+ FGXTX          0.843         0.694         0.006         0.000
+ OGXTX          0.169         0.101         0.004         0.069         0.001
+ WRXTX          0.001         0.004         0.067         0.005         0.004
+ POCXTX         0.001         0.001         0.035         0.000         0.001
+ LGBQXTX        0.419         0.005         0.000         0.000         0.000
+ SCHN           0.041         0.020         0.863         0.226         0.446
+ RURAL          0.249         0.012         0.669         0.031         0.171
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+ WRXTX          0.000
+ POCXTX         0.069         0.000
+ LGBQXTX        0.000         0.000         0.000
+ SCHN           0.583         0.121         0.313         0.075
+ RURAL          0.205         0.029         0.079         0.101         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I              1.000
+ S             -0.223         1.000
+ TX            -0.065         0.033         1.000
+ FEMALE        -0.259        -0.183         0.007         1.000
+ OTHERG         0.058         0.094         0.006        -0.146         1.000
+ WHITE          0.015         0.072        -0.022         0.005         0.042
+ POC            0.075         0.026         0.049        -0.032         0.016
+ LGBQ           0.205        -0.026         0.017         0.142         0.178
+ FGXTX         -0.178        -0.102         0.545         0.615        -0.090
+ OGXTX          0.026         0.072         0.107        -0.107         0.738
+ WRXTX         -0.035         0.099         0.463        -0.001         0.031
+ POCXTX         0.024         0.025         0.317        -0.014         0.018
+ LGBQXTX        0.117        -0.009         0.339         0.118         0.127
+ SCHN           0.044        -0.114         0.369        -0.006        -0.012
+ RURAL          0.051         0.062        -0.469        -0.004         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+ WHITE          1.000
+ POC           -0.359         1.000
+ LGBQ           0.039         0.077         1.000
+ FGXTX         -0.015         0.011         0.114         1.000
+ OGXTX          0.029         0.023         0.133        -0.066         1.000
+ WRXTX          0.632        -0.227         0.044         0.248         0.088
+ POCXTX        -0.263         0.732         0.049         0.154         0.056
+ LGBQXTX        0.031         0.060         0.699         0.319         0.203
+ SCHN          -0.203         0.043         0.004         0.182         0.022
+ RURAL          0.109        -0.085        -0.013        -0.262        -0.039
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+ WRXTX          1.000
+ POCXTX        -0.166         1.000
+ LGBQXTX        0.204         0.163         1.000
+ SCHN          -0.054         0.140         0.122         1.000
+ RURAL         -0.174        -0.164        -0.146        -0.383         1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I              0.000
+ S              0.082         0.000
+ TX             0.039         0.063         0.000
+ FEMALE         0.033         0.031         0.017         0.000
+ OTHERG         0.023         0.039         0.015         0.007         0.000
+ WHITE          0.031         0.033         0.123         0.017         0.012
+ POC            0.014         0.031         0.045         0.013         0.014
+ LGBQ           0.016         0.044         0.034         0.021         0.017
+ FGXTX          0.032         0.048         0.063         0.114         0.017
+ OGXTX          0.021         0.033         0.020         0.016         0.099
+ WRXTX          0.039         0.045         0.110         0.020         0.017
+ POCXTX         0.019         0.028         0.047         0.011         0.010
+ LGBQXTX        0.038         0.032         0.050         0.023         0.029
+ SCHN           0.023         0.032         0.212         0.017         0.009
+ RURAL          0.037         0.062         0.209         0.016         0.014
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+ WHITE          0.000
+ POC            0.044         0.000
+ LGBQ           0.024         0.014         0.000
+ FGXTX          0.076         0.028         0.034         0.000
+ OGXTX          0.019         0.013         0.029         0.021         0.000
+ WRXTX          0.113         0.049         0.024         0.094         0.024
+ POCXTX         0.047         0.111         0.021         0.047         0.018
+ LGBQXTX        0.037         0.017         0.109         0.040         0.019
+ SCHN           0.060         0.016         0.023         0.104         0.025
+ RURAL          0.096         0.030         0.031         0.106         0.026
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+ WRXTX          0.000
+ POCXTX         0.054         0.000
+ LGBQXTX        0.048         0.029         0.000
+ SCHN           0.101         0.052         0.086         0.000
+ RURAL          0.122         0.064         0.075         0.148         0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I            999.000
+ S             -2.734       999.000
+ TX            -1.683         0.532       999.000
+ FEMALE        -7.794        -5.976         0.396       999.000
+ OTHERG         2.561         2.428         0.382       -19.620       999.000
+ WHITE          0.480         2.195        -0.182         0.291         3.553
+ POC            5.267         0.821         1.095        -2.350         1.154
+ LGBQ          12.678        -0.592         0.498         6.763        10.262
+ FGXTX         -5.634        -2.128         8.627         5.384        -5.255
+ OGXTX          1.262         2.151         5.503        -6.863         7.446
+ WRXTX         -0.886         2.215         4.209        -0.026         1.847
+ POCXTX         1.241         0.865         6.799        -1.349         1.739
+ LGBQXTX        3.038        -0.293         6.788         5.192         4.437
+ SCHN           1.932        -3.594         1.737        -0.340        -1.335
+ RURAL          1.386         1.003        -2.248        -0.267        -0.002
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+ WHITE        999.000
+ POC           -8.158       999.000
+ LGBQ           1.628         5.521       999.000
+ FGXTX         -0.198         0.393         3.346       999.000
+ OGXTX          1.550         1.706         4.550        -3.093       999.000
+ WRXTX          5.593        -4.667         1.880         2.638         3.615
+ POCXTX        -5.589         6.609         2.305         3.279         3.105
+ LGBQXTX        0.817         3.493         6.418         7.922        10.794
+ SCHN          -3.401         2.642         0.178         1.749         0.881
+ RURAL          1.136        -2.866        -0.431        -2.468        -1.470
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+ WRXTX        999.000
+ POCXTX        -3.079       999.000
+ LGBQXTX        4.219         5.605       999.000
+ SCHN          -0.538         2.677         1.415       999.000
+ RURAL         -1.430        -2.585        -1.931        -2.585       999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             TX            FEMALE        OTHERG
+              ________      ________      ________      ________      ________
+ I              0.000
+ S              0.006         0.000
+ TX             0.092         0.594         0.000
+ FEMALE         0.000         0.000         0.692         0.000
+ OTHERG         0.010         0.015         0.702         0.000         0.000
+ WHITE          0.631         0.028         0.856         0.771         0.000
+ POC            0.000         0.412         0.274         0.019         0.248
+ LGBQ           0.000         0.554         0.619         0.000         0.000
+ FGXTX          0.000         0.033         0.000         0.000         0.000
+ OGXTX          0.207         0.031         0.000         0.000         0.000
+ WRXTX          0.376         0.027         0.000         0.979         0.065
+ POCXTX         0.215         0.387         0.000         0.177         0.082
+ LGBQXTX        0.002         0.769         0.000         0.000         0.000
+ SCHN           0.053         0.000         0.082         0.734         0.182
+ RURAL          0.166         0.316         0.025         0.789         0.999
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              WHITE         POC           LGBQ          FGXTX         OGXTX
+              ________      ________      ________      ________      ________
+ WHITE          0.000
+ POC            0.000         0.000
+ LGBQ           0.103         0.000         0.000
+ FGXTX          0.843         0.695         0.001         0.000
+ OGXTX          0.121         0.088         0.000         0.002         0.000
+ WRXTX          0.000         0.000         0.060         0.008         0.000
+ POCXTX         0.000         0.000         0.021         0.001         0.002
+ LGBQXTX        0.414         0.000         0.000         0.000         0.000
+ SCHN           0.001         0.008         0.858         0.080         0.378
+ RURAL          0.256         0.004         0.666         0.014         0.142
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              WRXTX         POCXTX        LGBQXTX       SCHN          RURAL
+              ________      ________      ________      ________      ________
+ WRXTX          0.000
+ POCXTX         0.002         0.000
+ LGBQXTX        0.000         0.000         0.000
+ SCHN           0.591         0.007         0.157         0.000
+ RURAL          0.153         0.010         0.053         0.010         0.000
+
+
+     Beginning Time:  14:30:18
+        Ending Time:  14:30:20
+       Elapsed Time:  00:00:02
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen

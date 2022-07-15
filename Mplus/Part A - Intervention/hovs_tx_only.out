@@ -1,0 +1,909 @@
+Mplus VERSION 8.4
+MUTHEN & MUTHEN
+07/05/2022   2:28 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  HNC Victimization - Tx only;
+  DATA:
+  FILE = "Mplus/Automatr/TX ONLY/HOVS_TX_ONLY_0169b9d38751cf7cc9a5eecf397934b4.dat";
+
+  VARIABLE:
+  NAMES = ID School Tx HOVS_1 HOVS_2 HOVS_3 HOVS_4;
+   MISSING=.;
+   IDVARIABLE = ID;
+                            CLUSTER = School;
+  ANALYSIS:
+  TYPE = COMPLEX;
+  MODEL:
+  i s | HOVS_1@0 HOVS_2@1 HOVS_3@2 HOVS_4@3;
+  i s ON Tx;
+  [Tx];
+  OUTPUT:
+  STANDARDIZED CINTERVAL RESIDUAL TECH1 TECH4;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+
+HNC Victimization - Tx only;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        6461
+
+Number of dependent variables                                    4
+Number of independent variables                                  1
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Continuous
+   HOVS_1      HOVS_2      HOVS_3      HOVS_4
+
+Observed independent variables
+   TX
+
+Continuous latent variables
+   I           S
+
+Variables with special functions
+
+  Cluster variable      SCHOOL
+  ID variable           ID
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  Mplus/Automatr/TX ONLY/HOVS_TX_ONLY_0169b9d38751cf7cc9a5eecf397934b4.dat
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns            16
+     Number of clusters                         20
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+ HOVS_1         0.716
+ HOVS_2         0.528         0.656
+ HOVS_3         0.458         0.459         0.629
+ HOVS_4         0.372         0.376         0.405         0.516
+ TX             0.716         0.656         0.629         0.516         1.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     HOVS_1                0.383       2.932       0.000   50.69%       0.000      0.000      0.000
+            4628.000       0.456      10.343       4.000    1.08%       0.200      0.800
+     HOVS_2                0.422       2.876       0.000   50.20%       0.000      0.000      0.000
+            4237.000       0.536       9.667       4.000    1.70%       0.200      0.800
+     HOVS_3                0.393       2.961       0.000   54.42%       0.000      0.000      0.000
+            4063.000       0.522      10.172       4.000    1.65%       0.200      0.800
+     HOVS_4                0.440       2.767       0.000   52.29%       0.000      0.000      0.000
+            3337.000       0.616       8.435       4.000    2.13%       0.200      0.800
+     TX                    0.530      -0.122       0.000   46.96%       0.000      0.000      1.000
+            6461.000       0.249      -1.985       1.000   53.04%       1.000      1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES MAY NOT BE
+     TRUSTWORTHY FOR SOME PARAMETERS DUE TO A NON-POSITIVE DEFINITE
+     FIRST-ORDER DERIVATIVE PRODUCT MATRIX.  THIS MAY BE DUE TO THE STARTING
+     VALUES BUT MAY ALSO BE AN INDICATION OF MODEL NONIDENTIFICATION.  THE
+     CONDITION NUMBER IS       0.286D-13.  PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 13, TX
+
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       13
+
+Loglikelihood
+
+          H0 Value                      -21163.917
+          H0 Scaling Correction Factor     51.7880
+            for MLR
+          H1 Value                      -21156.130
+          H1 Scaling Correction Factor     34.7976
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   42353.834
+          Bayesian (BIC)                 42441.890
+          Sample-Size Adjusted BIC       42400.579
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                              4.801*
+          Degrees of Freedom                     7
+          P-Value                           0.6842
+          Scaling Correction Factor         3.2439
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.000
+          90 Percent C.I.                    0.000  0.012
+          Probability RMSEA <= .05           1.000
+
+CFI/TLI
+
+          CFI                                1.000
+          TLI                                1.000
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                            486.997
+          Degrees of Freedom                    10
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.010
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    HOVS_1             1.000      0.000    999.000    999.000
+    HOVS_2             1.000      0.000    999.000    999.000
+    HOVS_3             1.000      0.000    999.000    999.000
+    HOVS_4             1.000      0.000    999.000    999.000
+
+ S        |
+    HOVS_1             0.000      0.000    999.000    999.000
+    HOVS_2             1.000      0.000    999.000    999.000
+    HOVS_3             2.000      0.000    999.000    999.000
+    HOVS_4             3.000      0.000    999.000    999.000
+
+ I        ON
+    TX                -0.060      0.039     -1.540      0.124
+
+ S        ON
+    TX                 0.007      0.019      0.399      0.690
+
+ S        WITH
+    I                 -0.018      0.009     -2.038      0.042
+
+ Means
+    TX                 0.530      0.148      3.581      0.000
+
+ Intercepts
+    HOVS_1             0.000      0.000    999.000    999.000
+    HOVS_2             0.000      0.000    999.000    999.000
+    HOVS_3             0.000      0.000    999.000    999.000
+    HOVS_4             0.000      0.000    999.000    999.000
+    I                  0.423      0.020     21.645      0.000
+    S                  0.014      0.014      0.997      0.319
+
+ Variances
+    TX                 0.249      0.009     27.645      0.000
+
+ Residual Variances
+    HOVS_1             0.216      0.029      7.423      0.000
+    HOVS_2             0.301      0.029     10.340      0.000
+    HOVS_3             0.265      0.032      8.401      0.000
+    HOVS_4             0.276      0.037      7.564      0.000
+    I                  0.243      0.025      9.832      0.000
+    S                  0.024      0.008      3.167      0.002
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    HOVS_1             0.728      0.025     29.324      0.000
+    HOVS_2             0.677      0.028     24.417      0.000
+    HOVS_3             0.677      0.032     21.429      0.000
+    HOVS_4             0.623      0.035     17.724      0.000
+
+ S        |
+    HOVS_1             0.000      0.000    999.000    999.000
+    HOVS_2             0.213      0.031      6.789      0.000
+    HOVS_3             0.426      0.056      7.644      0.000
+    HOVS_4             0.588      0.083      7.098      0.000
+
+ I        ON
+    TX                -0.061      0.040     -1.519      0.129
+
+ S        ON
+    TX                 0.024      0.059      0.406      0.684
+
+ S        WITH
+    I                 -0.237      0.080     -2.941      0.003
+
+ Means
+    TX                 1.063      0.316      3.363      0.001
+
+ Intercepts
+    HOVS_1             0.000      0.000    999.000    999.000
+    HOVS_2             0.000      0.000    999.000    999.000
+    HOVS_3             0.000      0.000    999.000    999.000
+    HOVS_4             0.000      0.000    999.000    999.000
+    I                  0.856      0.039     22.022      0.000
+    S                  0.088      0.089      0.996      0.319
+
+ Variances
+    TX                 1.000      0.000    999.000    999.000
+
+ Residual Variances
+    HOVS_1             0.470      0.036     13.013      0.000
+    HOVS_2             0.565      0.025     22.713      0.000
+    HOVS_3             0.497      0.027     18.165      0.000
+    HOVS_4             0.440      0.050      8.810      0.000
+    I                  0.996      0.005    205.642      0.000
+    S                  0.999      0.003    350.293      0.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    HOVS_1             0.728      0.025     29.324      0.000
+    HOVS_2             0.677      0.028     24.417      0.000
+    HOVS_3             0.677      0.032     21.429      0.000
+    HOVS_4             0.623      0.035     17.724      0.000
+
+ S        |
+    HOVS_1             0.000      0.000    999.000    999.000
+    HOVS_2             0.213      0.031      6.789      0.000
+    HOVS_3             0.426      0.056      7.644      0.000
+    HOVS_4             0.588      0.083      7.098      0.000
+
+ I        ON
+    TX                -0.061      0.040     -1.519      0.129
+
+ S        ON
+    TX                 0.024      0.059      0.406      0.684
+
+ S        WITH
+    I                 -0.237      0.080     -2.941      0.003
+
+ Means
+    TX                 1.063      0.316      3.363      0.001
+
+ Intercepts
+    HOVS_1             0.000      0.000    999.000    999.000
+    HOVS_2             0.000      0.000    999.000    999.000
+    HOVS_3             0.000      0.000    999.000    999.000
+    HOVS_4             0.000      0.000    999.000    999.000
+    I                  0.856      0.039     22.022      0.000
+    S                  0.088      0.089      0.996      0.319
+
+ Variances
+    TX                 1.000      0.000    999.000    999.000
+
+ Residual Variances
+    HOVS_1             0.470      0.036     13.013      0.000
+    HOVS_2             0.565      0.025     22.713      0.000
+    HOVS_3             0.497      0.027     18.165      0.000
+    HOVS_4             0.440      0.050      8.810      0.000
+    I                  0.996      0.005    205.642      0.000
+    S                  0.999      0.003    350.293      0.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    HOVS_1             0.494      0.025     19.771      0.000
+    HOVS_2             0.494      0.025     19.771      0.000
+    HOVS_3             0.494      0.025     19.771      0.000
+    HOVS_4             0.494      0.025     19.771      0.000
+
+ S        |
+    HOVS_1             0.000      0.000    999.000    999.000
+    HOVS_2             0.155      0.025      6.318      0.000
+    HOVS_3             0.311      0.049      6.318      0.000
+    HOVS_4             0.466      0.074      6.318      0.000
+
+ I        ON
+    TX                -0.122      0.079     -1.533      0.125
+
+ S        ON
+    TX                 0.048      0.118      0.408      0.684
+
+ S        WITH
+    I                 -0.237      0.080     -2.941      0.003
+
+ Means
+    TX                 0.530      0.148      3.581      0.000
+
+ Intercepts
+    HOVS_1             0.000      0.000    999.000    999.000
+    HOVS_2             0.000      0.000    999.000    999.000
+    HOVS_3             0.000      0.000    999.000    999.000
+    HOVS_4             0.000      0.000    999.000    999.000
+    I                  0.856      0.039     22.022      0.000
+    S                  0.088      0.089      0.996      0.319
+
+ Variances
+    TX                 0.249      0.009     27.645      0.000
+
+ Residual Variances
+    HOVS_1             0.216      0.029      7.423      0.000
+    HOVS_2             0.301      0.029     10.340      0.000
+    HOVS_3             0.265      0.032      8.401      0.000
+    HOVS_4             0.276      0.037      7.564      0.000
+    I                  0.996      0.005    205.642      0.000
+    S                  0.999      0.003    350.293      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    HOVS_1             0.530      0.036     14.662      0.000
+    HOVS_2             0.435      0.025     17.460      0.000
+    HOVS_3             0.503      0.027     18.351      0.000
+    HOVS_4             0.560      0.050     11.212      0.000
+
+     Latent                                         Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    I                  0.004      0.005      0.759      0.448
+    S                  0.001      0.003      0.203      0.839
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.288E-02
+       (ratio of smallest to largest eigenvalue)
+
+
+CONFIDENCE INTERVALS OF MODEL RESULTS
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    HOVS_1           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    HOVS_2           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    HOVS_3           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    HOVS_4           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ S        |
+    HOVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_2           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    HOVS_3           2.000       2.000       2.000       2.000       2.000       2.000       2.000
+    HOVS_4           3.000       3.000       3.000       3.000       3.000       3.000       3.000
+
+ I        ON
+    TX              -0.160      -0.136      -0.124      -0.060       0.004       0.016       0.040
+
+ S        ON
+    TX              -0.041      -0.029      -0.023       0.007       0.038       0.044       0.056
+
+ S        WITH
+    I               -0.041      -0.036      -0.033      -0.018      -0.003      -0.001       0.005
+
+ Means
+    TX               0.149       0.240       0.287       0.530       0.774       0.821       0.912
+
+ Intercepts
+    HOVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_2           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_3           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_4           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    I                0.372       0.384       0.390       0.423       0.455       0.461       0.473
+    S               -0.022      -0.013      -0.009       0.014       0.036       0.041       0.049
+
+ Variances
+    TX               0.226       0.231       0.234       0.249       0.264       0.267       0.272
+
+ Residual Variances
+    HOVS_1           0.141       0.159       0.168       0.216       0.264       0.273       0.291
+    HOVS_2           0.226       0.244       0.253       0.301       0.349       0.358       0.376
+    HOVS_3           0.184       0.203       0.213       0.265       0.316       0.326       0.346
+    HOVS_4           0.182       0.205       0.216       0.276       0.337       0.348       0.371
+    I                0.179       0.194       0.202       0.243       0.283       0.291       0.306
+    S                0.005       0.009       0.012       0.024       0.037       0.039       0.044
+
+
+CONFIDENCE INTERVALS OF STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    HOVS_1           0.664       0.679       0.687       0.728       0.769       0.777       0.792
+    HOVS_2           0.605       0.622       0.631       0.677       0.722       0.731       0.748
+    HOVS_3           0.595       0.615       0.625       0.677       0.729       0.739       0.758
+    HOVS_4           0.532       0.554       0.565       0.623       0.681       0.692       0.713
+
+ S        |
+    HOVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_2           0.132       0.152       0.161       0.213       0.265       0.275       0.294
+    HOVS_3           0.283       0.317       0.334       0.426       0.518       0.535       0.570
+    HOVS_4           0.375       0.426       0.452       0.588       0.725       0.751       0.802
+
+ I        ON
+    TX              -0.164      -0.139      -0.126      -0.061       0.005       0.018       0.042
+
+ S        ON
+    TX              -0.129      -0.092      -0.073       0.024       0.122       0.140       0.177
+
+ S        WITH
+    I               -0.444      -0.394      -0.369      -0.237      -0.104      -0.079      -0.029
+
+ Means
+    TX               0.249       0.443       0.543       1.063       1.583       1.682       1.877
+
+ Intercepts
+    HOVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_2           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_3           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_4           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    I                0.756       0.780       0.792       0.856       0.920       0.932       0.956
+    S               -0.140      -0.085      -0.057       0.088       0.234       0.262       0.316
+
+ Variances
+    TX               1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ Residual Variances
+    HOVS_1           0.377       0.399       0.411       0.470       0.530       0.541       0.563
+    HOVS_2           0.501       0.517       0.524       0.565       0.606       0.614       0.629
+    HOVS_3           0.427       0.444       0.452       0.497       0.543       0.551       0.568
+    HOVS_4           0.311       0.342       0.358       0.440       0.522       0.538       0.569
+    I                0.984       0.987       0.988       0.996       1.004       1.006       1.009
+    S                0.992       0.994       0.995       0.999       1.004       1.005       1.007
+
+
+STDY Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    HOVS_1           0.664       0.679       0.687       0.728       0.769       0.777       0.792
+    HOVS_2           0.605       0.622       0.631       0.677       0.722       0.731       0.748
+    HOVS_3           0.595       0.615       0.625       0.677       0.729       0.739       0.758
+    HOVS_4           0.532       0.554       0.565       0.623       0.681       0.692       0.713
+
+ S        |
+    HOVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_2           0.132       0.152       0.161       0.213       0.265       0.275       0.294
+    HOVS_3           0.283       0.317       0.334       0.426       0.518       0.535       0.570
+    HOVS_4           0.375       0.426       0.452       0.588       0.725       0.751       0.802
+
+ I        ON
+    TX              -0.164      -0.139      -0.126      -0.061       0.005       0.018       0.042
+
+ S        ON
+    TX              -0.129      -0.092      -0.073       0.024       0.122       0.140       0.177
+
+ S        WITH
+    I               -0.444      -0.394      -0.369      -0.237      -0.104      -0.079      -0.029
+
+ Means
+    TX               0.249       0.443       0.543       1.063       1.583       1.682       1.877
+
+ Intercepts
+    HOVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_2           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_3           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_4           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    I                0.756       0.780       0.792       0.856       0.920       0.932       0.956
+    S               -0.140      -0.085      -0.057       0.088       0.234       0.262       0.316
+
+ Variances
+    TX               1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ Residual Variances
+    HOVS_1           0.377       0.399       0.411       0.470       0.530       0.541       0.563
+    HOVS_2           0.501       0.517       0.524       0.565       0.606       0.614       0.629
+    HOVS_3           0.427       0.444       0.452       0.497       0.543       0.551       0.568
+    HOVS_4           0.311       0.342       0.358       0.440       0.522       0.538       0.569
+    I                0.984       0.987       0.988       0.996       1.004       1.006       1.009
+    S                0.992       0.994       0.995       0.999       1.004       1.005       1.007
+
+
+STD Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    HOVS_1           0.429       0.445       0.453       0.494       0.535       0.543       0.558
+    HOVS_2           0.429       0.445       0.453       0.494       0.535       0.543       0.558
+    HOVS_3           0.429       0.445       0.453       0.494       0.535       0.543       0.558
+    HOVS_4           0.429       0.445       0.453       0.494       0.535       0.543       0.558
+
+ S        |
+    HOVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_2           0.092       0.107       0.115       0.155       0.196       0.204       0.219
+    HOVS_3           0.184       0.214       0.230       0.311       0.392       0.407       0.438
+    HOVS_4           0.276       0.322       0.345       0.466       0.588       0.611       0.656
+
+ I        ON
+    TX              -0.326      -0.277      -0.252      -0.122       0.009       0.034       0.083
+
+ S        ON
+    TX              -0.257      -0.184      -0.146       0.048       0.243       0.280       0.353
+
+ S        WITH
+    I               -0.444      -0.394      -0.369      -0.237      -0.104      -0.079      -0.029
+
+ Means
+    TX               0.149       0.240       0.287       0.530       0.774       0.821       0.912
+
+ Intercepts
+    HOVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_2           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_3           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS_4           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    I                0.756       0.780       0.792       0.856       0.920       0.932       0.956
+    S               -0.140      -0.085      -0.057       0.088       0.234       0.262       0.316
+
+ Variances
+    TX               0.226       0.231       0.234       0.249       0.264       0.267       0.272
+
+ Residual Variances
+    HOVS_1           0.141       0.159       0.168       0.216       0.264       0.273       0.291
+    HOVS_2           0.226       0.244       0.253       0.301       0.349       0.358       0.376
+    HOVS_3           0.184       0.203       0.213       0.265       0.316       0.326       0.346
+    HOVS_4           0.182       0.205       0.216       0.276       0.337       0.348       0.371
+    I                0.984       0.987       0.988       0.996       1.004       1.006       1.009
+    S                0.992       0.994       0.995       0.999       1.004       1.005       1.007
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+                0.391         0.408         0.426         0.444         0.530
+
+
+           Residuals for Means
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+               -0.003         0.018        -0.020         0.009         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+               -0.339       999.000        -1.964       999.000         0.000
+
+
+           Normalized Residuals for Means
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+               -0.132         1.049        -0.893         0.407         0.000
+
+
+           Model Estimated Covariances
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+ HOVS_1         0.460
+ HOVS_2         0.225         0.532
+ HOVS_3         0.207         0.237         0.532
+ HOVS_4         0.189         0.243         0.297         0.628
+ TX            -0.015        -0.013        -0.011        -0.009         0.249
+
+
+           Model Estimated Correlations
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+ HOVS_1         1.000
+ HOVS_2         0.456         1.000
+ HOVS_3         0.419         0.446         1.000
+ HOVS_4         0.352         0.421         0.515         1.000
+ TX            -0.044        -0.036        -0.031        -0.024         1.000
+
+
+           Residuals for Covariances
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+ HOVS_1        -0.001
+ HOVS_2        -0.001         0.003
+ HOVS_3         0.001         0.003        -0.001
+ HOVS_4        -0.006         0.008        -0.004        -0.001
+ TX            -0.003         0.006         0.001        -0.004         0.000
+
+
+           Residuals for Correlations
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+ HOVS_1         0.000
+ HOVS_2        -0.002         0.000
+ HOVS_3         0.003         0.005         0.000
+ HOVS_4        -0.011         0.013        -0.006         0.000
+ TX            -0.008         0.015         0.004        -0.009         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+ HOVS_1        -0.111
+ HOVS_2        -0.090         0.293
+ HOVS_3         0.065         0.146       999.000
+ HOVS_4        -0.628         0.412       999.000        -0.086
+ TX            -0.642         3.587         0.248       999.000         0.000
+
+
+           Normalized Residuals for Covariances
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+ HOVS_1        -0.025
+ HOVS_2        -0.044         0.072
+ HOVS_3         0.053         0.120        -0.032
+ HOVS_4        -0.362         0.330        -0.153        -0.027
+ TX            -0.257         0.686         0.127        -0.336         0.000
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           LAMBDA
+              I             S             TX
+              ________      ________      ________
+ HOVS_1             0             0             0
+ HOVS_2             0             0             0
+ HOVS_3             0             0             0
+ HOVS_4             0             0             0
+ TX                 0             0             0
+
+
+           THETA
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+ HOVS_1             1
+ HOVS_2             0             2
+ HOVS_3             0             0             3
+ HOVS_4             0             0             0             4
+ TX                 0             0             0             0             0
+
+
+           ALPHA
+              I             S             TX
+              ________      ________      ________
+                  5             6             7
+
+
+           BETA
+              I             S             TX
+              ________      ________      ________
+ I                  0             0             8
+ S                  0             0             9
+ TX                 0             0             0
+
+
+           PSI
+              I             S             TX
+              ________      ________      ________
+ I                 10
+ S                 11            12
+ TX                 0             0            13
+
+
+     STARTING VALUES
+
+
+           NU
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              I             S             TX
+              ________      ________      ________
+ HOVS_1         1.000         0.000         0.000
+ HOVS_2         1.000         1.000         0.000
+ HOVS_3         1.000         2.000         0.000
+ HOVS_4         1.000         3.000         0.000
+ TX             0.000         0.000         1.000
+
+
+           THETA
+              HOVS_1        HOVS_2        HOVS_3        HOVS_4        TX
+              ________      ________      ________      ________      ________
+ HOVS_1         0.228
+ HOVS_2         0.000         0.268
+ HOVS_3         0.000         0.000         0.261
+ HOVS_4         0.000         0.000         0.000         0.308
+ TX             0.000         0.000         0.000         0.000         0.000
+
+
+           ALPHA
+              I             S             TX
+              ________      ________      ________
+                0.386         0.016         0.000
+
+
+           BETA
+              I             S             TX
+              ________      ________      ________
+ I              0.000         0.000         0.000
+ S              0.000         0.000         0.000
+ TX             0.000         0.000         0.000
+
+
+           PSI
+              I             S             TX
+              ________      ________      ________
+ I              0.471
+ S              0.000         0.232
+ TX             0.000         0.000         0.125
+
+
+TECHNICAL 4 OUTPUT
+
+
+     ESTIMATES DERIVED FROM THE MODEL
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+                0.391         0.018         0.530
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+                0.021         0.010         0.148
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+               18.617         1.826         3.581
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+                0.000         0.068         0.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+ I              0.244
+ S             -0.018         0.024
+ TX            -0.015         0.002         0.249
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+ I              0.025
+ S              0.009         0.008
+ TX             0.010         0.005         0.009
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+ I              9.885
+ S             -2.016         3.159
+ TX            -1.508         0.397        27.645
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+ I              0.000
+ S              0.044         0.002
+ TX             0.131         0.692         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+ I              1.000
+ S             -0.237         1.000
+ TX            -0.061         0.024         1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+ I              0.000
+ S              0.082         0.000
+ TX             0.040         0.059         0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+ I            999.000
+ S             -2.903       999.000
+ TX            -1.519         0.406       999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+ I              0.000
+ S              0.004         0.000
+ TX             0.129         0.684         0.000
+
+
+     Beginning Time:  14:28:05
+        Ending Time:  14:28:05
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen

@@ -1,0 +1,3462 @@
+Mplus VERSION 8.4
+MUTHEN & MUTHEN
+07/07/2022   9:42 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  HNC Victimization - With Exposure;
+  DATA:
+  FILE = "Mplus/Automatr/Exposure Imp/HOVS_EXP_IMP_e1438697df8a1eebb68312861e5aa8d4.dat";
+
+  VARIABLE:
+  NAMES = ID School AEXS2 AEXS3 AEXS4 PEXS2 PEXS3 PEXS4 HOVS1 HOVS2 HOVS3 HOVS4 SchN
+       Rural plpcy1 plpcy2 plmapcy1 plmapcy2;
+   MISSING=.;
+   IDVARIABLE = ID;
+                CLUSTER = School;
+  ANALYSIS:
+  TYPE = COMPLEX;
+  MODEL:
+  i s | HOVS1@0 HOVS2@1 HOVS3@2 HOVS4@3;
+   i s ON SchN Rural;
+   HOVS2 ON AEXS2 PEXS2;
+   HOVS3 ON AEXS3 PEXS3;
+   HOVS4 ON AEXS4 PEXS4;
+   AEXS4 ON AEXS2 PEXS2 AEXS3 PEXS3;
+   PEXS4 ON AEXS2 PEXS2 AEXS3 PEXS3;
+   AEXS3 ON AEXS2 PEXS2;
+   PEXS3 ON AEXS2 PEXS2;
+   AEXS4 WITH PEXS4;
+   AEXS3 WITH PEXS3;
+   AEXS2 WITH PEXS2;
+   AEXS2 PEXS2 ON plpcy1 plmapcy1 SchN Rural;
+   AEXS3 PEXS3 ON plpcy1 plmapcy1;
+   AEXS4 PEXS4 ON plpcy2 plmapcy2;
+   plpcy1 plpcy2 plmapcy1 plmapcy2 WITH SchN Rural i@0 s@0;
+  [plpcy1 plpcy2 plmapcy1 plmapcy2 SchN Rural];
+  OUTPUT:
+  STANDARDIZED CINTERVAL RESIDUAL TECH1 TECH4 MODINDICES (ALL);
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+
+HNC Victimization - With Exposure;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        6461
+
+Number of dependent variables                                   10
+Number of independent variables                                  6
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Continuous
+   AEXS2       AEXS3       AEXS4       PEXS2       PEXS3       PEXS4
+   HOVS1       HOVS2       HOVS3       HOVS4
+
+Observed independent variables
+   SCHN        RURAL       PLPCY1      PLPCY2      PLMAPCY1    PLMAPCY2
+
+Continuous latent variables
+   I           S
+
+Variables with special functions
+
+  Cluster variable      SCHOOL
+  ID variable           ID
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  Mplus/Automatr/Exposure Imp/HOVS_EXP_IMP_e1438697df8a1eebb68312861e5aa8d4.dat
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns           231
+     Number of clusters                         20
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              AEXS2         AEXS3         AEXS4         PEXS2         PEXS3
+              ________      ________      ________      ________      ________
+ AEXS2          0.591
+ AEXS3          0.390         0.562
+ AEXS4          0.317         0.339         0.455
+ PEXS2          0.584         0.408         0.331         0.641
+ PEXS3          0.415         0.554         0.358         0.445         0.618
+ PEXS4          0.340         0.360         0.451         0.363         0.390
+ HOVS1          0.475         0.407         0.326         0.512         0.447
+ HOVS2          0.572         0.410         0.331         0.620         0.451
+ HOVS3          0.414         0.541         0.359         0.448         0.595
+ HOVS4          0.343         0.364         0.442         0.369         0.396
+ SCHN           0.591         0.562         0.455         0.641         0.618
+ RURAL          0.591         0.562         0.455         0.641         0.618
+ PLPCY1         0.591         0.562         0.455         0.641         0.618
+ PLPCY2         0.591         0.562         0.455         0.641         0.618
+ PLMAPCY1       0.591         0.562         0.455         0.641         0.618
+ PLMAPCY2       0.591         0.562         0.455         0.641         0.618
+
+
+           Covariance Coverage
+              PEXS4         HOVS1         HOVS2         HOVS3         HOVS4
+              ________      ________      ________      ________      ________
+ PEXS4          0.499
+ HOVS1          0.360         0.716
+ HOVS2          0.365         0.528         0.656
+ HOVS3          0.393         0.458         0.459         0.629
+ HOVS4          0.484         0.372         0.376         0.405         0.516
+ SCHN           0.499         0.716         0.656         0.629         0.516
+ RURAL          0.499         0.716         0.656         0.629         0.516
+ PLPCY1         0.499         0.716         0.656         0.629         0.516
+ PLPCY2         0.499         0.716         0.656         0.629         0.516
+ PLMAPCY1       0.499         0.716         0.656         0.629         0.516
+ PLMAPCY2       0.499         0.716         0.656         0.629         0.516
+
+
+           Covariance Coverage
+              SCHN          RURAL         PLPCY1        PLPCY2        PLMAPCY1
+              ________      ________      ________      ________      ________
+ SCHN           1.000
+ RURAL          1.000         1.000
+ PLPCY1         1.000         1.000         1.000
+ PLPCY2         1.000         1.000         1.000         1.000
+ PLMAPCY1       1.000         1.000         1.000         1.000         1.000
+ PLMAPCY2       1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              PLMAPCY2
+              ________
+ PLMAPCY2       1.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     AEXS2                 1.315       1.551       0.000   68.05%       0.000      0.000      0.000
+            3819.000       5.192       0.961       8.000    0.97%       0.000      3.000
+     AEXS3                 1.227       1.655       0.000   70.35%       0.000      0.000      0.000
+            3629.000       5.003       1.270       8.000    0.72%       0.000      3.000
+     AEXS4                 1.205       1.676       0.000   71.72%       0.000      0.000      0.000
+            2942.000       4.984       1.333       8.000    0.75%       0.000      3.000
+     PEXS2                 1.333       1.243       0.000   61.39%       0.000      0.000      0.000
+            4141.000       4.022       0.083       6.000    7.46%       0.000      3.000
+     PEXS3                 1.355       1.218       0.000   62.04%       0.000      0.000      0.000
+            3991.000       4.196      -0.035       6.000    8.04%       0.000      3.000
+     PEXS4                 1.473       1.107       0.000   60.27%       0.000      0.000      0.000
+            3224.000       4.550      -0.334       6.000    9.74%       0.000      4.000
+     HOVS1                 0.383       2.932       0.000   50.69%       0.000      0.000      0.000
+            4628.000       0.456      10.343       4.000    1.08%       0.200      0.800
+     HOVS2                 0.422       2.876       0.000   50.20%       0.000      0.000      0.000
+            4237.000       0.536       9.667       4.000    1.70%       0.200      0.800
+     HOVS3                 0.393       2.961       0.000   54.42%       0.000      0.000      0.000
+            4063.000       0.522      10.172       4.000    1.65%       0.200      0.800
+     HOVS4                 0.440       2.767       0.000   52.29%       0.000      0.000      0.000
+            3337.000       0.616       8.435       4.000    2.13%       0.200      0.800
+     SCHN                  3.618       1.082      -4.043    1.11%      -0.743      0.927      1.657
+            6461.000      38.468      -0.096      15.677   18.42%       2.477      4.657
+     RURAL                 0.331       0.720       0.000   66.94%       0.000      0.000      0.000
+            6461.000       0.221      -1.481       1.000   33.06%       0.000      1.000
+     PLPCY1                2.965       3.143       0.000   46.96%       0.000      0.000      2.763
+            6461.000      19.332      13.777      28.814    0.63%       2.763      6.452
+     PLPCY2                2.832       3.476       0.000   46.96%       0.000      0.000      1.577
+            6461.000      26.936      15.323      37.288    0.63%       2.472      2.815
+     PLMAPCY1             33.580       0.154       0.000   46.96%       0.000      0.000     42.761
+            6461.000    1106.836      -1.689      91.403    0.63%      46.465     73.333
+     PLMAPCY2             29.494       0.398       0.000   46.96%       0.000      0.000     36.199
+            6461.000     922.540      -1.222      94.628    0.63%      45.643     54.464
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES MAY NOT BE
+     TRUSTWORTHY FOR SOME PARAMETERS DUE TO A NON-POSITIVE DEFINITE
+     FIRST-ORDER DERIVATIVE PRODUCT MATRIX.  THIS MAY BE DUE TO THE STARTING
+     VALUES BUT MAY ALSO BE AN INDICATION OF MODEL NONIDENTIFICATION.  THE
+     CONDITION NUMBER IS      -0.311D-16.  PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 20, AEXS2 ON RURAL
+
+     THIS IS MOST LIKELY DUE TO HAVING MORE PARAMETERS THAN THE NUMBER
+     OF CLUSTERS MINUS THE NUMBER OF STRATA WITH MORE THAN ONE CLUSTER.
+
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       89
+
+Loglikelihood
+
+          H0 Value                     -163685.174
+          H0 Scaling Correction Factor    143.6168
+            for MLR
+          H1 Value                     -163473.721
+          H1 Scaling Correction Factor     85.0214
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                  327548.348
+          Bayesian (BIC)                328151.193
+          Sample-Size Adjusted BIC      327868.374
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                            188.486*
+          Degrees of Freedom                    63
+          P-Value                           0.0000
+          Scaling Correction Factor         2.2437
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.018
+          90 Percent C.I.                    0.015  0.020
+          Probability RMSEA <= .05           1.000
+
+CFI/TLI
+
+          CFI                                0.971
+          TLI                                0.951
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           4388.521
+          Degrees of Freedom                   105
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.017
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    HOVS1              1.000      0.000    999.000    999.000
+    HOVS2              1.000      0.000    999.000    999.000
+    HOVS3              1.000      0.000    999.000    999.000
+    HOVS4              1.000      0.000    999.000    999.000
+
+ S        |
+    HOVS1              0.000      0.000    999.000    999.000
+    HOVS2              1.000      0.000    999.000    999.000
+    HOVS3              2.000      0.000    999.000    999.000
+    HOVS4              3.000      0.000    999.000    999.000
+
+ I        ON
+    SCHN               0.006      0.002      2.855      0.004
+    RURAL              0.081      0.038      2.154      0.031
+
+ S        ON
+    SCHN              -0.002      0.001     -2.317      0.021
+    RURAL              0.009      0.020      0.424      0.672
+
+ HOVS2    ON
+    AEXS2             -0.002      0.006     -0.298      0.766
+    PEXS2              0.004      0.006      0.704      0.481
+
+ HOVS3    ON
+    AEXS3             -0.003      0.004     -0.795      0.427
+    PEXS3             -0.004      0.008     -0.474      0.635
+
+ HOVS4    ON
+    AEXS4              0.003      0.010      0.327      0.744
+    PEXS4              0.000      0.007      0.051      0.959
+
+ AEXS4    ON
+    AEXS2              0.206      0.044      4.738      0.000
+    PEXS2              0.160      0.056      2.862      0.004
+    AEXS3              0.388      0.101      3.852      0.000
+    PEXS3             -0.035      0.104     -0.337      0.736
+    PLPCY2             0.015      0.010      1.508      0.132
+    PLMAPCY2           0.014      0.003      4.239      0.000
+
+ PEXS4    ON
+    AEXS2             -0.019      0.021     -0.903      0.367
+    PEXS2              0.357      0.035     10.298      0.000
+    AEXS3              0.035      0.018      1.919      0.055
+    PEXS3              0.368      0.034     10.730      0.000
+    PLPCY2             0.015      0.013      1.136      0.256
+    PLMAPCY2           0.017      0.001     12.250      0.000
+
+ AEXS3    ON
+    AEXS2              0.472      0.039     11.999      0.000
+    PEXS2              0.254      0.040      6.341      0.000
+    PLPCY1             0.027      0.013      2.076      0.038
+    PLMAPCY1           0.010      0.001      8.498      0.000
+
+ PEXS3    ON
+    AEXS2              0.053      0.027      1.953      0.051
+    PEXS2              0.593      0.075      7.952      0.000
+    PLPCY1             0.064      0.033      1.919      0.055
+    PLMAPCY1           0.011      0.003      3.543      0.000
+
+ AEXS2    ON
+    PLPCY1             0.082      0.024      3.458      0.001
+    PLMAPCY1           0.037      0.005      7.834      0.000
+    SCHN              -0.027      0.018     -1.455      0.146
+    RURAL             -0.302      0.183     -1.649      0.099
+
+ PEXS2    ON
+    PLPCY1             0.021      0.025      0.824      0.410
+    PLMAPCY1           0.044      0.005      9.065      0.000
+    SCHN              -0.116      0.027     -4.314      0.000
+    RURAL             -0.347      0.240     -1.446      0.148
+
+ PLPCY1   WITH
+    I                  0.000      0.000    999.000    999.000
+    S                  0.000      0.000    999.000    999.000
+
+ PLPCY2   WITH
+    I                  0.000      0.000    999.000    999.000
+    S                  0.000      0.000    999.000    999.000
+
+ PLMAPCY1 WITH
+    I                  0.000      0.000    999.000    999.000
+    S                  0.000      0.000    999.000    999.000
+
+ PLMAPCY2 WITH
+    I                  0.000      0.000    999.000    999.000
+    S                  0.000      0.000    999.000    999.000
+
+ S        WITH
+    I                 -0.018      0.009     -1.988      0.047
+
+ AEXS4    WITH
+    PEXS4              0.592      0.217      2.731      0.006
+
+ AEXS3    WITH
+    PEXS3              0.622      0.221      2.809      0.005
+
+ AEXS2    WITH
+    PEXS2              1.280      0.350      3.663      0.000
+
+ PLPCY1   WITH
+    SCHN              -4.697      3.412     -1.377      0.169
+    RURAL             -0.204      0.382     -0.534      0.593
+
+ PLPCY2   WITH
+    SCHN              -6.984      4.342     -1.608      0.108
+    RURAL              0.110      0.449      0.244      0.807
+    PLPCY1            21.050      9.787      2.151      0.031
+
+ PLMAPCY1 WITH
+    SCHN              88.633     78.647      1.127      0.260
+    RURAL             -5.755      3.720     -1.547      0.122
+    PLPCY1            97.619     27.966      3.491      0.000
+    PLPCY2           102.547     33.489      3.062      0.002
+
+ PLMAPCY2 WITH
+    SCHN              44.410     34.213      1.298      0.194
+    RURAL             -6.261      3.080     -2.033      0.042
+    PLPCY1            90.590     25.851      3.504      0.000
+    PLPCY2            84.919     31.232      2.719      0.007
+    PLMAPCY1         837.298     85.066      9.843      0.000
+
+ RURAL    WITH
+    SCHN              -1.117      0.681     -1.640      0.101
+
+ Means
+    SCHN               3.618      2.370      1.527      0.127
+    RURAL              0.331      0.128      2.579      0.010
+    PLPCY1             2.965      0.748      3.962      0.000
+    PLPCY2             2.832      0.830      3.410      0.001
+    PLMAPCY1          33.580     10.220      3.286      0.001
+    PLMAPCY2          29.494      8.399      3.512      0.000
+
+ Intercepts
+    AEXS2              0.291      0.173      1.685      0.092
+    AEXS3              0.017      0.017      0.995      0.320
+    AEXS4             -0.013      0.013     -1.002      0.316
+    PEXS2              0.427      0.176      2.421      0.015
+    PEXS3              0.019      0.022      0.867      0.386
+    PEXS4              0.031      0.026      1.189      0.234
+    HOVS1              0.000      0.000    999.000    999.000
+    HOVS2              0.000      0.000    999.000    999.000
+    HOVS3              0.000      0.000    999.000    999.000
+    HOVS4              0.000      0.000    999.000    999.000
+    I                  0.341      0.036      9.521      0.000
+    S                  0.025      0.016      1.580      0.114
+
+ Variances
+    SCHN              38.468     21.595      1.781      0.075
+    RURAL              0.221      0.043      5.095      0.000
+    PLPCY1            19.332      8.596      2.249      0.025
+    PLPCY2            26.936     12.339      2.183      0.029
+    PLMAPCY1        1106.837    156.536      7.071      0.000
+    PLMAPCY2         922.540    232.739      3.964      0.000
+
+ Residual Variances
+    AEXS2              3.107      0.971      3.199      0.001
+    AEXS3              2.104      0.743      2.833      0.005
+    AEXS4              1.942      0.737      2.634      0.008
+    PEXS2              1.893      0.548      3.452      0.001
+    PEXS3              1.324      0.468      2.831      0.005
+    PEXS4              1.225      0.440      2.782      0.005
+    HOVS1              0.217      0.029      7.374      0.000
+    HOVS2              0.301      0.029     10.321      0.000
+    HOVS3              0.264      0.032      8.331      0.000
+    HOVS4              0.275      0.036      7.612      0.000
+    I                  0.241      0.025      9.672      0.000
+    S                  0.024      0.008      3.171      0.002
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    HOVS1              0.727      0.025     29.245      0.000
+    HOVS2              0.676      0.028     24.471      0.000
+    HOVS3              0.675      0.031     21.520      0.000
+    HOVS4              0.622      0.035     17.866      0.000
+
+ S        |
+    HOVS1              0.000      0.000    999.000    999.000
+    HOVS2              0.214      0.031      6.873      0.000
+    HOVS3              0.427      0.055      7.759      0.000
+    HOVS4              0.589      0.082      7.212      0.000
+
+ I        ON
+    SCHN               0.077      0.033      2.354      0.019
+    RURAL              0.077      0.038      2.008      0.045
+
+ S        ON
+    SCHN              -0.099      0.035     -2.854      0.004
+    RURAL              0.026      0.061      0.424      0.672
+
+ HOVS2    ON
+    AEXS2             -0.006      0.019     -0.297      0.766
+    PEXS2              0.012      0.017      0.697      0.486
+
+ HOVS3    ON
+    AEXS3             -0.009      0.012     -0.781      0.435
+    PEXS3             -0.010      0.022     -0.475      0.635
+
+ HOVS4    ON
+    AEXS4              0.009      0.028      0.329      0.742
+    PEXS4              0.001      0.020      0.051      0.959
+
+ AEXS4    ON
+    AEXS2              0.207      0.046      4.496      0.000
+    PEXS2              0.138      0.045      3.067      0.002
+    AEXS3              0.392      0.100      3.908      0.000
+    PEXS3             -0.032      0.094     -0.337      0.736
+    PLPCY2             0.033      0.026      1.258      0.208
+    PLMAPCY2           0.191      0.064      2.977      0.003
+
+ PEXS4    ON
+    AEXS2             -0.020      0.022     -0.915      0.360
+    PEXS2              0.330      0.027     12.306      0.000
+    AEXS3              0.038      0.019      1.958      0.050
+    PEXS3              0.354      0.037      9.536      0.000
+    PLPCY2             0.035      0.029      1.196      0.232
+    PLMAPCY2           0.241      0.032      7.575      0.000
+
+ AEXS3    ON
+    AEXS2              0.469      0.040     11.787      0.000
+    PEXS2              0.218      0.037      5.854      0.000
+    PLPCY1             0.051      0.021      2.444      0.015
+    PLMAPCY1           0.143      0.023      6.224      0.000
+
+ PEXS3    ON
+    AEXS2              0.059      0.033      1.786      0.074
+    PEXS2              0.570      0.070      8.111      0.000
+    PLPCY1             0.135      0.049      2.760      0.006
+    PLMAPCY1           0.170      0.047      3.589      0.000
+
+ AEXS2    ON
+    PLPCY1             0.157      0.048      3.292      0.001
+    PLMAPCY1           0.529      0.086      6.119      0.000
+    SCHN              -0.072      0.058     -1.250      0.211
+    RURAL             -0.062      0.035     -1.780      0.075
+
+ PEXS2    ON
+    PLPCY1             0.046      0.051      0.906      0.365
+    PLMAPCY1           0.735      0.097      7.594      0.000
+    SCHN              -0.361      0.142     -2.548      0.011
+    RURAL             -0.082      0.051     -1.606      0.108
+
+ PLPCY1   WITH
+    I                  0.000      0.000    999.000    999.000
+    S                  0.000      0.000    999.000    999.000
+
+ PLPCY2   WITH
+    I                  0.000      0.000    999.000    999.000
+    S                  0.000      0.000    999.000    999.000
+
+ PLMAPCY1 WITH
+    I                  0.000      0.000    999.000    999.000
+    S                  0.000      0.000    999.000    999.000
+
+ PLMAPCY2 WITH
+    I                  0.000      0.000    999.000    999.000
+    S                  0.000      0.000    999.000    999.000
+
+ S        WITH
+    I                 -0.233      0.082     -2.849      0.004
+
+ AEXS4    WITH
+    PEXS4              0.384      0.029     13.400      0.000
+
+ AEXS3    WITH
+    PEXS3              0.373      0.023     16.030      0.000
+
+ AEXS2    WITH
+    PEXS2              0.528      0.030     17.444      0.000
+
+ PLPCY1   WITH
+    SCHN              -0.172      0.106     -1.632      0.103
+    RURAL             -0.099      0.190     -0.518      0.605
+
+ PLPCY2   WITH
+    SCHN              -0.217      0.107     -2.026      0.043
+    RURAL              0.045      0.181      0.249      0.803
+    PLPCY1             0.922      0.044     20.845      0.000
+
+ PLMAPCY1 WITH
+    SCHN               0.430      0.254      1.688      0.091
+    RURAL             -0.368      0.225     -1.637      0.102
+    PLPCY1             0.667      0.110      6.040      0.000
+    PLPCY2             0.594      0.106      5.580      0.000
+
+ PLMAPCY2 WITH
+    SCHN               0.236      0.144      1.634      0.102
+    RURAL             -0.438      0.186     -2.359      0.018
+    PLPCY1             0.678      0.096      7.046      0.000
+    PLPCY2             0.539      0.140      3.834      0.000
+    PLMAPCY1           0.829      0.086      9.580      0.000
+
+ RURAL    WITH
+    SCHN              -0.383      0.148     -2.585      0.010
+
+ Means
+    SCHN               0.583      0.237      2.465      0.014
+    RURAL              0.703      0.204      3.452      0.001
+    PLPCY1             0.674      0.157      4.300      0.000
+    PLPCY2             0.546      0.115      4.760      0.000
+    PLMAPCY1           1.009      0.290      3.480      0.001
+    PLMAPCY2           0.971      0.268      3.625      0.000
+
+ Intercepts
+    AEXS2              0.126      0.069      1.833      0.067
+    AEXS3              0.007      0.007      1.045      0.296
+    AEXS4             -0.006      0.006     -1.031      0.303
+    PEXS2              0.214      0.076      2.800      0.005
+    PEXS3              0.009      0.010      0.896      0.370
+    PEXS4              0.014      0.011      1.264      0.206
+    HOVS1              0.000      0.000    999.000    999.000
+    HOVS2              0.000      0.000    999.000    999.000
+    HOVS3              0.000      0.000    999.000    999.000
+    HOVS4              0.000      0.000    999.000    999.000
+    I                  0.692      0.063     10.998      0.000
+    S                  0.159      0.099      1.607      0.108
+
+ Variances
+    SCHN               1.000      0.000    999.000    999.000
+    RURAL              1.000      0.000    999.000    999.000
+    PLPCY1             1.000      0.000    999.000    999.000
+    PLPCY2             1.000      0.000    999.000    999.000
+    PLMAPCY1           1.000      0.000    999.000    999.000
+    PLMAPCY2           1.000      0.000    999.000    999.000
+
+ Residual Variances
+    AEXS2              0.582      0.098      5.931      0.000
+    AEXS3              0.389      0.084      4.655      0.000
+    AEXS4              0.366      0.093      3.924      0.000
+    PEXS2              0.476      0.105      4.544      0.000
+    PEXS3              0.307      0.100      3.061      0.002
+    PEXS4              0.263      0.083      3.166      0.002
+    HOVS1              0.472      0.036     13.050      0.000
+    HOVS2              0.565      0.025     22.938      0.000
+    HOVS3              0.496      0.027     18.118      0.000
+    HOVS4              0.438      0.050      8.805      0.000
+    I                  0.993      0.006    161.255      0.000
+    S                  0.988      0.008    125.133      0.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    HOVS1              0.727      0.025     29.245      0.000
+    HOVS2              0.676      0.028     24.471      0.000
+    HOVS3              0.675      0.031     21.520      0.000
+    HOVS4              0.622      0.035     17.866      0.000
+
+ S        |
+    HOVS1              0.000      0.000    999.000    999.000
+    HOVS2              0.214      0.031      6.873      0.000
+    HOVS3              0.427      0.055      7.759      0.000
+    HOVS4              0.589      0.082      7.212      0.000
+
+ I        ON
+    SCHN               0.077      0.033      2.354      0.019
+    RURAL              0.077      0.038      2.008      0.045
+
+ S        ON
+    SCHN              -0.099      0.035     -2.854      0.004
+    RURAL              0.026      0.061      0.424      0.672
+
+ HOVS2    ON
+    AEXS2             -0.006      0.019     -0.297      0.766
+    PEXS2              0.012      0.017      0.697      0.486
+
+ HOVS3    ON
+    AEXS3             -0.009      0.012     -0.781      0.435
+    PEXS3             -0.010      0.022     -0.475      0.635
+
+ HOVS4    ON
+    AEXS4              0.009      0.028      0.329      0.742
+    PEXS4              0.001      0.020      0.051      0.959
+
+ AEXS4    ON
+    AEXS2              0.207      0.046      4.496      0.000
+    PEXS2              0.138      0.045      3.067      0.002
+    AEXS3              0.392      0.100      3.908      0.000
+    PEXS3             -0.032      0.094     -0.337      0.736
+    PLPCY2             0.033      0.026      1.258      0.208
+    PLMAPCY2           0.191      0.064      2.977      0.003
+
+ PEXS4    ON
+    AEXS2             -0.020      0.022     -0.915      0.360
+    PEXS2              0.330      0.027     12.306      0.000
+    AEXS3              0.038      0.019      1.958      0.050
+    PEXS3              0.354      0.037      9.536      0.000
+    PLPCY2             0.035      0.029      1.196      0.232
+    PLMAPCY2           0.241      0.032      7.575      0.000
+
+ AEXS3    ON
+    AEXS2              0.469      0.040     11.787      0.000
+    PEXS2              0.218      0.037      5.854      0.000
+    PLPCY1             0.051      0.021      2.444      0.015
+    PLMAPCY1           0.143      0.023      6.224      0.000
+
+ PEXS3    ON
+    AEXS2              0.059      0.033      1.786      0.074
+    PEXS2              0.570      0.070      8.111      0.000
+    PLPCY1             0.135      0.049      2.760      0.006
+    PLMAPCY1           0.170      0.047      3.589      0.000
+
+ AEXS2    ON
+    PLPCY1             0.157      0.048      3.292      0.001
+    PLMAPCY1           0.529      0.086      6.119      0.000
+    SCHN              -0.072      0.058     -1.250      0.211
+    RURAL             -0.062      0.035     -1.780      0.075
+
+ PEXS2    ON
+    PLPCY1             0.046      0.051      0.906      0.365
+    PLMAPCY1           0.735      0.097      7.594      0.000
+    SCHN              -0.361      0.142     -2.548      0.011
+    RURAL             -0.082      0.051     -1.606      0.108
+
+ PLPCY1   WITH
+    I                  0.000      0.000    999.000    999.000
+    S                  0.000      0.000    999.000    999.000
+
+ PLPCY2   WITH
+    I                  0.000      0.000    999.000    999.000
+    S                  0.000      0.000    999.000    999.000
+
+ PLMAPCY1 WITH
+    I                  0.000      0.000    999.000    999.000
+    S                  0.000      0.000    999.000    999.000
+
+ PLMAPCY2 WITH
+    I                  0.000      0.000    999.000    999.000
+    S                  0.000      0.000    999.000    999.000
+
+ S        WITH
+    I                 -0.233      0.082     -2.849      0.004
+
+ AEXS4    WITH
+    PEXS4              0.384      0.029     13.400      0.000
+
+ AEXS3    WITH
+    PEXS3              0.373      0.023     16.030      0.000
+
+ AEXS2    WITH
+    PEXS2              0.528      0.030     17.444      0.000
+
+ PLPCY1   WITH
+    SCHN              -0.172      0.106     -1.632      0.103
+    RURAL             -0.099      0.190     -0.518      0.605
+
+ PLPCY2   WITH
+    SCHN              -0.217      0.107     -2.026      0.043
+    RURAL              0.045      0.181      0.249      0.803
+    PLPCY1             0.922      0.044     20.845      0.000
+
+ PLMAPCY1 WITH
+    SCHN               0.430      0.254      1.688      0.091
+    RURAL             -0.368      0.225     -1.637      0.102
+    PLPCY1             0.667      0.110      6.040      0.000
+    PLPCY2             0.594      0.106      5.580      0.000
+
+ PLMAPCY2 WITH
+    SCHN               0.236      0.144      1.634      0.102
+    RURAL             -0.438      0.186     -2.359      0.018
+    PLPCY1             0.678      0.096      7.046      0.000
+    PLPCY2             0.539      0.140      3.834      0.000
+    PLMAPCY1           0.829      0.086      9.580      0.000
+
+ RURAL    WITH
+    SCHN              -0.383      0.148     -2.585      0.010
+
+ Means
+    SCHN               0.583      0.237      2.465      0.014
+    RURAL              0.703      0.204      3.452      0.001
+    PLPCY1             0.674      0.157      4.300      0.000
+    PLPCY2             0.546      0.115      4.760      0.000
+    PLMAPCY1           1.009      0.290      3.480      0.001
+    PLMAPCY2           0.971      0.268      3.625      0.000
+
+ Intercepts
+    AEXS2              0.126      0.069      1.833      0.067
+    AEXS3              0.007      0.007      1.045      0.296
+    AEXS4             -0.006      0.006     -1.031      0.303
+    PEXS2              0.214      0.076      2.800      0.005
+    PEXS3              0.009      0.010      0.896      0.370
+    PEXS4              0.014      0.011      1.264      0.206
+    HOVS1              0.000      0.000    999.000    999.000
+    HOVS2              0.000      0.000    999.000    999.000
+    HOVS3              0.000      0.000    999.000    999.000
+    HOVS4              0.000      0.000    999.000    999.000
+    I                  0.692      0.063     10.998      0.000
+    S                  0.159      0.099      1.607      0.108
+
+ Variances
+    SCHN               1.000      0.000    999.000    999.000
+    RURAL              1.000      0.000    999.000    999.000
+    PLPCY1             1.000      0.000    999.000    999.000
+    PLPCY2             1.000      0.000    999.000    999.000
+    PLMAPCY1           1.000      0.000    999.000    999.000
+    PLMAPCY2           1.000      0.000    999.000    999.000
+
+ Residual Variances
+    AEXS2              0.582      0.098      5.931      0.000
+    AEXS3              0.389      0.084      4.655      0.000
+    AEXS4              0.366      0.093      3.924      0.000
+    PEXS2              0.476      0.105      4.544      0.000
+    PEXS3              0.307      0.100      3.061      0.002
+    PEXS4              0.263      0.083      3.166      0.002
+    HOVS1              0.472      0.036     13.050      0.000
+    HOVS2              0.565      0.025     22.938      0.000
+    HOVS3              0.496      0.027     18.118      0.000
+    HOVS4              0.438      0.050      8.805      0.000
+    I                  0.993      0.006    161.255      0.000
+    S                  0.988      0.008    125.133      0.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    HOVS1              0.493      0.025     19.894      0.000
+    HOVS2              0.493      0.025     19.894      0.000
+    HOVS3              0.493      0.025     19.894      0.000
+    HOVS4              0.493      0.025     19.894      0.000
+
+ S        |
+    HOVS1              0.000      0.000    999.000    999.000
+    HOVS2              0.156      0.024      6.389      0.000
+    HOVS3              0.312      0.049      6.389      0.000
+    HOVS4              0.467      0.073      6.389      0.000
+
+ I        ON
+    SCHN               0.012      0.005      2.658      0.008
+    RURAL              0.164      0.079      2.080      0.038
+
+ S        ON
+    SCHN              -0.016      0.006     -2.527      0.012
+    RURAL              0.055      0.132      0.420      0.674
+
+ HOVS2    ON
+    AEXS2             -0.002      0.006     -0.298      0.766
+    PEXS2              0.004      0.006      0.704      0.481
+
+ HOVS3    ON
+    AEXS3             -0.003      0.004     -0.795      0.427
+    PEXS3             -0.004      0.008     -0.474      0.635
+
+ HOVS4    ON
+    AEXS4              0.003      0.010      0.327      0.744
+    PEXS4              0.000      0.007      0.051      0.959
+
+ AEXS4    ON
+    AEXS2              0.206      0.044      4.738      0.000
+    PEXS2              0.160      0.056      2.862      0.004
+    AEXS3              0.388      0.101      3.852      0.000
+    PEXS3             -0.035      0.104     -0.337      0.736
+    PLPCY2             0.015      0.010      1.508      0.132
+    PLMAPCY2           0.014      0.003      4.239      0.000
+
+ PEXS4    ON
+    AEXS2             -0.019      0.021     -0.903      0.367
+    PEXS2              0.357      0.035     10.298      0.000
+    AEXS3              0.035      0.018      1.919      0.055
+    PEXS3              0.368      0.034     10.730      0.000
+    PLPCY2             0.015      0.013      1.136      0.256
+    PLMAPCY2           0.017      0.001     12.250      0.000
+
+ AEXS3    ON
+    AEXS2              0.472      0.039     11.999      0.000
+    PEXS2              0.254      0.040      6.341      0.000
+    PLPCY1             0.027      0.013      2.076      0.038
+    PLMAPCY1           0.010      0.001      8.498      0.000
+
+ PEXS3    ON
+    AEXS2              0.053      0.027      1.953      0.051
+    PEXS2              0.593      0.075      7.952      0.000
+    PLPCY1             0.064      0.033      1.919      0.055
+    PLMAPCY1           0.011      0.003      3.543      0.000
+
+ AEXS2    ON
+    PLPCY1             0.082      0.024      3.458      0.001
+    PLMAPCY1           0.037      0.005      7.834      0.000
+    SCHN              -0.027      0.018     -1.455      0.146
+    RURAL             -0.302      0.183     -1.649      0.099
+
+ PEXS2    ON
+    PLPCY1             0.021      0.025      0.824      0.410
+    PLMAPCY1           0.044      0.005      9.065      0.000
+    SCHN              -0.116      0.027     -4.314      0.000
+    RURAL             -0.347      0.240     -1.446      0.148
+
+ PLPCY1   WITH
+    I                  0.000      0.000    999.000    999.000
+    S                  0.000      0.000    999.000    999.000
+
+ PLPCY2   WITH
+    I                  0.000      0.000    999.000    999.000
+    S                  0.000      0.000    999.000    999.000
+
+ PLMAPCY1 WITH
+    I                  0.000      0.000    999.000    999.000
+    S                  0.000      0.000    999.000    999.000
+
+ PLMAPCY2 WITH
+    I                  0.000      0.000    999.000    999.000
+    S                  0.000      0.000    999.000    999.000
+
+ S        WITH
+    I                 -0.233      0.082     -2.849      0.004
+
+ AEXS4    WITH
+    PEXS4              0.592      0.217      2.731      0.006
+
+ AEXS3    WITH
+    PEXS3              0.622      0.221      2.809      0.005
+
+ AEXS2    WITH
+    PEXS2              1.280      0.350      3.663      0.000
+
+ PLPCY1   WITH
+    SCHN              -4.697      3.412     -1.377      0.169
+    RURAL             -0.204      0.382     -0.534      0.593
+
+ PLPCY2   WITH
+    SCHN              -6.984      4.342     -1.608      0.108
+    RURAL              0.110      0.449      0.244      0.807
+    PLPCY1            21.050      9.787      2.151      0.031
+
+ PLMAPCY1 WITH
+    SCHN              88.633     78.647      1.127      0.260
+    RURAL             -5.755      3.720     -1.547      0.122
+    PLPCY1            97.619     27.966      3.491      0.000
+    PLPCY2           102.547     33.489      3.062      0.002
+
+ PLMAPCY2 WITH
+    SCHN              44.410     34.213      1.298      0.194
+    RURAL             -6.261      3.080     -2.033      0.042
+    PLPCY1            90.590     25.851      3.504      0.000
+    PLPCY2            84.919     31.232      2.719      0.007
+    PLMAPCY1         837.298     85.066      9.843      0.000
+
+ RURAL    WITH
+    SCHN              -1.117      0.681     -1.640      0.101
+
+ Means
+    SCHN               3.618      2.370      1.527      0.127
+    RURAL              0.331      0.128      2.579      0.010
+    PLPCY1             2.965      0.748      3.962      0.000
+    PLPCY2             2.832      0.830      3.410      0.001
+    PLMAPCY1          33.580     10.220      3.286      0.001
+    PLMAPCY2          29.494      8.399      3.512      0.000
+
+ Intercepts
+    AEXS2              0.291      0.173      1.685      0.092
+    AEXS3              0.017      0.017      0.995      0.320
+    AEXS4             -0.013      0.013     -1.002      0.316
+    PEXS2              0.427      0.176      2.421      0.015
+    PEXS3              0.019      0.022      0.867      0.386
+    PEXS4              0.031      0.026      1.189      0.234
+    HOVS1              0.000      0.000    999.000    999.000
+    HOVS2              0.000      0.000    999.000    999.000
+    HOVS3              0.000      0.000    999.000    999.000
+    HOVS4              0.000      0.000    999.000    999.000
+    I                  0.692      0.063     10.998      0.000
+    S                  0.159      0.099      1.607      0.108
+
+ Variances
+    SCHN              38.468     21.595      1.781      0.075
+    RURAL              0.221      0.043      5.095      0.000
+    PLPCY1            19.332      8.596      2.249      0.025
+    PLPCY2            26.936     12.339      2.183      0.029
+    PLMAPCY1        1106.837    156.536      7.071      0.000
+    PLMAPCY2         922.540    232.739      3.964      0.000
+
+ Residual Variances
+    AEXS2              3.107      0.971      3.199      0.001
+    AEXS3              2.104      0.743      2.833      0.005
+    AEXS4              1.942      0.737      2.634      0.008
+    PEXS2              1.893      0.548      3.452      0.001
+    PEXS3              1.324      0.468      2.831      0.005
+    PEXS4              1.225      0.440      2.782      0.005
+    HOVS1              0.217      0.029      7.374      0.000
+    HOVS2              0.301      0.029     10.321      0.000
+    HOVS3              0.264      0.032      8.331      0.000
+    HOVS4              0.275      0.036      7.612      0.000
+    I                  0.993      0.006    161.255      0.000
+    S                  0.988      0.008    125.133      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    AEXS2              0.418      0.098      4.253      0.000
+    AEXS3              0.611      0.084      7.318      0.000
+    AEXS4              0.634      0.093      6.809      0.000
+    PEXS2              0.524      0.105      5.012      0.000
+    PEXS3              0.693      0.100      6.901      0.000
+    PEXS4              0.737      0.083      8.883      0.000
+    HOVS1              0.528      0.036     14.623      0.000
+    HOVS2              0.435      0.025     17.630      0.000
+    HOVS3              0.504      0.027     18.405      0.000
+    HOVS4              0.562      0.050     11.287      0.000
+
+     Latent                                         Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    I                  0.007      0.006      1.184      0.237
+    S                  0.012      0.008      1.580      0.114
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.270E-05
+       (ratio of smallest to largest eigenvalue)
+
+
+CONFIDENCE INTERVALS OF MODEL RESULTS
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    HOVS1            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    HOVS2            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    HOVS3            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    HOVS4            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ S        |
+    HOVS1            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS2            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    HOVS3            2.000       2.000       2.000       2.000       2.000       2.000       2.000
+    HOVS4            3.000       3.000       3.000       3.000       3.000       3.000       3.000
+
+ I        ON
+    SCHN             0.001       0.002       0.003       0.006       0.010       0.010       0.012
+    RURAL           -0.016       0.007       0.019       0.081       0.143       0.154       0.177
+
+ S        ON
+    SCHN            -0.005      -0.005      -0.004      -0.002      -0.001       0.000       0.000
+    RURAL           -0.044      -0.031      -0.025       0.009       0.042       0.048       0.061
+
+ HOVS2    ON
+    AEXS2           -0.017      -0.014      -0.012      -0.002       0.008       0.010       0.014
+    PEXS2           -0.012      -0.008      -0.006       0.004       0.014       0.016       0.020
+
+ HOVS3    ON
+    AEXS3           -0.012      -0.010      -0.009      -0.003       0.003       0.004       0.006
+    PEXS3           -0.023      -0.019      -0.016      -0.004       0.009       0.011       0.016
+
+ HOVS4    ON
+    AEXS4           -0.022      -0.016      -0.013       0.003       0.019       0.022       0.028
+    PEXS4           -0.018      -0.014      -0.011       0.000       0.012       0.014       0.019
+
+ AEXS4    ON
+    AEXS2            0.094       0.121       0.135       0.206       0.278       0.292       0.319
+    PEXS2            0.016       0.050       0.068       0.160       0.252       0.269       0.304
+    AEXS3            0.129       0.191       0.222       0.388       0.554       0.586       0.648
+    PEXS3           -0.303      -0.239      -0.206      -0.035       0.136       0.169       0.233
+    PLPCY2          -0.010      -0.004      -0.001       0.015       0.031       0.034       0.040
+    PLMAPCY2         0.006       0.008       0.009       0.014       0.020       0.021       0.023
+
+ PEXS4    ON
+    AEXS2           -0.073      -0.060      -0.053      -0.019       0.016       0.022       0.035
+    PEXS2            0.268       0.289       0.300       0.357       0.414       0.425       0.446
+    AEXS3           -0.012      -0.001       0.005       0.035       0.066       0.071       0.083
+    PEXS3            0.280       0.301       0.312       0.368       0.425       0.436       0.457
+    PLPCY2          -0.019      -0.011      -0.007       0.015       0.036       0.040       0.048
+    PLMAPCY2         0.014       0.014       0.015       0.017       0.019       0.020       0.021
+
+ AEXS3    ON
+    AEXS2            0.371       0.395       0.408       0.472       0.537       0.549       0.574
+    PEXS2            0.151       0.175       0.188       0.254       0.320       0.332       0.357
+    PLPCY1          -0.007       0.002       0.006       0.027       0.049       0.053       0.061
+    PLMAPCY1         0.007       0.008       0.008       0.010       0.012       0.012       0.013
+
+ PEXS3    ON
+    AEXS2           -0.017       0.000       0.008       0.053       0.098       0.107       0.124
+    PEXS2            0.401       0.447       0.470       0.593       0.715       0.739       0.785
+    PLPCY1          -0.022      -0.001       0.009       0.064       0.118       0.128       0.149
+    PLMAPCY1         0.003       0.005       0.006       0.011       0.015       0.016       0.018
+
+ AEXS2    ON
+    PLPCY1           0.021       0.036       0.043       0.082       0.122       0.129       0.144
+    PLMAPCY1         0.025       0.028       0.029       0.037       0.044       0.046       0.049
+    SCHN            -0.074      -0.063      -0.057      -0.027       0.004       0.009       0.021
+    RURAL           -0.775      -0.662      -0.604      -0.302      -0.001       0.057       0.170
+
+ PEXS2    ON
+    PLPCY1          -0.044      -0.029      -0.021       0.021       0.062       0.070       0.086
+    PLMAPCY1         0.032       0.035       0.036       0.044       0.052       0.054       0.057
+    SCHN            -0.186      -0.169      -0.161      -0.116      -0.072      -0.063      -0.047
+    RURAL           -0.965      -0.817      -0.742      -0.347       0.048       0.123       0.271
+
+ PLPCY1   WITH
+    I                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    S                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ PLPCY2   WITH
+    I                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    S                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ PLMAPCY1 WITH
+    I                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    S                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ PLMAPCY2 WITH
+    I                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    S                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ S        WITH
+    I               -0.041      -0.035      -0.032      -0.018      -0.003       0.000       0.005
+
+ AEXS4    WITH
+    PEXS4            0.034       0.167       0.235       0.592       0.948       1.016       1.150
+
+ AEXS3    WITH
+    PEXS3            0.052       0.188       0.258       0.622       0.986       1.056       1.192
+
+ AEXS2    WITH
+    PEXS2            0.380       0.595       0.705       1.280       1.855       1.965       2.181
+
+ PLPCY1   WITH
+    SCHN           -13.486     -11.385     -10.310      -4.697       0.916       1.991       4.092
+    RURAL           -1.187      -0.952      -0.832      -0.204       0.424       0.544       0.779
+
+ PLPCY2   WITH
+    SCHN           -18.168     -15.495     -14.127      -6.984       0.159       1.527       4.201
+    RURAL           -1.047      -0.771      -0.629       0.110       0.849       0.990       1.267
+    PLPCY1          -4.159       1.868       4.950      21.050      37.150      40.233      46.260
+
+ PLMAPCY1 WITH
+    SCHN          -113.945     -65.515     -40.741      88.633     218.007     242.781     291.211
+    RURAL          -15.336     -13.045     -11.874      -5.755       0.364       1.536       3.827
+    PLPCY1          25.584      42.806      51.615      97.619     143.623     152.433     169.654
+    PLPCY2          16.286      36.909      47.458     102.547     157.637     168.186     188.809
+
+ PLMAPCY2 WITH
+    SCHN           -43.716     -22.647     -11.870      44.410     100.691     111.468     132.537
+    RURAL          -14.194     -12.297     -11.327      -6.261      -1.194      -0.224       1.673
+    PLPCY1          24.004      39.923      48.066      90.590     133.114     141.257     157.176
+    PLPCY2           4.472      23.704      33.542      84.919     136.296     146.134     165.367
+    PLMAPCY1       618.186     670.570     697.365     837.298     977.231    1004.027    1056.410
+
+ RURAL    WITH
+    SCHN            -2.873      -2.453      -2.238      -1.117       0.004       0.218       0.638
+
+ Means
+    SCHN            -2.486      -1.026      -0.280       3.618       7.516       8.263       9.722
+    RURAL            0.000       0.079       0.120       0.331       0.542       0.582       0.661
+    PLPCY1           1.037       1.498       1.734       2.965       4.196       4.432       4.893
+    PLPCY2           0.693       1.204       1.466       2.832       4.198       4.460       4.971
+    PLMAPCY1         7.255      13.548      16.768      33.580      50.392      53.611      59.905
+    PLMAPCY2         7.861      13.032      15.678      29.494      43.309      45.955      51.127
+
+ Intercepts
+    AEXS2           -0.154      -0.048       0.007       0.291       0.576       0.631       0.737
+    AEXS3           -0.027      -0.016      -0.011       0.017       0.045       0.050       0.060
+    AEXS4           -0.047      -0.039      -0.035      -0.013       0.008       0.013       0.021
+    PEXS2           -0.027       0.081       0.137       0.427       0.717       0.772       0.881
+    PEXS3           -0.038      -0.024      -0.017       0.019       0.056       0.063       0.077
+    PEXS4           -0.036      -0.020      -0.012       0.031       0.073       0.081       0.097
+    HOVS1            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS2            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS3            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS4            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    I                0.249       0.271       0.282       0.341       0.400       0.411       0.433
+    S               -0.016      -0.006      -0.001       0.025       0.051       0.056       0.065
+
+ Variances
+    SCHN           -17.157      -3.858       2.944      38.468      73.992      80.795      94.093
+    RURAL            0.109       0.136       0.150       0.221       0.293       0.306       0.333
+    PLPCY1          -2.809       2.485       5.192      19.332      33.472      36.180      41.473
+    PLPCY2          -4.847       2.751       6.638      26.936      47.234      51.121      58.719
+    PLMAPCY1       703.630     800.026     849.335    1106.837    1364.339    1413.648    1510.044
+    PLMAPCY2       323.052     466.372     539.685     922.540    1305.396    1378.709    1522.029
+
+ Residual Variances
+    AEXS2            0.606       1.204       1.510       3.107       4.705       5.011       5.609
+    AEXS3            0.191       0.648       0.882       2.104       3.325       3.559       4.016
+    AEXS4            0.043       0.497       0.729       1.942       3.154       3.387       3.841
+    PEXS2            0.481       0.818       0.991       1.893       2.796       2.968       3.306
+    PEXS3            0.119       0.407       0.555       1.324       2.093       2.240       2.528
+    PEXS4            0.091       0.362       0.501       1.225       1.949       2.088       2.359
+    HOVS1            0.141       0.159       0.168       0.217       0.265       0.274       0.292
+    HOVS2            0.226       0.244       0.253       0.301       0.349       0.358       0.376
+    HOVS3            0.182       0.202       0.212       0.264       0.316       0.326       0.346
+    HOVS4            0.182       0.205       0.216       0.275       0.335       0.346       0.369
+    I                0.177       0.192       0.200       0.241       0.282       0.290       0.305
+    S                0.004       0.009       0.012       0.024       0.036       0.039       0.043
+
+
+CONFIDENCE INTERVALS OF STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    HOVS1            0.663       0.678       0.686       0.727       0.768       0.776       0.791
+    HOVS2            0.605       0.622       0.630       0.676       0.721       0.730       0.747
+    HOVS3            0.594       0.614       0.624       0.675       0.727       0.737       0.756
+    HOVS4            0.532       0.553       0.564       0.622       0.679       0.690       0.711
+
+ S        |
+    HOVS1            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS2            0.134       0.153       0.163       0.214       0.265       0.275       0.294
+    HOVS3            0.285       0.319       0.336       0.427       0.517       0.535       0.569
+    HOVS4            0.379       0.429       0.455       0.589       0.724       0.750       0.800
+
+ I        ON
+    SCHN            -0.007       0.013       0.023       0.077       0.130       0.140       0.160
+    RURAL           -0.022       0.002       0.014       0.077       0.140       0.152       0.176
+
+ S        ON
+    SCHN            -0.189      -0.167      -0.156      -0.099      -0.042      -0.031      -0.010
+    RURAL           -0.132      -0.094      -0.075       0.026       0.127       0.146       0.184
+
+ HOVS2    ON
+    AEXS2           -0.055      -0.043      -0.037      -0.006       0.026       0.032       0.044
+    PEXS2           -0.032      -0.021      -0.016       0.012       0.040       0.045       0.056
+
+ HOVS3    ON
+    AEXS3           -0.039      -0.032      -0.028      -0.009       0.010       0.014       0.021
+    PEXS3           -0.067      -0.053      -0.046      -0.010       0.026       0.032       0.046
+
+ HOVS4    ON
+    AEXS4           -0.064      -0.046      -0.037       0.009       0.056       0.065       0.082
+    PEXS4           -0.049      -0.037      -0.031       0.001       0.033       0.039       0.051
+
+ AEXS4    ON
+    AEXS2            0.088       0.117       0.131       0.207       0.283       0.297       0.325
+    PEXS2            0.022       0.050       0.064       0.138       0.213       0.227       0.255
+    AEXS3            0.134       0.195       0.227       0.392       0.557       0.588       0.650
+    PEXS3           -0.273      -0.215      -0.186      -0.032       0.122       0.152       0.210
+    PLPCY2          -0.035      -0.019      -0.010       0.033       0.077       0.085       0.102
+    PLMAPCY2         0.026       0.065       0.085       0.191       0.296       0.316       0.355
+
+ PEXS4    ON
+    AEXS2           -0.077      -0.064      -0.057      -0.020       0.016       0.023       0.037
+    PEXS2            0.261       0.277       0.286       0.330       0.374       0.383       0.399
+    AEXS3           -0.012       0.000       0.006       0.038       0.070       0.076       0.088
+    PEXS3            0.258       0.281       0.293       0.354       0.415       0.427       0.450
+    PLPCY2          -0.041      -0.023      -0.013       0.035       0.084       0.093       0.111
+    PLMAPCY2         0.159       0.178       0.188       0.241       0.293       0.303       0.322
+
+ AEXS3    ON
+    AEXS2            0.366       0.391       0.404       0.469       0.534       0.547       0.571
+    PEXS2            0.122       0.145       0.157       0.218       0.279       0.291       0.314
+    PLPCY1          -0.003       0.010       0.017       0.051       0.086       0.093       0.106
+    PLMAPCY1         0.084       0.098       0.105       0.143       0.181       0.188       0.202
+
+ PEXS3    ON
+    AEXS2           -0.026      -0.006       0.005       0.059       0.114       0.124       0.145
+    PEXS2            0.389       0.432       0.454       0.570       0.685       0.708       0.751
+    PLPCY1           0.009       0.039       0.054       0.135       0.215       0.230       0.260
+    PLMAPCY1         0.048       0.077       0.092       0.170       0.247       0.262       0.291
+
+ AEXS2    ON
+    PLPCY1           0.034       0.063       0.078       0.157       0.235       0.250       0.280
+    PLMAPCY1         0.306       0.359       0.387       0.529       0.671       0.698       0.751
+    SCHN            -0.221      -0.185      -0.167      -0.072       0.023       0.041       0.076
+    RURAL           -0.151      -0.129      -0.119      -0.062      -0.005       0.006       0.028
+
+ PEXS2    ON
+    PLPCY1          -0.084      -0.053      -0.037       0.046       0.129       0.145       0.176
+    PLMAPCY1         0.486       0.545       0.576       0.735       0.894       0.925       0.984
+    SCHN            -0.726      -0.639      -0.594      -0.361      -0.128      -0.083       0.004
+    RURAL           -0.213      -0.182      -0.166      -0.082       0.002       0.018       0.049
+
+ PLPCY1   WITH
+    I                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    S                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ PLPCY2   WITH
+    I                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    S                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ PLMAPCY1 WITH
+    I                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    S                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ PLMAPCY2 WITH
+    I                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    S                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ S        WITH
+    I               -0.444      -0.394      -0.368      -0.233      -0.099      -0.073      -0.022
+
+ AEXS4    WITH
+    PEXS4            0.310       0.328       0.337       0.384       0.431       0.440       0.457
+
+ AEXS3    WITH
+    PEXS3            0.313       0.327       0.334       0.373       0.411       0.418       0.433
+
+ AEXS2    WITH
+    PEXS2            0.450       0.469       0.478       0.528       0.578       0.587       0.606
+
+ PLPCY1   WITH
+    SCHN            -0.444      -0.379      -0.346      -0.172       0.001       0.035       0.100
+    RURAL           -0.589      -0.472      -0.412      -0.099       0.215       0.274       0.392
+
+ PLPCY2   WITH
+    SCHN            -0.493      -0.427      -0.393      -0.217      -0.041      -0.007       0.059
+    RURAL           -0.420      -0.309      -0.252       0.045       0.342       0.399       0.510
+    PLPCY1           0.808       0.836       0.850       0.922       0.995       1.009       1.036
+
+ PLMAPCY1 WITH
+    SCHN            -0.226      -0.069       0.011       0.430       0.848       0.928       1.085
+    RURAL           -0.946      -0.808      -0.737      -0.368       0.002       0.073       0.211
+    PLPCY1           0.383       0.451       0.486       0.667       0.849       0.884       0.952
+    PLPCY2           0.320       0.385       0.419       0.594       0.769       0.803       0.868
+
+ PLMAPCY2 WITH
+    SCHN            -0.136      -0.047      -0.002       0.236       0.473       0.518       0.607
+    RURAL           -0.917      -0.802      -0.744      -0.438      -0.133      -0.074       0.040
+    PLPCY1           0.430       0.490       0.520       0.678       0.837       0.867       0.926
+    PLPCY2           0.177       0.263       0.308       0.539       0.770       0.814       0.901
+    PLMAPCY1         0.606       0.659       0.686       0.829       0.971       0.998       1.051
+
+ RURAL    WITH
+    SCHN            -0.765      -0.673      -0.627      -0.383      -0.139      -0.093      -0.001
+
+ Means
+    SCHN            -0.026       0.120       0.194       0.583       0.973       1.047       1.193
+    RURAL            0.178       0.304       0.368       0.703       1.038       1.102       1.227
+    PLPCY1           0.270       0.367       0.416       0.674       0.932       0.982       1.078
+    PLPCY2           0.250       0.321       0.357       0.546       0.734       0.770       0.841
+    PLMAPCY1         0.262       0.441       0.532       1.009       1.486       1.578       1.756
+    PLMAPCY2         0.281       0.446       0.530       0.971       1.412       1.496       1.661
+
+ Intercepts
+    AEXS2           -0.051      -0.009       0.013       0.126       0.239       0.261       0.303
+    AEXS3           -0.011      -0.006      -0.004       0.007       0.019       0.021       0.025
+    AEXS4           -0.020      -0.017      -0.015      -0.006       0.003       0.005       0.009
+    PEXS2            0.017       0.064       0.088       0.214       0.340       0.364       0.411
+    PEXS3           -0.018      -0.011      -0.008       0.009       0.027       0.030       0.036
+    PEXS4           -0.015      -0.008      -0.004       0.014       0.033       0.036       0.043
+    HOVS1            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS2            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS3            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS4            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    I                0.530       0.569       0.588       0.692       0.795       0.815       0.854
+    S               -0.096      -0.035      -0.004       0.159       0.323       0.354       0.415
+
+ Variances
+    SCHN             1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    RURAL            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    PLPCY1           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    PLPCY2           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    PLMAPCY1         1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    PLMAPCY2         1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ Residual Variances
+    AEXS2            0.329       0.390       0.421       0.582       0.744       0.775       0.835
+    AEXS3            0.174       0.225       0.251       0.389       0.526       0.552       0.604
+    AEXS4            0.126       0.183       0.212       0.366       0.519       0.548       0.606
+    PEXS2            0.206       0.270       0.303       0.476       0.648       0.681       0.745
+    PEXS3            0.049       0.111       0.142       0.307       0.472       0.504       0.566
+    PEXS4            0.049       0.100       0.126       0.263       0.399       0.425       0.477
+    HOVS1            0.378       0.401       0.412       0.472       0.531       0.542       0.565
+    HOVS2            0.502       0.517       0.525       0.565       0.606       0.614       0.629
+    HOVS3            0.426       0.442       0.451       0.496       0.541       0.550       0.567
+    HOVS4            0.310       0.341       0.356       0.438       0.520       0.536       0.566
+    I                0.977       0.981       0.983       0.993       1.003       1.005       1.009
+    S                0.967       0.972       0.975       0.988       1.001       1.003       1.008
+
+
+STDY Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    HOVS1            0.663       0.678       0.686       0.727       0.768       0.776       0.791
+    HOVS2            0.605       0.622       0.630       0.676       0.721       0.730       0.747
+    HOVS3            0.594       0.614       0.624       0.675       0.727       0.737       0.756
+    HOVS4            0.532       0.553       0.564       0.622       0.679       0.690       0.711
+
+ S        |
+    HOVS1            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS2            0.134       0.153       0.163       0.214       0.265       0.275       0.294
+    HOVS3            0.285       0.319       0.336       0.427       0.517       0.535       0.569
+    HOVS4            0.379       0.429       0.455       0.589       0.724       0.750       0.800
+
+ I        ON
+    SCHN            -0.007       0.013       0.023       0.077       0.130       0.140       0.160
+    RURAL           -0.022       0.002       0.014       0.077       0.140       0.152       0.176
+
+ S        ON
+    SCHN            -0.189      -0.167      -0.156      -0.099      -0.042      -0.031      -0.010
+    RURAL           -0.132      -0.094      -0.075       0.026       0.127       0.146       0.184
+
+ HOVS2    ON
+    AEXS2           -0.055      -0.043      -0.037      -0.006       0.026       0.032       0.044
+    PEXS2           -0.032      -0.021      -0.016       0.012       0.040       0.045       0.056
+
+ HOVS3    ON
+    AEXS3           -0.039      -0.032      -0.028      -0.009       0.010       0.014       0.021
+    PEXS3           -0.067      -0.053      -0.046      -0.010       0.026       0.032       0.046
+
+ HOVS4    ON
+    AEXS4           -0.064      -0.046      -0.037       0.009       0.056       0.065       0.082
+    PEXS4           -0.049      -0.037      -0.031       0.001       0.033       0.039       0.051
+
+ AEXS4    ON
+    AEXS2            0.088       0.117       0.131       0.207       0.283       0.297       0.325
+    PEXS2            0.022       0.050       0.064       0.138       0.213       0.227       0.255
+    AEXS3            0.134       0.195       0.227       0.392       0.557       0.588       0.650
+    PEXS3           -0.273      -0.215      -0.186      -0.032       0.122       0.152       0.210
+    PLPCY2          -0.035      -0.019      -0.010       0.033       0.077       0.085       0.102
+    PLMAPCY2         0.026       0.065       0.085       0.191       0.296       0.316       0.355
+
+ PEXS4    ON
+    AEXS2           -0.077      -0.064      -0.057      -0.020       0.016       0.023       0.037
+    PEXS2            0.261       0.277       0.286       0.330       0.374       0.383       0.399
+    AEXS3           -0.012       0.000       0.006       0.038       0.070       0.076       0.088
+    PEXS3            0.258       0.281       0.293       0.354       0.415       0.427       0.450
+    PLPCY2          -0.041      -0.023      -0.013       0.035       0.084       0.093       0.111
+    PLMAPCY2         0.159       0.178       0.188       0.241       0.293       0.303       0.322
+
+ AEXS3    ON
+    AEXS2            0.366       0.391       0.404       0.469       0.534       0.547       0.571
+    PEXS2            0.122       0.145       0.157       0.218       0.279       0.291       0.314
+    PLPCY1          -0.003       0.010       0.017       0.051       0.086       0.093       0.106
+    PLMAPCY1         0.084       0.098       0.105       0.143       0.181       0.188       0.202
+
+ PEXS3    ON
+    AEXS2           -0.026      -0.006       0.005       0.059       0.114       0.124       0.145
+    PEXS2            0.389       0.432       0.454       0.570       0.685       0.708       0.751
+    PLPCY1           0.009       0.039       0.054       0.135       0.215       0.230       0.260
+    PLMAPCY1         0.048       0.077       0.092       0.170       0.247       0.262       0.291
+
+ AEXS2    ON
+    PLPCY1           0.034       0.063       0.078       0.157       0.235       0.250       0.280
+    PLMAPCY1         0.306       0.359       0.387       0.529       0.671       0.698       0.751
+    SCHN            -0.221      -0.185      -0.167      -0.072       0.023       0.041       0.076
+    RURAL           -0.151      -0.129      -0.119      -0.062      -0.005       0.006       0.028
+
+ PEXS2    ON
+    PLPCY1          -0.084      -0.053      -0.037       0.046       0.129       0.145       0.176
+    PLMAPCY1         0.486       0.545       0.576       0.735       0.894       0.925       0.984
+    SCHN            -0.726      -0.639      -0.594      -0.361      -0.128      -0.083       0.004
+    RURAL           -0.213      -0.182      -0.166      -0.082       0.002       0.018       0.049
+
+ PLPCY1   WITH
+    I                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    S                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ PLPCY2   WITH
+    I                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    S                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ PLMAPCY1 WITH
+    I                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    S                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ PLMAPCY2 WITH
+    I                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    S                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ S        WITH
+    I               -0.444      -0.394      -0.368      -0.233      -0.099      -0.073      -0.022
+
+ AEXS4    WITH
+    PEXS4            0.310       0.328       0.337       0.384       0.431       0.440       0.457
+
+ AEXS3    WITH
+    PEXS3            0.313       0.327       0.334       0.373       0.411       0.418       0.433
+
+ AEXS2    WITH
+    PEXS2            0.450       0.469       0.478       0.528       0.578       0.587       0.606
+
+ PLPCY1   WITH
+    SCHN            -0.444      -0.379      -0.346      -0.172       0.001       0.035       0.100
+    RURAL           -0.589      -0.472      -0.412      -0.099       0.215       0.274       0.392
+
+ PLPCY2   WITH
+    SCHN            -0.493      -0.427      -0.393      -0.217      -0.041      -0.007       0.059
+    RURAL           -0.420      -0.309      -0.252       0.045       0.342       0.399       0.510
+    PLPCY1           0.808       0.836       0.850       0.922       0.995       1.009       1.036
+
+ PLMAPCY1 WITH
+    SCHN            -0.226      -0.069       0.011       0.430       0.848       0.928       1.085
+    RURAL           -0.946      -0.808      -0.737      -0.368       0.002       0.073       0.211
+    PLPCY1           0.383       0.451       0.486       0.667       0.849       0.884       0.952
+    PLPCY2           0.320       0.385       0.419       0.594       0.769       0.803       0.868
+
+ PLMAPCY2 WITH
+    SCHN            -0.136      -0.047      -0.002       0.236       0.473       0.518       0.607
+    RURAL           -0.917      -0.802      -0.744      -0.438      -0.133      -0.074       0.040
+    PLPCY1           0.430       0.490       0.520       0.678       0.837       0.867       0.926
+    PLPCY2           0.177       0.263       0.308       0.539       0.770       0.814       0.901
+    PLMAPCY1         0.606       0.659       0.686       0.829       0.971       0.998       1.051
+
+ RURAL    WITH
+    SCHN            -0.765      -0.673      -0.627      -0.383      -0.139      -0.093      -0.001
+
+ Means
+    SCHN            -0.026       0.120       0.194       0.583       0.973       1.047       1.193
+    RURAL            0.178       0.304       0.368       0.703       1.038       1.102       1.227
+    PLPCY1           0.270       0.367       0.416       0.674       0.932       0.982       1.078
+    PLPCY2           0.250       0.321       0.357       0.546       0.734       0.770       0.841
+    PLMAPCY1         0.262       0.441       0.532       1.009       1.486       1.578       1.756
+    PLMAPCY2         0.281       0.446       0.530       0.971       1.412       1.496       1.661
+
+ Intercepts
+    AEXS2           -0.051      -0.009       0.013       0.126       0.239       0.261       0.303
+    AEXS3           -0.011      -0.006      -0.004       0.007       0.019       0.021       0.025
+    AEXS4           -0.020      -0.017      -0.015      -0.006       0.003       0.005       0.009
+    PEXS2            0.017       0.064       0.088       0.214       0.340       0.364       0.411
+    PEXS3           -0.018      -0.011      -0.008       0.009       0.027       0.030       0.036
+    PEXS4           -0.015      -0.008      -0.004       0.014       0.033       0.036       0.043
+    HOVS1            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS2            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS3            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS4            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    I                0.530       0.569       0.588       0.692       0.795       0.815       0.854
+    S               -0.096      -0.035      -0.004       0.159       0.323       0.354       0.415
+
+ Variances
+    SCHN             1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    RURAL            1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    PLPCY1           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    PLPCY2           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    PLMAPCY1         1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    PLMAPCY2         1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ Residual Variances
+    AEXS2            0.329       0.390       0.421       0.582       0.744       0.775       0.835
+    AEXS3            0.174       0.225       0.251       0.389       0.526       0.552       0.604
+    AEXS4            0.126       0.183       0.212       0.366       0.519       0.548       0.606
+    PEXS2            0.206       0.270       0.303       0.476       0.648       0.681       0.745
+    PEXS3            0.049       0.111       0.142       0.307       0.472       0.504       0.566
+    PEXS4            0.049       0.100       0.126       0.263       0.399       0.425       0.477
+    HOVS1            0.378       0.401       0.412       0.472       0.531       0.542       0.565
+    HOVS2            0.502       0.517       0.525       0.565       0.606       0.614       0.629
+    HOVS3            0.426       0.442       0.451       0.496       0.541       0.550       0.567
+    HOVS4            0.310       0.341       0.356       0.438       0.520       0.536       0.566
+    I                0.977       0.981       0.983       0.993       1.003       1.005       1.009
+    S                0.967       0.972       0.975       0.988       1.001       1.003       1.008
+
+
+STD Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    HOVS1            0.429       0.444       0.452       0.493       0.534       0.541       0.557
+    HOVS2            0.429       0.444       0.452       0.493       0.534       0.541       0.557
+    HOVS3            0.429       0.444       0.452       0.493       0.534       0.541       0.557
+    HOVS4            0.429       0.444       0.452       0.493       0.534       0.541       0.557
+
+ S        |
+    HOVS1            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS2            0.093       0.108       0.116       0.156       0.196       0.204       0.219
+    HOVS3            0.186       0.216       0.231       0.312       0.392       0.407       0.437
+    HOVS4            0.279       0.324       0.347       0.467       0.588       0.611       0.656
+
+ I        ON
+    SCHN             0.000       0.003       0.005       0.012       0.020       0.021       0.024
+    RURAL           -0.039       0.009       0.034       0.164       0.294       0.319       0.367
+
+ S        ON
+    SCHN            -0.032      -0.028      -0.026      -0.016      -0.006      -0.004       0.000
+    RURAL           -0.284      -0.203      -0.161       0.055       0.272       0.313       0.394
+
+ HOVS2    ON
+    AEXS2           -0.017      -0.014      -0.012      -0.002       0.008       0.010       0.014
+    PEXS2           -0.012      -0.008      -0.006       0.004       0.014       0.016       0.020
+
+ HOVS3    ON
+    AEXS3           -0.012      -0.010      -0.009      -0.003       0.003       0.004       0.006
+    PEXS3           -0.023      -0.019      -0.016      -0.004       0.009       0.011       0.016
+
+ HOVS4    ON
+    AEXS4           -0.022      -0.016      -0.013       0.003       0.019       0.022       0.028
+    PEXS4           -0.018      -0.014      -0.011       0.000       0.012       0.014       0.019
+
+ AEXS4    ON
+    AEXS2            0.094       0.121       0.135       0.206       0.278       0.292       0.319
+    PEXS2            0.016       0.050       0.068       0.160       0.252       0.269       0.304
+    AEXS3            0.129       0.191       0.222       0.388       0.554       0.586       0.648
+    PEXS3           -0.303      -0.239      -0.206      -0.035       0.136       0.169       0.233
+    PLPCY2          -0.010      -0.004      -0.001       0.015       0.031       0.034       0.040
+    PLMAPCY2         0.006       0.008       0.009       0.014       0.020       0.021       0.023
+
+ PEXS4    ON
+    AEXS2           -0.073      -0.060      -0.053      -0.019       0.016       0.022       0.035
+    PEXS2            0.268       0.289       0.300       0.357       0.414       0.425       0.446
+    AEXS3           -0.012      -0.001       0.005       0.035       0.066       0.071       0.083
+    PEXS3            0.280       0.301       0.312       0.368       0.425       0.436       0.457
+    PLPCY2          -0.019      -0.011      -0.007       0.015       0.036       0.040       0.048
+    PLMAPCY2         0.014       0.014       0.015       0.017       0.019       0.020       0.021
+
+ AEXS3    ON
+    AEXS2            0.371       0.395       0.408       0.472       0.537       0.549       0.574
+    PEXS2            0.151       0.175       0.188       0.254       0.320       0.332       0.357
+    PLPCY1          -0.007       0.002       0.006       0.027       0.049       0.053       0.061
+    PLMAPCY1         0.007       0.008       0.008       0.010       0.012       0.012       0.013
+
+ PEXS3    ON
+    AEXS2           -0.017       0.000       0.008       0.053       0.098       0.107       0.124
+    PEXS2            0.401       0.447       0.470       0.593       0.715       0.739       0.785
+    PLPCY1          -0.022      -0.001       0.009       0.064       0.118       0.128       0.149
+    PLMAPCY1         0.003       0.005       0.006       0.011       0.015       0.016       0.018
+
+ AEXS2    ON
+    PLPCY1           0.021       0.036       0.043       0.082       0.122       0.129       0.144
+    PLMAPCY1         0.025       0.028       0.029       0.037       0.044       0.046       0.049
+    SCHN            -0.074      -0.063      -0.057      -0.027       0.004       0.009       0.021
+    RURAL           -0.775      -0.662      -0.604      -0.302      -0.001       0.057       0.170
+
+ PEXS2    ON
+    PLPCY1          -0.044      -0.029      -0.021       0.021       0.062       0.070       0.086
+    PLMAPCY1         0.032       0.035       0.036       0.044       0.052       0.054       0.057
+    SCHN            -0.186      -0.169      -0.161      -0.116      -0.072      -0.063      -0.047
+    RURAL           -0.965      -0.817      -0.742      -0.347       0.048       0.123       0.271
+
+ PLPCY1   WITH
+    I                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    S                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ PLPCY2   WITH
+    I                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    S                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ PLMAPCY1 WITH
+    I                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    S                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ PLMAPCY2 WITH
+    I                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    S                0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ S        WITH
+    I               -0.444      -0.394      -0.368      -0.233      -0.099      -0.073      -0.022
+
+ AEXS4    WITH
+    PEXS4            0.034       0.167       0.235       0.592       0.948       1.016       1.150
+
+ AEXS3    WITH
+    PEXS3            0.052       0.188       0.258       0.622       0.986       1.056       1.192
+
+ AEXS2    WITH
+    PEXS2            0.380       0.595       0.705       1.280       1.855       1.965       2.181
+
+ PLPCY1   WITH
+    SCHN           -13.486     -11.385     -10.310      -4.697       0.916       1.991       4.092
+    RURAL           -1.187      -0.952      -0.832      -0.204       0.424       0.544       0.779
+
+ PLPCY2   WITH
+    SCHN           -18.168     -15.495     -14.127      -6.984       0.159       1.527       4.201
+    RURAL           -1.047      -0.771      -0.629       0.110       0.849       0.990       1.267
+    PLPCY1          -4.159       1.868       4.950      21.050      37.150      40.233      46.260
+
+ PLMAPCY1 WITH
+    SCHN          -113.945     -65.515     -40.741      88.633     218.007     242.781     291.211
+    RURAL          -15.336     -13.045     -11.874      -5.755       0.364       1.536       3.827
+    PLPCY1          25.584      42.806      51.615      97.619     143.623     152.433     169.654
+    PLPCY2          16.286      36.909      47.458     102.547     157.637     168.186     188.809
+
+ PLMAPCY2 WITH
+    SCHN           -43.716     -22.647     -11.870      44.410     100.691     111.468     132.537
+    RURAL          -14.194     -12.297     -11.327      -6.261      -1.194      -0.224       1.673
+    PLPCY1          24.004      39.923      48.066      90.590     133.114     141.257     157.176
+    PLPCY2           4.472      23.704      33.542      84.919     136.296     146.134     165.367
+    PLMAPCY1       618.186     670.570     697.365     837.298     977.231    1004.027    1056.410
+
+ RURAL    WITH
+    SCHN            -2.873      -2.453      -2.238      -1.117       0.004       0.218       0.638
+
+ Means
+    SCHN            -2.486      -1.026      -0.280       3.618       7.516       8.263       9.722
+    RURAL            0.000       0.079       0.120       0.331       0.542       0.582       0.661
+    PLPCY1           1.037       1.498       1.734       2.965       4.196       4.432       4.893
+    PLPCY2           0.693       1.204       1.466       2.832       4.198       4.460       4.971
+    PLMAPCY1         7.255      13.548      16.768      33.580      50.392      53.611      59.905
+    PLMAPCY2         7.861      13.032      15.678      29.494      43.309      45.955      51.127
+
+ Intercepts
+    AEXS2           -0.154      -0.048       0.007       0.291       0.576       0.631       0.737
+    AEXS3           -0.027      -0.016      -0.011       0.017       0.045       0.050       0.060
+    AEXS4           -0.047      -0.039      -0.035      -0.013       0.008       0.013       0.021
+    PEXS2           -0.027       0.081       0.137       0.427       0.717       0.772       0.881
+    PEXS3           -0.038      -0.024      -0.017       0.019       0.056       0.063       0.077
+    PEXS4           -0.036      -0.020      -0.012       0.031       0.073       0.081       0.097
+    HOVS1            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS2            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS3            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOVS4            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    I                0.530       0.569       0.588       0.692       0.795       0.815       0.854
+    S               -0.096      -0.035      -0.004       0.159       0.323       0.354       0.415
+
+ Variances
+    SCHN           -17.157      -3.858       2.944      38.468      73.992      80.795      94.093
+    RURAL            0.109       0.136       0.150       0.221       0.293       0.306       0.333
+    PLPCY1          -2.809       2.485       5.192      19.332      33.472      36.180      41.473
+    PLPCY2          -4.847       2.751       6.638      26.936      47.234      51.121      58.719
+    PLMAPCY1       703.630     800.026     849.335    1106.837    1364.339    1413.648    1510.044
+    PLMAPCY2       323.052     466.372     539.685     922.540    1305.396    1378.709    1522.029
+
+ Residual Variances
+    AEXS2            0.606       1.204       1.510       3.107       4.705       5.011       5.609
+    AEXS3            0.191       0.648       0.882       2.104       3.325       3.559       4.016
+    AEXS4            0.043       0.497       0.729       1.942       3.154       3.387       3.841
+    PEXS2            0.481       0.818       0.991       1.893       2.796       2.968       3.306
+    PEXS3            0.119       0.407       0.555       1.324       2.093       2.240       2.528
+    PEXS4            0.091       0.362       0.501       1.225       1.949       2.088       2.359
+    HOVS1            0.141       0.159       0.168       0.217       0.265       0.274       0.292
+    HOVS2            0.226       0.244       0.253       0.301       0.349       0.358       0.376
+    HOVS3            0.182       0.202       0.212       0.264       0.316       0.326       0.346
+    HOVS4            0.182       0.205       0.216       0.275       0.335       0.346       0.369
+    I                0.977       0.981       0.983       0.993       1.003       1.005       1.009
+    S                0.967       0.972       0.975       0.988       1.001       1.003       1.008
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means
+              AEXS2         AEXS3         AEXS4         PEXS2         PEXS3
+              ________      ________      ________      ________      ________
+                1.572         1.539         1.553         1.434         1.497
+
+
+           Model Estimated Means
+              PEXS4         HOVS1         HOVS2         HOVS3         HOVS4
+              ________      ________      ________      ________      ________
+                1.664         0.390         0.412         0.417         0.451
+
+
+           Model Estimated Means
+              SCHN          RURAL         PLPCY1        PLPCY2        PLMAPCY1
+              ________      ________      ________      ________      ________
+                3.618         0.331         2.965         2.832        33.580
+
+
+           Model Estimated Means
+              PLMAPCY2
+              ________
+               29.494
+
+
+           Residuals for Means
+              AEXS2         AEXS3         AEXS4         PEXS2         PEXS3
+              ________      ________      ________      ________      ________
+                0.001         0.004        -0.002        -0.008         0.017
+
+
+           Residuals for Means
+              PEXS4         HOVS1         HOVS2         HOVS3         HOVS4
+              ________      ________      ________      ________      ________
+                0.013        -0.005         0.017        -0.006         0.004
+
+
+           Residuals for Means
+              SCHN          RURAL         PLPCY1        PLPCY2        PLMAPCY1
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              PLMAPCY2
+              ________
+                0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              AEXS2         AEXS3         AEXS4         PEXS2         PEXS3
+              ________      ________      ________      ________      ________
+                0.032         0.165       999.000        -0.219         0.297
+
+
+           Standardized Residuals (z-scores) for Means
+              PEXS4         HOVS1         HOVS2         HOVS3         HOVS4
+              ________      ________      ________      ________      ________
+                0.266        -0.927       999.000        -0.609       999.000
+
+
+           Standardized Residuals (z-scores) for Means
+              SCHN          RURAL         PLPCY1        PLPCY2        PLMAPCY1
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000        -0.002
+
+
+           Standardized Residuals (z-scores) for Means
+              PLMAPCY2
+              ________
+               -0.003
+
+
+           Normalized Residuals for Means
+              AEXS2         AEXS3         AEXS4         PEXS2         PEXS3
+              ________      ________      ________      ________      ________
+                0.003         0.010        -0.005        -0.021         0.044
+
+
+           Normalized Residuals for Means
+              PEXS4         HOVS1         HOVS2         HOVS3         HOVS4
+              ________      ________      ________      ________      ________
+                0.031        -0.203         0.988        -0.260         0.164
+
+
+           Normalized Residuals for Means
+              SCHN          RURAL         PLPCY1        PLPCY2        PLMAPCY1
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              PLMAPCY2
+              ________
+                0.000
+
+
+           Model Estimated Covariances
+              AEXS2         AEXS3         AEXS4         PEXS2         PEXS3
+              ________      ________      ________      ________      ________
+ AEXS2          5.336
+ AEXS3          3.996         5.411
+ AEXS4          3.724         3.944         5.311
+ PEXS2          3.350         3.162         3.041         3.982
+ PEXS3          3.119         3.551         3.042         3.327         4.308
+ PEXS4          3.133         3.291         3.666         3.392         3.579
+ HOVS1         -0.008        -0.009        -0.012        -0.018        -0.013
+ HOVS2         -0.011        -0.009        -0.011        -0.008        -0.008
+ HOVS3         -0.046        -0.050        -0.046        -0.041        -0.046
+ HOVS4         -0.018        -0.014        -0.012        -0.010        -0.012
+ SCHN           2.173         1.715         1.588        -0.272         0.594
+ RURAL         -0.265        -0.240        -0.262        -0.205        -0.209
+ PLPCY1         5.365         5.385         5.469         5.322         5.702
+ PLPCY2         5.654         5.722         5.716         5.732         6.122
+ PLMAPCY1      48.046        47.194        47.051        42.526        45.687
+ PLMAPCY2      38.910        38.291        41.881        35.810        37.920
+
+
+           Model Estimated Covariances
+              PEXS4         HOVS1         HOVS2         HOVS3         HOVS4
+              ________      ________      ________      ________      ________
+ PEXS4          4.661
+ HOVS1         -0.016         0.460
+ HOVS2         -0.011         0.225         0.532
+ HOVS3         -0.047         0.207         0.237         0.533
+ HOVS4         -0.015         0.189         0.244         0.298         0.629
+ SCHN           0.798         0.144         0.033        -0.074        -0.167
+ RURAL         -0.259         0.011         0.015         0.022         0.024
+ PLPCY1         5.947        -0.045        -0.022        -0.061         0.004
+ PLPCY2         6.243        -0.034        -0.001        -0.035         0.042
+ PLMAPCY1      48.587         0.074        -0.098        -0.767        -0.568
+ PLMAPCY2      44.386        -0.236        -0.315        -0.812        -0.579
+
+
+           Model Estimated Covariances
+              SCHN          RURAL         PLPCY1        PLPCY2        PLMAPCY1
+              ________      ________      ________      ________      ________
+ SCHN          38.468
+ RURAL         -1.117         0.221
+ PLPCY1        -4.697        -0.204        19.332
+ PLPCY2        -6.984         0.110        21.050        26.936
+ PLMAPCY1      88.633        -5.755        97.619       102.547      1106.837
+ PLMAPCY2      44.410        -6.261        90.590        84.919       837.298
+
+
+           Model Estimated Covariances
+              PLMAPCY2
+              ________
+ PLMAPCY2     922.540
+
+
+           Model Estimated Correlations
+              AEXS2         AEXS3         AEXS4         PEXS2         PEXS3
+              ________      ________      ________      ________      ________
+ AEXS2          1.000
+ AEXS3          0.744         1.000
+ AEXS4          0.700         0.736         1.000
+ PEXS2          0.727         0.681         0.661         1.000
+ PEXS3          0.651         0.735         0.636         0.803         1.000
+ PEXS4          0.628         0.655         0.737         0.787         0.799
+ HOVS1         -0.005        -0.006        -0.007        -0.013        -0.009
+ HOVS2         -0.007        -0.005        -0.007        -0.006        -0.005
+ HOVS3         -0.027        -0.029        -0.027        -0.028        -0.030
+ HOVS4         -0.010        -0.008        -0.006        -0.007        -0.007
+ SCHN           0.152         0.119         0.111        -0.022         0.046
+ RURAL         -0.244        -0.220        -0.242        -0.218        -0.215
+ PLPCY1         0.528         0.527         0.540         0.607         0.625
+ PLPCY2         0.472         0.474         0.478         0.553         0.568
+ PLMAPCY1       0.625         0.610         0.614         0.641         0.662
+ PLMAPCY2       0.555         0.542         0.598         0.591         0.601
+
+
+           Model Estimated Correlations
+              PEXS4         HOVS1         HOVS2         HOVS3         HOVS4
+              ________      ________      ________      ________      ________
+ PEXS4          1.000
+ HOVS1         -0.011         1.000
+ HOVS2         -0.007         0.455         1.000
+ HOVS3         -0.030         0.418         0.446         1.000
+ HOVS4         -0.009         0.351         0.421         0.516         1.000
+ SCHN           0.060         0.034         0.007        -0.016        -0.034
+ RURAL         -0.255         0.035         0.045         0.064         0.065
+ PLPCY1         0.626        -0.015        -0.007        -0.019         0.001
+ PLPCY2         0.557        -0.010         0.000        -0.009         0.010
+ PLMAPCY1       0.676         0.003        -0.004        -0.032        -0.022
+ PLMAPCY2       0.677        -0.011        -0.014        -0.037        -0.024
+
+
+           Model Estimated Correlations
+              SCHN          RURAL         PLPCY1        PLPCY2        PLMAPCY1
+              ________      ________      ________      ________      ________
+ SCHN           1.000
+ RURAL         -0.383         1.000
+ PLPCY1        -0.172        -0.099         1.000
+ PLPCY2        -0.217         0.045         0.922         1.000
+ PLMAPCY1       0.430        -0.368         0.667         0.594         1.000
+ PLMAPCY2       0.236        -0.438         0.678         0.539         0.829
+
+
+           Model Estimated Correlations
+              PLMAPCY2
+              ________
+ PLMAPCY2       1.000
+
+
+           Residuals for Covariances
+              AEXS2         AEXS3         AEXS4         PEXS2         PEXS3
+              ________      ________      ________      ________      ________
+ AEXS2         -0.016
+ AEXS3         -0.022        -0.019
+ AEXS4          0.057         0.042         0.061
+ PEXS2         -0.023        -0.016         0.018        -0.034
+ PEXS3         -0.018        -0.011         0.025        -0.018         0.018
+ PEXS4          0.037         0.022         0.036        -0.013         0.019
+ HOVS1         -0.071        -0.065        -0.085        -0.061        -0.058
+ HOVS2         -0.058        -0.061        -0.054        -0.045        -0.048
+ HOVS3         -0.031        -0.025        -0.031        -0.003        -0.007
+ HOVS4         -0.036        -0.077        -0.036        -0.029        -0.042
+ SCHN           0.084         0.032        -0.243         0.171        -0.718
+ RURAL         -0.013        -0.023         0.003        -0.006        -0.011
+ PLPCY1        -0.035        -0.029         0.026        -0.019         0.011
+ PLPCY2        -0.332        -0.256        -0.113        -0.119        -0.039
+ PLMAPCY1      -0.381        -0.204        -0.803        -0.136         0.182
+ PLMAPCY2       4.008         3.092         1.898         0.950         1.145
+
+
+           Residuals for Covariances
+              PEXS4         HOVS1         HOVS2         HOVS3         HOVS4
+              ________      ________      ________      ________      ________
+ PEXS4          0.023
+ HOVS1         -0.041        -0.001
+ HOVS2         -0.010        -0.001         0.004
+ HOVS3         -0.008         0.001         0.004         0.000
+ HOVS4         -0.017        -0.007         0.008        -0.003        -0.001
+ SCHN          -0.499         0.002        -0.011        -0.026        -0.002
+ RURAL         -0.004         0.001         0.003        -0.004         0.005
+ PLPCY1         0.029        -0.083        -0.044         0.031        -0.019
+ PLPCY2         0.008        -0.021         0.024         0.115         0.071
+ PLMAPCY1       1.031        -0.770         0.126         0.854         0.325
+ PLMAPCY2       0.561        -0.841        -0.306        -0.090        -0.204
+
+
+           Residuals for Covariances
+              SCHN          RURAL         PLPCY1        PLPCY2        PLMAPCY1
+              ________      ________      ________      ________      ________
+ SCHN           0.000
+ RURAL          0.000         0.000
+ PLPCY1         0.000         0.000         0.000
+ PLPCY2         0.000         0.000         0.000         0.000
+ PLMAPCY1       0.000         0.000         0.000         0.000        -0.001
+ PLMAPCY2       0.000         0.000         0.000         0.000        -0.001
+
+
+           Residuals for Covariances
+              PLMAPCY2
+              ________
+ PLMAPCY2      -0.001
+
+
+           Residuals for Correlations
+              AEXS2         AEXS3         AEXS4         PEXS2         PEXS3
+              ________      ________      ________      ________      ________
+ AEXS2          0.000
+ AEXS3         -0.002         0.000
+ AEXS4          0.008         0.005         0.000
+ PEXS2         -0.001         0.001         0.003         0.000
+ PEXS3         -0.004        -0.003         0.000        -0.003         0.000
+ PEXS4          0.007         0.004         0.001        -0.002         0.001
+ HOVS1         -0.046        -0.041        -0.054        -0.045        -0.041
+ HOVS2         -0.035        -0.036        -0.032        -0.031        -0.031
+ HOVS3         -0.018        -0.015        -0.018        -0.002        -0.005
+ HOVS4         -0.020        -0.042        -0.020        -0.018        -0.026
+ SCHN           0.006         0.002        -0.018         0.014        -0.056
+ RURAL         -0.013        -0.021         0.004        -0.007        -0.011
+ PLPCY1        -0.003        -0.002        -0.001         0.000         0.000
+ PLPCY2        -0.027        -0.020        -0.012        -0.009        -0.005
+ PLMAPCY1      -0.004        -0.002        -0.014         0.001         0.001
+ PLMAPCY2       0.058         0.045         0.024         0.018         0.017
+
+
+           Residuals for Correlations
+              PEXS4         HOVS1         HOVS2         HOVS3         HOVS4
+              ________      ________      ________      ________      ________
+ PEXS4          0.000
+ HOVS1         -0.028         0.000
+ HOVS2         -0.006        -0.002         0.000
+ HOVS3         -0.005         0.003         0.006         0.000
+ HOVS4         -0.010        -0.013         0.013        -0.005         0.000
+ SCHN          -0.037         0.000        -0.002        -0.006         0.000
+ RURAL         -0.003         0.002         0.009        -0.011         0.014
+ PLPCY1         0.002        -0.028        -0.014         0.010        -0.006
+ PLPCY2        -0.001        -0.006         0.006         0.030         0.017
+ PLMAPCY1       0.013        -0.034         0.005         0.035         0.012
+ PLMAPCY2       0.007        -0.041        -0.014        -0.004        -0.008
+
+
+           Residuals for Correlations
+              SCHN          RURAL         PLPCY1        PLPCY2        PLMAPCY1
+              ________      ________      ________      ________      ________
+ SCHN           0.000
+ RURAL          0.000         0.000
+ PLPCY1         0.000         0.000         0.000
+ PLPCY2         0.000         0.000         0.000         0.000
+ PLMAPCY1       0.000         0.000         0.000         0.000         0.000
+ PLMAPCY2       0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Correlations
+              PLMAPCY2
+              ________
+ PLMAPCY2       0.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              AEXS2         AEXS3         AEXS4         PEXS2         PEXS3
+              ________      ________      ________      ________      ________
+ AEXS2        999.000
+ AEXS3        999.000       999.000
+ AEXS4          0.578       999.000         0.324
+ PEXS2        999.000       999.000       999.000        -0.432
+ PEXS3        999.000       999.000       999.000       999.000       999.000
+ PEXS4        999.000       999.000       999.000        -0.204       999.000
+ HOVS1         -2.498        -2.185        -4.441        -1.814        -1.772
+ HOVS2         -2.082        -2.545        -1.602        -1.630        -1.742
+ HOVS3         -0.803        -1.091        -0.707        -0.112        -0.253
+ HOVS4         -1.358        -2.578        -1.551        -1.065        -1.278
+ SCHN         999.000       999.000       999.000         1.274       999.000
+ RURAL        999.000       999.000       999.000       999.000        -0.234
+ PLPCY1       999.000       999.000       999.000        -0.333       999.000
+ PLPCY2       999.000        -0.669        -0.458        -0.238        -0.078
+ PLMAPCY1      -0.436        -0.333        -0.460       999.000         0.192
+ PLMAPCY2       1.085         1.203         0.535         0.478         0.748
+
+
+           Standardized Residuals (z-scores) for Covariances
+              PEXS4         HOVS1         HOVS2         HOVS3         HOVS4
+              ________      ________      ________      ________      ________
+ PEXS4        999.000
+ HOVS1         -1.084        -0.145
+ HOVS2         -0.300        -0.062         0.423
+ HOVS3         -0.214         0.070         0.215       999.000
+ HOVS4         -1.111        -0.633         0.423       999.000        -0.076
+ SCHN         999.000         0.064        -0.367        -0.561       999.000
+ RURAL         -0.077         0.170         0.782        -0.734       999.000
+ PLPCY1       999.000        -1.814        -1.112         0.684       999.000
+ PLPCY2         0.014        -0.299         0.277         1.084         1.190
+ PLMAPCY1       0.491        -1.680         0.367         2.040         2.768
+ PLMAPCY2     999.000        -2.948        -1.123        -0.133        -0.579
+
+
+           Standardized Residuals (z-scores) for Covariances
+              SCHN          RURAL         PLPCY1        PLPCY2        PLMAPCY1
+              ________      ________      ________      ________      ________
+ SCHN           0.001
+ RURAL          0.000         0.000
+ PLPCY1        -0.003         0.000         0.000
+ PLPCY2        -0.003         0.000         0.000         0.000
+ PLMAPCY1       0.000         0.000       999.000       999.000        -0.007
+ PLMAPCY2      -0.001         0.000       999.000       999.000       999.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              PLMAPCY2
+              ________
+ PLMAPCY2     999.000
+
+
+           Normalized Residuals for Covariances
+              AEXS2         AEXS3         AEXS4         PEXS2         PEXS3
+              ________      ________      ________      ________      ________
+ AEXS2         -0.020
+ AEXS3         -0.054        -0.022
+ AEXS4          0.152         0.086         0.071
+ PEXS2         -0.055        -0.037         0.045        -0.053
+ PEXS3         -0.043        -0.025         0.053        -0.029         0.027
+ PEXS4          0.101         0.053         0.088        -0.024         0.033
+ HOVS1         -2.009        -1.794        -2.984        -1.522        -1.492
+ HOVS2         -1.537        -1.934        -1.368        -1.266        -1.418
+ HOVS3         -0.637        -0.593        -0.593        -0.077        -0.158
+ HOVS4         -0.787        -1.549        -0.675        -0.641        -0.879
+ SCHN           0.036         0.015        -0.133         0.115        -0.446
+ RURAL         -0.082        -0.142         0.018        -0.035        -0.064
+ PLPCY1        -0.022        -0.018         0.015        -0.013         0.007
+ PLPCY2        -0.175        -0.133        -0.056        -0.063        -0.019
+ PLMAPCY1      -0.077        -0.039        -0.143        -0.019         0.023
+ PLMAPCY2       0.622         0.496         0.232         0.135         0.148
+
+
+           Normalized Residuals for Covariances
+              PEXS4         HOVS1         HOVS2         HOVS3         HOVS4
+              ________      ________      ________      ________      ________
+ PEXS4          0.039
+ HOVS1         -0.929        -0.032
+ HOVS2         -0.256        -0.033         0.103
+ HOVS3         -0.165         0.057         0.176        -0.008
+ HOVS4         -0.386        -0.402         0.340        -0.115        -0.024
+ SCHN          -0.293         0.020        -0.131        -0.283        -0.018
+ RURAL         -0.023         0.071         0.376        -0.395         0.521
+ PLPCY1         0.018        -1.323        -0.753         0.415        -0.266
+ PLPCY2         0.004        -0.262         0.238         0.895         0.629
+ PLMAPCY1       0.133        -1.203         0.267         1.426         0.521
+ PLMAPCY2       0.070        -1.676        -0.697        -0.115        -0.338
+
+
+           Normalized Residuals for Covariances
+              SCHN          RURAL         PLPCY1        PLPCY2        PLMAPCY1
+              ________      ________      ________      ________      ________
+ SCHN           0.000
+ RURAL          0.000         0.000
+ PLPCY1         0.000         0.000         0.000
+ PLPCY2         0.000         0.000         0.000         0.000
+ PLMAPCY1       0.000         0.000         0.000         0.000         0.000
+ PLMAPCY2       0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Covariances
+              PLMAPCY2
+              ________
+ PLMAPCY2       0.000
+
+
+MODEL MODIFICATION INDICES
+
+Minimum M.I. value for printing the modification index    10.000
+
+                                   M.I.     E.P.C.  Std E.P.C.  StdYX E.P.C.
+
+ON Statements
+
+AEXS2    ON AEXS4                 17.289     0.407      0.407        0.406
+AEXS2    ON PEXS3                 40.747     1.498      1.498        1.346
+AEXS2    ON PEXS4                 29.471     0.556      0.556        0.520
+AEXS2    ON PLMAPCY2              31.199     0.013      0.013        0.170
+PEXS2    ON PEXS3                 53.316    -0.543     -0.543       -0.565
+PEXS2    ON PEXS4                 35.425    -0.358     -0.358       -0.387
+PEXS3    ON SCHN                  50.068    -0.049     -0.049       -0.145
+
+WITH Statements
+
+PEXS3    WITH AEXS2               44.220     1.907      1.907        0.940
+PEXS3    WITH PEXS2               56.082    -0.681     -0.681       -0.430
+PEXS4    WITH PEXS2               20.680    -0.423     -0.423       -0.278
+SCHN     WITH PEXS3               56.750    -0.844     -0.844       -0.118
+SCHN     WITH PEXS4               15.234    -0.469     -0.469       -0.068
+RURAL    WITH AEXS2               25.960     0.162      0.162        0.195
+PLMAPCY1 WITH AEXS2               21.570    -3.749     -3.749       -0.064
+PLMAPCY1 WITH PEXS3               28.030     2.259      2.259        0.059
+PLMAPCY1 WITH PEXS4               19.350     1.822      1.822        0.049
+PLMAPCY2 WITH AEXS2               26.281     2.617      2.617        0.049
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              AEXS2         AEXS3         AEXS4         PEXS2         PEXS3
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           NU
+              PEXS4         HOVS1         HOVS2         HOVS3         HOVS4
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           NU
+              SCHN          RURAL         PLPCY1        PLPCY2        PLMAPCY1
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           NU
+              PLMAPCY2
+              ________
+                  0
+
+
+           LAMBDA
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+ AEXS2              0             0             0             0             0
+ AEXS3              0             0             0             0             0
+ AEXS4              0             0             0             0             0
+ PEXS2              0             0             0             0             0
+ PEXS3              0             0             0             0             0
+ PEXS4              0             0             0             0             0
+ HOVS1              0             0             0             0             0
+ HOVS2              0             0             0             0             0
+ HOVS3              0             0             0             0             0
+ HOVS4              0             0             0             0             0
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+ PLPCY1             0             0             0             0             0
+ PLPCY2             0             0             0             0             0
+ PLMAPCY1           0             0             0             0             0
+ PLMAPCY2           0             0             0             0             0
+
+
+           LAMBDA
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+ AEXS2              0             0             0             0             0
+ AEXS3              0             0             0             0             0
+ AEXS4              0             0             0             0             0
+ PEXS2              0             0             0             0             0
+ PEXS3              0             0             0             0             0
+ PEXS4              0             0             0             0             0
+ HOVS1              0             0             0             0             0
+ HOVS2              0             0             0             0             0
+ HOVS3              0             0             0             0             0
+ HOVS4              0             0             0             0             0
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+ PLPCY1             0             0             0             0             0
+ PLPCY2             0             0             0             0             0
+ PLMAPCY1           0             0             0             0             0
+ PLMAPCY2           0             0             0             0             0
+
+
+           LAMBDA
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+ AEXS2              0             0             0             0             0
+ AEXS3              0             0             0             0             0
+ AEXS4              0             0             0             0             0
+ PEXS2              0             0             0             0             0
+ PEXS3              0             0             0             0             0
+ PEXS4              0             0             0             0             0
+ HOVS1              0             0             0             0             0
+ HOVS2              0             0             0             0             0
+ HOVS3              0             0             0             0             0
+ HOVS4              0             0             0             0             0
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+ PLPCY1             0             0             0             0             0
+ PLPCY2             0             0             0             0             0
+ PLMAPCY1           0             0             0             0             0
+ PLMAPCY2           0             0             0             0             0
+
+
+           LAMBDA
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+ AEXS2              0             0             0
+ AEXS3              0             0             0
+ AEXS4              0             0             0
+ PEXS2              0             0             0
+ PEXS3              0             0             0
+ PEXS4              0             0             0
+ HOVS1              0             0             0
+ HOVS2              0             0             0
+ HOVS3              0             0             0
+ HOVS4              0             0             0
+ SCHN               0             0             0
+ RURAL              0             0             0
+ PLPCY1             0             0             0
+ PLPCY2             0             0             0
+ PLMAPCY1           0             0             0
+ PLMAPCY2           0             0             0
+
+
+           THETA
+              AEXS2         AEXS3         AEXS4         PEXS2         PEXS3
+              ________      ________      ________      ________      ________
+ AEXS2              0
+ AEXS3              0             0
+ AEXS4              0             0             0
+ PEXS2              0             0             0             0
+ PEXS3              0             0             0             0             0
+ PEXS4              0             0             0             0             0
+ HOVS1              0             0             0             0             0
+ HOVS2              0             0             0             0             0
+ HOVS3              0             0             0             0             0
+ HOVS4              0             0             0             0             0
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+ PLPCY1             0             0             0             0             0
+ PLPCY2             0             0             0             0             0
+ PLMAPCY1           0             0             0             0             0
+ PLMAPCY2           0             0             0             0             0
+
+
+           THETA
+              PEXS4         HOVS1         HOVS2         HOVS3         HOVS4
+              ________      ________      ________      ________      ________
+ PEXS4              0
+ HOVS1              0             0
+ HOVS2              0             0             0
+ HOVS3              0             0             0             0
+ HOVS4              0             0             0             0             0
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+ PLPCY1             0             0             0             0             0
+ PLPCY2             0             0             0             0             0
+ PLMAPCY1           0             0             0             0             0
+ PLMAPCY2           0             0             0             0             0
+
+
+           THETA
+              SCHN          RURAL         PLPCY1        PLPCY2        PLMAPCY1
+              ________      ________      ________      ________      ________
+ SCHN               0
+ RURAL              0             0
+ PLPCY1             0             0             0
+ PLPCY2             0             0             0             0
+ PLMAPCY1           0             0             0             0             0
+ PLMAPCY2           0             0             0             0             0
+
+
+           THETA
+              PLMAPCY2
+              ________
+ PLMAPCY2           0
+
+
+           ALPHA
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+                  1             2             3             4             5
+
+
+           ALPHA
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+                  6             7             8             0             0
+
+
+           ALPHA
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+                  0             0             9            10            11
+
+
+           ALPHA
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+                 12            13            14
+
+
+           BETA
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+ I                  0             0             0             0             0
+ S                  0             0             0             0             0
+ AEXS2              0             0             0             0             0
+ AEXS3              0             0            23             0             0
+ AEXS4              0             0            27            28             0
+ PEXS2              0             0             0             0             0
+ PEXS3              0             0            37             0             0
+ PEXS4              0             0            41            42             0
+ HOVS1              0             0             0             0             0
+ HOVS2              0             0            47             0             0
+ HOVS3              0             0             0            49             0
+ HOVS4              0             0             0             0            51
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+ PLPCY1             0             0             0             0             0
+ PLPCY2             0             0             0             0             0
+ PLMAPCY1           0             0             0             0             0
+ PLMAPCY2           0             0             0             0             0
+
+
+           BETA
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+ I                  0             0             0             0             0
+ S                  0             0             0             0             0
+ AEXS2              0             0             0             0             0
+ AEXS3             24             0             0             0             0
+ AEXS4             29            30             0             0             0
+ PEXS2              0             0             0             0             0
+ PEXS3             38             0             0             0             0
+ PEXS4             43            44             0             0             0
+ HOVS1              0             0             0             0             0
+ HOVS2             48             0             0             0             0
+ HOVS3              0            50             0             0             0
+ HOVS4              0             0            52             0             0
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+ PLPCY1             0             0             0             0             0
+ PLPCY2             0             0             0             0             0
+ PLMAPCY1           0             0             0             0             0
+ PLMAPCY2           0             0             0             0             0
+
+
+           BETA
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+ I                  0             0            15            16             0
+ S                  0             0            17            18             0
+ AEXS2              0             0            19            20            21
+ AEXS3              0             0             0             0            25
+ AEXS4              0             0             0             0             0
+ PEXS2              0             0            33            34            35
+ PEXS3              0             0             0             0            39
+ PEXS4              0             0             0             0             0
+ HOVS1              0             0             0             0             0
+ HOVS2              0             0             0             0             0
+ HOVS3              0             0             0             0             0
+ HOVS4              0             0             0             0             0
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+ PLPCY1             0             0             0             0             0
+ PLPCY2             0             0             0             0             0
+ PLMAPCY1           0             0             0             0             0
+ PLMAPCY2           0             0             0             0             0
+
+
+           BETA
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+ I                  0             0             0
+ S                  0             0             0
+ AEXS2              0            22             0
+ AEXS3              0            26             0
+ AEXS4             31             0            32
+ PEXS2              0            36             0
+ PEXS3              0            40             0
+ PEXS4             45             0            46
+ HOVS1              0             0             0
+ HOVS2              0             0             0
+ HOVS3              0             0             0
+ HOVS4              0             0             0
+ SCHN               0             0             0
+ RURAL              0             0             0
+ PLPCY1             0             0             0
+ PLPCY2             0             0             0
+ PLMAPCY1           0             0             0
+ PLMAPCY2           0             0             0
+
+
+           PSI
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+ I                 53
+ S                 54            55
+ AEXS2              0             0            56
+ AEXS3              0             0             0            57
+ AEXS4              0             0             0             0            58
+ PEXS2              0             0            59             0             0
+ PEXS3              0             0             0            61             0
+ PEXS4              0             0             0             0            63
+ HOVS1              0             0             0             0             0
+ HOVS2              0             0             0             0             0
+ HOVS3              0             0             0             0             0
+ HOVS4              0             0             0             0             0
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+ PLPCY1             0             0             0             0             0
+ PLPCY2             0             0             0             0             0
+ PLMAPCY1           0             0             0             0             0
+ PLMAPCY2           0             0             0             0             0
+
+
+           PSI
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+ PEXS2             60
+ PEXS3              0            62
+ PEXS4              0             0            64
+ HOVS1              0             0             0            65
+ HOVS2              0             0             0             0            66
+ HOVS3              0             0             0             0             0
+ HOVS4              0             0             0             0             0
+ SCHN               0             0             0             0             0
+ RURAL              0             0             0             0             0
+ PLPCY1             0             0             0             0             0
+ PLPCY2             0             0             0             0             0
+ PLMAPCY1           0             0             0             0             0
+ PLMAPCY2           0             0             0             0             0
+
+
+           PSI
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+ HOVS3             67
+ HOVS4              0            68
+ SCHN               0             0            69
+ RURAL              0             0            70            71
+ PLPCY1             0             0            72            73            74
+ PLPCY2             0             0            75            76            77
+ PLMAPCY1           0             0            79            80            81
+ PLMAPCY2           0             0            84            85            86
+
+
+           PSI
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+ PLPCY2            78
+ PLMAPCY1          82            83
+ PLMAPCY2          87            88            89
+
+
+     STARTING VALUES
+
+
+           NU
+              AEXS2         AEXS3         AEXS4         PEXS2         PEXS3
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              PEXS4         HOVS1         HOVS2         HOVS3         HOVS4
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              SCHN          RURAL         PLPCY1        PLPCY2        PLMAPCY1
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              PLMAPCY2
+              ________
+                0.000
+
+
+           LAMBDA
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+ AEXS2          0.000         0.000         1.000         0.000         0.000
+ AEXS3          0.000         0.000         0.000         1.000         0.000
+ AEXS4          0.000         0.000         0.000         0.000         1.000
+ PEXS2          0.000         0.000         0.000         0.000         0.000
+ PEXS3          0.000         0.000         0.000         0.000         0.000
+ PEXS4          0.000         0.000         0.000         0.000         0.000
+ HOVS1          0.000         0.000         0.000         0.000         0.000
+ HOVS2          0.000         0.000         0.000         0.000         0.000
+ HOVS3          0.000         0.000         0.000         0.000         0.000
+ HOVS4          0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+ PLPCY1         0.000         0.000         0.000         0.000         0.000
+ PLPCY2         0.000         0.000         0.000         0.000         0.000
+ PLMAPCY1       0.000         0.000         0.000         0.000         0.000
+ PLMAPCY2       0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+ AEXS2          0.000         0.000         0.000         0.000         0.000
+ AEXS3          0.000         0.000         0.000         0.000         0.000
+ AEXS4          0.000         0.000         0.000         0.000         0.000
+ PEXS2          1.000         0.000         0.000         0.000         0.000
+ PEXS3          0.000         1.000         0.000         0.000         0.000
+ PEXS4          0.000         0.000         1.000         0.000         0.000
+ HOVS1          0.000         0.000         0.000         1.000         0.000
+ HOVS2          0.000         0.000         0.000         0.000         1.000
+ HOVS3          0.000         0.000         0.000         0.000         0.000
+ HOVS4          0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+ PLPCY1         0.000         0.000         0.000         0.000         0.000
+ PLPCY2         0.000         0.000         0.000         0.000         0.000
+ PLMAPCY1       0.000         0.000         0.000         0.000         0.000
+ PLMAPCY2       0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+ AEXS2          0.000         0.000         0.000         0.000         0.000
+ AEXS3          0.000         0.000         0.000         0.000         0.000
+ AEXS4          0.000         0.000         0.000         0.000         0.000
+ PEXS2          0.000         0.000         0.000         0.000         0.000
+ PEXS3          0.000         0.000         0.000         0.000         0.000
+ PEXS4          0.000         0.000         0.000         0.000         0.000
+ HOVS1          0.000         0.000         0.000         0.000         0.000
+ HOVS2          0.000         0.000         0.000         0.000         0.000
+ HOVS3          1.000         0.000         0.000         0.000         0.000
+ HOVS4          0.000         1.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         1.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         1.000         0.000
+ PLPCY1         0.000         0.000         0.000         0.000         1.000
+ PLPCY2         0.000         0.000         0.000         0.000         0.000
+ PLMAPCY1       0.000         0.000         0.000         0.000         0.000
+ PLMAPCY2       0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+ AEXS2          0.000         0.000         0.000
+ AEXS3          0.000         0.000         0.000
+ AEXS4          0.000         0.000         0.000
+ PEXS2          0.000         0.000         0.000
+ PEXS3          0.000         0.000         0.000
+ PEXS4          0.000         0.000         0.000
+ HOVS1          0.000         0.000         0.000
+ HOVS2          0.000         0.000         0.000
+ HOVS3          0.000         0.000         0.000
+ HOVS4          0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000
+ PLPCY1         0.000         0.000         0.000
+ PLPCY2         1.000         0.000         0.000
+ PLMAPCY1       0.000         1.000         0.000
+ PLMAPCY2       0.000         0.000         1.000
+
+
+           THETA
+              AEXS2         AEXS3         AEXS4         PEXS2         PEXS3
+              ________      ________      ________      ________      ________
+ AEXS2          0.000
+ AEXS3          0.000         0.000
+ AEXS4          0.000         0.000         0.000
+ PEXS2          0.000         0.000         0.000         0.000
+ PEXS3          0.000         0.000         0.000         0.000         0.000
+ PEXS4          0.000         0.000         0.000         0.000         0.000
+ HOVS1          0.000         0.000         0.000         0.000         0.000
+ HOVS2          0.000         0.000         0.000         0.000         0.000
+ HOVS3          0.000         0.000         0.000         0.000         0.000
+ HOVS4          0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+ PLPCY1         0.000         0.000         0.000         0.000         0.000
+ PLPCY2         0.000         0.000         0.000         0.000         0.000
+ PLMAPCY1       0.000         0.000         0.000         0.000         0.000
+ PLMAPCY2       0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              PEXS4         HOVS1         HOVS2         HOVS3         HOVS4
+              ________      ________      ________      ________      ________
+ PEXS4          0.000
+ HOVS1          0.000         0.000
+ HOVS2          0.000         0.000         0.000
+ HOVS3          0.000         0.000         0.000         0.000
+ HOVS4          0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+ PLPCY1         0.000         0.000         0.000         0.000         0.000
+ PLPCY2         0.000         0.000         0.000         0.000         0.000
+ PLMAPCY1       0.000         0.000         0.000         0.000         0.000
+ PLMAPCY2       0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              SCHN          RURAL         PLPCY1        PLPCY2        PLMAPCY1
+              ________      ________      ________      ________      ________
+ SCHN           0.000
+ RURAL          0.000         0.000
+ PLPCY1         0.000         0.000         0.000
+ PLPCY2         0.000         0.000         0.000         0.000
+ PLMAPCY1       0.000         0.000         0.000         0.000         0.000
+ PLMAPCY2       0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              PLMAPCY2
+              ________
+ PLMAPCY2       0.000
+
+
+           ALPHA
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+                0.386         0.016         1.315         1.227         1.205
+
+
+           ALPHA
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+                1.333         1.355         1.473         0.000         0.000
+
+
+           ALPHA
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           ALPHA
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+                0.000         0.000         0.000
+
+
+           BETA
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+ I              0.000         0.000         0.000         0.000         0.000
+ S              0.000         0.000         0.000         0.000         0.000
+ AEXS2          0.000         0.000         0.000         0.000         0.000
+ AEXS3          0.000         0.000         0.000         0.000         0.000
+ AEXS4          0.000         0.000         0.000         0.000         0.000
+ PEXS2          0.000         0.000         0.000         0.000         0.000
+ PEXS3          0.000         0.000         0.000         0.000         0.000
+ PEXS4          0.000         0.000         0.000         0.000         0.000
+ HOVS1          1.000         0.000         0.000         0.000         0.000
+ HOVS2          1.000         1.000         0.000         0.000         0.000
+ HOVS3          1.000         2.000         0.000         0.000         0.000
+ HOVS4          1.000         3.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+ PLPCY1         0.000         0.000         0.000         0.000         0.000
+ PLPCY2         0.000         0.000         0.000         0.000         0.000
+ PLMAPCY1       0.000         0.000         0.000         0.000         0.000
+ PLMAPCY2       0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+ I              0.000         0.000         0.000         0.000         0.000
+ S              0.000         0.000         0.000         0.000         0.000
+ AEXS2          0.000         0.000         0.000         0.000         0.000
+ AEXS3          0.000         0.000         0.000         0.000         0.000
+ AEXS4          0.000         0.000         0.000         0.000         0.000
+ PEXS2          0.000         0.000         0.000         0.000         0.000
+ PEXS3          0.000         0.000         0.000         0.000         0.000
+ PEXS4          0.000         0.000         0.000         0.000         0.000
+ HOVS1          0.000         0.000         0.000         0.000         0.000
+ HOVS2          0.000         0.000         0.000         0.000         0.000
+ HOVS3          0.000         0.000         0.000         0.000         0.000
+ HOVS4          0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+ PLPCY1         0.000         0.000         0.000         0.000         0.000
+ PLPCY2         0.000         0.000         0.000         0.000         0.000
+ PLMAPCY1       0.000         0.000         0.000         0.000         0.000
+ PLMAPCY2       0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+ I              0.000         0.000         0.000         0.000         0.000
+ S              0.000         0.000         0.000         0.000         0.000
+ AEXS2          0.000         0.000         0.000         0.000         0.000
+ AEXS3          0.000         0.000         0.000         0.000         0.000
+ AEXS4          0.000         0.000         0.000         0.000         0.000
+ PEXS2          0.000         0.000         0.000         0.000         0.000
+ PEXS3          0.000         0.000         0.000         0.000         0.000
+ PEXS4          0.000         0.000         0.000         0.000         0.000
+ HOVS1          0.000         0.000         0.000         0.000         0.000
+ HOVS2          0.000         0.000         0.000         0.000         0.000
+ HOVS3          0.000         0.000         0.000         0.000         0.000
+ HOVS4          0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+ PLPCY1         0.000         0.000         0.000         0.000         0.000
+ PLPCY2         0.000         0.000         0.000         0.000         0.000
+ PLMAPCY1       0.000         0.000         0.000         0.000         0.000
+ PLMAPCY2       0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+ I              0.000         0.000         0.000
+ S              0.000         0.000         0.000
+ AEXS2          0.000         0.000         0.000
+ AEXS3          0.000         0.000         0.000
+ AEXS4          0.000         0.000         0.000
+ PEXS2          0.000         0.000         0.000
+ PEXS3          0.000         0.000         0.000
+ PEXS4          0.000         0.000         0.000
+ HOVS1          0.000         0.000         0.000
+ HOVS2          0.000         0.000         0.000
+ HOVS3          0.000         0.000         0.000
+ HOVS4          0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000
+ PLPCY1         0.000         0.000         0.000
+ PLPCY2         0.000         0.000         0.000
+ PLMAPCY1       0.000         0.000         0.000
+ PLMAPCY2       0.000         0.000         0.000
+
+
+           PSI
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+ I              0.471
+ S              0.000         0.232
+ AEXS2          0.000         0.000         2.596
+ AEXS3          0.000         0.000         0.000         2.501
+ AEXS4          0.000         0.000         0.000         0.000         2.492
+ PEXS2          0.000         0.000         0.000         0.000         0.000
+ PEXS3          0.000         0.000         0.000         0.000         0.000
+ PEXS4          0.000         0.000         0.000         0.000         0.000
+ HOVS1          0.000         0.000         0.000         0.000         0.000
+ HOVS2          0.000         0.000         0.000         0.000         0.000
+ HOVS3          0.000         0.000         0.000         0.000         0.000
+ HOVS4          0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+ PLPCY1         0.000         0.000         0.000         0.000         0.000
+ PLPCY2         0.000         0.000         0.000         0.000         0.000
+ PLMAPCY1       0.000         0.000         0.000         0.000         0.000
+ PLMAPCY2       0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+ PEXS2          2.011
+ PEXS3          0.000         2.098
+ PEXS4          0.000         0.000         2.275
+ HOVS1          0.000         0.000         0.000         0.228
+ HOVS2          0.000         0.000         0.000         0.000         0.268
+ HOVS3          0.000         0.000         0.000         0.000         0.000
+ HOVS4          0.000         0.000         0.000         0.000         0.000
+ SCHN           0.000         0.000         0.000         0.000         0.000
+ RURAL          0.000         0.000         0.000         0.000         0.000
+ PLPCY1         0.000         0.000         0.000         0.000         0.000
+ PLPCY2         0.000         0.000         0.000         0.000         0.000
+ PLMAPCY1       0.000         0.000         0.000         0.000         0.000
+ PLMAPCY2       0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+ HOVS3          0.261
+ HOVS4          0.000         0.308
+ SCHN           0.000         0.000        19.234
+ RURAL          0.000         0.000         0.000         0.111
+ PLPCY1         0.000         0.000         0.000         0.000         9.666
+ PLPCY2         0.000         0.000         0.000         0.000         0.000
+ PLMAPCY1       0.000         0.000         0.000         0.000         0.000
+ PLMAPCY2       0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+ PLPCY2        13.468
+ PLMAPCY1       0.000       553.418
+ PLMAPCY2       0.000         0.000       461.270
+
+
+TECHNICAL 4 OUTPUT
+
+
+     ESTIMATES DERIVED FROM THE MODEL
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+                0.390         0.019         1.572         1.539         1.553
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+                1.434         1.497         1.664         0.390         0.412
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+                0.417         0.451         3.618         0.331         2.965
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+                2.832        33.580        29.494
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+                0.022         0.011         0.409         0.391         0.391
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+                0.363         0.380         0.414         0.022         0.017
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+                0.021         0.023         2.370         0.128         0.748
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+                0.830        10.220         8.399
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+               17.872         1.753         3.839         3.940         3.972
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+                3.954         3.941         4.015        17.872        23.835
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+               19.541        19.360         1.527         2.579         3.962
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+                3.410         3.286         3.512
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+                0.000         0.080         0.000         0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.127         0.010         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+                0.001         0.001         0.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+ I              0.243
+ S             -0.018         0.024
+ AEXS2         -0.008        -0.008         5.336
+ AEXS3         -0.009        -0.006         3.996         5.411
+ AEXS4         -0.012        -0.006         3.724         3.944         5.311
+ PEXS2         -0.018        -0.001         3.350         3.162         3.041
+ PEXS3         -0.013        -0.003         3.119         3.551         3.042
+ PEXS4         -0.016        -0.004         3.133         3.291         3.666
+ HOVS1          0.243        -0.018        -0.008        -0.009        -0.012
+ HOVS2          0.225         0.006        -0.011        -0.009        -0.011
+ HOVS3          0.207         0.031        -0.046        -0.050        -0.046
+ HOVS4          0.189         0.055        -0.018        -0.014        -0.012
+ SCHN           0.144        -0.105         2.173         1.715         1.588
+ RURAL          0.011         0.005        -0.265        -0.240        -0.262
+ PLPCY1        -0.045         0.010         5.365         5.385         5.469
+ PLPCY2        -0.034         0.018         5.654         5.722         5.716
+ PLMAPCY1       0.074        -0.270        48.046        47.194        47.051
+ PLMAPCY2      -0.236        -0.164        38.910        38.291        41.881
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+ PEXS2          3.982
+ PEXS3          3.327         4.308
+ PEXS4          3.392         3.579         4.661
+ HOVS1         -0.018        -0.013        -0.016         0.460
+ HOVS2         -0.008        -0.008        -0.011         0.225         0.532
+ HOVS3         -0.041        -0.046        -0.047         0.207         0.237
+ HOVS4         -0.010        -0.012        -0.015         0.189         0.244
+ SCHN          -0.272         0.594         0.798         0.144         0.033
+ RURAL         -0.205        -0.209        -0.259         0.011         0.015
+ PLPCY1         5.322         5.702         5.947        -0.045        -0.022
+ PLPCY2         5.732         6.122         6.243        -0.034        -0.001
+ PLMAPCY1      42.526        45.687        48.587         0.074        -0.098
+ PLMAPCY2      35.810        37.920        44.386        -0.236        -0.315
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+ HOVS3          0.533
+ HOVS4          0.298         0.629
+ SCHN          -0.074        -0.167        38.468
+ RURAL          0.022         0.024        -1.117         0.221
+ PLPCY1        -0.061         0.004        -4.697        -0.204        19.332
+ PLPCY2        -0.035         0.042        -6.984         0.110        21.050
+ PLMAPCY1      -0.767        -0.568        88.633        -5.755        97.619
+ PLMAPCY2      -0.812        -0.579        44.410        -6.261        90.590
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+ PLPCY2        26.936
+ PLMAPCY1     102.547      1106.837
+ PLMAPCY2      84.919       837.298       922.540
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+ I              0.024
+ S              0.009         0.008
+ AEXS2          0.021         0.006         0.837
+ AEXS3          0.021         0.006         0.424         0.871
+ AEXS4          0.021         0.006         0.361         0.486         0.844
+ PEXS2          0.022         0.005         0.415         0.434         0.408
+ PEXS3          0.021         0.005         0.416         0.459         0.477
+ PEXS4          0.023         0.006         0.374         0.425         0.418
+ HOVS1          0.024         0.009         0.021         0.021         0.021
+ HOVS2          0.017         0.006         0.026         0.020         0.020
+ HOVS3          0.013         0.010         0.029         0.035         0.029
+ HOVS4          0.014         0.017         0.038         0.040         0.049
+ SCHN           0.091         0.045         2.372         2.227         1.991
+ RURAL          0.009         0.004         0.163         0.161         0.164
+ PLPCY1         0.043         0.013         1.617         1.594         1.664
+ PLPCY2         0.039         0.016         1.890         1.887         2.007
+ PLMAPCY1       0.447         0.161         4.849         5.125         5.340
+ PLMAPCY2       0.413         0.120         5.277         5.674         7.365
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+ PEXS2          0.633
+ PEXS3          0.616         0.671
+ PEXS4          0.529         0.576         0.602
+ HOVS1          0.022         0.021         0.023         0.043
+ HOVS2          0.022         0.020         0.021         0.017         0.036
+ HOVS3          0.032         0.037         0.032         0.013         0.013
+ HOVS4          0.036         0.035         0.041         0.014         0.014
+ SCHN           1.484         1.624         1.733         0.091         0.076
+ RURAL          0.160         0.161         0.173         0.009         0.007
+ PLPCY1         1.494         1.619         1.658         0.043         0.043
+ PLPCY2         1.828         1.944         2.019         0.039         0.051
+ PLMAPCY1       7.219         7.801         7.472         0.447         0.322
+ PLMAPCY2       6.769         7.607         8.052         0.413         0.343
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+ HOVS3          0.044
+ HOVS4          0.028         0.050
+ SCHN           0.078         0.104        21.595
+ RURAL          0.008         0.011         0.681         0.043
+ PLPCY1         0.059         0.075         3.412         0.382         8.596
+ PLPCY2         0.072         0.095         4.342         0.449         9.787
+ PLMAPCY1       0.428         0.613        78.647         3.720        27.966
+ PLMAPCY2       0.397         0.489        34.213         3.080        25.851
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+ PLPCY2        12.339
+ PLMAPCY1      33.489       156.536
+ PLMAPCY2      31.232        85.066       232.739
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+ I              9.947
+ S             -2.026         3.195
+ AEXS2         -0.391        -1.293         6.375
+ AEXS3         -0.437        -1.119         9.427         6.216
+ AEXS4         -0.547        -1.080        10.314         8.116         6.293
+ PEXS2         -0.837        -0.203         8.065         7.281         7.459
+ PEXS3         -0.639        -0.660         7.497         7.736         6.382
+ PEXS4         -0.704        -0.741         8.388         7.737         8.778
+ HOVS1          9.947        -2.026        -0.391        -0.437        -0.547
+ HOVS2         12.875         1.074        -0.429        -0.432        -0.550
+ HOVS3         15.950         2.990        -1.573        -1.430        -1.613
+ HOVS4         13.604         3.214        -0.482        -0.356        -0.244
+ SCHN           1.576        -2.349         0.916         0.770         0.798
+ RURAL          1.267         1.144        -1.622        -1.495        -1.599
+ PLPCY1        -1.046         0.781         3.319         3.378         3.286
+ PLPCY2        -0.872         1.147         2.991         3.032         2.848
+ PLMAPCY1       0.165        -1.680         9.908         9.209         8.811
+ PLMAPCY2      -0.572        -1.365         7.374         6.748         5.686
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+ PEXS2          6.293
+ PEXS3          5.404         6.417
+ PEXS4          6.413         6.208         7.748
+ HOVS1         -0.837        -0.639        -0.704        10.676
+ HOVS2         -0.363        -0.398        -0.547        12.875        14.944
+ HOVS3         -1.305        -1.251        -1.488        15.950        18.399
+ HOVS4         -0.292        -0.348        -0.371        13.604        17.145
+ SCHN          -0.184         0.366         0.461         1.576         0.435
+ RURAL         -1.279        -1.301        -1.500         1.267         2.112
+ PLPCY1         3.562         3.522         3.586        -1.046        -0.507
+ PLPCY2         3.136         3.149         3.092        -0.872        -0.011
+ PLMAPCY1       5.891         5.857         6.503         0.165        -0.305
+ PLMAPCY2       5.290         4.985         5.512        -0.572        -0.917
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+ HOVS3         12.187
+ HOVS4         10.614        12.529
+ SCHN          -0.949        -1.604         1.781
+ RURAL          2.643         2.256        -1.640         5.095
+ PLPCY1        -1.032         0.060        -1.377        -0.534         2.249
+ PLPCY2        -0.490         0.441        -1.608         0.244         2.151
+ PLMAPCY1      -1.791        -0.927         1.127        -1.547         3.491
+ PLMAPCY2      -2.045        -1.183         1.298        -2.033         3.504
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+ PLPCY2         2.183
+ PLMAPCY1       3.062         7.071
+ PLMAPCY2       2.719         9.843         3.964
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+ I              0.000
+ S              0.043         0.001
+ AEXS2          0.696         0.196         0.000
+ AEXS3          0.662         0.263         0.000         0.000
+ AEXS4          0.585         0.280         0.000         0.000         0.000
+ PEXS2          0.402         0.839         0.000         0.000         0.000
+ PEXS3          0.523         0.509         0.000         0.000         0.000
+ PEXS4          0.482         0.458         0.000         0.000         0.000
+ HOVS1          0.000         0.043         0.696         0.662         0.585
+ HOVS2          0.000         0.283         0.668         0.666         0.582
+ HOVS3          0.000         0.003         0.116         0.153         0.107
+ HOVS4          0.000         0.001         0.630         0.722         0.808
+ SCHN           0.115         0.019         0.360         0.441         0.425
+ RURAL          0.205         0.252         0.105         0.135         0.110
+ PLPCY1         0.296         0.435         0.001         0.001         0.001
+ PLPCY2         0.383         0.251         0.003         0.002         0.004
+ PLMAPCY1       0.869         0.093         0.000         0.000         0.000
+ PLMAPCY2       0.567         0.172         0.000         0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+ PEXS2          0.000
+ PEXS3          0.000         0.000
+ PEXS4          0.000         0.000         0.000
+ HOVS1          0.402         0.523         0.482         0.000
+ HOVS2          0.717         0.691         0.584         0.000         0.000
+ HOVS3          0.192         0.211         0.137         0.000         0.000
+ HOVS4          0.771         0.728         0.710         0.000         0.000
+ SCHN           0.854         0.715         0.645         0.115         0.664
+ RURAL          0.201         0.193         0.134         0.205         0.035
+ PLPCY1         0.000         0.000         0.000         0.296         0.612
+ PLPCY2         0.002         0.002         0.002         0.383         0.991
+ PLMAPCY1       0.000         0.000         0.000         0.869         0.760
+ PLMAPCY2       0.000         0.000         0.000         0.567         0.359
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+ HOVS3          0.000
+ HOVS4          0.000         0.000
+ SCHN           0.343         0.109         0.075
+ RURAL          0.008         0.024         0.101         0.000
+ PLPCY1         0.302         0.953         0.169         0.593         0.025
+ PLPCY2         0.624         0.659         0.108         0.807         0.031
+ PLMAPCY1       0.073         0.354         0.260         0.122         0.000
+ PLMAPCY2       0.041         0.237         0.194         0.042         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+ PLPCY2         0.029
+ PLMAPCY1       0.002         0.000
+ PLMAPCY2       0.007         0.000         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+ I              1.000
+ S             -0.234         1.000
+ AEXS2         -0.007        -0.021         1.000
+ AEXS3         -0.008        -0.017         0.744         1.000
+ AEXS4         -0.010        -0.017         0.700         0.736         1.000
+ PEXS2         -0.019        -0.003         0.727         0.681         0.661
+ PEXS3         -0.013        -0.010         0.651         0.735         0.636
+ PEXS4         -0.015        -0.013         0.628         0.655         0.737
+ HOVS1          0.727        -0.170        -0.005        -0.006        -0.007
+ HOVS2          0.626         0.055        -0.007        -0.005        -0.007
+ HOVS3          0.575         0.269        -0.027        -0.029        -0.027
+ HOVS4          0.483         0.444        -0.010        -0.008        -0.006
+ SCHN           0.047        -0.109         0.152         0.119         0.111
+ RURAL          0.048         0.064        -0.244        -0.220        -0.242
+ PLPCY1        -0.021         0.015         0.528         0.527         0.540
+ PLPCY2        -0.013         0.023         0.472         0.474         0.478
+ PLMAPCY1       0.004        -0.052         0.625         0.610         0.614
+ PLMAPCY2      -0.016        -0.035         0.555         0.542         0.598
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+ PEXS2          1.000
+ PEXS3          0.803         1.000
+ PEXS4          0.787         0.799         1.000
+ HOVS1         -0.013        -0.009        -0.011         1.000
+ HOVS2         -0.006        -0.005        -0.007         0.455         1.000
+ HOVS3         -0.028        -0.030        -0.030         0.418         0.446
+ HOVS4         -0.007        -0.007        -0.009         0.351         0.421
+ SCHN          -0.022         0.046         0.060         0.034         0.007
+ RURAL         -0.218        -0.215        -0.255         0.035         0.045
+ PLPCY1         0.607         0.625         0.626        -0.015        -0.007
+ PLPCY2         0.553         0.568         0.557        -0.010         0.000
+ PLMAPCY1       0.641         0.662         0.676         0.003        -0.004
+ PLMAPCY2       0.591         0.601         0.677        -0.011        -0.014
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+ HOVS3          1.000
+ HOVS4          0.516         1.000
+ SCHN          -0.016        -0.034         1.000
+ RURAL          0.064         0.065        -0.383         1.000
+ PLPCY1        -0.019         0.001        -0.172        -0.099         1.000
+ PLPCY2        -0.009         0.010        -0.217         0.045         0.922
+ PLMAPCY1      -0.032        -0.022         0.430        -0.368         0.667
+ PLMAPCY2      -0.037        -0.024         0.236        -0.438         0.678
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+ PLPCY2         1.000
+ PLMAPCY1       0.594         1.000
+ PLMAPCY2       0.539         0.829         1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+ I              0.000
+ S              0.081         0.000
+ AEXS2          0.018         0.018         0.000
+ AEXS3          0.018         0.017         0.059         0.000
+ AEXS4          0.019         0.017         0.065         0.077         0.000
+ PEXS2          0.022         0.018         0.066         0.077         0.082
+ PEXS3          0.020         0.016         0.082         0.061         0.092
+ PEXS4          0.021         0.018         0.083         0.082         0.060
+ HOVS1          0.025         0.061         0.013         0.013         0.013
+ HOVS2          0.021         0.052         0.015         0.012         0.012
+ HOVS3          0.040         0.057         0.017         0.020         0.017
+ HOVS4          0.047         0.067         0.020         0.021         0.027
+ SCHN           0.023         0.032         0.131         0.129         0.119
+ RURAL          0.036         0.058         0.141         0.138         0.142
+ PLPCY1         0.020         0.016         0.089         0.088         0.088
+ PLPCY2         0.015         0.015         0.090         0.087         0.093
+ PLMAPCY1       0.027         0.032         0.082         0.088         0.095
+ PLMAPCY2       0.027         0.027         0.101         0.104         0.084
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+ PEXS2          0.000
+ PEXS3          0.070         0.000
+ PEXS4          0.063         0.067         0.000
+ HOVS1          0.016         0.015         0.015         0.000
+ HOVS2          0.015         0.013         0.013         0.025         0.000
+ HOVS3          0.022         0.024         0.020         0.025         0.021
+ HOVS4          0.023         0.021         0.024         0.030         0.021
+ SCHN           0.122         0.121         0.122         0.017         0.016
+ RURAL          0.161         0.154         0.158         0.026         0.019
+ PLPCY1         0.074         0.075         0.080         0.015         0.014
+ PLPCY2         0.077         0.075         0.084         0.011         0.013
+ PLMAPCY1       0.116         0.114         0.109         0.020         0.013
+ PLMAPCY2       0.107         0.112         0.091         0.020         0.015
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+ HOVS3          0.000
+ HOVS4          0.030         0.000
+ SCHN           0.017         0.019         0.000
+ RURAL          0.022         0.027         0.148         0.000
+ PLPCY1         0.020         0.021         0.106         0.190         0.000
+ PLPCY2         0.020         0.022         0.107         0.181         0.044
+ PLMAPCY1       0.017         0.023         0.254         0.225         0.110
+ PLMAPCY2       0.018         0.021         0.144         0.186         0.096
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+ PLPCY2         0.000
+ PLMAPCY1       0.106         0.000
+ PLMAPCY2       0.140         0.086         0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+ I            999.000
+ S             -2.904       999.000
+ AEXS2         -0.390        -1.220       999.000
+ AEXS3         -0.438        -1.053        12.627       999.000
+ AEXS4         -0.548        -1.011        10.768         9.501       999.000
+ PEXS2         -0.858        -0.200        11.050         8.876         8.101
+ PEXS3         -0.651        -0.626         7.960        12.071         6.894
+ PEXS4         -0.714        -0.704         7.546         8.026        12.199
+ HOVS1         29.245        -2.791        -0.391        -0.438        -0.549
+ HOVS2         29.166         1.073        -0.431        -0.433        -0.553
+ HOVS3         14.292         4.751        -1.606        -1.452        -1.626
+ HOVS4         10.190         6.622        -0.488        -0.358        -0.244
+ SCHN           2.016        -3.433         1.157         0.919         0.936
+ RURAL          1.326         1.101        -1.736        -1.589        -1.706
+ PLPCY1        -1.027         0.906         5.955         6.008         6.121
+ PLPCY2        -0.859         1.492         5.226         5.459         5.131
+ PLMAPCY1       0.166        -1.618         7.588         6.919         6.449
+ PLMAPCY2      -0.582        -1.307         5.486         5.233         7.151
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+ PEXS2        999.000
+ PEXS3         11.538       999.000
+ PEXS4         12.440        11.935       999.000
+ HOVS1         -0.857        -0.650        -0.715       999.000
+ HOVS2         -0.364        -0.400        -0.550        18.194       999.000
+ HOVS3         -1.308        -1.242        -1.471        16.955        21.517
+ HOVS4         -0.293        -0.350        -0.373        11.618        20.487
+ SCHN          -0.181         0.382         0.489         1.981         0.455
+ RURAL         -1.359        -1.389        -1.612         1.328         2.315
+ PLPCY1         8.195         8.281         7.833        -1.026        -0.497
+ PLPCY2         7.157         7.615         6.652        -0.858        -0.011
+ PLMAPCY1       5.531         5.796         6.216         0.166        -0.304
+ PLMAPCY2       5.542         5.369         7.453        -0.584        -0.961
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+ HOVS3        999.000
+ HOVS4         17.209       999.000
+ SCHN          -0.980        -1.803       999.000
+ RURAL          2.931         2.388        -2.585       999.000
+ PLPCY1        -0.953         0.060        -1.632        -0.518       999.000
+ PLPCY2        -0.468         0.465        -2.026         0.249        20.845
+ PLMAPCY1      -1.812        -0.949         1.688        -1.637         6.040
+ PLMAPCY2      -2.045        -1.163         1.634        -2.359         7.046
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+ PLPCY2       999.000
+ PLMAPCY1       5.580       999.000
+ PLMAPCY2       3.834         9.580       999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             AEXS2         AEXS3         AEXS4
+              ________      ________      ________      ________      ________
+ I              0.000
+ S              0.004         0.000
+ AEXS2          0.696         0.222         0.000
+ AEXS3          0.662         0.292         0.000         0.000
+ AEXS4          0.583         0.312         0.000         0.000         0.000
+ PEXS2          0.391         0.842         0.000         0.000         0.000
+ PEXS3          0.515         0.531         0.000         0.000         0.000
+ PEXS4          0.475         0.481         0.000         0.000         0.000
+ HOVS1          0.000         0.005         0.696         0.662         0.583
+ HOVS2          0.000         0.283         0.667         0.665         0.580
+ HOVS3          0.000         0.000         0.108         0.147         0.104
+ HOVS4          0.000         0.000         0.626         0.720         0.807
+ SCHN           0.044         0.001         0.247         0.358         0.349
+ RURAL          0.185         0.271         0.083         0.112         0.088
+ PLPCY1         0.304         0.365         0.000         0.000         0.000
+ PLPCY2         0.390         0.136         0.000         0.000         0.000
+ PLMAPCY1       0.868         0.106         0.000         0.000         0.000
+ PLMAPCY2       0.561         0.191         0.000         0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              PEXS2         PEXS3         PEXS4         HOVS1         HOVS2
+              ________      ________      ________      ________      ________
+ PEXS2          0.000
+ PEXS3          0.000         0.000
+ PEXS4          0.000         0.000         0.000
+ HOVS1          0.392         0.515         0.475         0.000
+ HOVS2          0.716         0.689         0.583         0.000         0.000
+ HOVS3          0.191         0.214         0.141         0.000         0.000
+ HOVS4          0.769         0.726         0.709         0.000         0.000
+ SCHN           0.857         0.702         0.625         0.048         0.649
+ RURAL          0.174         0.165         0.107         0.184         0.021
+ PLPCY1         0.000         0.000         0.000         0.305         0.619
+ PLPCY2         0.000         0.000         0.000         0.391         0.991
+ PLMAPCY1       0.000         0.000         0.000         0.868         0.761
+ PLMAPCY2       0.000         0.000         0.000         0.559         0.336
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              HOVS3         HOVS4         SCHN          RURAL         PLPCY1
+              ________      ________      ________      ________      ________
+ HOVS3          0.000
+ HOVS4          0.000         0.000
+ SCHN           0.327         0.071         0.000
+ RURAL          0.003         0.017         0.010         0.000
+ PLPCY1         0.341         0.952         0.103         0.605         0.000
+ PLPCY2         0.640         0.642         0.043         0.803         0.000
+ PLMAPCY1       0.070         0.343         0.091         0.102         0.000
+ PLMAPCY2       0.041         0.245         0.102         0.018         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              PLPCY2        PLMAPCY1      PLMAPCY2
+              ________      ________      ________
+ PLPCY2         0.000
+ PLMAPCY1       0.000         0.000
+ PLMAPCY2       0.000         0.000         0.000
+
+
+     Beginning Time:  21:42:42
+        Ending Time:  21:42:45
+       Elapsed Time:  00:00:03
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen

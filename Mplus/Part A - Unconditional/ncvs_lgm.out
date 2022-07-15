@@ -1,0 +1,805 @@
+Mplus VERSION 8.4
+MUTHEN & MUTHEN
+07/05/2022   2:26 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  SH Victimization - LGM;
+  DATA:
+  FILE = "Mplus/Automatr/LGM/NCVS_LGM_cd27a1e25a6d5e6a0313e02fd4215ccb.dat";
+
+  VARIABLE:
+  NAMES = ID School NCVS_1 NCVS_2 NCVS_3 NCVS_4;
+   MISSING=.;
+   IDVARIABLE = ID;
+                                      CLUSTER = School;
+  ANALYSIS:
+  TYPE = COMPLEX;
+  MODEL:
+  i s | NCVS_1@0 NCVS_2@1 NCVS_3@2 NCVS_4@3;
+  OUTPUT:
+  STANDARDIZED CINTERVAL RESIDUAL TECH1 TECH4;
+
+
+
+*** WARNING
+  Data set contains cases with missing on all variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on all variables:  131
+   1 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+SH Victimization - LGM;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        6330
+
+Number of dependent variables                                    4
+Number of independent variables                                  0
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Continuous
+   NCVS_1      NCVS_2      NCVS_3      NCVS_4
+
+Continuous latent variables
+   I           S
+
+Variables with special functions
+
+  Cluster variable      SCHOOL
+  ID variable           ID
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  Mplus/Automatr/LGM/NCVS_LGM_cd27a1e25a6d5e6a0313e02fd4215ccb.dat
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns            15
+     Number of clusters                         20
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              NCVS_1        NCVS_2        NCVS_3        NCVS_4
+              ________      ________      ________      ________
+ NCVS_1         0.736
+ NCVS_2         0.546         0.671
+ NCVS_3         0.469         0.471         0.641
+ NCVS_4         0.382         0.385         0.412         0.524
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     NCVS_1                0.216       3.705       0.000   70.71%       0.000      0.000      0.000
+            4657.000       0.254      17.342       4.000    0.34%       0.000      0.250
+     NCVS_2                0.239       3.778       0.000   70.52%       0.000      0.000      0.000
+            4250.000       0.315      17.694       4.000    0.71%       0.000      0.250
+     NCVS_3                0.190       4.629       0.000   76.12%       0.000      0.000      0.000
+            4058.000       0.282      25.815       4.000    0.89%       0.000      0.250
+     NCVS_4                0.226       4.051       0.000   74.78%       0.000      0.000      0.000
+            3315.000       0.351      19.245       4.000    1.09%       0.000      0.250
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                        9
+
+Loglikelihood
+
+          H0 Value                      -12456.010
+          H0 Scaling Correction Factor     15.1370
+            for MLR
+          H1 Value                      -12442.713
+          H1 Scaling Correction Factor     11.3007
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   24930.019
+          Bayesian (BIC)                 24990.797
+          Sample-Size Adjusted BIC       24962.197
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                              6.050*
+          Degrees of Freedom                     5
+          P-Value                           0.3013
+          Scaling Correction Factor         4.3954
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.006
+          90 Percent C.I.                    0.000  0.019
+          Probability RMSEA <= .05           1.000
+
+CFI/TLI
+
+          CFI                                0.994
+          TLI                                0.992
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                            173.821
+          Degrees of Freedom                     6
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.019
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    NCVS_1             1.000      0.000    999.000    999.000
+    NCVS_2             1.000      0.000    999.000    999.000
+    NCVS_3             1.000      0.000    999.000    999.000
+    NCVS_4             1.000      0.000    999.000    999.000
+
+ S        |
+    NCVS_1             0.000      0.000    999.000    999.000
+    NCVS_2             1.000      0.000    999.000    999.000
+    NCVS_3             2.000      0.000    999.000    999.000
+    NCVS_4             3.000      0.000    999.000    999.000
+
+ S        WITH
+    I                 -0.017      0.007     -2.339      0.019
+
+ Means
+    I                  0.219      0.015     14.605      0.000
+    S                 -0.001      0.007     -0.078      0.937
+
+ Intercepts
+    NCVS_1             0.000      0.000    999.000    999.000
+    NCVS_2             0.000      0.000    999.000    999.000
+    NCVS_3             0.000      0.000    999.000    999.000
+    NCVS_4             0.000      0.000    999.000    999.000
+
+ Variances
+    I                  0.121      0.018      6.800      0.000
+    S                  0.014      0.004      3.294      0.001
+
+ Residual Variances
+    NCVS_1             0.132      0.026      5.161      0.000
+    NCVS_2             0.219      0.028      7.884      0.000
+    NCVS_3             0.176      0.023      7.809      0.000
+    NCVS_4             0.211      0.026      8.032      0.000
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    NCVS_1             0.692      0.052     13.264      0.000
+    NCVS_2             0.616      0.050     12.432      0.000
+    NCVS_3             0.653      0.054     12.122      0.000
+    NCVS_4             0.585      0.055     10.552      0.000
+
+ S        |
+    NCVS_1             0.000      0.000    999.000    999.000
+    NCVS_2             0.209      0.031      6.717      0.000
+    NCVS_3             0.444      0.052      8.609      0.000
+    NCVS_4             0.596      0.081      7.348      0.000
+
+ S        WITH
+    I                 -0.418      0.139     -2.998      0.003
+
+ Means
+    I                  0.628      0.048     13.125      0.000
+    S                 -0.005      0.059     -0.078      0.938
+
+ Intercepts
+    NCVS_1             0.000      0.000    999.000    999.000
+    NCVS_2             0.000      0.000    999.000    999.000
+    NCVS_3             0.000      0.000    999.000    999.000
+    NCVS_4             0.000      0.000    999.000    999.000
+
+ Variances
+    I                  1.000      0.000    999.000    999.000
+    S                  1.000      0.000    999.000    999.000
+
+ Residual Variances
+    NCVS_1             0.522      0.072      7.237      0.000
+    NCVS_2             0.685      0.036     19.097      0.000
+    NCVS_3             0.619      0.035     17.871      0.000
+    NCVS_4             0.594      0.074      8.021      0.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    NCVS_1             0.692      0.052     13.264      0.000
+    NCVS_2             0.616      0.050     12.432      0.000
+    NCVS_3             0.653      0.054     12.122      0.000
+    NCVS_4             0.585      0.055     10.552      0.000
+
+ S        |
+    NCVS_1             0.000      0.000    999.000    999.000
+    NCVS_2             0.209      0.031      6.717      0.000
+    NCVS_3             0.444      0.052      8.609      0.000
+    NCVS_4             0.596      0.081      7.348      0.000
+
+ S        WITH
+    I                 -0.418      0.139     -2.998      0.003
+
+ Means
+    I                  0.628      0.048     13.125      0.000
+    S                 -0.005      0.059     -0.078      0.938
+
+ Intercepts
+    NCVS_1             0.000      0.000    999.000    999.000
+    NCVS_2             0.000      0.000    999.000    999.000
+    NCVS_3             0.000      0.000    999.000    999.000
+    NCVS_4             0.000      0.000    999.000    999.000
+
+ Variances
+    I                  1.000      0.000    999.000    999.000
+    S                  1.000      0.000    999.000    999.000
+
+ Residual Variances
+    NCVS_1             0.522      0.072      7.237      0.000
+    NCVS_2             0.685      0.036     19.097      0.000
+    NCVS_3             0.619      0.035     17.871      0.000
+    NCVS_4             0.594      0.074      8.021      0.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    NCVS_1             0.348      0.026     13.601      0.000
+    NCVS_2             0.348      0.026     13.601      0.000
+    NCVS_3             0.348      0.026     13.601      0.000
+    NCVS_4             0.348      0.026     13.601      0.000
+
+ S        |
+    NCVS_1             0.000      0.000    999.000    999.000
+    NCVS_2             0.118      0.018      6.589      0.000
+    NCVS_3             0.237      0.036      6.589      0.000
+    NCVS_4             0.355      0.054      6.589      0.000
+
+ S        WITH
+    I                 -0.418      0.139     -2.998      0.003
+
+ Means
+    I                  0.628      0.048     13.125      0.000
+    S                 -0.005      0.059     -0.078      0.938
+
+ Intercepts
+    NCVS_1             0.000      0.000    999.000    999.000
+    NCVS_2             0.000      0.000    999.000    999.000
+    NCVS_3             0.000      0.000    999.000    999.000
+    NCVS_4             0.000      0.000    999.000    999.000
+
+ Variances
+    I                  1.000      0.000    999.000    999.000
+    S                  1.000      0.000    999.000    999.000
+
+ Residual Variances
+    NCVS_1             0.132      0.026      5.161      0.000
+    NCVS_2             0.219      0.028      7.884      0.000
+    NCVS_3             0.176      0.023      7.809      0.000
+    NCVS_4             0.211      0.026      8.032      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    NCVS_1             0.478      0.072      6.632      0.000
+    NCVS_2             0.315      0.036      8.785      0.000
+    NCVS_3             0.381      0.035     10.994      0.000
+    NCVS_4             0.406      0.074      5.480      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.354E-02
+       (ratio of smallest to largest eigenvalue)
+
+
+CONFIDENCE INTERVALS OF MODEL RESULTS
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    NCVS_1           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    NCVS_2           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    NCVS_3           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    NCVS_4           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ S        |
+    NCVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    NCVS_2           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    NCVS_3           2.000       2.000       2.000       2.000       2.000       2.000       2.000
+    NCVS_4           3.000       3.000       3.000       3.000       3.000       3.000       3.000
+
+ S        WITH
+    I               -0.036      -0.032      -0.029      -0.017      -0.005      -0.003       0.002
+
+ Means
+    I                0.180       0.190       0.194       0.219       0.244       0.248       0.258
+    S               -0.018      -0.014      -0.012      -0.001       0.011       0.013       0.017
+
+ Intercepts
+    NCVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    NCVS_2           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    NCVS_3           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    NCVS_4           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ Variances
+    I                0.075       0.086       0.092       0.121       0.151       0.156       0.167
+    S                0.003       0.006       0.007       0.014       0.021       0.022       0.025
+
+ Residual Variances
+    NCVS_1           0.066       0.082       0.090       0.132       0.175       0.183       0.199
+    NCVS_2           0.148       0.165       0.174       0.219       0.265       0.274       0.291
+    NCVS_3           0.118       0.132       0.139       0.176       0.213       0.221       0.234
+    NCVS_4           0.143       0.160       0.168       0.211       0.254       0.262       0.279
+
+
+CONFIDENCE INTERVALS OF STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    NCVS_1           0.557       0.589       0.606       0.692       0.777       0.794       0.826
+    NCVS_2           0.488       0.519       0.534       0.616       0.697       0.713       0.743
+    NCVS_3           0.514       0.547       0.564       0.653       0.741       0.758       0.791
+    NCVS_4           0.442       0.476       0.493       0.585       0.676       0.693       0.727
+
+ S        |
+    NCVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    NCVS_2           0.129       0.148       0.158       0.209       0.261       0.271       0.290
+    NCVS_3           0.311       0.343       0.359       0.444       0.529       0.545       0.577
+    NCVS_4           0.387       0.437       0.463       0.596       0.730       0.756       0.806
+
+ S        WITH
+    I               -0.777      -0.691      -0.648      -0.418      -0.189      -0.145      -0.059
+
+ Means
+    I                0.505       0.535       0.550       0.628       0.707       0.722       0.752
+    S               -0.155      -0.119      -0.101      -0.005       0.092       0.110       0.146
+
+ Intercepts
+    NCVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    NCVS_2           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    NCVS_3           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    NCVS_4           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ Variances
+    I                1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    S                1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ Residual Variances
+    NCVS_1           0.336       0.380       0.403       0.522       0.640       0.663       0.708
+    NCVS_2           0.593       0.615       0.626       0.685       0.744       0.755       0.777
+    NCVS_3           0.530       0.551       0.562       0.619       0.676       0.687       0.708
+    NCVS_4           0.403       0.449       0.472       0.594       0.716       0.739       0.785
+
+
+STDY Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    NCVS_1           0.557       0.589       0.606       0.692       0.777       0.794       0.826
+    NCVS_2           0.488       0.519       0.534       0.616       0.697       0.713       0.743
+    NCVS_3           0.514       0.547       0.564       0.653       0.741       0.758       0.791
+    NCVS_4           0.442       0.476       0.493       0.585       0.676       0.693       0.727
+
+ S        |
+    NCVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    NCVS_2           0.129       0.148       0.158       0.209       0.261       0.271       0.290
+    NCVS_3           0.311       0.343       0.359       0.444       0.529       0.545       0.577
+    NCVS_4           0.387       0.437       0.463       0.596       0.730       0.756       0.806
+
+ S        WITH
+    I               -0.777      -0.691      -0.648      -0.418      -0.189      -0.145      -0.059
+
+ Means
+    I                0.505       0.535       0.550       0.628       0.707       0.722       0.752
+    S               -0.155      -0.119      -0.101      -0.005       0.092       0.110       0.146
+
+ Intercepts
+    NCVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    NCVS_2           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    NCVS_3           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    NCVS_4           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ Variances
+    I                1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    S                1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ Residual Variances
+    NCVS_1           0.336       0.380       0.403       0.522       0.640       0.663       0.708
+    NCVS_2           0.593       0.615       0.626       0.685       0.744       0.755       0.777
+    NCVS_3           0.530       0.551       0.562       0.619       0.676       0.687       0.708
+    NCVS_4           0.403       0.449       0.472       0.594       0.716       0.739       0.785
+
+
+STD Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    NCVS_1           0.282       0.298       0.306       0.348       0.390       0.399       0.414
+    NCVS_2           0.282       0.298       0.306       0.348       0.390       0.399       0.414
+    NCVS_3           0.282       0.298       0.306       0.348       0.390       0.399       0.414
+    NCVS_4           0.282       0.298       0.306       0.348       0.390       0.399       0.414
+
+ S        |
+    NCVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    NCVS_2           0.072       0.083       0.089       0.118       0.148       0.154       0.165
+    NCVS_3           0.144       0.166       0.178       0.237       0.296       0.307       0.330
+    NCVS_4           0.217       0.250       0.267       0.355       0.444       0.461       0.494
+
+ S        WITH
+    I               -0.777      -0.691      -0.648      -0.418      -0.189      -0.145      -0.059
+
+ Means
+    I                0.505       0.535       0.550       0.628       0.707       0.722       0.752
+    S               -0.155      -0.119      -0.101      -0.005       0.092       0.110       0.146
+
+ Intercepts
+    NCVS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    NCVS_2           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    NCVS_3           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    NCVS_4           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ Variances
+    I                1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    S                1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ Residual Variances
+    NCVS_1           0.066       0.082       0.090       0.132       0.175       0.183       0.199
+    NCVS_2           0.148       0.165       0.174       0.219       0.265       0.274       0.291
+    NCVS_3           0.118       0.132       0.139       0.176       0.213       0.221       0.234
+    NCVS_4           0.143       0.160       0.168       0.211       0.254       0.262       0.279
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means
+              NCVS_1        NCVS_2        NCVS_3        NCVS_4
+              ________      ________      ________      ________
+                0.219         0.218         0.218         0.217
+
+
+           Residuals for Means
+              NCVS_1        NCVS_2        NCVS_3        NCVS_4
+              ________      ________      ________      ________
+               -0.003         0.023        -0.024         0.014
+
+
+           Standardized Residuals (z-scores) for Means
+              NCVS_1        NCVS_2        NCVS_3        NCVS_4
+              ________      ________      ________      ________
+              999.000         3.080       999.000         2.390
+
+
+           Normalized Residuals for Means
+              NCVS_1        NCVS_2        NCVS_3        NCVS_4
+              ________      ________      ________      ________
+               -0.221         1.469        -1.524         0.667
+
+
+           Model Estimated Covariances
+              NCVS_1        NCVS_2        NCVS_3        NCVS_4
+              ________      ________      ________      ________
+ NCVS_1         0.254
+ NCVS_2         0.104         0.320
+ NCVS_3         0.087         0.098         0.285
+ NCVS_4         0.070         0.094         0.119         0.355
+
+
+           Model Estimated Correlations
+              NCVS_1        NCVS_2        NCVS_3        NCVS_4
+              ________      ________      ________      ________
+ NCVS_1         1.000
+ NCVS_2         0.365         1.000
+ NCVS_3         0.323         0.323         1.000
+ NCVS_4         0.232         0.280         0.375         1.000
+
+
+           Residuals for Covariances
+              NCVS_1        NCVS_2        NCVS_3        NCVS_4
+              ________      ________      ________      ________
+ NCVS_1         0.001
+ NCVS_2         0.000        -0.003
+ NCVS_3         0.000        -0.002         0.000
+ NCVS_4         0.003        -0.005         0.003         0.001
+
+
+           Residuals for Correlations
+              NCVS_1        NCVS_2        NCVS_3        NCVS_4
+              ________      ________      ________      ________
+ NCVS_1         0.000
+ NCVS_2         0.002         0.000
+ NCVS_3         0.000        -0.007         0.000
+ NCVS_4         0.010        -0.015         0.010         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              NCVS_1        NCVS_2        NCVS_3        NCVS_4
+              ________      ________      ________      ________
+ NCVS_1       999.000
+ NCVS_2         0.087       999.000
+ NCVS_3        -0.021        -0.153       999.000
+ NCVS_4       999.000        -0.375         0.342         0.067
+
+
+           Normalized Residuals for Covariances
+              NCVS_1        NCVS_2        NCVS_3        NCVS_4
+              ________      ________      ________      ________
+ NCVS_1         0.027
+ NCVS_2         0.028        -0.093
+ NCVS_3        -0.004        -0.122        -0.010
+ NCVS_4         0.315        -0.247         0.119         0.024
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              NCVS_1        NCVS_2        NCVS_3        NCVS_4
+              ________      ________      ________      ________
+                  0             0             0             0
+
+
+           LAMBDA
+              I             S
+              ________      ________
+ NCVS_1             0             0
+ NCVS_2             0             0
+ NCVS_3             0             0
+ NCVS_4             0             0
+
+
+           THETA
+              NCVS_1        NCVS_2        NCVS_3        NCVS_4
+              ________      ________      ________      ________
+ NCVS_1             1
+ NCVS_2             0             2
+ NCVS_3             0             0             3
+ NCVS_4             0             0             0             4
+
+
+           ALPHA
+              I             S
+              ________      ________
+                  5             6
+
+
+           BETA
+              I             S
+              ________      ________
+ I                  0             0
+ S                  0             0
+
+
+           PSI
+              I             S
+              ________      ________
+ I                  7
+ S                  8             9
+
+
+     STARTING VALUES
+
+
+           NU
+              NCVS_1        NCVS_2        NCVS_3        NCVS_4
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              I             S
+              ________      ________
+ NCVS_1         1.000         0.000
+ NCVS_2         1.000         1.000
+ NCVS_3         1.000         2.000
+ NCVS_4         1.000         3.000
+
+
+           THETA
+              NCVS_1        NCVS_2        NCVS_3        NCVS_4
+              ________      ________      ________      ________
+ NCVS_1         0.127
+ NCVS_2         0.000         0.157
+ NCVS_3         0.000         0.000         0.141
+ NCVS_4         0.000         0.000         0.000         0.176
+
+
+           ALPHA
+              I             S
+              ________      ________
+                0.222         0.005
+
+
+           BETA
+              I             S
+              ________      ________
+ I              0.000         0.000
+ S              0.000         0.000
+
+
+           PSI
+              I             S
+              ________      ________
+ I              0.259
+ S              0.000         0.146
+
+
+TECHNICAL 4 OUTPUT
+
+
+     ESTIMATES DERIVED FROM THE MODEL
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+                0.219        -0.001
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+                0.015         0.007
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+               14.605        -0.078
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+                0.000         0.937
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+ I              0.121
+ S             -0.017         0.014
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+ I              0.018
+ S              0.007         0.004
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+ I              6.800
+ S             -2.339         3.294
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+ I              0.000
+ S              0.019         0.001
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+ I              1.000
+ S             -0.418         1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+ I              0.000
+ S              0.139         0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+ I            999.000
+ S             -2.998       999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S
+              ________      ________
+ I              0.000
+ S              0.003         0.000
+
+
+     Beginning Time:  14:26:54
+        Ending Time:  14:26:54
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen

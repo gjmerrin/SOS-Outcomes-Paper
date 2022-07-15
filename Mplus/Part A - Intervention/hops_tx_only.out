@@ -1,0 +1,909 @@
+Mplus VERSION 8.4
+MUTHEN & MUTHEN
+07/05/2022   2:28 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  HNC Perpetration - Tx only;
+  DATA:
+  FILE = "Mplus/Automatr/TX ONLY/HOPS_TX_ONLY_285ead3979b739a544f88c51b5eae2b8.dat";
+
+  VARIABLE:
+  NAMES = ID School Tx HOPS_1 HOPS_2 HOPS_3 HOPS_4;
+   MISSING=.;
+   IDVARIABLE = ID;
+                            CLUSTER = School;
+  ANALYSIS:
+  TYPE = COMPLEX;
+  MODEL:
+  i s | HOPS_1@0 HOPS_2@1 HOPS_3@2 HOPS_4@3;
+  i s ON Tx;
+  [Tx];
+  OUTPUT:
+  STANDARDIZED CINTERVAL RESIDUAL TECH1 TECH4;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+
+HNC Perpetration - Tx only;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        6461
+
+Number of dependent variables                                    4
+Number of independent variables                                  1
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Continuous
+   HOPS_1      HOPS_2      HOPS_3      HOPS_4
+
+Observed independent variables
+   TX
+
+Continuous latent variables
+   I           S
+
+Variables with special functions
+
+  Cluster variable      SCHOOL
+  ID variable           ID
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  Mplus/Automatr/TX ONLY/HOPS_TX_ONLY_285ead3979b739a544f88c51b5eae2b8.dat
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns            16
+     Number of clusters                         20
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              HOPS_1        HOPS_2        HOPS_3        HOPS_4        TX
+              ________      ________      ________      ________      ________
+ HOPS_1         0.720
+ HOPS_2         0.532         0.659
+ HOPS_3         0.464         0.464         0.634
+ HOPS_4         0.376         0.379         0.410         0.520
+ TX             0.720         0.659         0.634         0.520         1.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     HOPS_1                0.390       2.898       0.000   50.20%       0.000      0.000      0.000
+            4649.000       0.480       9.775       4.000    1.08%       0.200      0.750
+     HOPS_2                0.460       2.677       0.000   48.64%       0.000      0.000      0.200
+            4258.000       0.622       7.879       4.000    1.97%       0.200      0.800
+     HOPS_3                0.423       2.772       0.000   52.84%       0.000      0.000      0.000
+            4099.000       0.589       8.480       4.000    1.81%       0.200      0.800
+     HOPS_4                0.482       2.500       0.000   52.11%       0.000      0.000      0.000
+            3360.000       0.716       6.425       4.000    2.32%       0.200      0.800
+     TX                    0.530      -0.122       0.000   46.96%       0.000      0.000      1.000
+            6461.000       0.249      -1.985       1.000   53.04%       1.000      1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES MAY NOT BE
+     TRUSTWORTHY FOR SOME PARAMETERS DUE TO A NON-POSITIVE DEFINITE
+     FIRST-ORDER DERIVATIVE PRODUCT MATRIX.  THIS MAY BE DUE TO THE STARTING
+     VALUES BUT MAY ALSO BE AN INDICATION OF MODEL NONIDENTIFICATION.  THE
+     CONDITION NUMBER IS       0.511D-13.  PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 13, TX
+
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       13
+
+Loglikelihood
+
+          H0 Value                      -21994.079
+          H0 Scaling Correction Factor     51.7630
+            for MLR
+          H1 Value                      -21963.637
+          H1 Scaling Correction Factor     34.5323
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   44014.157
+          Bayesian (BIC)                 44102.213
+          Sample-Size Adjusted BIC       44060.903
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                             24.042*
+          Degrees of Freedom                     7
+          P-Value                           0.0011
+          Scaling Correction Factor         2.5323
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.019
+          90 Percent C.I.                    0.011  0.028
+          Probability RMSEA <= .05           1.000
+
+CFI/TLI
+
+          CFI                                0.976
+          TLI                                0.966
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                            723.528
+          Degrees of Freedom                    10
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.022
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    HOPS_1             1.000      0.000    999.000    999.000
+    HOPS_2             1.000      0.000    999.000    999.000
+    HOPS_3             1.000      0.000    999.000    999.000
+    HOPS_4             1.000      0.000    999.000    999.000
+
+ S        |
+    HOPS_1             0.000      0.000    999.000    999.000
+    HOPS_2             1.000      0.000    999.000    999.000
+    HOPS_3             2.000      0.000    999.000    999.000
+    HOPS_4             3.000      0.000    999.000    999.000
+
+ I        ON
+    TX                -0.077      0.040     -1.931      0.053
+
+ S        ON
+    TX                -0.001      0.018     -0.031      0.975
+
+ S        WITH
+    I                  0.015      0.007      2.278      0.023
+
+ Means
+    TX                 0.530      0.148      3.581      0.000
+
+ Intercepts
+    HOPS_1             0.000      0.000    999.000    999.000
+    HOPS_2             0.000      0.000    999.000    999.000
+    HOPS_3             0.000      0.000    999.000    999.000
+    HOPS_4             0.000      0.000    999.000    999.000
+    I                  0.445      0.025     17.547      0.000
+    S                  0.033      0.014      2.274      0.023
+
+ Variances
+    TX                 0.249      0.009     27.645      0.000
+
+ Residual Variances
+    HOPS_1             0.260      0.046      5.637      0.000
+    HOPS_2             0.324      0.028     11.431      0.000
+    HOPS_3             0.278      0.033      8.400      0.000
+    HOPS_4             0.323      0.031     10.368      0.000
+    I                  0.232      0.030      7.816      0.000
+    S                  0.013      0.005      2.570      0.010
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    HOPS_1             0.688      0.041     16.715      0.000
+    HOPS_2             0.623      0.023     27.033      0.000
+    HOPS_3             0.612      0.029     20.819      0.000
+    HOPS_4             0.554      0.033     16.944      0.000
+
+ S        |
+    HOPS_1             0.000      0.000    999.000    999.000
+    HOPS_2             0.146      0.030      4.905      0.000
+    HOPS_3             0.287      0.052      5.504      0.000
+    HOPS_4             0.389      0.071      5.484      0.000
+
+ I        ON
+    TX                -0.080      0.041     -1.944      0.052
+
+ S        ON
+    TX                -0.003      0.080     -0.031      0.975
+
+ S        WITH
+    I                  0.274      0.158      1.737      0.082
+
+ Means
+    TX                 1.063      0.316      3.363      0.001
+
+ Intercepts
+    HOPS_1             0.000      0.000    999.000    999.000
+    HOPS_2             0.000      0.000    999.000    999.000
+    HOPS_3             0.000      0.000    999.000    999.000
+    HOPS_4             0.000      0.000    999.000    999.000
+    I                  0.921      0.060     15.452      0.000
+    S                  0.289      0.106      2.726      0.006
+
+ Variances
+    TX                 1.000      0.000    999.000    999.000
+
+ Residual Variances
+    HOPS_1             0.527      0.057      9.302      0.000
+    HOPS_2             0.541      0.018     29.543      0.000
+    HOPS_3             0.447      0.024     18.295      0.000
+    HOPS_4             0.425      0.032     13.080      0.000
+    I                  0.994      0.007    150.711      0.000
+    S                  1.000      0.000   2508.451      0.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    HOPS_1             0.688      0.041     16.715      0.000
+    HOPS_2             0.623      0.023     27.033      0.000
+    HOPS_3             0.612      0.029     20.819      0.000
+    HOPS_4             0.554      0.033     16.944      0.000
+
+ S        |
+    HOPS_1             0.000      0.000    999.000    999.000
+    HOPS_2             0.146      0.030      4.905      0.000
+    HOPS_3             0.287      0.052      5.504      0.000
+    HOPS_4             0.389      0.071      5.484      0.000
+
+ I        ON
+    TX                -0.080      0.041     -1.944      0.052
+
+ S        ON
+    TX                -0.003      0.080     -0.031      0.975
+
+ S        WITH
+    I                  0.274      0.158      1.737      0.082
+
+ Means
+    TX                 1.063      0.316      3.363      0.001
+
+ Intercepts
+    HOPS_1             0.000      0.000    999.000    999.000
+    HOPS_2             0.000      0.000    999.000    999.000
+    HOPS_3             0.000      0.000    999.000    999.000
+    HOPS_4             0.000      0.000    999.000    999.000
+    I                  0.921      0.060     15.452      0.000
+    S                  0.289      0.106      2.726      0.006
+
+ Variances
+    TX                 1.000      0.000    999.000    999.000
+
+ Residual Variances
+    HOPS_1             0.527      0.057      9.302      0.000
+    HOPS_2             0.541      0.018     29.543      0.000
+    HOPS_3             0.447      0.024     18.295      0.000
+    HOPS_4             0.425      0.032     13.080      0.000
+    I                  0.994      0.007    150.711      0.000
+    S                  1.000      0.000   2508.451      0.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ I        |
+    HOPS_1             0.483      0.031     15.611      0.000
+    HOPS_2             0.483      0.031     15.611      0.000
+    HOPS_3             0.483      0.031     15.611      0.000
+    HOPS_4             0.483      0.031     15.611      0.000
+
+ S        |
+    HOPS_1             0.000      0.000    999.000    999.000
+    HOPS_2             0.113      0.022      5.139      0.000
+    HOPS_3             0.226      0.044      5.139      0.000
+    HOPS_4             0.339      0.066      5.139      0.000
+
+ I        ON
+    TX                -0.160      0.082     -1.956      0.050
+
+ S        ON
+    TX                -0.005      0.160     -0.031      0.975
+
+ S        WITH
+    I                  0.274      0.158      1.737      0.082
+
+ Means
+    TX                 0.530      0.148      3.581      0.000
+
+ Intercepts
+    HOPS_1             0.000      0.000    999.000    999.000
+    HOPS_2             0.000      0.000    999.000    999.000
+    HOPS_3             0.000      0.000    999.000    999.000
+    HOPS_4             0.000      0.000    999.000    999.000
+    I                  0.921      0.060     15.452      0.000
+    S                  0.289      0.106      2.726      0.006
+
+ Variances
+    TX                 0.249      0.009     27.645      0.000
+
+ Residual Variances
+    HOPS_1             0.260      0.046      5.637      0.000
+    HOPS_2             0.324      0.028     11.431      0.000
+    HOPS_3             0.278      0.033      8.400      0.000
+    HOPS_4             0.323      0.031     10.368      0.000
+    I                  0.994      0.007    150.711      0.000
+    S                  1.000      0.000   2508.451      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    HOPS_1             0.473      0.057      8.358      0.000
+    HOPS_2             0.459      0.018     25.115      0.000
+    HOPS_3             0.553      0.024     22.648      0.000
+    HOPS_4             0.575      0.032     17.706      0.000
+
+     Latent                                         Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    I                  0.006      0.007      0.972      0.331
+    S                  0.000      0.000      0.016      0.987
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.394E-02
+       (ratio of smallest to largest eigenvalue)
+
+
+CONFIDENCE INTERVALS OF MODEL RESULTS
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    HOPS_1           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    HOPS_2           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    HOPS_3           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    HOPS_4           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ S        |
+    HOPS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOPS_2           1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    HOPS_3           2.000       2.000       2.000       2.000       2.000       2.000       2.000
+    HOPS_4           3.000       3.000       3.000       3.000       3.000       3.000       3.000
+
+ I        ON
+    TX              -0.181      -0.156      -0.143      -0.077      -0.011       0.001       0.026
+
+ S        ON
+    TX              -0.047      -0.036      -0.030      -0.001       0.029       0.035       0.046
+
+ S        WITH
+    I               -0.002       0.002       0.004       0.015       0.026       0.028       0.032
+
+ Means
+    TX               0.149       0.240       0.287       0.530       0.774       0.821       0.912
+
+ Intercepts
+    HOPS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOPS_2           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOPS_3           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOPS_4           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    I                0.379       0.395       0.403       0.445       0.486       0.494       0.510
+    S               -0.004       0.005       0.009       0.033       0.056       0.061       0.070
+
+ Variances
+    TX               0.226       0.231       0.234       0.249       0.264       0.267       0.272
+
+ Residual Variances
+    HOPS_1           0.141       0.169       0.184       0.260       0.335       0.350       0.378
+    HOPS_2           0.251       0.269       0.278       0.324       0.371       0.380       0.398
+    HOPS_3           0.193       0.213       0.223       0.278       0.332       0.343       0.363
+    HOPS_4           0.243       0.262       0.272       0.323       0.375       0.385       0.404
+    I                0.155       0.174       0.183       0.232       0.280       0.290       0.308
+    S                0.000       0.003       0.005       0.013       0.021       0.023       0.026
+
+
+CONFIDENCE INTERVALS OF STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    HOPS_1           0.582       0.607       0.620       0.688       0.756       0.769       0.794
+    HOPS_2           0.564       0.578       0.585       0.623       0.661       0.668       0.683
+    HOPS_3           0.537       0.555       0.564       0.612       0.661       0.670       0.688
+    HOPS_4           0.469       0.489       0.500       0.554       0.607       0.618       0.638
+
+ S        |
+    HOPS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOPS_2           0.069       0.088       0.097       0.146       0.195       0.204       0.222
+    HOPS_3           0.152       0.185       0.201       0.287       0.372       0.389       0.421
+    HOPS_4           0.206       0.250       0.272       0.389       0.505       0.527       0.571
+
+ I        ON
+    TX              -0.186      -0.161      -0.148      -0.080      -0.012       0.001       0.026
+
+ S        ON
+    TX              -0.208      -0.159      -0.133      -0.003       0.128       0.154       0.203
+
+ S        WITH
+    I               -0.133      -0.035       0.014       0.274       0.534       0.584       0.682
+
+ Means
+    TX               0.249       0.443       0.543       1.063       1.583       1.682       1.877
+
+ Intercepts
+    HOPS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOPS_2           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOPS_3           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOPS_4           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    I                0.767       0.804       0.823       0.921       1.019       1.037       1.074
+    S                0.016       0.081       0.114       0.289       0.463       0.496       0.561
+
+ Variances
+    TX               1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ Residual Variances
+    HOPS_1           0.381       0.416       0.434       0.527       0.620       0.638       0.673
+    HOPS_2           0.493       0.505       0.510       0.541       0.571       0.576       0.588
+    HOPS_3           0.384       0.399       0.407       0.447       0.487       0.495       0.510
+    HOPS_4           0.341       0.361       0.371       0.425       0.478       0.489       0.509
+    I                0.977       0.981       0.983       0.994       1.004       1.007       1.011
+    S                0.999       0.999       0.999       1.000       1.001       1.001       1.001
+
+
+STDY Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    HOPS_1           0.582       0.607       0.620       0.688       0.756       0.769       0.794
+    HOPS_2           0.564       0.578       0.585       0.623       0.661       0.668       0.683
+    HOPS_3           0.537       0.555       0.564       0.612       0.661       0.670       0.688
+    HOPS_4           0.469       0.489       0.500       0.554       0.607       0.618       0.638
+
+ S        |
+    HOPS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOPS_2           0.069       0.088       0.097       0.146       0.195       0.204       0.222
+    HOPS_3           0.152       0.185       0.201       0.287       0.372       0.389       0.421
+    HOPS_4           0.206       0.250       0.272       0.389       0.505       0.527       0.571
+
+ I        ON
+    TX              -0.186      -0.161      -0.148      -0.080      -0.012       0.001       0.026
+
+ S        ON
+    TX              -0.208      -0.159      -0.133      -0.003       0.128       0.154       0.203
+
+ S        WITH
+    I               -0.133      -0.035       0.014       0.274       0.534       0.584       0.682
+
+ Means
+    TX               0.249       0.443       0.543       1.063       1.583       1.682       1.877
+
+ Intercepts
+    HOPS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOPS_2           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOPS_3           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOPS_4           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    I                0.767       0.804       0.823       0.921       1.019       1.037       1.074
+    S                0.016       0.081       0.114       0.289       0.463       0.496       0.561
+
+ Variances
+    TX               1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ Residual Variances
+    HOPS_1           0.381       0.416       0.434       0.527       0.620       0.638       0.673
+    HOPS_2           0.493       0.505       0.510       0.541       0.571       0.576       0.588
+    HOPS_3           0.384       0.399       0.407       0.447       0.487       0.495       0.510
+    HOPS_4           0.341       0.361       0.371       0.425       0.478       0.489       0.509
+    I                0.977       0.981       0.983       0.994       1.004       1.007       1.011
+    S                0.999       0.999       0.999       1.000       1.001       1.001       1.001
+
+
+STD Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ I        |
+    HOPS_1           0.403       0.422       0.432       0.483       0.534       0.544       0.563
+    HOPS_2           0.403       0.422       0.432       0.483       0.534       0.544       0.563
+    HOPS_3           0.403       0.422       0.432       0.483       0.534       0.544       0.563
+    HOPS_4           0.403       0.422       0.432       0.483       0.534       0.544       0.563
+
+ S        |
+    HOPS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOPS_2           0.056       0.070       0.077       0.113       0.149       0.156       0.170
+    HOPS_3           0.113       0.140       0.154       0.226       0.298       0.312       0.339
+    HOPS_4           0.169       0.210       0.230       0.339       0.448       0.468       0.509
+
+ I        ON
+    TX              -0.372      -0.321      -0.295      -0.160      -0.025       0.000       0.051
+
+ S        ON
+    TX              -0.416      -0.318      -0.267      -0.005       0.257       0.308       0.406
+
+ S        WITH
+    I               -0.133      -0.035       0.014       0.274       0.534       0.584       0.682
+
+ Means
+    TX               0.149       0.240       0.287       0.530       0.774       0.821       0.912
+
+ Intercepts
+    HOPS_1           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOPS_2           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOPS_3           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    HOPS_4           0.000       0.000       0.000       0.000       0.000       0.000       0.000
+    I                0.767       0.804       0.823       0.921       1.019       1.037       1.074
+    S                0.016       0.081       0.114       0.289       0.463       0.496       0.561
+
+ Variances
+    TX               0.226       0.231       0.234       0.249       0.264       0.267       0.272
+
+ Residual Variances
+    HOPS_1           0.141       0.169       0.184       0.260       0.335       0.350       0.378
+    HOPS_2           0.251       0.269       0.278       0.324       0.371       0.380       0.398
+    HOPS_3           0.193       0.213       0.223       0.278       0.332       0.343       0.363
+    HOPS_4           0.243       0.262       0.272       0.323       0.375       0.385       0.404
+    I                0.977       0.981       0.983       0.994       1.004       1.007       1.011
+    S                0.999       0.999       0.999       1.000       1.001       1.001       1.001
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means
+              HOPS_1        HOPS_2        HOPS_3        HOPS_4        TX
+              ________      ________      ________      ________      ________
+                0.403         0.436         0.468         0.500         0.530
+
+
+           Residuals for Means
+              HOPS_1        HOPS_2        HOPS_3        HOPS_4        TX
+              ________      ________      ________      ________      ________
+               -0.009         0.036        -0.027         0.009         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              HOPS_1        HOPS_2        HOPS_3        HOPS_4        TX
+              ________      ________      ________      ________      ________
+               -0.840         9.295        -3.549       999.000         0.000
+
+
+           Normalized Residuals for Means
+              HOPS_1        HOPS_2        HOPS_3        HOPS_4        TX
+              ________      ________      ________      ________      ________
+               -0.361         1.749        -1.176         0.367         0.000
+
+
+           Model Estimated Covariances
+              HOPS_1        HOPS_2        HOPS_3        HOPS_4        TX
+              ________      ________      ________      ________      ________
+ HOPS_1         0.493
+ HOPS_2         0.248         0.600
+ HOPS_3         0.263         0.304         0.622
+ HOPS_4         0.278         0.331         0.385         0.761
+ TX            -0.019        -0.019        -0.020        -0.020         0.249
+
+
+           Model Estimated Correlations
+              HOPS_1        HOPS_2        HOPS_3        HOPS_4        TX
+              ________      ________      ________      ________      ________
+ HOPS_1         1.000
+ HOPS_2         0.456         1.000
+ HOPS_3         0.475         0.497         1.000
+ HOPS_4         0.454         0.490         0.559         1.000
+ TX            -0.055        -0.050        -0.050        -0.045         1.000
+
+
+           Residuals for Covariances
+              HOPS_1        HOPS_2        HOPS_3        HOPS_4        TX
+              ________      ________      ________      ________      ________
+ HOPS_1        -0.009
+ HOPS_2         0.011         0.027
+ HOPS_3        -0.027         0.025        -0.013
+ HOPS_4        -0.008         0.022        -0.018        -0.006
+ TX            -0.004         0.008         0.000        -0.003         0.000
+
+
+           Residuals for Correlations
+              HOPS_1        HOPS_2        HOPS_3        HOPS_4        TX
+              ________      ________      ________      ________      ________
+ HOPS_1         0.000
+ HOPS_2         0.015         0.000
+ HOPS_3        -0.039         0.034         0.000
+ HOPS_4        -0.006         0.023        -0.018         0.000
+ TX            -0.012         0.022        -0.001        -0.008         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              HOPS_1        HOPS_2        HOPS_3        HOPS_4        TX
+              ________      ________      ________      ________      ________
+ HOPS_1        -1.765
+ HOPS_2         0.591         1.456
+ HOPS_3       999.000         3.190       999.000
+ HOPS_4        -0.352         0.843       999.000        -0.310
+ TX            -0.624         2.732        -0.035       999.000         0.000
+
+
+           Normalized Residuals for Covariances
+              HOPS_1        HOPS_2        HOPS_3        HOPS_4        TX
+              ________      ________      ________      ________      ________
+ HOPS_1        -0.178
+ HOPS_2         0.348         0.539
+ HOPS_3        -1.353         1.063        -0.314
+ HOPS_4        -0.242         0.640        -0.674        -0.102
+ TX            -0.326         0.984        -0.019        -0.375         0.000
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              HOPS_1        HOPS_2        HOPS_3        HOPS_4        TX
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           LAMBDA
+              I             S             TX
+              ________      ________      ________
+ HOPS_1             0             0             0
+ HOPS_2             0             0             0
+ HOPS_3             0             0             0
+ HOPS_4             0             0             0
+ TX                 0             0             0
+
+
+           THETA
+              HOPS_1        HOPS_2        HOPS_3        HOPS_4        TX
+              ________      ________      ________      ________      ________
+ HOPS_1             1
+ HOPS_2             0             2
+ HOPS_3             0             0             3
+ HOPS_4             0             0             0             4
+ TX                 0             0             0             0             0
+
+
+           ALPHA
+              I             S             TX
+              ________      ________      ________
+                  5             6             7
+
+
+           BETA
+              I             S             TX
+              ________      ________      ________
+ I                  0             0             8
+ S                  0             0             9
+ TX                 0             0             0
+
+
+           PSI
+              I             S             TX
+              ________      ________      ________
+ I                 10
+ S                 11            12
+ TX                 0             0            13
+
+
+     STARTING VALUES
+
+
+           NU
+              HOPS_1        HOPS_2        HOPS_3        HOPS_4        TX
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              I             S             TX
+              ________      ________      ________
+ HOPS_1         1.000         0.000         0.000
+ HOPS_2         1.000         1.000         0.000
+ HOPS_3         1.000         2.000         0.000
+ HOPS_4         1.000         3.000         0.000
+ TX             0.000         0.000         1.000
+
+
+           THETA
+              HOPS_1        HOPS_2        HOPS_3        HOPS_4        TX
+              ________      ________      ________      ________      ________
+ HOPS_1         0.240
+ HOPS_2         0.000         0.311
+ HOPS_3         0.000         0.000         0.294
+ HOPS_4         0.000         0.000         0.000         0.358
+ TX             0.000         0.000         0.000         0.000         0.000
+
+
+           ALPHA
+              I             S             TX
+              ________      ________      ________
+                0.402         0.039         0.000
+
+
+           BETA
+              I             S             TX
+              ________      ________      ________
+ I              0.000         0.000         0.000
+ S              0.000         0.000         0.000
+ TX             0.000         0.000         0.000
+
+
+           PSI
+              I             S             TX
+              ________      ________      ________
+ I              0.494
+ S              0.000         0.246
+ TX             0.000         0.000         0.125
+
+
+TECHNICAL 4 OUTPUT
+
+
+     ESTIMATES DERIVED FROM THE MODEL
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+                0.403         0.032         0.530
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+                0.023         0.010         0.148
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+               17.173         3.168         3.581
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+                0.000         0.002         0.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+ I              0.233
+ S              0.015         0.013
+ TX            -0.019         0.000         0.249
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+ I              0.030
+ S              0.007         0.005
+ TX             0.010         0.004         0.009
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+ I              7.806
+ S              2.297         2.569
+ TX            -1.900        -0.031        27.645
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+ I              0.000
+ S              0.022         0.010
+ TX             0.057         0.975         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+ I              1.000
+ S              0.274         1.000
+ TX            -0.080        -0.003         1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+ I              0.000
+ S              0.157         0.000
+ TX             0.041         0.080         0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+ I            999.000
+ S              1.747       999.000
+ TX            -1.944        -0.031       999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              I             S             TX
+              ________      ________      ________
+ I              0.000
+ S              0.081         0.000
+ TX             0.052         0.975         0.000
+
+
+     Beginning Time:  14:28:03
+        Ending Time:  14:28:03
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen
