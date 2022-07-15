@@ -5,25 +5,36 @@
 #                                      #
 ########################################
 
+
 # ---- Importing Necessities --------------------
 
 ## Loading packages and functions
 source("Scripts/PnF.R")
 
 ## Importing data
-dscombo <- read_sav("SoS Data and Codes/w1-w4 SoS_Combined.sav")
+# dsclean data fixed W2 out-of-range value issue
+# dscombo <- read_sav("SoS Data and Codes/w1-w4 SoS_Combined.sav")
+dsclean <- read_sav("SoS Data and Codes/w1-w4 SoS_Cleaned_05-17-22.sav")
+
+# # comparing combo and clean
+# incombo <- names(dscombo)[!names(dscombo) %in% names(dsclean)] #none
+# inclean <- names(dsclean)[!names(dsclean) %in% names(dscombo)] # original id variable (SUBJECT_ID) and additional network variables
+# table(dscombo$GEN_WELL_BEING_2_W2)
+# table(dsclean$GEN_WELL_BEING_2_W2)
+
 
 ## renaming variables so they are included scale validation
-dscombo <- dscombo %>%
+dsclean <- dsclean %>%
   rename_with(.fn = ~str_remove(.x, "_NOTIN_SCALE"), .cols = contains("_NOTIN_SCALE")) %>% #starts_with("HELP_SEEK_GEN_BELIEF_NOTIN_SCALE_8")) %>%
   rename_with(.fn = ~str_remove(.x, "_NOT_IN_SCALE"), .cols = contains("_NOT_IN_SCALE")) %>% #starts_with("SEX_HAR_HELP_ATTITUDE_NOT_IN_SCALE_2"))
   rename(EXPOSURE_OWN_STRENGTHS_W2 = "EXPOSURE_OWN_SGRENGTHS_W2")
 
 
 ## Keeping variables for analysis
-ds1 <- dscombo %>%
+ds1 <- dsclean %>%
   filter_at(vars(starts_with("Inaccurate_Response")),              # removing inaccurate response cases
             all_vars(is.na(.) | . == 2)) %>%  
+  filter(!Grade %in% c(8, 12)) %>%                                 # removing the few students in grade 8 and 12 (keeping those with NA for grade)
   select(StudentID, School = SCHOOL_NAME_ALL,                      # Identifiers
          HasASurvey_W1:HasASurvey_W4,                              # Has Survey - Created by Kelly based on whether missing on Age, Friend1, or scale scores for general well-being, intent help others & help seeking general belief
          starts_with("CONDITION_"), starts_with("EXPOSURE"),       # Intervention indicator and exposure
@@ -40,8 +51,7 @@ ds1 <- dscombo %>%
          starts_with(c(AODVars, BullyPerpVars, CyberBullyPerpVars, # Other scales
                        DepAnxVars, PeerVictVars)),
          starts_with("TotAdultNoms_")) %>%
-  filter(rowSums(select(., HasASurvey_W1:HasASurvey_W4)) != 0) %>% # these students were only in data for network analysis (a named friend by someone with a survey)
-  mutate(GEN_WELL_BEING_2_W2 = ifelse(GEN_WELL_BEING_2_W2 == 4, NA, GEN_WELL_BEING_2_W2)) # there should not be any values of 4
+  filter(rowSums(select(., HasASurvey_W1:HasASurvey_W4)) != 0)     # these students (n = 1200) were only in data for network analysis (a named friend by someone with a survey)
 
 ## comparing how to best remove cases included just for network analysis, but did not take a survey
 # networkcheck <- dscombo %>%
@@ -145,7 +155,7 @@ table(empties$HasASurvey, useNA = "always") # all were listed as not having a su
 
 # ------ Demographics Overall and by Condition -------------
 
-gtdemos <- ds1 %>% select(all_of(DemoVars), Grade, Tx) %>%
+gtdemos <- ds1 %>% select(all_of(DemoVars), Grade, AGE_W1, Tx) %>%
   mutate(Tx = ifelse(Tx == 1, "SoS", "Waitlist"),
          Transgender = as_factor(Transgender) %>% fct_drop()) %>%
   mutate(across(all_of(c(DemoVars, "Grade")), ~as_factor(.x) %>% fct_explicit_na(na_level = "Unknown"))) %>%
@@ -158,9 +168,24 @@ gtdemos <- ds1 %>% select(all_of(DemoVars), Grade, Tx) %>%
   add_overall() %>%
   as_flex_table()
 
-## Oddities to examine
-# Wave 1 grade reported as 8 or 12 when all should be 9 - 11; using Kelly's grade variable which is based on roster data but also makes some guesses based on W4
-# View((ds1[ds1$Grade %in% c(8, 12),]))
+as_factor(ds1$AGE_W1) %>% as.character() %>% str_remove(" years") %>%
+  str_remove(" or older") %>% str_remove(" or younger") %>%
+  as.numeric() %>% psych::describe()
+
+# Sample in Wave 1
+gtdemosw1 <- ds1 %>% filter(HasASurvey_W1 == 1) %>%
+  select(all_of(DemoVars), Grade, Tx) %>%
+  mutate(Tx = ifelse(Tx == 1, "SoS", "Waitlist"),
+         Transgender = as_factor(Transgender) %>% fct_drop()) %>%
+  mutate(across(all_of(c(DemoVars, "Grade")), ~as_factor(.x) %>% fct_explicit_na(na_level = "Unknown"))) %>%
+  tbl_summary(by = Tx,
+              label = list(Transgender ~ "Transgender (recoded across waves)",
+                           Grade ~ "Grade (at Wave 1)"),
+              # type = list(all_categorical() ~ "continuous"),
+              # statistic = list(all_continuous() ~ "{mean} ({sd})"),
+              missing = "ifany") %>%
+  add_overall() %>%
+  as_flex_table()
 
 #####################################################################
 
@@ -168,11 +193,11 @@ gtdemos <- ds1 %>% select(all_of(DemoVars), Grade, Tx) %>%
 
 ## Uses ds1long because collapsing categories is not necessary for raw score and actually
 # provides more intuitive interpretation of the mean (items all have the same number of categories)
-# Note: The scales and variables included here are based on the measurement results in 1-EFA_CFA.R and 1-LongMI.R
-raw.scores <- map2_dfc(.x = c(OutcomeVars, ProtectiveVars, OtherScaleVars,
-                             list(Active_Exposure = ActiveExpVars, Passive_Exposure = PassiveExpVars)),
-                       .y = c(rep("mean", 19), "sum", "sum"),
-                      ~scale_score(ds1long, .x, type = .y, min.valid = 3)) # must answer at least 3 items to get a score
+# Note: The scales and variables included here are based on the measurement results in 1-EFA_CFA.R and 2-LongMI.R
+raw.scores <- map_dfc(.x = c(OutcomeVars, ProtectiveVars, OtherScaleVars),
+                      ~scale_score(ds1long, .x, type = "mean", min.valid = length(.x)-1)) %>% # only 1 missing response allowed
+  bind_cols(map_dfc(.x = list(Active_Exposure = ActiveExpVars, Passive_Exposure = PassiveExpVars[-4]), # item 4 removed based on measurement results
+                    ~scale_score(ds1long, .x, type = "sum", min.valid = length(.x)))) # must have answered all items
 
 ## Adding identifiers and recoding exposure to account NAs and missing surveys
 raw.scores <- bind_cols(select(ds1long, StudentID, Tx, Wave, HasASurvey), raw.scores) %>%
@@ -182,7 +207,7 @@ raw.scores <- bind_cols(select(ds1long, StudentID, Tx, Wave, HasASurvey), raw.sc
                                   Tx == 0 ~ 0,           # Follows Intent-To-Treat Framework
                                   TRUE ~ .x)))
 
-# 143 cases have a survey, but no scale scores - some are all NAs, others have sporadic responding
+# 92 cases have a survey, but no scale scores - some are all NAs, others have sporadic responding
 no.score.cases <- raw.scores[rowSums(is.na(raw.scores[,-c(1:4)])) == ncol(raw.scores[,-c(1:4)]) & raw.scores$Wave != 1 & raw.scores$HasASurvey == 1,] #%>% View()
 # ds1long %>% inner_join(no.score.cases, by = c("StudentID", "Wave")) %>% View()
 
@@ -194,6 +219,18 @@ VariableDescrips <- raw.scores %>%
   skimr::skim(Value)
 # In wave 4 > 200 control students were exposed - consider Tx == 0 ~ 0
 # the school switched to treatment, but students are still coded as control under intent to treat framework
+
+## Creating output for Supplemental Materials
+VariableDescrips.wide <- VariableDescrips %>%
+  filter(Variable %in% OutcomeNames[-7]) %>%
+  mutate(Tx = case_when(Tx == 0 ~ "Waitlist",
+                        Tx == 1 ~ "SoS"),
+         Txwave = paste(Tx, Wave, sep = "_W"),
+         est = paste0(format(round(numeric.mean, 2), nsmall = 2),
+                      " (", format(round(numeric.sd, 2), nsmall = 2), ")")) %>%
+  select(Variable, Txwave, est) %>%
+  spread(Txwave, est) %>%
+  mutate(Variable = str_replace_all(Variable, "_", " "))
 
 ## Outcome Distribution Plots by TX
 OutcomeDensities <- map(.x = c(OutcomeNames, ProtectiveNames),
@@ -282,17 +319,16 @@ OutcomeFrequencies <- lapply(OutcomeVars,
 
 
 #### Collapsing Categories ####
-
+## This is to run psychometric checks; scores are still based on full response scale
 # OutcomeFrequencies$HNC_Perpetration$Gender %>% View()
-
-# When looking by group SH (no contact) and SV (contact) need to be dichotomized
 
 ## collapsing categories 3 and 4 for selected items (category collapsed at each wave)
 Collapse3 <- c(HNCPerpVars, HNCVictVars, CyberVars)
 
-Collapse2 <- c(DepAnxVars) # There are codes of 3, 4, and 5 in W2 data, but there should be
+Collapse2 <- c(BullyPerpVars)
 
 ## Need to collapse code 1 and higher (i.e., dichotomize)
+# When looking by group SH (no contact) and SV (contact) need to be dichotomized
 Collapse1 <- c(NoContactPerpVars, NoContactVictVars, ContactPerpVars, ContactVictVars)
 
 ## Earlier notes; Not sure if still relevant
@@ -300,7 +336,7 @@ Collapse1 <- c(NoContactPerpVars, NoContactVictVars, ContactPerpVars, ContactVic
 # However, high correlations between items persist because of 0s in the off-diagonal cells
 # This leads to Heywood cases (negative residual covariances)
 # there are also a few instances of negative residual variances, but I'm less concerned about
-# these since they strict model constrains these to be equal anyway
+# these since the strict model constrains these to be equal anyway
 
 
 ## Recoding for low frequencies
@@ -310,7 +346,7 @@ ds2 <- ds2 %>%
     ~case_when(as.numeric(.) >= 3 ~ 3,
                TRUE ~ as.numeric(.)))) %>%
   mutate(across(all_of(
-    paste(Collapse2, rep(1:4, each = length(Collapse2)), sep = "_W")),
+    paste(Collapse2, rep(1:4, each = length(Collapse3)), sep = "_W")),
     ~case_when(as.numeric(.) >= 2 ~ 2,
                TRUE ~ as.numeric(.)))) %>%
   mutate(across(all_of(
@@ -461,7 +497,7 @@ sos.expta <- ds2 %>%
          starts_with("Trusted_Adult")) %>%
   rename_with(~str_remove(.x, "_Exposure_Score"), .cols = dplyr::contains("Exposure_Score"))
 
-# saveRDS(sos.exp, file = "SoS_Exposure_TANom.rds")
+# saveRDS(sos.expta, file = "SoS_Exposure_TANom.rds") # why does this need to be saved?
 
 #######     Exposure by Group     ########
 
@@ -478,7 +514,10 @@ exp.tables.wave <- map(subby, ~sos.exp %>%
                                 missing = "no") %>% 
                     add_p(test = list(all_continuous() ~ "kruskal.test")) %>% # kruskal is the non-parametric equivalent to anova which is more suitable given the distributions
                     # add_q(method = "fdr") %>%  # false discovery rate is the same as Benjamini & Hochberg; only corrects for the 6 tests within each table which doesn't make much difference
-                    as_flex_table()) %>%
+                    as_flex_table() %>%
+                      flextable::font(fontname = "Times New Roman", part = "all") %>%
+                      flextable::padding(padding = 1, part = "all") %>%
+                      flextable::autofit()) %>%
   set_names(subby)
 
 exp.tables.avg <- map(subby, ~sos.exp %>%
@@ -489,7 +528,10 @@ exp.tables.avg <- map(subby, ~sos.exp %>%
                                     missing = "no") %>% 
                         add_p(test = list(all_continuous() ~ "kruskal.test")) %>% # kruskal is the non-parametric equivalent to anova which is more suitable given the distributions
                         # add_q(method = "fdr") %>%  # false discovery rate is the same as Benjamini & Hochberg; only corrects for the 6 tests within each table which doesn't make much difference
-                        as_flex_table()) %>%
+                        as_flex_table() %>%
+                        flextable::font(fontname = "Times New Roman", part = "all") %>%
+                        flextable::padding(padding = 1, part = "all") %>%
+                        flextable::autofit()) %>%
   set_names(subby)
 
 exp.overall <- sos.exp %>%
@@ -497,10 +539,13 @@ exp.overall <- sos.exp %>%
   tbl_summary(type = list(all_categorical() ~ "continuous"),
               statistic = list(all_continuous() ~ "{mean} ({sd})"),
               missing = "no") %>% 
-  as_flex_table()
+  as_flex_table() %>%
+  flextable::font(fontname = "Times New Roman", part = "all") %>%
+  flextable::padding(padding = 1, part = "all") %>%
+  flextable::autofit()
 
-## kruskal-wallis
-exp.names <- select(sos.exp, contains("Exposure_Score_W")) %>% names()
+## kruskal-wallis - if we need test statistic and df
+exp.names <- select(sos.exp, contains("_W")) %>% names()
 hnc.exp.test <- map(exp.names, ~kruskal.test(sos.exp[[.x]], sos.exp$HNC)) %>%
   map_dfr(.x = ., ~data.frame(statistic = .x$statistic,
                               df = .x$parameter,
@@ -509,7 +554,6 @@ hnc.exp.test <- map(exp.names, ~kruskal.test(sos.exp[[.x]], sos.exp$HNC)) %>%
 rownames(hnc.exp.test) <- NULL
 
 # kruskal.test(sos.exp$Active_Avg, sos.exp$HNC)
-
 
 
 ## Converting data to longer format for plotting
@@ -525,8 +569,8 @@ exp.ridges <- map(subby,
                   ~exp.long %>%
                     filter(!is.na(!!sym(.x))) %>%
                     mutate(Wave = factor(Wave, levels = c("W4", "W3", "W2"))) %>%
-                    ggplot(aes(x = Score, y = Wave, fill = Wave)) +
-                    geom_density_ridges() +
+                    ggplot(aes(x = Score, y = Wave, fill = Wave, height = ..density..)) +
+                    geom_density_ridges(stat = "density", trim = TRUE) +
                     scale_x_continuous(limits = c(0, 8), breaks = seq(0, 8, 2)) +
                     scale_fill_brewer(palette = "Set2") +
                     theme_ridges() + 
@@ -534,14 +578,15 @@ exp.ridges <- map(subby,
                     facet_grid(reformulate("Exposure", .x))) %>%
   set_names(subby)
 
+# produced just in case
 exp.ridges.avg <- map(subby, 
                   ~sos.exp %>%
                     select(StudentID:Dismissive, Active_Avg, Passive_Avg) %>%
                     gather("Exposure", "Score", Active_Avg, Passive_Avg) %>%
                     mutate(Exposure = str_remove(Exposure, "_Avg")) %>%
                     filter(!is.na(!!sym(.x))) %>%
-                    ggplot(aes(x = Score, y = !!sym(.x), fill = !!sym(.x))) +
-                    geom_density_ridges() +
+                    ggplot(aes(x = Score, y = !!sym(.x), fill = !!sym(.x), height = ..density..)) +
+                    geom_density_ridges(stat = "density", trim = TRUE) +
                     scale_x_continuous(limits = c(0, 8), breaks = seq(0, 8, 2)) +
                     scale_fill_brewer(name = str_replace_all(.x, "_", " "), palette = "Set2") +
                     theme_ridges() + 
@@ -587,7 +632,7 @@ sos.ta <- sos.expta %>%
   unite(Pattern, starts_with("Trusted_Adult"), sep = ", ", remove = FALSE)
 
 ## Mean and SD of Exposure by Wave and Group
-ta.tables.wave <- map(c("Tx",subby[-c(8:9)], "TransgenderxTx", "GenderxTx", "RacexTx", "SexOrxTx", "Nominated_Trusted_AdultxTx",
+ta.tables.wave <- map(c("Tx", subby[-c(8:9)], "TransgenderxTx", "GenderxTx", "RacexTx", "SexOrxTx", "Nominated_Trusted_AdultxTx",
                         "Sexual_ViolencexTx", "HNCxTx", "DismissivexTx"),
                       ~sos.ta %>%
                          select(all_of(.x), dplyr::contains("_W")) %>%
@@ -596,7 +641,10 @@ ta.tables.wave <- map(c("Tx",subby[-c(8:9)], "TransgenderxTx", "GenderxTx", "Rac
                                      missing = "no") %>% 
                          add_p(test = list(all_categorical() ~ "chisq.test.no.correct")) %>% 
                          # add_q(method = "fdr") %>%  # false discovery rate is the same as Benjamini & Hochberg; only corrects for the 4 tests within each table which doesn't make much difference
-                         as_flex_table()) %>%
+                         as_flex_table() %>%
+                        flextable::font(fontname = "Times New Roman", part = "all") %>%
+                        flextable::padding(padding = 1, part = "all") %>%
+                        flextable::autofit()) %>%
   set_names(c("Intervention_Condition", subby[-c(8:9)],
               "Transgender_by_Tx", "Gender_by_Tx", "Race_by_Tx", "SexOr_by_Tx", "TA_Nom_by_Tx",
               "Sexual_Violence_by_Tx", "HNC_by_Tx", "Dismissive_by_Tx"))
@@ -628,15 +676,19 @@ ta.plots$Nominated_Trusted_Adult
 ta.pattern <- sos.ta %>%
   select(Wave_Count, Pattern) %>%
   tbl_summary() %>%
-  as_flex_table()
+  as_flex_table() %>%
+  flextable::font(fontname = "Times New Roman", part = "all") %>%
+  flextable::padding(padding = 1, part = "all") %>%
+  flextable::autofit()
 
 
 ##################################################################################
+
 #  ------ Saving ---------------
 
 ## Demographics and Missing Data
-save(gtdemos,
-     VariableDescrips, OutcomeDensities,
+save(gtdemos, gtdemosw1,
+     VariableDescrips, VariableDescrips.wide, OutcomeDensities,
      TotalFrequencies, ExposureFrequencies,
      OutcomeFrequencies, ProtectiveFrequencies,
      attritiontable, gt.participation,
@@ -650,7 +702,7 @@ save(gtdemos,
      file = "Output/SoS_Miss_Demos.RData")
 
 ## datasets
-save(dscombo, ds1, ds1long, ds2, ds2long,
+save(dsclean, ds1, ds1long, ds2, ds2long,
      raw.scores, raw.scores.wide,
      file = "Output/SoS_Data.RData")
 

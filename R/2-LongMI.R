@@ -5,6 +5,9 @@
 #                                         #
 ###########################################
 
+## Notes:
+
+
 ## Loading packages and functions
 source("Scripts/PnF.R")
 load("Output/SoS_Data.RData")
@@ -43,7 +46,7 @@ mi.mods$Active_Exposure <- paste(lapply(2:4, function(x){
            collapse = " + "))
 }), collapse = "\n") 
 
-# Passive
+# Passive - Note. Does not include item 4
 mi.mods$Passive_Exposure <- paste(lapply(2:4, function(x){
   paste0("Passive", x," =~ ",
          paste(
@@ -80,8 +83,9 @@ act.config <- mi_wrapper(model = mi.mods$Active_Exposure,
                          data = ds2[ds2$Tx == 1, ],
                          items = longIndNames$Active_Exposure,
                          fnames = list(Active = paste0("Active", 2:4)),
-                         cluster = "School",
-                         ordered = TRUE)
+                         cluster = NULL,
+                         ordered = TRUE,
+                         missing = "listwise")
 
 # cat(as.character(act.config$syntax))
 # summary(act.config$fit, standardized = TRUE)
@@ -90,29 +94,44 @@ act.metric <- mi_wrapper(model = mi.mods$Active_Exposure,
                          data = ds2[ds2$Tx == 1, ],
                          items = longIndNames$Active_Exposure,
                          fnames = list(Active = paste0("Active", 2:4)),
-                         cluster = "School",
+                         cluster = NULL,
                          ordered = TRUE,
+                         missing = "listwise",
                          long.equal = c("loadings"))
 
 act.strict <- mi_wrapper(model = mi.mods$Active_Exposure,
                          data = ds2[ds2$Tx == 1, ],
                          items = longIndNames$Active_Exposure,
                          fnames = list(Active = paste0("Active", 2:4)),
-                         cluster = "School",
+                         cluster = NULL,
                          ordered = TRUE,
+                         missing = "listwise",
                          long.equal = c("loadings", "thresholds", "residuals"))
+
+act.pi.strict.syn <- as.character(act.strict$syntax) %>%
+  sub("1\\*EXPOSURE_ACTIVITITY_PARTICIPATION_W2 \\+ theta.8_8\\*EXPOSURE_ACTIVITITY_PARTICIPATION_W2", "NA\\*EXPOSURE_ACTIVITITY_PARTICIPATION_W2 \\+ theta.9_9\\*EXPOSURE_ACTIVITITY_PARTICIPATION_W2", .)
+act.pi.strict.fit <- lavaan(model = act.pi.strict.syn, data = ds2[ds2$Tx == 1, ], ordered = unlist(longIndNames$Active_Exposure, use.names = FALSE),
+                           missing = "listwise",  parameterization = "theta", auto.fix.first = TRUE, mimic = "Mplus")
+act.pi.strict <- list(syntax = act.pi.strict.syn,
+                     fit = act.pi.strict.fit)
 
 #### compiling results across models ####
 
-act.fits <- fits_wrapper(mod.list = list(act.config$fit, act.metric$fit, act.strict$fit),
+act.fits <- fits_wrapper(mod.list = list(act.config$fit, act.metric$fit, act.pi.strict$fit),
                          .id = "model", digits = 3) %>%
   mutate(model = c("Configural", "Metric/Scalar", "Strict"))
 
 
 act.mi <- bind_rows(compare_mods(act.config$fit, act.metric$fit),
-                    compare_mods(act.metric$fit, act.strict$fit)) %>%
+                    compare_mods(act.metric$fit, act.pi.strict$fit)) %>%
   mutate(constraint_added = c("loadings", "residual variance")) %>%
   select(constraint_added, everything())
+
+lavTestScore(act.strict$fit, cumulative = TRUE)
+parTable(act.metric$fit) %>% View()
+cat(as.character(act.strict$syntax))
+modindices(act.strict$fit, sort. = TRUE) # says free activity participation w2
+
 
 #######################################################################
 
@@ -128,8 +147,9 @@ pass.config <- mi_wrapper(model = mi.mods$Passive_Exposure,
                                data = ds2[ds2$Tx == 1, ],
                                items = longIndNames$Passive_Exposure,
                                fnames = list(Passive = paste0("Passive", 2:4)),
-                               cluster = "School",
-                               ordered = TRUE)
+                               cluster = NULL,
+                               ordered = TRUE,
+                          missing = "listwise")
 # produces warning: The variance-covariance matrix of the estimated parameters (vcov)
 #                   does not appear to be positive definite! The smallest eigenvalue
 #                   (= 1.148844e-15) is close to zero. This may be a symptom that the
@@ -143,29 +163,67 @@ pass.metric <- mi_wrapper(model = mi.mods$Passive_Exposure,
                           data = ds2[ds2$Tx ==1, ],
                           items = longIndNames$Passive_Exposure,
                           fnames = list(Passive = paste0("Passive", 2:4)),
-                          cluster = "School",
+                          cluster = NULL,
                           ordered = TRUE,
+                          missing = "listwise",
                           long.equal = c("loadings"))
 
 pass.strict <- mi_wrapper(model = mi.mods$Passive_Exposure,
                           data = ds2[ds2$Tx ==1, ],
                           items = longIndNames$Passive_Exposure,
                           fnames = list(Passive = paste0("Passive", 2:4)),
-                          cluster = "School",
+                          cluster = NULL,
                           ordered = TRUE,
+                          missing = "listwise",
                           long.equal = c("loadings", "thresholds", "residuals"))
+
+## partial invariance
+pass.pi.metric.syn <- as.character(pass.metric$syntax) %>%
+  sub("lambda.2_1\\*EXPOSURE_SOCIAL_MEDIA_W4", "lambda.2_4\\*EXPOSURE_SOCIAL_MEDIA_W4", .) %>%
+  sub("lambda.3_1\\*EXPOSURE_STRENGTHS_RESILIENCE_W3", "lambda.3_3\\*EXPOSURE_STRENGTHS_RESILIENCE_W3", .) %>%
+  sub("lambda.3_1\\*EXPOSURE_STRENGTHS_RESILIENCE_W4", "lambda.3_4\\*EXPOSURE_STRENGTHS_RESILIENCE_W4", .)
+pass.pi.metric.fit <- lavaan(model = pass.pi.metric.syn, data = ds2[ds2$Tx == 1, ], ordered = unlist(longIndNames$Passive_Exposure, use.names = FALSE),
+                            missing = "listwise",  parameterization = "theta", auto.fix.first = TRUE, mimic = "Mplus")
+pass.pi.metric <- list(syntax = pass.pi.metric.syn,
+                      fit = pass.pi.metric.fit)
+
+pass.pi.strict.syn <- as.character(pass.strict$syntax) %>%
+  sub("lambda.2_1\\*EXPOSURE_SOCIAL_MEDIA_W4", "lambda.2_4\\*EXPOSURE_SOCIAL_MEDIA_W4", .) %>%
+  sub("lambda.3_1\\*EXPOSURE_STRENGTHS_RESILIENCE_W3", "lambda.3_3\\*EXPOSURE_STRENGTHS_RESILIENCE_W3", .) %>%
+  sub("lambda.3_1\\*EXPOSURE_STRENGTHS_RESILIENCE_W4", "lambda.3_4\\*EXPOSURE_STRENGTHS_RESILIENCE_W4", .) %>%
+  sub("1\\*EXPOSURE_STRENGTHS_RESILIENCE_W4 \\+ theta.3_3\\*EXPOSURE_STRENGTHS_RESILIENCE_W4", "NA\\*EXPOSURE_STRENGTHS_RESILIENCE_W4 \\+ theta.7_7\\*EXPOSURE_STRENGTHS_RESILIENCE_W4", .) %>%
+  sub("1\\*EXPOSURE_OWN_STRENGTHS_W4 \\+ theta.5_5\\*EXPOSURE_OWN_STRENGTHS_W4", "NA\\*EXPOSURE_OWN_STRENGTHS_W4 \\+ theta.8_8\\*EXPOSURE_OWN_STRENGTHS_W4", .) %>%
+  sub("1\\*EXPOSURE_POSTERS_VIDEOS_W4 \\+ theta.1_1\\*EXPOSURE_POSTERS_VIDEOS_W4", "NA\\*EXPOSURE_POSTERS_VIDEOS_W4 \\+ theta.9_9\\*EXPOSURE_POSTERS_VIDEOS_W4", .)
+pass.pi.strict.fit <- lavaan(model = pass.pi.strict.syn, data = ds2[ds2$Tx == 1, ], ordered = unlist(longIndNames$Passive_Exposure, use.names = FALSE),
+                             missing = "listwise",  parameterization = "theta", auto.fix.first = TRUE, mimic = "Mplus")
+pass.pi.strict <- list(syntax = pass.pi.strict.syn,
+                       fit = pass.pi.strict.fit)
 
 #### compiling results across models ####
 
-pass.fits <- fits_wrapper(mod.list = list(pass.config$fit, pass.metric$fit, pass.strict$fit),
+pass.fits <- fits_wrapper(mod.list = list(pass.config$fit, pass.pi.metric$fit, pass.pi.strict$fit),
                           .id = "model", digits = 3) %>%
   mutate(model = c("Configural", "Metric/Scalar", "Strict"))
 
 
-pass.mi <- bind_rows(compare_mods(pass.config$fit, pass.metric$fit),
-                     compare_mods(pass.metric$fit, pass.strict$fit)) %>%
+pass.mi <- bind_rows(compare_mods(pass.config$fit, pass.pi.metric$fit),
+                     compare_mods(pass.pi.metric$fit, pass.pi.strict$fit)) %>%
   mutate(constraint_added = c("loadings", "residual variance")) %>%
   select(constraint_added, everything())
+
+
+lavTestScore(pass.pi.strict$fit, cumulative = TRUE)
+parTable(pass.strict$fit) %>% View()
+cat(as.character(pass.pi.strict$syntax))
+modindices(pass.pi.strict$fit, sort. = TRUE)
+## metric
+# 54.310 10 .000 None
+# 32.599 9  .000 social media w4
+# 20.737 8  .008 + resilience w4
+# 8.449  7  .295 + resilience w3
+## strict
+# 40.632 11 .000 None
+
 
 #######################################################################
 
@@ -177,50 +235,56 @@ ncperp.config <- mi_wrapper(model = mi.mods$No_Contact_Perpetration,
                             data = ds2,
                             items = longIndNames$No_Contact_Perpetration,
                             fnames = list(NCPerp = paste0("NCPerp", 1:4)),
-                            cluster = "School",
-                            ordered = TRUE)
+                            cluster = NULL,
+                            ordered = TRUE,
+                            missing = "listwise")
 
 cat(as.character(ncperp.config$syntax))
 summary(ncperp.config$fit, standardized = TRUE)
 # Negative residual variance: W3 item 3
 # Negative residual covariances: b/t W1&4 for 2 and 4
-# occur in metric and scalar model too (not in strict after being constrained)
+# occur in metric/scalar model too (not in strict after being constrained)
 
 ncperp.metric <- mi_wrapper(model = mi.mods$No_Contact_Perpetration,
                             data = ds2,
                             items = longIndNames$No_Contact_Perpetration,
                             fnames = list(NCPerp = paste0("NCPerp", 1:4)),
-                            cluster = "School",
+                            cluster = NULL,
                             ordered = TRUE,
+                            missing = "listwise",
                             long.equal = c("loadings"))
-
-# ncperp.scalar <- mi_wrapper(model = mi.mods$No_Contact_Perpetration,
-#                             data = ds2,
-#                             items = longIndNames$No_Contact_Perpetration,
-#                             fnames = list(NCPerp = paste0("NCPerp", 1:4)),
-#                             cluster = "School",
-#                             ordered = TRUE,
-#                             long.equal = c("loadings", "thresholds"))
 
 ncperp.strict <- mi_wrapper(model = mi.mods$No_Contact_Perpetration,
                             data = ds2,
                             items = longIndNames$No_Contact_Perpetration,
                             fnames = list(NCPerp = paste0("NCPerp", 1:4)),
-                            cluster = "School",
+                            cluster = NULL,
                             ordered = TRUE,
+                            missing = "listwise",
                             long.equal = c("loadings", "thresholds", "residuals"))
 
-#### compiling results across models ####
+## partial invariance
+ncperp.pi.strict.syn <- as.character(ncperp.strict$syntax) %>%
+  sub("1\\*SEX_VIOL_PERP_1_W1 \\+ theta.1_1\\*SEX_VIOL_PERP_1_W1", "NA\\*SEX_VIOL_PERP_1_W1 \\+ theta.5_5\\*SEX_VIOL_PERP_1_W1", .)
+ncperp.pi.strict.fit <- lavaan(model = ncperp.pi.strict.syn, data = ds2, ordered = unlist(longIndNames$No_Contact_Perpetration, use.names = FALSE),
+                            missing = "listwise",  parameterization = "theta", auto.fix.first = TRUE, mimic = "Mplus")
+ncperp.pi.strict <- list(syntax = ncperp.pi.strict.syn,
+                      fit = ncperp.pi.strict.fit)
 
-ncperp.fits <- fits_wrapper(mod.list = list(ncperp.config$fit, ncperp.metric$fit, ncperp.strict$fit),
+#### compiling results across models ####
+ncperp.fits <- fits_wrapper(mod.list = list(ncperp.config$fit, ncperp.metric$fit, ncperp.pi.strict$fit),
                             .id = "model", digits = 3) %>%
   mutate(model = c("Configural", "Metric/Scalar", "Strict"))
 
 
 ncperp.mi <- bind_rows(compare_mods(ncperp.config$fit, ncperp.metric$fit),
-                       compare_mods(ncperp.metric$fit, ncperp.strict$fit)) %>%
+                       compare_mods(ncperp.metric$fit, ncperp.pi.strict$fit)) %>%
   mutate(constraint_added = c("loadings", "residual variance")) %>%
   select(constraint_added, everything())
+
+cat(as.character(ncperp.strict$syntax))
+modindices(ncperp.pi.strict$fit, sort. = TRUE)
+
 
 #######################################################################
 
@@ -232,31 +296,26 @@ conperp.config <- mi_wrapper(model = mi.mods$Contact_Perpetration,
                              data = ds2,
                              items = longIndNames$Contact_Perpetration,
                              fnames = list(ConPerp = paste0("ConPerp", 1:4)),
-                             cluster = "School",
-                             ordered = TRUE)
+                             cluster = NULL,
+                             ordered = TRUE,
+                             missing = "listwise")
 
 conperp.metric <- mi_wrapper(model = mi.mods$Contact_Perpetration,
                              data = ds2,
                              items = longIndNames$Contact_Perpetration,
                              fnames = list(ConPerp = paste0("ConPerp", 1:4)),
-                             cluster = "School",
+                             cluster = NULL,
                              ordered = TRUE,
+                             missing = "listwise",
                             long.equal = c("loadings"))
-
-# conperp.scalar <- mi_wrapper(model = mi.mods$Contact_Perpetration,
-#                              data = ds2,
-#                              items = longIndNames$Contact_Perpetration,
-#                              fnames = list(ConPerp = paste0("ConPerp", 1:4)),
-#                              cluster = "School",
-#                              ordered = TRUE,
-#                             long.equal = c("loadings", "thresholds"))
 
 conperp.strict <- mi_wrapper(model = mi.mods$Contact_Perpetration,
                              data = ds2,
                              items = longIndNames$Contact_Perpetration,
                              fnames = list(ConPerp = paste0("ConPerp", 1:4)),
-                             cluster = "School",
+                             cluster = NULL,
                              ordered = TRUE,
+                             missing = "listwise",
                             long.equal = c("loadings", "thresholds", "residuals"))
 
 #### compiling results across models ####
@@ -281,31 +340,27 @@ ncvict.config <- mi_wrapper(model = mi.mods$No_Contact_Victimization,
                             data = ds2,
                             items = longIndNames$No_Contact_Victimization,
                             fnames = list(NCVict = paste0("NCVict", 1:4)),
-                            cluster = "School",
-                            ordered = TRUE)
+                            cluster = NULL,
+                            ordered = TRUE,
+                            missing = "listwise")
 
 ncvict.metric <- mi_wrapper(model = mi.mods$No_Contact_Victimization,
                             data = ds2,
                             items = longIndNames$No_Contact_Victimization,
                             fnames = list(NCVict = paste0("NCVict", 1:4)),
-                            cluster = "School",
+                            cluster = NULL,
                             ordered = TRUE,
+                            missing = "listwise",
                             long.equal = c("loadings"))
 
-# ncvict.scalar <- mi_wrapper(model = mi.mods$No_Contact_Victimization,
-#                             data = ds2,
-#                             items = longIndNames$No_Contact_Victimization,
-#                             fnames = list(NCVict = paste0("NCVict", 1:4)),
-#                             cluster = "School",
-#                             ordered = TRUE,
-#                             long.equal = c("loadings", "thresholds"))
 
 ncvict.strict <- mi_wrapper(model = mi.mods$No_Contact_Victimization,
                             data = ds2,
                             items = longIndNames$No_Contact_Victimization,
                             fnames = list(NCVict = paste0("NCVict", 1:4)),
-                            cluster = "School",
+                            cluster = NULL,
                             ordered = TRUE,
+                            missing = "listwise",
                             long.equal = c("loadings", "thresholds", "residuals"))
 
 #### compiling results across models ####
@@ -330,31 +385,26 @@ convict.config <- mi_wrapper(model = mi.mods$Contact_Victimization,
                              data = ds2,
                              items = longIndNames$Contact_Victimization,
                              fnames = list(ConVict = paste0("ConVict", 1:4)),
-                             cluster = "School",
-                             ordered = TRUE)
+                             cluster = NULL,
+                             ordered = TRUE,
+                             missing = "listwise")
 
 convict.metric <- mi_wrapper(model = mi.mods$Contact_Victimization,
                              data = ds2,
                              items = longIndNames$Contact_Victimization,
                              fnames = list(ConVict = paste0("ConVict", 1:4)),
-                             cluster = "School",
+                             cluster = NULL,
                              ordered = TRUE,
+                             missing = "listwise",
                              long.equal = c("loadings"))
-
-# convict.scalar <- mi_wrapper(model = mi.mods$Contact_Victimization,
-#                              data = ds2,
-#                              items = longIndNames$Contact_Victimization,
-#                              fnames = list(ConVict = paste0("ConVict", 1:4)),
-#                              cluster = "School",
-#                              ordered = TRUE,
-#                              long.equal = c("loadings", "thresholds"))
 
 convict.strict <- mi_wrapper(model = mi.mods$Contact_Victimization,
                              data = ds2,
                              items = longIndNames$Contact_Victimization,
                              fnames = list(ConVict = paste0("ConVict", 1:4)),
-                             cluster = "School",
+                             cluster = NULL,
                              ordered = TRUE,
+                             missing = "listwise",
                              long.equal = c("loadings", "thresholds", "residuals"))
 
 #### compiling results across models ####
@@ -377,45 +427,85 @@ hncperp.config <- mi_wrapper(model = mi.mods$HNC_Perpetration,
                             data = ds2,
                             items = longIndNames$HNC_Perpetration,
                             fnames = list(HNCPerp = paste0("HNCPerp", 1:4)),
-                            cluster = "School",
-                            ordered = TRUE)
+                            cluster = NULL,
+                            ordered = TRUE,
+                            missing = "listwise")
 
 hncperp.metric <- mi_wrapper(model = mi.mods$HNC_Perpetration,
                              data = ds2,
                              items = longIndNames$HNC_Perpetration,
                              fnames = list(HNCPerp = paste0("HNCPerp", 1:4)),
-                             cluster = "School",
+                             cluster = NULL,
                              ordered = TRUE,
+                             missing = "listwise",
                              long.equal = c("loadings"))
 
 hncperp.scalar <- mi_wrapper(model = mi.mods$HNC_Perpetration,
                              data = ds2,
                              items = longIndNames$HNC_Perpetration,
                              fnames = list(HNCPerp = paste0("HNCPerp", 1:4)),
-                             cluster = "School",
+                             cluster = NULL,
                              ordered = TRUE,
+                             missing = "listwise",
                              long.equal = c("loadings", "thresholds"))
 
 hncperp.strict <- mi_wrapper(model = mi.mods$HNC_Perpetration,
                              data = ds2,
                              items = longIndNames$HNC_Perpetration,
                              fnames = list(HNCPerp = paste0("HNCPerp", 1:4)),
-                             cluster = "School",
+                             cluster = NULL,
                              ordered = TRUE,
+                             missing = "listwise",
                              long.equal = c("loadings", "thresholds", "residuals"))
+
+## paritial invariance
+hncperp.pi.metric.syn <- as.character(hncperp.metric$syntax) %>%
+  sub("lambda.4_1\\*HOM_PERP_4_W2", "lambda.4_2\\*HOM_PERP_4_W2", .) %>%
+  sub("lambda.3_1\\*HOM_PERP_3_W1", "lambda.3_2\\*HOM_PERP_3_W1", .)
+hncperp.pi.metric.fit <- lavaan(model = hncperp.pi.metric.syn, data = ds2, ordered = unlist(longIndNames$HNC_Perpetration, use.names = FALSE),
+                               missing = "listwise",  parameterization = "theta", auto.fix.first = TRUE, mimic = "Mplus")
+hncperp.pi.metric <- list(syntax = hncperp.pi.metric.syn,
+                         fit = hncperp.pi.metric.fit)
+
+hncperp.pi.scalar.syn <- as.character(hncperp.scalar$syntax) %>%
+  sub("lambda.4_1\\*HOM_PERP_4_W2", "lambda.4_2\\*HOM_PERP_4_W2", .) %>%
+  sub("lambda.3_1\\*HOM_PERP_3_W1", "lambda.3_2\\*HOM_PERP_3_W1", .)
+hncperp.pi.scalar.fit <- lavaan(model = hncperp.pi.scalar.syn, data = ds2, ordered = unlist(longIndNames$HNC_Perpetration, use.names = FALSE),
+                                missing = "listwise",  parameterization = "theta", auto.fix.first = TRUE, mimic = "Mplus")
+hncperp.pi.scalar <- list(syntax = hncperp.pi.scalar.syn,
+                          fit = hncperp.pi.scalar.fit)
+
+# strict invariance will not be reached even after freeing item 1 residual variances
+hncperp.pi.strict.syn <- as.character(hncperp.strict$syntax) %>%
+  sub("lambda.4_1\\*HOM_PERP_4_W2", "lambda.4_2\\*HOM_PERP_4_W2", .) %>%
+  sub("lambda.3_1\\*HOM_PERP_3_W1", "lambda.3_2\\*HOM_PERP_3_W1", .)
+  # sub("1\\*HOM_PERP_1_W2 \\+ theta.1_1\\*HOM_PERP_1_W2", "NA\\*HOM_PERP_1_W2 \\+ theta.6_6\\*HOM_PERP_1_W2", .) %>%
+  # sub("1\\*HOM_PERP_1_W1 \\+ theta.1_1\\*HOM_PERP_1_W1", "NA\\*HOM_PERP_1_W1 \\+ theta.7_7\\*HOM_PERP_1_W1", .) %>%
+  # sub("1\\*HOM_PERP_1_W3 \\+ theta.1_1\\*HOM_PERP_1_W3", "NA\\*HOM_PERP_1_W3 \\+ theta.8_8\\*HOM_PERP_1_W3", .)
+hncperp.pi.strict.fit <- lavaan(model = hncperp.pi.strict.syn, data = ds2, ordered = unlist(longIndNames$HNC_Perpetration, use.names = FALSE),
+                                missing = "listwise",  parameterization = "theta", auto.fix.first = TRUE, mimic = "Mplus")
+hncperp.pi.strict <- list(syntax = hncperp.pi.strict.syn,
+                          fit = hncperp.pi.strict.fit)
+
 
 #### compiling results across models ####
 
-hncperp.fits <- fits_wrapper(mod.list = list(hncperp.config$fit, hncperp.metric$fit,
-                                             hncperp.scalar$fit, hncperp.strict$fit),
+hncperp.fits <- fits_wrapper(mod.list = list(hncperp.config$fit, hncperp.pi.metric$fit,
+                                             hncperp.pi.scalar$fit, hncperp.pi.strict$fit),
                              .id = "model", digits = 3) %>%
   mutate(model = c("Configural", "Metric", "Scalar", "Strict"))
 
-hncperp.mi <- bind_rows(compare_mods(hncperp.config$fit, hncperp.metric$fit),
-                        compare_mods(hncperp.metric$fit, hncperp.scalar$fit),
-                        compare_mods(hncperp.scalar$fit, hncperp.strict$fit)) %>%
+hncperp.mi <- bind_rows(compare_mods(hncperp.config$fit, hncperp.pi.metric$fit),
+                        compare_mods(hncperp.pi.metric$fit, hncperp.pi.scalar$fit),
+                        compare_mods(hncperp.pi.scalar$fit, hncperp.pi.strict$fit)) %>%
   mutate(constraint_added = c("loadings", "thresholds", "residual variance")) %>%
   select(constraint_added, everything())
+
+lavTestScore(hncperp.pi.metric$fit, cumulative = TRUE)
+parTable(hncperp.metric$fit) %>% View()
+cat(as.character(hncperp.pi.strict$syntax))
+modindices(hncperp.pi.strict$fit, sort. = TRUE)
+
 
 #######################################################################
 
@@ -427,32 +517,68 @@ hncvict.config <- mi_wrapper(model = mi.mods$HNC_Victimization,
                             data = ds2,
                             items = longIndNames$HNC_Victimization,
                             fnames = list(HNCVict = paste0("HNCVict", 1:4)),
-                            cluster = "School",
-                            ordered = TRUE)
+                            cluster = NULL,
+                            ordered = TRUE,
+                            missing = "listwise")
 
 hncvict.metric <- mi_wrapper(model = mi.mods$HNC_Victimization,
                              data = ds2,
                              items = longIndNames$HNC_Victimization,
                              fnames = list(HNCVict = paste0("HNCVict", 1:4)),
-                             cluster = "School",
+                             cluster = NULL,
                              ordered = TRUE,
+                             missing = "listwise",
                              long.equal = c("loadings"))
 
 hncvict.scalar <- mi_wrapper(model = mi.mods$HNC_Victimization,
                              data = ds2,
                              items = longIndNames$HNC_Victimization,
                              fnames = list(HNCVict = paste0("HNCVict", 1:4)),
-                             cluster = "School",
+                             cluster = NULL,
                              ordered = TRUE,
+                             missing = "listwise",
                              long.equal = c("loadings", "thresholds"))
 
 hncvict.strict <- mi_wrapper(model = mi.mods$HNC_Victimization,
                              data = ds2,
                              items = longIndNames$HNC_Victimization,
                              fnames = list(HNCVict = paste0("HNCVict", 1:4)),
-                             cluster = "School",
+                             cluster = NULL,
                              ordered = TRUE,
+                             missing = "listwise",
                              long.equal = c("loadings", "thresholds", "residuals"))
+
+## paritial invariance - metric invariance cannot be established
+# hncvict.pi.metric.syn <- as.character(hncvict.metric$syntax) %>%
+#   sub("lambda.3_1\\*HOM_VICT_3_W4", "lambda.3_4\\*HOM_VICT_3_W4", .) %>%
+#   sub("lambda.3_1\\*HOM_VICT_3_W3", "lambda.3_3\\*HOM_VICT_3_W3", .) %>%
+#   sub("lambda.3_1\\*HOM_VICT_3_W2", "lambda.3_2\\*HOM_VICT_3_W2", .) %>%
+#   sub("lambda.2_1\\*HOM_VICT_2_W4", "lambda.2_4\\*HOM_VICT_2_W4", .)
+# hncvict.pi.metric.fit <- lavaan(model = hncvict.pi.metric.syn, data = ds2, ordered = unlist(longIndNames$HNC_Victimization, use.names = FALSE),
+#                                 missing = "listwise",  parameterization = "theta", auto.fix.first = TRUE, mimic = "Mplus")
+# hncvict.pi.metric <- list(syntax = hncvict.pi.metric.syn,
+#                           fit = hncvict.pi.metric.fit)
+# 
+# hncvict.pi.scalar.syn <- as.character(hncvict.scalar$syntax) %>%
+#   sub("lambda.3_1\\*HOM_VICT_3_W4", "lambda.3_4\\*HOM_VICT_3_W4", .) %>%
+#   sub("lambda.3_1\\*HOM_VICT_3_W3", "lambda.3_3\\*HOM_VICT_3_W3", .) %>%
+#   sub("lambda.3_1\\*HOM_VICT_3_W2", "lambda.3_2\\*HOM_VICT_3_W2", .) %>%
+#   sub("lambda.2_1\\*HOM_VICT_2_W4", "lambda.2_4\\*HOM_VICT_2_W4", .)
+# hncvict.pi.scalar.fit <- lavaan(model = hncvict.pi.scalar.syn, data = ds2, ordered = unlist(longIndNames$HNC_Victimization, use.names = FALSE),
+#                                 missing = "listwise",  parameterization = "theta", auto.fix.first = TRUE, mimic = "Mplus")
+# hncvict.pi.scalar <- list(syntax = hncvict.pi.scalar.syn,
+#                           fit = hncvict.pi.scalar.fit)
+# 
+# 
+# hncvict.pi.strict.syn <- as.character(hncvict.strict$syntax) %>%
+#   sub("lambda.3_1\\*HOM_VICT_3_W4", "lambda.3_4\\*HOM_VICT_3_W4", .) %>%
+#   sub("lambda.3_1\\*HOM_VICT_3_W3", "lambda.3_3\\*HOM_VICT_3_W3", .) %>%
+#   sub("lambda.3_1\\*HOM_VICT_3_W2", "lambda.3_2\\*HOM_VICT_3_W2", .) %>%
+#   sub("lambda.2_1\\*HOM_VICT_2_W4", "lambda.2_4\\*HOM_VICT_2_W4", .)
+# hncvict.pi.strict.fit <- lavaan(model = hncvict.pi.strict.syn, data = ds2, ordered = unlist(longIndNames$HNC_Victimization, use.names = FALSE),
+#                                 missing = "listwise",  parameterization = "theta", auto.fix.first = TRUE, mimic = "Mplus")
+# hncvict.pi.strict <- list(syntax = hncvict.pi.strict.syn,
+#                           fit = hncvict.pi.strict.fit)
 
 #### compiling results across models ####
 
@@ -468,6 +594,11 @@ hncvict.mi <- bind_rows(compare_mods(hncvict.config$fit, hncvict.metric$fit),
   mutate(constraint_added = c("loadings", "thresholds", "residual variance")) %>%
   select(constraint_added, everything())
 
+lavTestScore(hncvict.pi.metric$fit, cumulative = TRUE)
+parTable(hncvict.metric$fit) %>% View()
+cat(as.character(hncperp.pi.strict$syntax))
+modindices(hncperp.pi.strict$fit, sort. = TRUE)
+
 ############################################################
 
 # ----- Cybersex Perpetration ---------------
@@ -476,31 +607,35 @@ cyber.config <- mi_wrapper(model = mi.mods$Cybersex_Perpetration,
                             data = ds2,
                             items = longIndNames$Cybersex_Perpetration,
                             fnames = list(Cybersex = paste0("Cybersex", 1:4)),
-                            cluster = "School",
-                           ordered = TRUE)
+                            cluster = NULL,
+                           ordered = TRUE,
+                           missing = "listwise")
 
 cyber.metric <- mi_wrapper(model = mi.mods$Cybersex_Perpetration,
                            data = ds2,
                            items = longIndNames$Cybersex_Perpetration,
                            fnames = list(Cybersex = paste0("Cybersex", 1:4)),
-                           cluster = "School",
+                           cluster = NULL,
                            ordered = TRUE,
+                           missing = "listwise",
                            long.equal = c("loadings"))
 
 cyber.scalar <- mi_wrapper(model = mi.mods$Cybersex_Perpetration,
                            data = ds2,
                            items = longIndNames$Cybersex_Perpetration,
                            fnames = list(Cybersex = paste0("Cybersex", 1:4)),
-                           cluster = "School",
+                           cluster = NULL,
                            ordered = TRUE,
+                           missing = "listwise",
                            long.equal = c("loadings", "thresholds"))
 
 cyber.strict <- mi_wrapper(model = mi.mods$Cybersex_Perpetration,
                            data = ds2,
                            items = longIndNames$Cybersex_Perpetration,
                            fnames = list(Cybersex = paste0("Cybersex", 1:4)),
-                           cluster = "School",
+                           cluster = NULL,
                            ordered = TRUE,
+                           missing = "listwise",
                            long.equal = c("loadings", "thresholds", "residuals"))
 
 #### compiling results across models ####
@@ -523,45 +658,86 @@ dismiss.config <- mi_wrapper(model = mi.mods$SV_Dismissiveness,
                             data = ds2,
                             items = longIndNames$SV_Dismissiveness,
                             fnames = list(Dismiss = paste0("Dismiss", 1:4)),
-                            cluster = "School",
-                            ordered = TRUE)
+                            cluster = NULL,
+                            ordered = TRUE,
+                            missing = "listwise")
 
 dismiss.metric <- mi_wrapper(model = mi.mods$SV_Dismissiveness,
                              data = ds2,
                              items = longIndNames$SV_Dismissiveness,
                              fnames = list(Dismiss = paste0("Dismiss", 1:4)),
-                             cluster = "School",
+                             cluster = NULL,
                              ordered = TRUE,
+                             missing = "listwise",
                              long.equal = c("loadings"))
 
 dismiss.scalar <- mi_wrapper(model = mi.mods$SV_Dismissiveness,
                              data = ds2,
                              items = longIndNames$SV_Dismissiveness,
                              fnames = list(Dismiss = paste0("Dismiss", 1:4)),
-                             cluster = "School",
+                             cluster = NULL,
                              ordered = TRUE,
+                             missing = "listwise",
                              long.equal = c("loadings", "thresholds"))
 
 dismiss.strict <- mi_wrapper(model = mi.mods$SV_Dismissiveness,
                              data = ds2,
                              items = longIndNames$SV_Dismissiveness,
                              fnames = list(Dismiss = paste0("Dismiss", 1:4)),
-                             cluster = "School",
+                             cluster = NULL,
                              ordered = TRUE,
+                             missing = "listwise",
                              long.equal = c("loadings", "thresholds", "residuals"))
+
+## partial invariance - partial metric is the best we can do here methinks
+dismiss.pi.metric.syn <- as.character(dismiss.metric$syntax) %>%
+  sub("lambda.6_1\\*DISMISS_SEX_VIOL_6_W4", "lambda.6_4\\*DISMISS_SEX_VIOL_6_W4", .) %>%
+  sub("lambda.2_1\\*DISMISS_SEX_VIOL_2_W4", "lambda.2_4\\*DISMISS_SEX_VIOL_2_W4", .) %>%
+  sub("lambda.3_1\\*DISMISS_SEX_VIOL_3_W4", "lambda.3_4\\*DISMISS_SEX_VIOL_3_W4", .) %>%
+  sub("lambda.6_1\\*DISMISS_SEX_VIOL_6_W3", "lambda.6_3\\*DISMISS_SEX_VIOL_6_W3", .)
+dismiss.pi.metric.fit <- lavaan(model = dismiss.pi.metric.syn, data = ds2, ordered = unlist(longIndNames$SV_Dismissiveness, use.names = FALSE),
+                                missing = "listwise",  parameterization = "theta", auto.fix.first = TRUE, mimic = "Mplus")
+dismiss.pi.metric <- list(syntax = dismiss.pi.metric.syn,
+                          fit = dismiss.pi.metric.fit)
+
+dismiss.pi.scalar.syn <- as.character(dismiss.scalar$syntax) %>%
+  sub("lambda.6_1\\*DISMISS_SEX_VIOL_6_W4", "lambda.6_4\\*DISMISS_SEX_VIOL_6_W4", .) %>%
+  sub("lambda.2_1\\*DISMISS_SEX_VIOL_2_W4", "lambda.2_4\\*DISMISS_SEX_VIOL_2_W4", .) %>%
+  sub("lambda.3_1\\*DISMISS_SEX_VIOL_3_W4", "lambda.3_4\\*DISMISS_SEX_VIOL_3_W4", .) %>%
+  sub("lambda.6_1\\*DISMISS_SEX_VIOL_6_W3", "lambda.6_3\\*DISMISS_SEX_VIOL_6_W3", .)
+  # sub("DISMISS_SEX_VIOL_1_W3 \\| NA\\*t1 \\+ DISMISS_SEX_VIOL_1_W1\\.thr1", "DISMISS_SEX_VIOL_1_W3 \\| NA\\*t1 \\+ DISMISS_SEX_VIOL_1_W3\\.thr1", .)
+dismiss.pi.scalar.fit <- lavaan(model = dismiss.pi.scalar.syn, data = ds2, ordered = unlist(longIndNames$SV_Dismissiveness, use.names = FALSE),
+                                missing = "listwise",  parameterization = "theta", auto.fix.first = TRUE, mimic = "Mplus")
+dismiss.pi.scalar <- list(syntax = dismiss.pi.scalar.syn,
+                          fit = dismiss.pi.scalar.fit)
+
+dismiss.pi.strict.syn <- as.character(dismiss.strict$syntax) %>%
+  sub("lambda.6_1\\*DISMISS_SEX_VIOL_6_W4", "lambda.6_4\\*DISMISS_SEX_VIOL_6_W4", .) %>%
+  sub("lambda.2_1\\*DISMISS_SEX_VIOL_2_W4", "lambda.2_4\\*DISMISS_SEX_VIOL_2_W4", .) %>%
+  sub("lambda.3_1\\*DISMISS_SEX_VIOL_3_W4", "lambda.3_4\\*DISMISS_SEX_VIOL_3_W4", .) %>%
+  sub("lambda.6_1\\*DISMISS_SEX_VIOL_6_W3", "lambda.6_3\\*DISMISS_SEX_VIOL_6_W3", .)
+dismiss.pi.strict.fit <- lavaan(model = dismiss.pi.strict.syn, data = ds2, ordered = unlist(longIndNames$SV_Dismissiveness, use.names = FALSE),
+                                missing = "listwise",  parameterization = "theta", auto.fix.first = TRUE, mimic = "Mplus")
+dismiss.pi.strict <- list(syntax = dismiss.pi.strict.syn,
+                          fit = dismiss.pi.strict.fit)
 
 #### compiling results across models ####
 
-dismiss.fits <- fits_wrapper(mod.list = list(dismiss.config$fit, dismiss.metric$fit,
-                                           dismiss.scalar$fit, dismiss.strict$fit),
+dismiss.fits <- fits_wrapper(mod.list = list(dismiss.config$fit, dismiss.pi.metric$fit,
+                                           dismiss.pi.scalar$fit, dismiss.pi.strict$fit),
                            .id = "model", digits = 3) %>%
   mutate(model = c("Configural", "Metric", "Scalar", "Strict"))
 
-dismiss.mi <- bind_rows(compare_mods(dismiss.config$fit, dismiss.metric$fit),
-                      compare_mods(dismiss.metric$fit, dismiss.scalar$fit),
-                      compare_mods(dismiss.scalar$fit, dismiss.strict$fit)) %>%
+dismiss.mi <- bind_rows(compare_mods(dismiss.config$fit, dismiss.pi.metric$fit),
+                      compare_mods(dismiss.pi.metric$fit, dismiss.pi.scalar$fit),
+                      compare_mods(dismiss.pi.scalar$fit, dismiss.pi.strict$fit)) %>%
   mutate(constraint_added = c("loadings", "thresholds", "residual variance")) %>%
   select(constraint_added, everything())
+
+lavTestScore(dismiss.pi.metric$fit, cumulative = TRUE)
+parTable(dismiss.scalar$fit) %>% View()
+cat(as.character(dismiss.scalar$syntax))
+modindices(hncperp.pi.strict$fit, sort. = TRUE)
 
 
 ############################################################
@@ -573,8 +749,9 @@ gwb.config <- mi_wrapper(model = mi.mods$General_Well.being,
                          data = ds2,
                          items = longIndNames$General_Well.being,
                          fnames = list(GenWellBeing = paste0("GenWellBeing", 1:4)),
-                         cluster = "School",
-                         ordered = TRUE)
+                         cluster = NULL,
+                         ordered = TRUE,
+                         missing = "listwise")
 
 # cat(as.character(gwb.config$syntax))
 
@@ -582,24 +759,27 @@ gwb.metric <- mi_wrapper(model = mi.mods$General_Well.being,
                          data = ds2,
                          items = longIndNames$General_Well.being,
                          fnames = list(GenWellBeing = paste0("GenWellBeing", 1:4)),
-                         cluster = "School",
+                         cluster = NULL,
                          ordered = TRUE,
+                         missing = "listwise",
                          long.equal = c("loadings"))
 
 gwb.scalar <- mi_wrapper(model = mi.mods$General_Well.being,
                          data = ds2,
                          items = longIndNames$General_Well.being,
                          fnames = list(GenWellBeing = paste0("GenWellBeing", 1:4)),
-                         cluster = "School",
+                         cluster = NULL,
                          ordered = TRUE,
+                         missing = "listwise",
                          long.equal = c("loadings", "thresholds"))
 
 gwb.strict <- mi_wrapper(model = mi.mods$General_Well.being,
                          data = ds2,
                          items = longIndNames$General_Well.being,
                          fnames = list(GenWellBeing = paste0("GenWellBeing", 1:4)),
-                         cluster = "School",
+                         cluster = NULL,
                          ordered = TRUE,
+                         missing = "listwise",
                          long.equal = c("loadings", "thresholds", "residuals"))
 
 #### compiling results across models ####
@@ -624,8 +804,9 @@ shhelpatt.config <- mi_wrapper(model = mi.mods$SH_Help_Attitudes,
                                data = ds2,
                                items = longIndNames$SH_Help_Attitudes,
                                fnames = list(SHHelpAtt = paste0("SHHelpAtt", 1:4)),
-                               cluster = "School",
-                               ordered = TRUE)
+                               cluster = NULL,
+                               ordered = TRUE,
+                               missing = "listwise")
 
 # cat(as.character(shhelpatt.config$syntax))
 # temp <- fits_wrapper(list(shhelpatt.config$fit))
@@ -634,24 +815,27 @@ shhelpatt.metric <- mi_wrapper(model = mi.mods$SH_Help_Attitudes,
                                data = ds2,
                                items = longIndNames$SH_Help_Attitudes,
                                fnames = list(SHHelpAtt = paste0("SHHelpAtt", 1:4)),
-                               cluster = "School",
+                               cluster = NULL,
                                ordered = TRUE,
+                               missing = "listwise",
                                long.equal = c("loadings"))
 
 shhelpatt.scalar <- mi_wrapper(model = mi.mods$SH_Help_Attitudes,
                                data = ds2,
                                items = longIndNames$SH_Help_Attitudes,
                                fnames = list(SHHelpAtt = paste0("SHHelpAtt", 1:4)),
-                               cluster = "School",
+                               cluster = NULL,
                                ordered = TRUE,
+                               missing = "listwise",
                                long.equal = c("loadings", "thresholds"))
 
 shhelpatt.strict <- mi_wrapper(model = mi.mods$SH_Help_Attitudes,
                                data = ds2,
                                items = longIndNames$SH_Help_Attitudes,
                                fnames = list(SHHelpAtt = paste0("SHHelpAtt", 1:4)),
-                               cluster = "School",
+                               cluster = NULL,
                                ordered = TRUE,
+                               missing = "listwise",
                                long.equal = c("loadings", "thresholds", "residuals"))
 
 #### compiling results across models ####
@@ -677,8 +861,9 @@ shhelpseek.config <- mi_wrapper(model = mi.mods$SH_Help_Seeking,
                                 data = ds2,
                                 items = longIndNames$SH_Help_Seeking,
                                 fnames = list(SHHelpSeek = paste0("SHHelpSeek", 1:4)),
-                                cluster = "School",
-                                ordered = TRUE)
+                                cluster = NULL,
+                                ordered = TRUE,
+                                missing = "listwise")
 
 cat(as.character(shhelpseek.config$syntax))
 temp <- fits_wrapper(list(shhelpseek.config$fit))
@@ -687,24 +872,27 @@ shhelpseek.metric <- mi_wrapper(model = mi.mods$SH_Help_Seeking,
                                 data = ds2,
                                 items = longIndNames$SH_Help_Seeking,
                                 fnames = list(SHHelpSeek = paste0("SHHelpSeek", 1:4)),
-                                cluster = "School",
+                                cluster = NULL,
                                 ordered = TRUE,
+                                missing = "listwise",
                                 long.equal = c("loadings"))
 
 shhelpseek.scalar <- mi_wrapper(model = mi.mods$SH_Help_Seeking,
                                 data = ds2,
                                 items = longIndNames$SH_Help_Seeking,
                                 fnames = list(SHHelpSeek = paste0("SHHelpSeek", 1:4)),
-                                cluster = "School",
+                                cluster = NULL,
                                 ordered = TRUE,
+                                missing = "listwise",
                                 long.equal = c("loadings", "thresholds"))
 
 shhelpseek.strict <- mi_wrapper(model = mi.mods$SH_Help_Seeking,
                                 data = ds2,
                                 items = longIndNames$SH_Help_Seeking,
                                 fnames = list(SHHelpSeek = paste0("SHHelpSeek", 1:4)),
-                                cluster = "School",
+                                cluster = NULL,
                                 ordered = TRUE,
+                                missing = "listwise",
                                 long.equal = c("loadings", "thresholds", "residuals"))
 
 #### compiling results across models ####
@@ -733,7 +921,7 @@ shhelpseek.mi <- bind_rows(compare_mods(shhelpseek.config$fit, shhelpseek.metric
 #                                data = ds2,
 #                                items = longIndNames$Staff_Help_Intent,
 #                                fnames = list(StaffHelp = paste0("StaffHelp", 1:4)),
-#                                cluster = "School",
+#                                cluster = NULL,
 #                                ordered = TRUE)
 # 
 # cat(as.character(staffhelp.config$syntax))
@@ -743,7 +931,7 @@ shhelpseek.mi <- bind_rows(compare_mods(shhelpseek.config$fit, shhelpseek.metric
 #                                data = ds2,
 #                                items = longIndNames$Staff_Help_Intent,
 #                                fnames = list(StaffHelp = paste0("StaffHelp", 1:4)),
-#                                cluster = "School",
+#                                cluster = NULL,
 #                                ordered = TRUE,
 #                                long.equal = c("loadings"))
 # 
@@ -751,7 +939,7 @@ shhelpseek.mi <- bind_rows(compare_mods(shhelpseek.config$fit, shhelpseek.metric
 #                                data = ds2,
 #                                items = longIndNames$Staff_Help_Intent,
 #                                fnames = list(StaffHelp = paste0("StaffHelp", 1:4)),
-#                                cluster = "School",
+#                                cluster = NULL,
 #                                ordered = TRUE,
 #                                long.equal = c("loadings", "thresholds"))
 # 
@@ -759,7 +947,7 @@ shhelpseek.mi <- bind_rows(compare_mods(shhelpseek.config$fit, shhelpseek.metric
 #                                data = ds2,
 #                                items = longIndNames$Staff_Help_Intent,
 #                                fnames = list(StaffHelp = paste0("StaffHelp", 1:4)),
-#                                cluster = "School",
+#                                cluster = NULL,
 #                                ordered = TRUE,
 #                                long.equal = c("loadings", "thresholds", "residuals"))
 # 
@@ -785,8 +973,9 @@ aod.config <- mi_wrapper(model = mi.mods$Alcohol_and_Drug,
                          data = ds2,
                          items = longIndNames$Alcohol_and_Drug,
                          fnames = list(AOD = paste0("AOD", 1:4)),
-                         cluster = "School",
-                         ordered = TRUE)
+                         cluster = NULL,
+                         ordered = TRUE,
+                         missing = "listwise")
 
 # cat(as.character(aod.config$syntax))
 
@@ -794,24 +983,27 @@ aod.metric <- mi_wrapper(model = mi.mods$Alcohol_and_Drug,
                          data = ds2,
                          items = longIndNames$Alcohol_and_Drug,
                          fnames = list(AOD = paste0("AOD", 1:4)),
-                         cluster = "School",
+                         cluster = NULL,
                          ordered = TRUE,
+                         missing = "listwise",
                          long.equal = c("loadings"))
 
 aod.scalar <- mi_wrapper(model = mi.mods$Alcohol_and_Drug,
                          data = ds2,
                          items = longIndNames$Alcohol_and_Drug,
                          fnames = list(AOD = paste0("AOD", 1:4)),
-                         cluster = "School",
+                         cluster = NULL,
                          ordered = TRUE,
+                         missing = "listwise",
                          long.equal = c("loadings", "thresholds"))
 
 aod.strict <- mi_wrapper(model = mi.mods$Alcohol_and_Drug,
                          data = ds2,
                          items = longIndNames$Alcohol_and_Drug,
                          fnames = list(AOD = paste0("AOD", 1:4)),
-                         cluster = "School",
+                         cluster = NULL,
                          ordered = TRUE,
+                         missing = "listwise",
                          long.equal = c("loadings", "thresholds", "residuals"))
 
 #### compiling results across models ####
@@ -836,8 +1028,9 @@ bully.config <- mi_wrapper(model = mi.mods$Bullying,
                          data = ds2,
                          items = longIndNames$Bullying,
                          fnames = list(Bully = paste0("Bully", 1:4)),
-                         cluster = "School",
-                         ordered = TRUE)
+                         cluster = NULL,
+                         ordered = TRUE,
+                         missing = "listwise")
 
 # cat(as.character(bully.config$syntax))
 
@@ -845,24 +1038,27 @@ bully.metric <- mi_wrapper(model = mi.mods$Bullying,
                          data = ds2,
                          items = longIndNames$Bullying,
                          fnames = list(Bully = paste0("Bully", 1:4)),
-                         cluster = "School",
+                         cluster = NULL,
                          ordered = TRUE,
+                         missing = "listwise",
                          long.equal = c("loadings"))
 
 bully.scalar <- mi_wrapper(model = mi.mods$Bullying,
                          data = ds2,
                          items = longIndNames$Bullying,
                          fnames = list(Bully = paste0("Bully", 1:4)),
-                         cluster = "School",
+                         cluster = NULL,
                          ordered = TRUE,
+                         missing = "listwise",
                          long.equal = c("loadings", "thresholds"))
 
 bully.strict <- mi_wrapper(model = mi.mods$Bullying,
                          data = ds2,
                          items = longIndNames$Bullying,
                          fnames = list(Bully = paste0("Bully", 1:4)),
-                         cluster = "School",
+                         cluster = NULL,
                          ordered = TRUE,
+                         missing = "listwise",
                          long.equal = c("loadings", "thresholds", "residuals"))
 
 #### compiling results across models ####
@@ -882,13 +1078,14 @@ bully.mi <- bind_rows(compare_mods(bully.config$fit, bully.metric$fit),
 ########################################################
 
 # ----------- Cyberbullying ------------------
-
+# Note: need to use pairwise due to low frequencies (otherwise can collapse categories)
 cyberbully.config <- mi_wrapper(model = mi.mods$Cyberbullying,
                          data = ds2,
                          items = longIndNames$Cyberbullying,
                          fnames = list(Cyberbully = paste0("Cyberbully", 1:4)),
-                         cluster = "School",
-                         ordered = TRUE)
+                         cluster = NULL,
+                         ordered = TRUE,
+                         missing = "pairwise")
 
 # cat(as.character(cyberbully.config$syntax))
 
@@ -896,24 +1093,27 @@ cyberbully.metric <- mi_wrapper(model = mi.mods$Cyberbullying,
                          data = ds2,
                          items = longIndNames$Cyberbullying,
                          fnames = list(Cyberbully = paste0("Cyberbully", 1:4)),
-                         cluster = "School",
+                         cluster = NULL,
                          ordered = TRUE,
+                         missing = "pairwise",
                          long.equal = c("loadings"))
 
 cyberbully.scalar <- mi_wrapper(model = mi.mods$Cyberbullying,
                          data = ds2,
                          items = longIndNames$Cyberbullying,
                          fnames = list(Cyberbully = paste0("Cyberbully", 1:4)),
-                         cluster = "School",
+                         cluster = NULL,
                          ordered = TRUE,
+                         missing = "pairwise",
                          long.equal = c("loadings", "thresholds"))
 
 cyberbully.strict <- mi_wrapper(model = mi.mods$Cyberbullying,
                          data = ds2,
                          items = longIndNames$Cyberbullying,
                          fnames = list(Cyberbully = paste0("Cyberbully", 1:4)),
-                         cluster = "School",
+                         cluster = NULL,
                          ordered = TRUE,
+                         missing = "pairwise",
                          long.equal = c("loadings", "thresholds", "residuals"))
 
 #### compiling results across models ####
@@ -940,7 +1140,7 @@ cyberbully.mi <- bind_rows(compare_mods(cyberbully.config$fit, cyberbully.metric
 #                          data = ds2,
 #                          items = longIndNames$Depression.Anxiety,
 #                          fnames = list(DepAnx = paste0("DepAnx", 1:4)),
-#                          cluster = "School",
+#                          cluster = NULL,
 #                          ordered = TRUE)
 # 
 # # cat(as.character(depanx.config$syntax))
@@ -949,7 +1149,7 @@ cyberbully.mi <- bind_rows(compare_mods(cyberbully.config$fit, cyberbully.metric
 #                          data = ds2,
 #                          items = longIndNames$Depression.Anxiety,
 #                          fnames = list(DepAnx = paste0("DepAnx", 1:4)),
-#                          cluster = "School",
+#                          cluster = NULL,
 #                          ordered = TRUE,
 #                          long.equal = c("loadings"))
 # 
@@ -957,7 +1157,7 @@ cyberbully.mi <- bind_rows(compare_mods(cyberbully.config$fit, cyberbully.metric
 #                          data = ds2,
 #                          items = longIndNames$Depression.Anxiety,
 #                          fnames = list(DepAnx = paste0("DepAnx", 1:4)),
-#                          cluster = "School",
+#                          cluster = NULL,
 #                          ordered = TRUE,
 #                          long.equal = c("loadings", "thresholds"))
 # 
@@ -965,7 +1165,7 @@ cyberbully.mi <- bind_rows(compare_mods(cyberbully.config$fit, cyberbully.metric
 #                          data = ds2,
 #                          items = longIndNames$Depression.Anxiety,
 #                          fnames = list(DepAnx = paste0("DepAnx", 1:4)),
-#                          cluster = "School",
+#                          cluster = NULL,
 #                          ordered = TRUE,
 #                          long.equal = c("loadings", "thresholds", "residuals"))
 # 
@@ -992,8 +1192,9 @@ peervict.config <- mi_wrapper(model = mi.mods$Peer_Victimization,
                          data = ds2,
                          items = longIndNames$Peer_Victimization,
                          fnames = list(PeerVict = paste0("PeerVict", 1:4)),
-                         cluster = "School",
-                         ordered = TRUE)
+                         cluster = NULL,
+                         ordered = TRUE,
+                         missing = "listwise")
 
 # cat(as.character(peervict.config$syntax))
 
@@ -1001,24 +1202,27 @@ peervict.metric <- mi_wrapper(model = mi.mods$Peer_Victimization,
                          data = ds2,
                          items = longIndNames$Peer_Victimization,
                          fnames = list(PeerVict = paste0("PeerVict", 1:4)),
-                         cluster = "School",
+                         cluster = NULL,
                          ordered = TRUE,
+                         missing = "listwise",
                          long.equal = c("loadings"))
 
 peervict.scalar <- mi_wrapper(model = mi.mods$Peer_Victimization,
                          data = ds2,
                          items = longIndNames$Peer_Victimization,
                          fnames = list(PeerVict = paste0("PeerVict", 1:4)),
-                         cluster = "School",
+                         cluster = NULL,
                          ordered = TRUE,
+                         missing = "listwise",
                          long.equal = c("loadings", "thresholds"))
 
 peervict.strict <- mi_wrapper(model = mi.mods$Peer_Victimization,
                          data = ds2,
                          items = longIndNames$Peer_Victimization,
                          fnames = list(PeerVict = paste0("PeerVict", 1:4)),
-                         cluster = "School",
+                         cluster = NULL,
                          ordered = TRUE,
+                         missing = "listwise",
                          long.equal = c("loadings", "thresholds", "residuals"))
 
 #### compiling results across models ####
@@ -1058,9 +1262,9 @@ all.config <- list(act.config, pass.config,
                    aod.config, bully.config, cyberbully.config,  peervict.config) %>% #depanx.config,
   set_names(c("Active_Exposure", "Passive_Exposure", OutcomeNames, ProtectiveNames[c(1, 3, 4)], OtherScaleNames[-4]))
 
-all.strict <- list(act.strict, pass.strict,
-                   ncperp.strict,ncvict.strict,conperp.strict, convict.strict,
-                   hncperp.strict, hncvict.strict,cyber.strict, dismiss.strict,
+all.strict <- list(act.pi.strict, pass.pi.strict,
+                   ncperp.pi.strict,ncvict.strict,conperp.strict, convict.strict,
+                   hncperp.pi.strict, hncvict.strict, cyber.strict, dismiss.pi.strict,
                    gwb.strict, shhelpatt.strict, shhelpseek.strict, 
                    aod.strict, bully.strict, cyberbully.strict,  peervict.strict) %>% #depanx.strict,
   set_names(c("Active_Exposure", "Passive_Exposure", OutcomeNames, ProtectiveNames[c(1, 3, 4)], OtherScaleNames[-4]))
@@ -1117,6 +1321,8 @@ shi.fs <- as.data.frame(lavPredict(all.strict$SH_Help_Seeking$fit, type = "lv", 
 factor.scores <- list(ae.fs, pe.fs, ncp.fs, ncv.fs, cp.fs, cv.fs, hop.fs, hov.fs, cyp.fs, dsv.fs, gwb.fs, sha.fs, shi.fs) %>%
   set_names(names(all.strict)[1:13])
 
+## Note: if ds2 has been updated, just need to load("Output/Longitudinal_MI.RData"), run the next section and re-save
+# won't work if there are not the 6465 students originally used to run the longMI
 ds3 <- bind_cols(ds2,
                  factor.scores$No_Contact_Perpetration,
                  factor.scores$No_Contact_Victimization,
@@ -1131,9 +1337,9 @@ ds3 <- bind_cols(ds2,
                  factor.scores$SH_Help_Seeking) %>%
   left_join(bind_cols(data.frame(StudentID = ds2[ds2$Tx == 1, ]$StudentID), factor.scores$Active_Exposure,
                       factor.scores$Passive_Exposure), by = "StudentID")
+# ds3 <- ds2
 
-## Note: Need to change Active and Passive scores from NA to 0 for control students
-## mutate(across())
+## Note: Active and Passive scores will be NA for control students
 
 save(longIndNames, mi.mods, heywood,
      all.config, all.strict,
@@ -1142,7 +1348,7 @@ save(longIndNames, mi.mods, heywood,
      file = "Output/Longitudinal_MI.RData")
 # load("Output/Longitudinal_MI.RData")
 
-
+# Note: does not include partial invariance models
 save(act.config, act.metric, act.strict, act.fits, act.mi,
      pass.config, pass.metric, pass.strict, pass.fits, pass.mi, 
      ncperp.config, ncperp.metric, ncperp.strict, ncperp.fits, ncperp.mi,

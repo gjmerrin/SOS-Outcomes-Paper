@@ -8,14 +8,16 @@
 ## Loading packages and functions
 source("Scripts/PnF.R")
 load("Output/SoS_Data.RData")
-load("Output/Longitudinal_MI.RData")
+# load("Output/Longitudinal_MI.RData") # only needed if ds3 contains factor scores and we need the factor scores (currently ds3 == ds2)
 
 
 # ------  Adding School-level Variables -----------------------------
 
-## School demographics
+## School demographics from 2018-2019 (Year 2)
 schdemos <- readxl::read_excel("SoS Data and Codes/RSVP2 School Stats.xlsx", sheet = "RReady") %>%
-  mutate(Rural = ifelse(Rural_Urban == "Urban", 0, 1))
+  mutate(Rural = ifelse(Rural_Urban == "Urban", 0, 1),
+         SchN100 = School_N/100,
+         SchN = scale(SchN100, center = TRUE, scale = FALSE)[,1]) # centered
 
 #### Investigating School Climate Indicators ####
 # Note: See 4-Analysis_ML.R for checks
@@ -35,7 +37,7 @@ schclimate <- schclimate.orig %>%
 
 #### Joining school-level variables to student-level data ####
 
-ds3 <- ds3 %>%
+ds3 <- ds2 %>%
   mutate(School = as.character(as_factor(School))) %>%
   left_join(schdemos, by = "School") %>%
   left_join(schclimate %>%
@@ -43,6 +45,8 @@ ds3 <- ds3 %>%
               summarize(Teasing_Per = mean(Teasing, na.rm = TRUE),           # % of school staff reporting teasing was pretty big or huge problem
                         MH_Training_Per = mean(MH_Training, na.rm = TRUE)),  # % of school staff reporting fair amount or a lot of mental health training
             by = "School")
+
+# saveRDS(ds3, file = "SoS Data and Codes/ds3.rds") # used in Imp4-Mplus.R
 
 #############################################################################
 
@@ -65,10 +69,14 @@ mpluswide <- ds3 %>%
                        "Contact_Perpetration_Score", "Contact_Victimization_Score",
                        "HNC_Perpetration_Score", "HNC_Victimization_Score",
                        "Cybersex_Perpetration_Score", "SV_Dismissiveness_Score",
-                       "General_Well.being_Score", "SH_Help_Attitudes_Score", "SH_Help_Seeking_Score")),
-                  NCPerp1:Passive4,                                                                            # Factor Scores
-         Funding = Funding_Per_Pupil, Rural, Teas_Per = Teasing_Per, MHT_Per = MH_Training_Per) %>%   # School-level variables
-  rename_with(~str_replace(.x, "HasASurvey", "srvy"), .cols = starts_with("HasASurvey")) %>%          # Renaming variables to <= 8 characters per Mplus requirement
+                       "General_Well.being_Score", "SH_Help_Attitudes_Score", "SH_Help_Seeking_Score",
+                       "Bullying_Score", "Cyberbullying_Score", "Peer_Victimization_Score")), -ends_with("_Avg"), # excluding Exposure Averages
+                  # NCPerp1:Passive4,                                               # Factor Scores
+         Funding = Funding_Per_Pupil, Rural, SchN, Teas_Per = Teasing_Per, MHT_Per = MH_Training_Per)  # School-level variables
+
+# Renaming variables to <= 8 characters per Mplus requirement
+mpluswide <- mpluswide %>%
+  rename_with(~str_replace(.x, "HasASurvey", "srvy"), .cols = starts_with("HasASurvey")) %>%          
   rename_with(~str_replace(.x, "SEX_VIOL_PERP_", "SVP"), .cols = starts_with("SEX_VIOL_PERP_")) %>%
   rename_with(~str_replace(.x, "SEX_VIOL_VICT_", "SVV"), .cols = starts_with("SEX_VIOL_VICT_")) %>%
   rename_with(~str_replace(.x, "HOM_PERP_", "HOP"), .cols = starts_with("HOM_PERP_")) %>%
@@ -93,7 +101,10 @@ mpluswide <- ds3 %>%
   rename_with(~str_replace(.x, "General_Well.being_Score_W", "GWBS_"), .cols = starts_with("General_Well.being_Score_W")) %>%
   rename_with(~str_replace(.x, "SH_Help_Attitudes_Score_", "SHAS_"), .cols = starts_with("SH_Help_Attitudes_Score_")) %>%
   rename_with(~str_replace(.x, "SH_Help_Seeking_Score_W", "SHIS_"), .cols = starts_with("SH_Help_Seeking_Score_W")) %>%
-  rename_with(~str_replace(.x, "Cybersex", "CSPerp"), .cols = starts_with("Cybersex")) %>%
+  rename_with(~str_replace(.x, "Bullying_Score_W", "BLLY_"), .cols = starts_with("Bullying_Score_W")) %>%
+  rename_with(~str_replace(.x, "Cyberbullying_Score_W", "CBLY_"), .cols = starts_with("Cyberbullying_Score_W")) %>%
+  rename_with(~str_replace(.x, "Peer_Victimization_Score_W", "PEER_"), .cols = starts_with("Peer_Victimization_Score_W")) %>%
+  rename_with(~str_replace(.x, "Cybersex", "CSPerp"), .cols = starts_with("Cybersex")) %>%        # lines 107-110 are not relevant unless factor scores are included
   rename_with(~str_replace(.x, "GenWellBeing", "GenWB"), .cols = starts_with("GenWellBeing")) %>%
   rename_with(~str_replace(.x, "SHHelpAtt", "SHHAtt"), .cols = starts_with("SHHelpAtt")) %>%
   rename_with(~str_replace(.x, "SHHelpSeek", "SHHSeek"), .cols = starts_with("SHHelpSeek")) %>%
@@ -102,6 +113,8 @@ mpluswide <- ds3 %>%
   mutate(across(where(is.factor), as.numeric))                       # Converting factors to numeric per Mplus requirements
 
 table(apply(mpluswide, 2, class))
+# double-checking length of names
+table(nchar(names(mpluswide)))
 
 
 ## distribution of teacher nominations; use a negative binomial model b/c sds are consistently higher than the mean (overdispersion)
@@ -129,335 +142,28 @@ map2(.x = paste0("Trusted_Adult_W", 1:4),
      .y = paste0("TA_", 1:4),
      ~table(ds3[[.x]], mpluswide[[.y]]))
 
-# Saving csv data file for mplus models 
-# write.csv(mpluswide,   file = "mpluswide_wTANoms_colnames.csv", row.names = FALSE, na = "-999")
-# write.table(mpluswide, file = "mpluswide_wTANoms.csv", row.names = FALSE, col.names = FALSE,  na = "-999", sep = ",")
+## Saving csv data file for mplus models 
+# write.csv(mpluswide,   file = "mpluswide_wbully_colnames.csv", row.names = FALSE, na = "-999")
+# write.table(mpluswide, file = "mpluswide_wbully.csv", row.names = FALSE, col.names = FALSE,  na = "-999", sep = ",")
+# saveRDS(mpluswide, file = "SoS Data and Codes/mpluswide_wbully.rds")
+
+## File with only Wave 1 participants
+w1only <- mpluswide %>% filter(srvy_1 == 1)
+# saveRDS(w1only, file = "SoS Data and Codes/mpluswide_w1only.rds")
 
 
 #########################################################################################################
 
-#### Results set up ####
-# Note: readModels organizes them in alphabetical order
-mplusoutcomes = c(ncp = "SH Perpetration", ncv = "SH Victimization", cp = "FSC Perpetration", cv = "FCS Victimization", 
-                  hop = "HNC Perpetration", hov = "HNC Victimization", cyber = "Cybersex Perpetration", dismiss = "SV Dismissiveness",
-                  gwb = "General Well-Being", sha = "SH Attitudes", shi = "SH Help Intent", ta = "Trusted Adult")
-
-outcome_shortcut <- function(df, remove, recodes){
-  df <- df %>%
-    mutate(outcome = str_remove(outcome, remove),
-           outcome = dplyr::recode(outcome, !!!recodes) %>%
-             factor(., levels = recodes)) %>%
-    arrange(outcome)
-  return(df)
-}
-
-# ------  Latent Growth Model Mplus Results -------------------
-
-lgm.preds <- c(I = "Intercept", S = "Intercept")
-
-## Importing models and converting results to tables
-lgm.ss.mods <- MplusAutomation::readModels(target = "Mplus/Scale Scores/LGM")
-lgm.ss.fit <- map_dfr(lgm.ss.mods[1:11], ~mplus_fit(.x, digits = 2), .id = "outcome") %>%
-  outcome_shortcut(remove = "_ss_lgm.out", recodes = mplusoutcomes[1:11])
-
-
-lgm.ss.est <- map_dfr(lgm.ss.mods[1:11], ~mplus_est(.x, params = c("Means", "^Variances", "WITH"), std = "unstandardized"), .id = "outcome") %>%
-  outcome_shortcut(remove = "_ss_lgm.out", recodes = mplusoutcomes[1:11]) %>%
-  select(outcome, estimate, parameter) %>%
-  spread(parameter, estimate) %>%
-  select(-S.WITH_I, S.WITH_I)
-
-#### Compiling results objects into one object ####
-lgm.ss.results <- list(Models = lgm.ss.mods[1:11],
-                       Fit = lgm.ss.fit,
-                       Estimates = lgm.ss.est,
-                       R2 = map_dfr(.x = lgm.ss.mods, ~.x$parameters$r2, .id = "outcome") %>%
-                         outcome_shortcut(remove = "_ss_lgm.out", recodes = mplusoutcomes[1:11]),
-                       Warn_Error = map_dfr(.x = lgm.ss.mods[1:11],
-                                            ~data.frame(errors = length(.x$errors),
-                                                        warnings = length(.x$warnings)),
-                                            .id = "outcome") %>%
-                         outcome_shortcut(remove = "_ss_lgm.out", recodes = mplusoutcomes[1:11]))
-
-## Outcomes are labelled incorrectly
-# test.lgm.ss.results <- format_mplus(lgm.ss.mods, recodes = lgm.preds, outcomes = mplusoutcomes[-12],
-#                                     std = "unstandardized", reg = FALSE, r2 = TRUE)
-
-######################################################################################
-
-# ------  Tx Mplus Results -------------------
-
-## Importing models
-tx.ss.mods <- MplusAutomation::readModels(target = "Mplus/Scale Scores/TX")
-tx.only.mods <- which(str_detect(names(tx.ss.mods[1:22]), "_only"))
-tx.covs.mods <- which(str_detect(names(tx.ss.mods[1:22]), "_covs"))
-
-########## Tx Only ###########
-
-tx.only.preds <- c(I = "Intercept", S = "Intercept", TX = "Sources")
-
-## Model Fit
-tx.only.ss.fit <- map_dfr(tx.ss.mods[tx.only.mods], ~mplus_fit(.x, digits = 2), .id = "outcome") %>%
-  outcome_shortcut(remove = "_ss_tx_only.out", recodes = mplusoutcomes[1:11])
-
-## Fixed effect estimates
-tx.only.ss.est <- map_dfr(.x = tx.ss.mods[tx.only.mods],
-                      ~mplus_est(.x, std = "stdy.standardized", params = c("ON", "Intercepts"),
-                                 digits = 2, combine = TRUE, ci = FALSE) %>%
-  filter(str_detect(paramHeader, "\\.ON") | (paramHeader == "Intercepts" & param %in% c("I", "S"))) %>%
-  mutate(is = str_remove(paramHeader, ".\\ON") %>% ifelse(. == "Intercepts", param, .),
-         predictor = recode(param, !!!tx.only.preds) %>%
-           factor(., levels = unique(tx.only.preds)),
-         temp = paste(predictor, is, sep = ".")) %>%  # specific to latent growth models where I and S recoded to same value
-         select(temp, estimate) %>%
-    spread(temp, estimate), .id = "outcome") %>%
-  outcome_shortcut(remove = "_ss_tx_only.out", recodes = mplusoutcomes[1:11]) %>%
-  select(outcome, Sources.I, Sources.S)
-
-########## Tx With Covariates ###########
-
-tx.covs.preds <- c(I = "Intercept", S = "Intercept", TX = "Sources",
-                   FEMALE = "Female", OTHERG = "Other Gender",
-                   LATINX = "Latinx", POC = "POC", LGBQ = "LGBQ",
-                   FGXTX = "Female:Sources", OGXTX = "OG:Sources",
-                   LRXTX = "Latinx:Sources", POCXTX = "POC:Sources", LGBQXTX = "LGBQ:Sources",
-                   RURAL = "Rural", TEAS_PER = "School Teasing", MHT_PER = "School MH Training")
-
-## Model fit
-# all models in single dataframe
-tx.covs.ss.fit <- map_dfr(tx.ss.mods[tx.covs.mods], ~mplus_fit(.x, digits = 2), .id = "outcome") %>%
-  outcome_shortcut(remove = "_ss_tx_covs.out", recodes = mplusoutcomes[1:11])
-
-# in a list for joining with estimates
-tx.covs.ss.fitlong <- map(tx.ss.mods[tx.covs.mods],
-                          ~mplus_fit(.x, digits = 2) %>%
-                            mutate(x2_33 = case_when(pvalue < .01 ~ paste0(chisq, "**"),
-                                                     pvalue < .05 ~ paste0(chisq, "*"),
-                                                     TRUE ~ chisq),
-                                   RMSEA = paste(rmsea, rmsea.ci)) %>%
-                            select(x2_33, CFI = cfi, RMSEA, SRMR = srmr) %>%
-                            gather(predictor, I))
-
-
-## Fixed effect estimates
-tx.covs.ss.est <- map(.x = tx.ss.mods[tx.covs.mods],
-                          ~mplus_est(.x, std = "stdy.standardized", params = c("ON", "Intercepts"), #"stdy.standardized"
-                                     digits = 2, combine = TRUE, ci = FALSE) %>%
-                            filter(str_detect(paramHeader, "\\.ON") | (paramHeader == "Intercepts" & param %in% c("I", "S"))) %>%
-                            mutate(is = str_remove(paramHeader, ".\\ON") %>% ifelse(. == "Intercepts", param, .),
-                                   predictor = recode(param, !!!tx.covs.preds) %>%
-                                     factor(., levels = unique(tx.covs.preds))) %>%
-                            select(predictor, is, estimate) %>%
-                            spread(is, estimate))
-
-## Random effect estimates and R2
-tx.covs.ss.re <- map(.x = tx.ss.mods[tx.covs.mods],
-                     ~mplus_est(.x, std = "unstandardized", params = "Residual.Variances",
-                                digits = 2, combine = TRUE, ci = FALSE) %>%
-                       bind_rows(.x$parameters$r2 %>%
-                                   mutate(estimate = format(round(est, 2), nsmall = 2))) %>%
-                       filter(param %in% c("I", "S")) %>%
-                       mutate(predictor = c(rep("Variance", 2), rep("R2", 2)) %>% as_factor()) %>%
-                       select(predictor, param, estimate) %>%
-                       spread(param, estimate))
-
-
-## Binding all results into a single dataframe for each model
-tx.covs.ss.results <- map2(.x = tx.covs.ss.est, .y = tx.covs.ss.re,
-                           ~bind_rows(.x, .y)) %>%
-  map2(.x = ., .y = tx.covs.ss.fitlong,
-       ~bind_rows(.x, .y))
-
-
-## Adjusting names and order of results
-names(tx.covs.ss.results) <- names(tx.covs.ss.results) %>% str_remove(., "_ss_tx.covs.out") %>% recode(., !!!mplusoutcomes[1:11])
-tx.covs.ss.results <- tx.covs.ss.results[mplusoutcomes[1:11]]
-
-
-#### Gathering estimates for dichotomized teacher nominations ####
-ta.results <- map_dfr(.x = list(lgm.ss.mods$ta_ss_lgm.out, tx.ss.mods$ta_ss_tx_only.out, tx.ss.mods$ta_ss_tx_noint.out),
-                      ~mplus_est(.x, std = "unstandardized", params = c("Means", "Variances", "ON", "Intercept")) %>%
-                        filter(str_detect(paramHeader, "ON") | param %in% c("I", "S")) %>%
-                        mutate(OR = format(round(exp(est), 2), nsmall = 2)) %>%
-                        select(parameter, estimate, OR), .id = "Model") %>%
-  separate(parameter, into = c("temp1", "temp2"), sep = "_") %>%
-  mutate(temp1 = str_remove(temp1, ".ON"),
-         is = ifelse(temp2 %in% c("I", "S"), temp2, temp1),
-         parameter = ifelse(!(temp2 %in% c("I", "S")), temp2, temp1) %>%
-           str_remove(., "Residual.") %>%
-           str_replace(., "Means", "Intercepts")) %>%
-  select(-temp1, -temp2) %>%
-  gather(temp, value, estimate, OR) %>%
-  unite(temp1, Model, is, temp) %>%
-  spread(temp1, value) %>%
-  mutate(parameter = recode(parameter, !!!tx.covs.preds) %>%
-           factor(., levels = c("Intercepts", tx.covs.preds[3:8], "Variances"))) %>%
-  arrange(parameter)
-
-
-#############################################################
-
-
-# ------  Exposure Mplus Results -------------------
-## Note. This section could use some updating if we are actually using results
-
-exp.only.preds <- rep(c("Active", "Passive"), each = 3)
-names(exp.only.preds) <- paste(rep(c("AEXS", "PEXS"), each = 3), 2:4, sep = "_")
-exp.covs.preds <- c(exp.only.preds, c(I = "Intercept", S = "Intercept",
-                  FEMALE = "Female", OTHERG = "Other Gender",
-                  LATINX = "Latinx", POC = "POC", LGBQ = "LGBQ",
-                  RURAL = "Rural", TEAS_PER = "School Teasing", MHT_PER = "School MH Training"))
-
-mplusoutcomes2 = c(NCP = "SH Perpetration", NCV = "SH Victimization", CP = "FSC Perpetration", CV = "FCS Victimization", 
-                  HOP = "HNC Perpetration", HOV = "HNC Victimization", CYP = "Cybersex Perpetration", DSVS = "SV Dismissiveness",
-                  GWB = "General Well-Being", SHA = "SH Attitudes", SHI = "SH Help Intent")
-
-## Importing models and converting results to tables
-exp.ss.mods <- MplusAutomation::readModels(target = "Mplus/Scale Scores/Exposure")
-exp.only.mods <- which(str_detect(names(exp.ss.mods), "_only"))
-exp.covs.mods <- which(str_detect(names(exp.ss.mods), "_covs"))
-
-exp.only.ss.fit <- map_dfr(exp.ss.mods[exp.only.mods], ~mplus_fit(.x, digits = 2), .id = "outcome") %>%
-  outcome_shortcut(remove = "_ss_exp_only.out", recodes = mplusoutcomes[-12])
-
-exp.covs.ss.fit <- map_dfr(exp.ss.mods[exp.covs.mods], ~mplus_fit(.x, digits = 2), .id = "outcome") %>%
-  outcome_shortcut(remove = "_ss_exp_covs.out", recodes = mplusoutcomes[-12])
-
-exp.only.ss.est <- map_dfr(.x = exp.ss.mods[exp.only.mods],
-                          ~mplus_est(.x, std = "stdy.standardized", params = c("ON", "Intercepts"),
-                                     digits = 2, combine = TRUE, ci = FALSE) %>%
-                            filter(str_detect(paramHeader, "\\.ON") | (paramHeader == "Intercepts" & param %in% c("I", "S"))) %>%
-                            mutate(Wave = str_extract(paramHeader, "[2-4]"),
-                                   predictor = recode(param, !!!exp.only.preds) %>%
-                                     factor(., levels = unique(exp.only.preds)),
-                                   temp = paste(predictor, Wave, sep = ".")) %>% 
-                            select(temp, estimate) %>%
-                            spread(temp, estimate), .id = "outcome") %>%
-  outcome_shortcut(remove = "_ss_exp_only.out", recodes = mplusoutcomes[-12])
-
-exp.covs.ss.est <- map(.x = exp.ss.mods[exp.covs.mods],
-                      ~mplus_est(.x, std = "stdy.standardized", params = c("ON", "Intercepts"),
-                                 digits = 2, combine = TRUE, ci = FALSE) %>%
-                        filter(str_detect(paramHeader, "\\.ON") | (paramHeader == "Intercepts" & param %in% c("I", "S"))) %>%
-                        mutate(is = str_remove(paramHeader, ".\\ON") %>% ifelse(. == "Intercepts", param, .),
-                               is = ifelse(str_detect(is, "[2-4]"), str_extract(is, "[2-4]"), is),
-                               predictor = recode(param, !!!exp.covs.preds) %>%
-                                 factor(., levels = unique(exp.covs.preds))) %>%  
-                        select(predictor, is, estimate) %>%
-                        spread(is, estimate))
-
-## Adjusting names and order of results
-names(exp.covs.ss.est) <- names(exp.covs.ss.est) %>% str_remove(., "_ss_exp.covs.out") %>% recode(., !!!mplusoutcomes[-12])
-exp.covs.ss.est <- exp.covs.ss.est[mplusoutcomes[-12]]
-
-
-##############################################################
-
-# -----  Interaction Plots ---------------
-
-## extracting intercept and slope estimates
-intx.data <- map_dfr(list(tx.ss.mods$ncp_ss_tx_covs.out, tx.ss.mods$gwb_ss_tx_covs.out), #tx.ss.mods$dismiss_ss_tx_covs.out
-                     ~.x %>%
-                       mplus_est(params = c("ON", "Intercepts"), std = "unstandardized", digits = 3) %>%
-                       filter(str_detect(paramHeader, "\\.ON")|(paramHeader == "Intercepts" & param %in% c("I", "S"))) %>%
-                       select(parameter, est) %>%
-                       spread(parameter, est) %>%
-                       bind_rows(replicate(3, ., simplify = FALSE)) %>%
-                       bind_cols(expand.grid(LATINX = c(1, 0), TX = c(1, 0)) %>% mutate(LRXTX = LATINX*TX), .) %>%
-                       mutate(I.Latx = Intercepts_I + I.ON_LATINX*LATINX + I.ON_TX*TX + I.ON_LRXTX*LRXTX,
-                              S.Latx = Intercepts_S + S.ON_LATINX*LATINX + S.ON_TX*TX + S.ON_LRXTX*LRXTX) %>%
-                       select(LATINX, TX, I.Latx, S.Latx) %>%
-                       gather(temp, value, -LATINX, -TX) %>%
-                       separate(temp, into = c("IS", "Group"), sep = "\\.") %>%
-                       spread(IS, value) %>%
-                       mutate(Wave1 = I,
-                              Wave2 = I + 1*S,
-                              Wave3 = I + 2*S,
-                              Wave4 = I + 3*S) %>%
-                       gather(Wave, Estimate, starts_with("Wave")) %>%
-                       mutate(Wave = str_remove(Wave, "Wave") %>% as.numeric()), .id = "Outcome") %>%
-  mutate(Outcome = recode(Outcome, `1` = "SH Perpetration", `2` = "Natural Coping Resources"),
-         Ethnicity = recode(LATINX, `0` = "White", `1` = "Hispanic"),
-         School = recode(TX, `0` = "Waitlist", `1` = "Sources of Strength"),
-         Condition = paste(Ethnicity, School, sep = " - "))
-
-
-
-intx.plot <- intx.data %>%
-  ggplot(aes(x = Wave, y = Estimate, group = Condition)) +
-  geom_line(aes(linetype = School), size = 1) +
-  geom_point(aes(shape = Ethnicity), size = 2) +
-  scale_linetype_manual(values = c(1, 2, 3, 4)) +
-  scale_shape_manual(values = c(0, 2)) +
-  scale_y_continuous(limits = c(-.02, 3), breaks = seq(0, 3, .5)) +
-  labs(x = "Wave", y = "Estimated Scale Score", linetype = "Condition") +
-  theme_bw(base_size = 20) +
-  facet_wrap(~Outcome)
-
-#############################################################
-
-# --------  Impact of SoS on Perpetrators ----------------
-
-library(lme4)
-regvars <- ds3 %>% select(Tx, Female, OtherG, Latinx, POC, LGBQ,
-                          Rural, Teasing_Per, MH_Training_Per,
-                          FemalexTx, OtherGxTx, LatinxxTx, POCxTx, LGBQxTx) %>% names()
-
-onperp.mlm <- map(.x = OutcomeNames[c(1,3,5,8)],
-            ~lmer(formula(paste0(paste0(.x, "_Score_W4"), " ~ 1 + ", paste0(.x, "_Score_W1"), "*Tx + ", paste(regvars[-1], collapse = " + "), " + (1|School)")),
-                  data = ds3)) %>%
-  set_names(OutcomeNames[c(1, 3, 5, 8)])
-
-onperp.lm <- map(.x = OutcomeNames[c(1,3,5,8)],
-                  ~lm(formula(paste0(paste0(.x, "_Score_W4"), " ~ 1 + ", paste0(.x, "_Score_W1"), "*Tx + ", paste(regvars[-1], collapse = " + "))),
-                        data = ds3)) %>%
-  set_names(OutcomeNames[c(1, 3, 5, 8)])
-
-
-params.mlm <- map(onperp.mlm, ~parameters::model_parameters(.x, standardize = "refit"))
-perform.mlm <- map_dfr(onperp.mlm, ~performance::model_performance(.x), .id = "Outcome")
-mcplots.mlm <- map(onperp.mlm, ~ModelCheckPlots(.x))
-
-params.lm <- map(onperp.lm, ~parameters::model_parameters(.x, standardize = "refit"))
-perform.lm <- map_dfr(onperp.lm, ~performance::model_performance(.x), .id = "Outcome")
-mcplots.lm <- map(onperp.lm, ~ModelCheckPlots(.x))
-
-
-## lm
-#ncp - w1, female (d), lgbq, rural, teasing (lm only), interaction
-#cp - female (d), lgbq, rural, teasing (lm only), interaction
-#hnc - w1, female (d), rural
-#svd - w1, female (d), rural
-
-ncp.int.plot <- sjPlot::plot_model(onperp.mlm$No_Contact_Perpetration, type = "int")
-cp.int.plot <- sjPlot::plot_model(onperp.mlm$Contact_Perpetration, type = "int")
-
-#############################################################
-
-
-# ----- Saving Latent Growth Model Objects -----------------
-save(lgm.ss.results, 
-     tx.ss.mods, tx.only.ss.fit, tx.only.ss.est,
-     tx.covs.ss.fit, tx.covs.ss.est, tx.covs.ss.re, tx.covs.ss.fitlong,
-     tx.covs.ss.results, ta.results,
-     exp.ss.mods, exp.only.ss.fit, exp.covs.ss.fit, exp.only.ss.est, exp.covs.ss.est,
-     intx.data, intx.plot, onperp.lm, onperp.mlm,
-     # params.lm, perform.lm, mcplots.lm,
-     params.mlm, perform.mlm, mcplots.mlm,
-     ncp.int.plot, cp.int.plot,
-     file = "Output/Mplus_SS_Results.RData")
-
-load("Output/Mplus_SS_Results.RData")
 
 
 # -------- Using a multilevel modeling approach -----------------
 # library(lme4)
 # library(performance)
 # 
-# # Note 1: MLM residual variances are assumed to be equal across time
+# # Note 1: MLMod residual variances are assumed to be equal across time
 # #         whereas they are estimated in LGM
 # #         the nlme package can estimate unequal variances, but lme4 cannot
-# # Note 2: MLM will listwise delete missingness at Level2 which is ~200 students,
+# # Note 2: MLMod will listwise delete missingness at Level2 which is ~200 students,
 # #         whereas in LGM the variables can be brought into the model as outcomes
 # 
 # ## Defining predictors and outcome variables

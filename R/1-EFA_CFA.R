@@ -6,30 +6,14 @@
 #                                      #
 ########################################
 
+## Notes:
+# These analyses were run prior to full development of the kfa package with results documented in "SoS_Scale_Psychometric_Report_04202021.docx"
+# These analyses were also run using the dscombo data prior to the minor fixes that were rectified in the dsclean data
+# kfa script is included starting in line 954 using the dsclean data and runs as of 5/18/2022
+
 ## Loading packages, functions, and data
 source("Scripts/PnF.R")
-source("Scripts/efa_cfa_syntax.R")
 load("Output/SoS_Data.RData")
-
-# ----  Preliminary Factor Analysis ----------------------------------
-# With categorical indicators (endogenous):
-# lavaan - WLSMV (DWLS estimator with robust standard errors and mean & variance adjusted test statistic)
-#          missing can only be pairwise or listwise (or use multiple imputation)
-#        - MML estimator uses the ordered probit model with ordered indicators
-#          missing data can only be listwise
-#        - MLR estimator (Huber-White robust standard errors and Yuan-Bentler T2-star test statistic)
-#          missing data can be ml (i.e., fiml)
-#          assumes all indicators are continuous (i.e., ordered = NULL)
-#        - PML estimator: need to check how this works
-# Mplus  - WLSMV with pairwise or listwise (or multiple imputation)
-#        - MLR estimator with FIML for missing data
-#          The MLR (MML?) fitting function is different for categorical indicators than for continuous; uses ordered logit model
-#          Does not provide overall fit statistics whereas WLSMV does;
-#          instead need to manually compare fit to a less restrictive model
-# mimic does not make a difference in these models
-# missing = "ml" still removes cases with NA for all indicators, so sample size still gonna decrease across waves
-# ml estimators are gonna take a hell of a lot longer than wls
-
 
 ##########################################################
 ####  Exploratory and Confirmatory Factor Analysis   #####
@@ -132,7 +116,7 @@ exp.cfa2 <- map(.x = 2:4, ~cfa(mod = exp.syntax[[2]],
   cfa_wrapper(mods = .)
 
 
-## CONCLUSION: Model 2 factor model fits much better
+## CONCLUSION: 2 factor model fits much better
 
 ## Can active and passive stand on their own?
 # syntax
@@ -966,29 +950,76 @@ save(efa.samplel, efa.samplew, cfa.samplel, cfa.samplew,
 ##################################################################
 
 
-#### using full data ####
-# copied to here from earlier iterations
-#### Outcomes by Wave ####
-# outcome.cfas.wls <- map(.x = OutcomeVars,
-#                         ~cfa_wrapper(data = ds2long,
-#                                      items = .x,
-#                                      fname = "fv",
-#                                      estimator = "WLSMV", # "PML"
-#                                      missing = "pairwise",
-#                                      cluster = "School",
-#                                      ordered = .x)) %>%
-#   set_names(OutcomeNames)
-# 
-# lapply(outcome.cfas.wls, "[[", "loadings")
-# lapply(outcome.cfas.wls, "[[", "reliabilities")
-# lapply(outcome.cfas.wls, "[[", "fits")
-# 
-# 
-# save(outcome.cfas.wls, exposure.mod, exposure.cfa, exposure.fits,
-#      file = "Output/Prelim_cfas.RData")
-# 
-# flexload <- exposure.fits$loadings %>% flextable() %>% autofit()
-# fitload <- exposure.fits$fits %>% flextable() %>% autofit()
-# save_as_docx(flexload, fitload, path = "temptables.docx")
+# -------   kfa   -------------------------
+library(kfa)
+all.scales <- c(OutcomeVars, ProtectiveVars, list(Exposure = ExposureVars), OtherScaleVars)
+find_k(variables = ds2[paste0(all.scales$Contact_Perpetration, "_W1")], m = 2)
+find_k(variables = ds2[ds2$Tx == 1, paste0(ExposureVars, "_W2")], m = 4)
+
+scale.lengths <- map_dbl(all.scales, length)
+
+#### Running kfa ####
+## scales with < 8 items
+kfas8 <- map(.x = all.scales[scale.lengths < 8],
+             ~ds2[paste0(.x, "_W1")] %>%
+               mutate(across(.fns = haven::zap_labels)) %>% # convert haven_labelled to numeric
+               kfa(variables = .,
+                   k = 10,
+                   m = 2,
+                   ordered = TRUE))
+
+## scales with 8 or more items, except for exposure
+kfas8plus <- map(.x = all.scales[scale.lengths >= 8 & scale.lengths < 15],
+                 ~ds2[paste0(.x, "_W1")] %>%
+                   mutate(across(.fns = haven::zap_labels)) %>% # convert haven_labelled to numeric
+                   kfa(variables = .,
+                       k = 10,
+                       m = 3,
+                       ordered = TRUE))
 
 
+#### Generation Reports ####
+map2(.x = c(kfas8, kfas8plus), .y = c(names(kfas8), names(kfas8plus)),
+     ~kfa_report(models = .x,
+           file.name = paste0("Output/", .y, "_w1_psychometric_report"),
+           report.title = paste0(gsub("_", " ", .y), "Wave 1 Psychometric Report"),
+           index = c("cfi.scaled", "rmsea.scaled", "srmr")))
+
+#### Exposure ####
+## kfa for exposure - using W2 and only Tx data
+kfaexp <- map(.x = list(Active_Exposure = ActiveExpVars, Passive_Exposure = PassiveExpVars, Passive_Exposure_Drop4 = PassiveExpVars[-4]),
+              ~kfa(variables = ds2[ds2$Tx == 1, paste0(.x, "_W2")] %>% mutate(across(.fns = haven::zap_labels)),
+                   k = 10,
+                   m = 2,
+                   ordered = TRUE))
+
+kfaexp$Exposure <- kfa(variables = ds2[ds2$Tx == 1, paste0(ExposureVars, "_W2")] %>% mutate(across(.fns = haven::zap_labels)),
+                       k = 10,
+                       m = 4,
+                       ordered = TRUE,
+                       custom.cfas = list(`Active-Passive` = paste0("active =~ ", paste(paste0(ActiveExpVars, "_W2"), collapse = " + "), "\n",
+                                                                    "passive =~ ", paste(paste0(PassiveExpVars, "_W2"), collapse = " + "))),
+                       cluster = "School") # cluster argument doesn't seem to change anything
+
+map2(.x = kfaexp, .y = names(kfaexp),
+     ~kfa_report(models = .x,
+                 file.name = paste0("Output/", .y, "_w2_psychometric_report"),
+                 report.title = paste0(gsub("_", " ", .y), " Wave 2 Psychometric Report"),
+                 index = c("cfi.scaled", "rmsea.scaled", "srmr")))
+kfa_report(models = kfaexp$Passive_Exposure_Drop4,
+           file.name = paste0("Output/Passive_Exposure_Drop4_w2_psychometric_report"),
+           report.title = paste0("Passive Exposure (Drop 4) Wave 2 Psychometric Report"),
+           index = c("cfi.scaled", "rmsea.scaled", "srmr"))
+
+
+# Notes after reviewing results:
+# - Bullying perp had 1 heywood case (item 5) in 1 of 10 folds
+# - Contact vict had 1 heywood case (item 11) in 2 of 10 folds
+# - Custom Exposure model had best fit, though could still be improved
+#   - when run separately, active exposure was good, passive had high rmsea (.17) and srmr (.15)
+#   - Dropping item 4 (1 of 2 presentation variables), rmsea improved to .12 and srmr .09
+# - General Help Attitudes had poor rmsea (.20); 2-factor improves fit some (.16), but has high factor correlations (.84)
+# - Intent to help others had poor rmsea (.31) and no other factor structure was extracted
+# - Staff help intent had poor rmsea (.25) and 2 heywood cases (items 5 and 6) in 1 of 10 folds each.
+# - 1-factor model had acceptable fit for all other models
+# - Overall, kfa aligns with original psychometric report findings
